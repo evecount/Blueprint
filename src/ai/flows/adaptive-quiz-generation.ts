@@ -97,16 +97,14 @@ const generateQuizPrompt = ai.definePrompt({
 
   The quiz should be on the topic of {{{topic}}}.
 
-  The difficulty of the quiz questions should be {{{difficulty}}}.
-
   Here are the contents of the PDF document:
   {{media url=pdfDataUri}}
 
-  Generate one question with multiple choice answers, a correct answer, a rationale for the correct answer, and rationales for the incorrect answers.
+  First, determine the difficulty for the question.
+  - If 'correctlyAnswered' is undefined in the input, this is the first question. The difficulty is {{{difficulty}}}.
+  - If 'correctlyAnswered' is defined in the input, you MUST use the 'adjustDifficulty' tool to determine the new difficulty for the question. The current difficulty is {{{difficulty}}} and whether it was answered correctly is {{{correctlyAnswered}}}.
 
-  If this is not the first question, use the adjustDifficulty tool to adjust the difficulty of the next question.
-  The current difficulty is {{{difficulty}}}.
-  The last question was answered correctly: {{{correctlyAnswered}}}.
+  Then, using the determined difficulty, generate one question with multiple choice answers, a correct answer, a rationale for the correct answer, and rationales for the incorrect answers.
 `,
 });
 
@@ -117,19 +115,7 @@ const adaptiveQuizGenerationFlow = ai.defineFlow(
     outputSchema: AdaptiveQuizGenerationOutputSchema,
   },
   async input => {
-    let difficulty = input.difficulty;
-    if (input.correctlyAnswered !== undefined) {
-      const newDifficulty = await adjustDifficulty({
-        currentDifficulty: input.difficulty,
-        correctlyAnswered: input.correctlyAnswered,
-      });
-      difficulty = newDifficulty;
-    }
-
-    const {output} = await generateQuizPrompt({
-      ...input,
-      difficulty,
-    });
+    const {output} = await generateQuizPrompt(input);
     return output!;
   }
 );
