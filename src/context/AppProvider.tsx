@@ -2,6 +2,7 @@
 
 import type { Resource, Performance, QuizQuestion } from '@/lib/types';
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { seedQuizQuestions } from '@/lib/seed-data';
 
 // A custom hook to synchronize state with localStorage
 function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => void] {
@@ -46,6 +47,14 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => voi
   return [storedValue, setValue];
 }
 
+const defaultResource: Resource = {
+  id: 'm8-cis-question-bank',
+  name: 'M8 Collective Investment Schemes',
+  questions: seedQuizQuestions,
+  createdAt: '2024-01-01T00:00:00.000Z',
+};
+
+
 interface AppContextType {
   resources: Resource[];
   performance: Performance;
@@ -58,7 +67,7 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [resources, setResources] = useLocalStorage<Resource[]>('studybuddy-resources', []);
+  const [resources, setResources] = useLocalStorage<Resource[]>('studybuddy-resources', [defaultResource]);
   const [performance, setPerformance] = useLocalStorage<Performance>('studybuddy-performance', {});
   const [isClient, setIsClient] = useState(false);
 
