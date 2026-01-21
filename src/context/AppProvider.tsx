@@ -49,7 +49,7 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => voi
 interface AppContextType {
   resources: Resource[];
   performance: Performance;
-  addResource: (resource: Omit<Resource, 'id' | 'createdAt'>, questions?: QuizQuestion[]) => void;
+  addResource: (resource: Omit<Resource, 'id' | 'createdAt'>) => void;
   deleteResource: (resourceId: string) => void;
   updatePerformance: (topic: string, score: number, total: number) => void;
   getResourceById: (id: string) => Resource | undefined;
@@ -66,12 +66,11 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     setIsClient(true);
   }, []);
 
-  const addResource = (resourceData: Omit<Resource, 'id' | 'createdAt'>, questions?: QuizQuestion[]) => {
+  const addResource = (resourceData: Omit<Resource, 'id' | 'createdAt'>) => {
     const newResource: Resource = {
       ...resourceData,
       id: crypto.randomUUID(),
       createdAt: new Date().toISOString(),
-      questions: questions,
     };
     setResources([...resources, newResource]);
   };

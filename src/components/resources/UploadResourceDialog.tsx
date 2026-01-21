@@ -17,15 +17,13 @@ import {
 } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { useAppContext } from '@/context/AppProvider';
-import { initialQuizCodification } from '@/ai/flows/initial-quiz-codification';
+import { generateQuiz } from '@/ai/flows/initial-quiz-codification';
 import type { QuizQuestion } from '@/lib/types';
 
 const formSchema = z.object({
   name: z.string().min(3, { message: 'Resource name must be at least 3 characters.' }),
-  type: z.enum(['Textbook', 'Mock Exam'], { required_error: 'Please select a resource type.' }),
   file: z.any().refine((files) => files?.length === 1, 'File is required.'),
 });
 
@@ -46,12 +44,12 @@ export default function UploadResourceDialog({ open, onOpenChange }: UploadResou
     },
   });
 
-  const readFileAsDataURI = (file: File): Promise<string> => {
+  const readFileAsText = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = () => resolve(reader.result as string);
       reader.onerror = reject;
-      reader.readAsDataURL(file);
+      reader.readAsText(file);
     });
   };
 
@@ -59,38 +57,40 @@ export default function UploadResourceDialog({ open, onOpenChange }: UploadResou
     setIsUploading(true);
     try {
       const file = values.file[0];
-      if (file.type !== 'application/pdf') {
+      if (file.type !== 'text/markdown' && !file.name.endsWith('.md')) {
         toast({
           variant: 'destructive',
           title: 'Invalid File Type',
-          description: 'Please upload a PDF file.',
+          description: 'Please upload a Markdown (.md) file.',
         });
+        setIsUploading(false);
         return;
       }
 
-      const pdfDataUri = await readFileAsDataURI(file);
+      const content = await readFileAsText(file);
 
-      let codifiedQuestions: QuizQuestion[] | undefined = undefined;
+      const result = await generateQuiz({
+        content: content,
+        resourceName: values.name,
+      });
 
-      if (values.type === 'Mock Exam') {
-        const result = await initialQuizCodification({
-          pdfDataUri: pdfDataUri,
-          resourceName: values.name,
-        });
-
-        try {
-          codifiedQuestions = JSON.parse(result.codifiedQuestions);
-        } catch (parseError) {
-          console.error("Failed to parse codified questions:", parseError);
-          throw new Error("The AI returned an invalid format. Please check the PDF content or try again.");
-        }
+      let codifiedQuestions: QuizQuestion[] = [];
+      try {
+        codifiedQuestions = JSON.parse(result.codifiedQuestions);
+      } catch (parseError) {
+        console.error("Failed to parse codified questions:", parseError);
+        throw new Error("The AI returned an invalid format. Please check the file content or try again.");
       }
 
-      addResource({ name: values.name, type: values.type, pdfDataUri }, codifiedQuestions);
+      if (codifiedQuestions.length === 0) {
+        throw new Error("No questions could be generated from the provided file.");
+      }
+
+      addResource({ name: values.name, questions: codifiedQuestions });
 
       toast({
         title: 'Upload Successful',
-        description: `"${values.name}" has been added to your resources.`,
+        description: `"${values.name}" has been added and a quiz was created.`,
       });
       form.reset();
       onOpenChange(false);
@@ -98,7 +98,7 @@ export default function UploadResourceDialog({ open, onOpenChange }: UploadResou
       console.error(error);
       toast({
         variant: 'destructive',
-        title: 'Upload Failed',
+        title: 'Failed to Create Quiz',
         description: error instanceof Error ? error.message : 'An unknown error occurred. Please try again.',
       });
     } finally {
@@ -110,8 +110,8 @@ export default function UploadResourceDialog({ open, onOpenChange }: UploadResou
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="font-headline">Upload New Resource</DialogTitle>
-          <DialogDescription>Add a new textbook or mock exam to start generating quizzes.</DialogDescription>
+          <DialogTitle className="font-headline">Create a Quiz</DialogTitle>
+          <DialogDescription>Upload a Markdown (.md) file with your study notes to generate a quiz.</DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -120,31 +120,10 @@ export default function UploadResourceDialog({ open, onOpenChange }: UploadResou
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Resource Name</FormLabel>
+                  <FormLabel>Quiz Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., Chapter 1, Midterm Practice" {...field} />
+                    <Input placeholder="e.g., Chapter 1, Midterm Study Guide" {...field} />
                   </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="type"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Resource Type</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a resource type" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="Textbook">Textbook</SelectItem>
-                      <SelectItem value="Mock Exam">Mock Exam</SelectItem>
-                    </SelectContent>
-                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
@@ -154,9 +133,9 @@ export default function UploadResourceDialog({ open, onOpenChange }: UploadResou
               name="file"
               render={({ field: { onChange, value, ...rest } }) => (
                 <FormItem>
-                  <FormLabel>PDF File</FormLabel>
+                  <FormLabel>Markdown File</FormLabel>
                   <FormControl>
-                    <Input type="file" accept="application/pdf" onChange={(e) => onChange(e.target.files)} {...rest} />
+                    <Input type="file" accept=".md,text/markdown" onChange={(e) => onChange(e.target.files)} {...rest} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -167,12 +146,12 @@ export default function UploadResourceDialog({ open, onOpenChange }: UploadResou
                 {isUploading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Uploading...
+                    Generating...
                   </>
                 ) : (
                   <>
                     <UploadCloud className="mr-2 h-4 w-4" />
-                    Upload & Codify
+                    Upload & Generate
                   </>
                 )}
               </Button>

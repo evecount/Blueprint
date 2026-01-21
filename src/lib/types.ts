@@ -8,9 +8,7 @@ export interface QuizQuestion {
 export interface Resource {
   id: string;
   name: string;
-  type: 'Textbook' | 'Mock Exam';
-  pdfDataUri: string;
-  questions?: QuizQuestion[];
+  questions: QuizQuestion[];
   createdAt: string;
 }
 

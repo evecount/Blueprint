@@ -5,7 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { AppLayout } from '@/components/AppLayout';
 
 export const metadata: Metadata = {
-  title: 'StudyBuddy AI',
+  title: 'AI Quiz Generator',
   description: 'AI-powered quizzes from your study materials.',
 };
 

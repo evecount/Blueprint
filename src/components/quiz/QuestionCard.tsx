@@ -1,19 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle2, Loader2, XCircle } from 'lucide-react';
+import { CheckCircle2, XCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import type { QuizQuestion } from '@/lib/types';
 
 interface QuestionCardProps {
   question: QuizQuestion;
   onAnswer: (selectedAnswer: number, isCorrect: boolean) => void;
-  isSubmittingNext: boolean;
 }
 
-export default function QuestionCard({ question, onAnswer, isSubmittingNext }: QuestionCardProps) {
+export default function QuestionCard({ question, onAnswer }: QuestionCardProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
 
@@ -68,14 +67,8 @@ export default function QuestionCard({ question, onAnswer, isSubmittingNext }: Q
           <Button
             onClick={() => onAnswer(selectedAnswer!, isCorrect)}
             className="self-end"
-            disabled={isSubmittingNext}
           >
-            {isSubmittingNext ? (
-              <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Generating...
-              </>
-            ) : 'Next Question'}
+            Next Question
           </Button>
         </CardFooter>
       )}

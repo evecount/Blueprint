@@ -47,7 +47,7 @@ export default function DashboardPage() {
               <p className="text-muted-foreground">Upload your first study material to begin generating quizzes.</p>
               <Button onClick={() => setUploadDialogOpen(true)}>
                 <UploadCloud className="mr-2 h-4 w-4" />
-                Upload PDF
+                Create a Quiz
               </Button>
             </CardContent>
           </Card>
