@@ -1,13 +1,13 @@
-# StudyBuddy AI
+# ReviewMate
 
-Welcome to StudyBuddy AI, your personal AI-powered study partner! This application is designed to help you ace your exams by turning your study materials into interactive quizzes.
+Welcome to ReviewMate, your AI-powered proficiency testing partner! This application is designed to help companies test the proficiency of their workforce by turning materials into interactive quizzes.
 
 ## Features
 
-- **AI-Powered Quiz Generation**: Upload your study notes in Markdown (`.md`) format, and let our AI generate a comprehensive quiz for you in seconds.
-- **Pre-loaded Quiz**: Jump right in with a pre-loaded question bank for the "M8 Collective Investment Schemes" to test your knowledge.
-- **Instant Feedback & Rationales**: Don't just know if you're right or wrong—understand *why*. Each question comes with a detailed rationale to reinforce your learning.
-- **Performance Tracking**: Monitor your progress over time with a dedicated Performance page that charts your scores for each quiz you take.
+- **AI-Powered Quiz Generation**: Upload your training materials or notes in Markdown (`.md`) format, and let our AI generate a comprehensive quiz for you in seconds.
+- **Pre-loaded Quiz**: Jump right in with a pre-loaded question bank for the "M8 Collective Investment Schemes" to test the platform.
+- **Instant Feedback & Rationales**: Don't just know if you're right or wrong—understand *why*. Each question comes with a detailed rationale to reinforce learning.
+- **Performance Tracking**: Monitor progress over time with a dedicated Performance page that charts scores for each quiz taken.
 
 ## Getting Started
 

@@ -31,8 +31,8 @@ export default function DashboardPage() {
       <UploadResourceDialog open={isUploadDialogOpen} onOpenChange={setUploadDialogOpen} />
       <header className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-1">
-          <h1 className="text-3xl font-bold tracking-tight font-headline">Welcome to StudyBuddy AI</h1>
-          <p className="text-muted-foreground">Your AI-powered study partner to help you ace your exams.</p>
+          <h1 className="text-3xl font-bold tracking-tight font-headline">Welcome to ReviewMate</h1>
+          <p className="text-muted-foreground">An AI-powered proficiency app for your workforce.</p>
         </div>
         <Button onClick={() => setUploadDialogOpen(true)} variant="outline">
           <UploadCloud className="mr-2 h-4 w-4" />

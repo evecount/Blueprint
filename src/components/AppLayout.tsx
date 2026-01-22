@@ -39,7 +39,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
                 <Bot className="h-6 w-6 text-primary-foreground" />
               </div>
-              <h2 className="text-xl font-bold tracking-tight font-headline">StudyBuddy AI</h2>
+              <h2 className="text-xl font-bold tracking-tight font-headline">ReviewMate</h2>
             </div>
           </SidebarHeader>
           <SidebarMenu>
@@ -78,7 +78,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
                 <Bot className="h-5 w-5 text-primary-foreground" />
               </div>
-            <h2 className="text-lg font-bold tracking-tight font-headline">StudyBuddy AI</h2>
+            <h2 className="text-lg font-bold tracking-tight font-headline">ReviewMate</h2>
           </div>
           <SidebarTrigger />
         </header>

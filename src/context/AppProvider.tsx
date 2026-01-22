@@ -67,8 +67,8 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [resources, setResources] = useLocalStorage<Resource[]>('studybuddy-resources', [defaultResource]);
-  const [performance, setPerformance] = useLocalStorage<Performance>('studybuddy-performance', {});
+  const [resources, setResources] = useLocalStorage<Resource[]>('reviewmate-resources', [defaultResource]);
+  const [performance, setPerformance] = useLocalStorage<Performance>('reviewmate-performance', {});
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {

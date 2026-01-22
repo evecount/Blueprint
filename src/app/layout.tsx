@@ -5,8 +5,8 @@ import { Toaster } from '@/components/ui/toaster';
 import { AppLayout } from '@/components/AppLayout';
 
 export const metadata: Metadata = {
-  title: 'AI Quiz Generator',
-  description: 'AI-powered quizzes from your study materials.',
+  title: 'ReviewMate',
+  description: 'AI-powered proficiency quizzes for your workforce.',
 };
 
 export default function RootLayout({
