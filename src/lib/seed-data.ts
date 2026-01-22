@@ -971,7 +971,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
     question: 'A bond has a par value of $1,000 and a coupon rate of 6%. It is currently trading at $920. What is its current yield?',
     answers: ['6.00%', '6.52%', '5.52%', '7.00%'],
     correctAnswerIndex: 1,
-    rationale: 'Current Yield is calculated as (Annual Coupon Payment / Current Market Price). The annual coupon is 6% of the $1,000 par value, which is $60. Therefore, the current yield is ($60 / $920) = 6.52%.',
+    rationale: 'Current Yield is calculated as (Annual Coupon Payment / Current Market Price). The annual coupon is 6% of the $1,000 par value, which is $60. Therefore, the current yield is ($60 / $920) * 100 = 6.52%.',
   },
   {
     question: 'If a bond is trading at a discount (its price is lower than its par value), how will its Yield to Maturity (YTM) compare to its coupon rate?',
@@ -1087,4 +1087,298 @@ export const seedQuizQuestions: QuizQuestion[] = [
     correctAnswerIndex: 2,
     rationale: 'First, calculate the gross redemption value: 5,000 units * $1.20/unit = $6,000. Then, calculate the redemption fee: $6,000 * 1% = $60. Finally, subtract the fee from the gross value to find the net proceeds: $6,000 - $60 = $5,940.',
   },
+  {
+    question: "Which of the following is evaluated under the 'Integrity' pillar of the Melbourne Mercer Global Pension Index?",
+    answers: [
+      "The level of real economic growth.",
+      "The regulation, governance, and communication of the pension system."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "The 'Integrity' pillar of the Mercer Index focuses on the trust and governance of a pension system. It evaluates factors like regulation, how the system is governed, and how clearly it communicates with its members, rather than broad economic indicators."
+  },
+  {
+    question: "A pension system is being assessed on its 'Sustainability.' What is the primary focus?",
+    answers: [
+      "Whether current benefits are sufficient for retirees.",
+      "The demographic trends and the ability to maintain the system long-term."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "Sustainability in the Mercer Index is all about the future viability of the fund. It assesses whether the system can continue to provide benefits over the long term, considering factors like demographic shifts, pension coverage, and total assets."
+  },
+  {
+    question: "When calculating a unit trust's Expense Ratio, which of the following is EXCLUDED?",
+    answers: [
+      "Trustee fees and audit fees.",
+      "Brokerage and transaction costs."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "The Expense Ratio (or Reporting Ratio) covers the recurring, operational costs of the fund. Costs associated with trading assets, such as brokerage commissions and interest on borrowing, are considered capital costs and are not included in this calculation."
+  },
+  {
+    question: "A manager achieves an 8% return against a benchmark of 4%. If the tracking error (standard deviation of active return) is 8%, what is the Information Ratio?",
+    answers: [
+      "0.25",
+      "0.50",
+      "1.00",
+      "1.50"
+    ],
+    correctAnswerIndex: 1,
+    rationale: "The Information Ratio is calculated as (Active Return) / (Tracking Error). The Active Return is the fund's return minus the benchmark's return (8% - 4% = 4%). So, the Information Ratio is 4% / 8% = 0.50."
+  },
+  {
+    question: "Why might a 'Feeder Fund' have a significantly higher reporting ratio than a standard unit trust?",
+    answers: [
+      "It invests in higher-risk assets.",
+      "It has two layers of fees: the feeder fund and the parent fund."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "A 'Feeder Fund' structure involves one fund (the feeder) investing into another (the master/parent fund). This creates a 'double layer' of expenses, as the investor effectively pays the fees of both the feeder fund and the underlying master fund, which must be reflected in the reporting ratio."
+  },
+  {
+    question: "Which entity acts as the agent for the Singapore Government in issuing T-bills and SGS Bonds?",
+    answers: [
+      "Singapore Exchange (SGX).",
+      "Monetary Authority of Singapore (MAS)."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "The Monetary Authority of Singapore (MAS) is the central bank and regulator that acts as the agent for the government to issue securities like T-bills and SGS Bonds. The Singapore Exchange (SGX) is the marketplace where these securities are traded after issuance."
+  },
+  {
+    question: "What is the defining maturity characteristic of a Treasury bill (T-bill)?",
+    answers: [
+      "It has a maturity of more than 2 years.",
+      "It has a maturity of one year or less."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "T-bills are short-term debt instruments, classified as money market instruments, with maturities of one year or less. Longer-term government debt is issued as SGS Bonds."
+  },
+  {
+    question: "Which government security allows an individual to redeem their investment at par in any month without penalty?",
+    answers: [
+      "SGS Bonds.",
+      "Singapore Savings Bonds (SSB)."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "Singapore Savings Bonds (SSBs) are designed for individual investors and offer great flexibility. A key feature is the ability to redeem them in any given month at their par value plus any accrued interest, without incurring a penalty."
+  },
+  {
+    question: "Bond ratings are determined solely by quantitative financial ratios. True or False?",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctAnswerIndex: 1,
+    rationale: "False. While quantitative financial ratios are a major part of the analysis, credit rating agencies also consider qualitative factors, such as the quality of management, industry outlook, and the competitive landscape."
+  },
+  {
+    question: "A manager starts by analyzing the global economy and interest rates before choosing a country. What style is this?",
+    answers: [
+      "Bottom-up investing.",
+      "Top-down investing."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "This is a classic example of Top-down investing. The analysis starts from the macroeconomic 'big picture' (global economy) and progressively narrows down to specific markets and securities."
+  },
+  {
+    question: "A 'Bottom-up' investor is primarily concerned with:",
+    answers: [
+      "Sector trends and GDP growth.",
+      "Individual company attributes and fundamentals."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "Bottom-up investing focuses on the specific merits of a single company—its financial health, management quality, and competitive position—irrespective of the broader economic or sector trends."
+  },
+  {
+    question: "Unlike standard exchange-traded options, warrants are typically:",
+    answers: [
+      "Short-term (3 to 9 months).",
+      "Long-term (several years)."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "Warrants are issued by companies themselves and have much longer lifespans than standardized, exchange-traded options. Their expiration dates are often set several years in the future."
+  },
+  {
+    question: "A convertible bond provides an 'Equity Floor.' What does this mean?",
+    answers: [
+      "It is guaranteed by the SGX.",
+      "It will never be worth less than its value as a pure bond."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "The 'Equity Floor' refers to the bond's intrinsic value as a fixed-income instrument. If the company's stock price falls, making the conversion feature unattractive, the convertible bond still provides interest payments and principal repayment, so its price is supported by this underlying bond value."
+  },
+  {
+    question: "What is a unique risk associated with Synthetic ETFs that use swaps instead of physical stocks?",
+    answers: [
+      "Inflation risk.",
+      "Counterparty risk (the swap provider failing)."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "Synthetic ETFs don't hold the actual assets. They use a derivative (a swap) with a counterparty (usually a bank) to get the return of an index. This introduces counterparty risk: the risk that the bank providing the swap could default on its obligation."
+  },
+  {
+    question: "If an ETF's return deviates significantly from its benchmark index, this is known as:",
+    answers: [
+      "Market risk.",
+      "Tracking error risk."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "Tracking error is the measure of how much an ETF or index fund's performance differs from the performance of the benchmark index it is supposed to be tracking."
+  },
+  {
+    question: "Money market funds are most suitable for which type of investor?",
+    answers: [
+      "Investors seeking high capital appreciation over 10 years.",
+      "Investors with a low-risk tolerance seeking liquidity."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "Money market funds invest in short-term, low-risk debt and are designed for capital preservation and high liquidity. They are ideal for conservative investors or for holding cash that may be needed in the short term."
+  },
+  {
+    question: "Which risk cannot be eliminated through diversification?",
+    answers: [
+      "Unsystematic risk (Specific risk).",
+      "Systematic risk (Market risk)."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "Systematic risk, or market risk, affects the entire market (e.g., recessions, interest rate changes). It cannot be diversified away. Unsystematic risk is specific to a company or industry and can be reduced through diversification."
+  },
+  {
+    question: "A fund has a return of 10%, a risk-free rate of 2%, and a standard deviation of 10%. What is its Sharpe Ratio?",
+    answers: [
+      "0.6",
+      "0.8",
+      "1.0",
+      "1.2"
+    ],
+    correctAnswerIndex: 1,
+    rationale: "The Sharpe Ratio is calculated as (Fund Return - Risk-Free Rate) / Standard Deviation. In this case, (10% - 2%) / 10% = 8% / 10% = 0.8."
+  },
+  {
+    question: "A fund with a Beta of 1.5 is:",
+    answers: [
+      "50% less volatile than the market.",
+      "50% more volatile than the market."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "Beta measures a security's volatility in relation to the overall market. A Beta greater than 1 indicates that the security is more volatile than the market. A Beta of 1.5 means it's expected to be 50% more volatile."
+  },
+  {
+    question: "A company-specific strike is an example of what type of risk?",
+    answers: [
+      "Systematic risk.",
+      "Unsystematic risk."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "This is an example of Unsystematic (or Specific) Risk because it affects only a single company. An investor can mitigate this risk by diversifying their portfolio across different companies and industries."
+  },
+  {
+    question: "A tech company's quarterly earnings report shows a 30% drop in net profit due to a failed product launch. What is the primary source of risk?",
+    answers: [
+      "Business Risk",
+      "Financial Risk",
+      "Market Risk",
+      "Country Risk"
+    ],
+    correctAnswerIndex: 0,
+    rationale: "M8 defines Business Risk specifically as the risk that a company's profits will fall unexpectedly due to factors related to its operations, such as a failed product launch, poor management, or increased competition."
+  },
+  {
+    question: "The US Federal Reserve announces an unexpected hike in interest rates, causing the market value of your bond portfolio to drop. What is the primary source of risk?",
+    answers: [
+      "Business Risk",
+      "Financial Risk",
+      "Inflation Risk",
+      "Reinvestment Risk"
+    ],
+    correctAnswerIndex: 1,
+    rationale: "In the M8 curriculum, 'Financial Risk' is specifically the risk that interest rate changes negatively affect investment value. Rising rates cause the price of existing, lower-rate bonds to fall."
+  },
+  {
+    question: "You own a large piece of physical commercial real estate and need to sell it today to cover a debt, but there are no buyers available in the current week.",
+    answers: [
+      "Credit Risk",
+      "Marketability Risk",
+      "Systematic Risk",
+      "Business Risk"
+    ],
+    correctAnswerIndex: 1,
+    rationale: "This is Marketability Risk (also known as Liquidity Risk), which is the risk that an asset cannot be traded quickly enough at its prevailing market price to prevent a loss or meet an immediate cash need."
+  },
+  {
+    question: "You invest in a Brazilian utility company, and the Brazilian Real suddenly loses 20% of its value against the Singapore Dollar.",
+    answers: [
+      "Country Risk",
+      "Financial Risk",
+      "Business Risk",
+      "Liquidity Risk"
+    ],
+    correctAnswerIndex: 0,
+    rationale: "This is an example of Country Risk, which covers economic and political risks specific to a foreign country, including the risk of adverse movements in its domestic currency."
+  },
+  {
+    question: "A global pandemic causes the entire world's stock markets to crash simultaneously. How is this risk classified?",
+    answers: [
+      "Systematic Risk",
+      "Unsystematic Risk",
+      "Business Risk",
+      "Credit Risk"
+    ],
+    correctAnswerIndex: 0,
+    rationale: "This is Systematic Risk (or Nondiversifiable Risk). It is caused by broad macroeconomic or social factors that affect the value of all risky assets and cannot be eliminated through diversification."
+  },
+  {
+    question: "A specific airline's pilots go on strike, causing only that company's stock to plummet while other airline stocks remain stable.",
+    answers: [
+      "Systematic Risk",
+      "Unsystematic Risk",
+      "Financial Risk",
+      "Inflation Risk"
+    ],
+    correctAnswerIndex: 1,
+    rationale: "This is Unsystematic Risk (or Diversifiable Risk). These factors are unique to a single company or industry and can be eliminated by diversifying investments across different companies."
+  },
+  {
+    question: "You hold a 10-year bond and receive regular interest payments. When you try to reinvest those payments, you find that current market rates have dropped to 1%.",
+    answers: [
+      "Reinvestment Risk",
+      "Interest Rate Risk",
+      "Credit Risk",
+      "Inflation Risk"
+    ],
+    correctAnswerIndex: 0,
+    rationale: "This is specifically Reinvestment Risk. It is the risk that future cash flows—such as coupon payments from a bond—will have to be reinvested at a lower interest rate, reducing the investor's total return."
+  },
+  {
+    question: "A government declares that it can no longer pay back its sovereign debt obligations.",
+    answers: [
+      "Credit / Default Risk",
+      "Liquidity Risk",
+      "Market Risk",
+      "Interest Rate Risk"
+    ],
+    correctAnswerIndex: 0,
+    rationale: "This is Credit Risk or Default Risk (also called Sovereign Risk when referring to a government). It is the risk that the issuer of a debt instrument will be unable to make its promised interest payments or repay the principal amount at maturity."
+  },
+  {
+    question: "An investor is worried that the rising cost of bread and milk will make their fixed monthly annuity payments less valuable over time.",
+    answers: [
+      "Inflation Risk",
+      "Financial Risk",
+      "Business Risk",
+      "Marketability Risk"
+    ],
+    correctAnswerIndex: 0,
+    rationale: "This is Inflation Risk, or purchasing power risk. It's the risk that the rate of inflation will be higher than the return on an investment, causing the real value of that investment to decrease over time. Fixed-income assets are particularly vulnerable to this."
+  },
+  {
+    question: "A fund manager is forced to sell assets at a loss because a massive wave of investors all requested redemptions on the same day.",
+    answers: [
+      "Business Risk",
+      "Systematic Risk",
+      "Liquidity Risk",
+      "Credit Risk"
+    ],
+    correctAnswerIndex: 2,
+    rationale: "This is a classic example of Liquidity Risk. It is the difficulty of converting assets to cash at prevailing prices within a stipulated time, often forced by a high volume of redemption requests from investors."
+  }
 ];
