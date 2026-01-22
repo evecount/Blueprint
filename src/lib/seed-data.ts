@@ -591,7 +591,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
     question: 'A pension system that lacks "Adequacy" most likely has:',
     answers: [
       'Poor communication with members.',
-      'Payout\'s that do not meet the basic cost of living.',
+      'Payouts that do not meet the basic cost of living.',
       'Low government debt.',
       'High participation rates.',
     ],
@@ -1622,6 +1622,116 @@ export const seedQuizQuestions: QuizQuestion[] = [
     correctAnswerIndex: 2,
     rationale:
       'The most common and significant drawback of FOHFs is the compounding effect of fees. Investors pay fees to the FOHF manager, who in turn invests in funds that also charge their own management and performance fees, eroding the investor\'s net return.',
+  },
+  {
+    question: 'A fund has an expected return of 10% and a standard deviation of 5%. According to the 68% confidence level, what is the range of expected returns?',
+    answers: [
+      '5% to 15%',
+      '10% to 20%',
+      '0% to 20%',
+      '5% to 10%',
+    ],
+    correctAnswerIndex: 0,
+    rationale: 'The 68-95-99.7 rule states that approximately 68% of returns will fall within one standard deviation of the mean. The range is calculated as Mean ± 1 SD, which is 10% ± 5%, resulting in a range of 5% to 15%.',
+  },
+  {
+    question: 'Using the same fund (10% return, 5% SD), what is the range of returns at a 95% confidence level?',
+    answers: [
+      '5% to 15%',
+      '0% to 20%',
+      '-5% to 25%',
+      '10% to 20%',
+    ],
+    correctAnswerIndex: 1,
+    rationale: 'At a 95% confidence level, returns are expected to be within two standard deviations of the mean. The range is calculated as Mean ± 2 SD, which is 10% ± (2 * 5%) or 10% ± 10%, resulting in a range of 0% to 20%.',
+  },
+  {
+    question: 'If Fund A has a standard deviation of 12% and Fund B has a standard deviation of 25%, which fund is considered "more volatile"?',
+    answers: [
+      'Fund A',
+      'Fund B',
+      'They are equally volatile',
+      'Cannot be determined',
+    ],
+    correctAnswerIndex: 1,
+    rationale: 'Standard deviation is a direct measure of volatility or total risk. A higher standard deviation indicates greater price fluctuation. Therefore, Fund B with an SD of 25% is more volatile than Fund A with an SD of 12%.',
+  },
+  {
+    question: 'Which type of risk does Standard Deviation measure?',
+    answers: [
+      'Systematic Risk only',
+      'Unsystematic Risk only',
+      'Total Risk (Systematic + Unsystematic)',
+      'Credit Risk',
+    ],
+    correctAnswerIndex: 2,
+    rationale: 'Standard deviation measures the total volatility of an investment\'s returns around its mean. This encompasses all sources of risk, including both systematic (market-wide) risk and unsystematic (company-specific) risk.',
+  },
+  {
+    question: 'If a stock has an average return of 5% and an SD of 10%, what is the "worst-case" return at a 95% confidence level?',
+    answers: [
+      '5%',
+      '-5%',
+      '-10%',
+      '-15%',
+    ],
+    correctAnswerIndex: 3,
+    rationale: 'The 95% confidence interval is Mean ± 2 SD. The \'worst-case\' return is the lower bound of this range. Calculation: 5% - (2 * 10%) = 5% - 20% = -15%.',
+  },
+  {
+    question: 'Does diversifying a portfolio usually increase or decrease the standard deviation?',
+    answers: [
+      'Increase',
+      'Decrease',
+      'It has no effect',
+      'It depends on the asset class',
+    ],
+    correctAnswerIndex: 1,
+    rationale: 'Diversification reduces a portfolio\'s standard deviation by mitigating unsystematic (company-specific) risk. By combining assets that are not perfectly correlated, the overall volatility of the portfolio is lowered.',
+  },
+  {
+    question: 'The Sharpe Ratio uses which measure of risk in its denominator?',
+    answers: [
+      'Beta',
+      'Standard Deviation',
+      'Alpha',
+      'Tracking Error',
+    ],
+    correctAnswerIndex: 1,
+    rationale: 'The Sharpe Ratio calculates risk-adjusted return by dividing the excess return (Portfolio Return - Risk-Free Rate) by the portfolio\'s Standard Deviation. It measures return per unit of total risk.',
+  },
+  {
+    question: 'If a fund’s returns are perfectly stable (e.g., exactly 4% every year), what is its standard deviation?',
+    answers: [
+      '4%',
+      '100%',
+      'Zero',
+      'Cannot be calculated',
+    ],
+    correctAnswerIndex: 2,
+    rationale: 'Standard deviation measures the dispersion of returns around the average return. If every return is exactly the same as the average (4%), there is no deviation, and therefore the standard deviation is zero.',
+  },
+  {
+    question: 'Why do equity funds generally have higher standard deviations than fixed-income funds?',
+    answers: [
+      'Because equity funds pay higher dividends.',
+      'Because bond funds are not diversified.',
+      'Because stock prices fluctuate more significantly based on market and specific risks than bond prices.',
+      'Because equity funds have lower management fees.',
+    ],
+    correctAnswerIndex: 2,
+    rationale: 'Equity (stock) prices are inherently more volatile than bond prices. They are more sensitive to a wider range of economic news, company performance, and market sentiment, leading to greater price fluctuations and thus a higher standard deviation.',
+  },
+  {
+    question: 'In the context of a "Value-at-Risk" (VAR) calculation, standard deviation is used to determine:',
+    answers: [
+      'The fund\'s historical average return.',
+      'The fund\'s expense ratio.',
+      'The probability and amount of potential loss over a specific time frame.',
+      'The credit rating of the fund\'s holdings.',
+    ],
+    correctAnswerIndex: 2,
+    rationale: 'Value-at-Risk (VAR) is a statistical technique used to measure and quantify the level of financial risk within a firm or investment portfolio over a specific time frame. It uses standard deviation and mean return to estimate the maximum loss that an investment is likely to suffer with a certain level of confidence (e.g., "a 5% VAR of $1 million" means there\'s a 5% chance of losing at least $1 million).',
   },
 ];
 
