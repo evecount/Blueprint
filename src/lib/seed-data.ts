@@ -1,3 +1,4 @@
+
 import type { QuizQuestion } from './types';
 
 export const seedQuizQuestions: QuizQuestion[] = [
@@ -590,12 +591,13 @@ export const seedQuizQuestions: QuizQuestion[] = [
     question: 'A pension system that lacks "Adequacy" most likely has:',
     answers: [
       'Poor communication with members.',
-      'Payouts that do not meet the basic cost of living.',
+      'Payout\'s that do not meet the basic cost of living.',
       'Low government debt.',
       'High participation rates.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'A low score in the "Adequacy" pillar indicates that the benefits provided by the pension system are insufficient. This often means the income paid out to retirees is not enough to cover basic living expenses.',
+    rationale:
+      'A low score in the "Adequacy" pillar indicates that the benefits provided by the pension system are insufficient. This often means the income paid out to retirees is not enough to cover basic living expenses.',
   },
   {
     question: 'A "Top-Down" investor starts their analysis at which level?',
@@ -1380,5 +1382,246 @@ export const seedQuizQuestions: QuizQuestion[] = [
     ],
     correctAnswerIndex: 2,
     rationale: "This is a classic example of Liquidity Risk. It is the difficulty of converting assets to cash at prevailing prices within a stipulated time, often forced by a high volume of redemption requests from investors."
-  }
+  },
+  {
+    question: 'What is the primary investment objective of a typical hedge fund?',
+    answers: [
+      'To closely track the performance of a major stock market index like the S&P 500.',
+      'To generate positive, absolute returns regardless of the market\'s direction.',
+      'To provide a stable, fixed-income stream through government bonds.',
+      'To exclusively invest in physical commodities like gold and oil.',
+    ],
+    correctAnswerIndex: 1,
+    rationale:
+      'Unlike traditional mutual funds that aim for relative returns (beating a benchmark), hedge funds seek absolute returns, meaning they aim to make a profit whether the market is going up, down, or sideways.',
+  },
+  {
+    question: 'What does it mean when a hedge fund "uses leverage"?',
+    answers: [
+      'It diversifies its investments across at least 100 different stocks.',
+      'It borrows money to increase the size of its investment positions.',
+      'It only invests in large, well-established companies.',
+      'It gives investors the ability to vote on management decisions.',
+    ],
+    correctAnswerIndex: 1,
+    rationale:
+      'Using leverage means borrowing capital to amplify investment positions. While this can magnify gains, it also significantly increases the risk of large losses.',
+  },
+  {
+    question: 'A common hedge fund fee structure, often referred to as "2 and 20," typically consists of:',
+    answers: [
+      'A 2% transaction fee and a 20% tax on profits.',
+      'A 2% annual management fee and a 20% performance fee on profits.',
+      'A flat fee of 2.20% on all assets under management.',
+      'A 2% dividend yield and a 20% capital gain.',
+    ],
+    correctAnswerIndex: 1,
+    rationale:
+      'The "2 and 20" model is a standard hedge fund fee structure, consisting of a 2% management fee on total assets and a 20% performance fee on any profits generated.',
+  },
+  {
+    question: 'What is the primary purpose of a "lock-in period" for hedge fund investors?',
+    answers: [
+      'To guarantee a minimum return for the investor.',
+      'To allow the fund manager to invest in illiquid assets without fearing sudden redemptions.',
+      'To reduce the management fees charged to the investor.',
+      'To allow the investor to switch strategies at any time.',
+    ],
+    correctAnswerIndex: 1,
+    rationale:
+      'Lock-in periods restrict investors from withdrawing their money for a set time. This gives the manager stability to execute long-term or illiquid investment strategies without being forced to sell assets at a bad time to meet redemption requests.',
+  },
+  {
+    question: 'A hedge fund manager employing a "long/short equity" strategy would:',
+    answers: [
+      'Only buy stocks for long-term holding.',
+      'Buy stocks expected to increase in value and short-sell stocks expected to decrease in value.',
+      'Exclusively trade in short-term government bonds.',
+      'Buy stocks and simultaneously sell call options on them.',
+    ],
+    correctAnswerIndex: 1,
+    rationale:
+      'A long/short equity strategy is a classic hedge fund approach. It involves taking "long" positions in stocks that are expected to appreciate and "short" positions in stocks that are expected to decline, aiming to profit from both upward and downward movements.',
+  },
+  {
+    question: 'A "global macro" hedge fund strategy primarily bases its investment decisions on:',
+    answers: [
+      'The financial statements of individual small companies.',
+      'Technical chart patterns of specific stocks.',
+      'Broad economic and political trends across different countries.',
+      'The credit ratings of corporate bonds.',
+    ],
+    correctAnswerIndex: 2,
+    rationale:
+      'Global macro managers take a top-down approach, making large-scale bets on the direction of currencies, interest rates, commodities, or entire stock markets based on their analysis of global economic and political events.',
+  },
+  {
+    question: 'Which of the following is a typical focus for an "event-driven" hedge fund strategy?',
+    answers: [
+      'A change in the daily weather forecast.',
+      'A predictable, seasonal trend in consumer spending.',
+      'A corporate merger, acquisition, or bankruptcy.',
+      'A shift in the federal funds rate.',
+    ],
+    correctAnswerIndex: 2,
+    rationale:
+      'Event-driven strategies seek to profit from specific corporate events. Managers analyze situations like mergers, acquisitions, bankruptcies, or other restructurings to find pricing inefficiencies.',
+  },
+  {
+    question: 'The goal of "convertible arbitrage" is to profit from:',
+    answers: [
+      'The difference between a country\'s import and export values.',
+      'A mispricing between a company\'s convertible bond and its underlying common stock.',
+      'The changing interest rates on government T-bills.',
+      'The long-term growth of the technology sector.',
+    ],
+    correctAnswerIndex: 1,
+    rationale:
+      'Convertible arbitrage is a specialized strategy that involves buying a company\'s convertible bond and simultaneously short-selling its common stock. The manager aims to exploit temporary pricing discrepancies between these two related securities.',
+  },
+  {
+    question: 'A significant risk of hedge funds is that managers often take "concentrated bets." What does this mean?',
+    answers: [
+      'The fund is overly diversified across too many assets.',
+      'The fund invests a large portion of its capital in a small number of positions.',
+      'The fund only invests at a specific time of day.',
+      'The fund only invests in government-guaranteed securities.',
+    ],
+    correctAnswerIndex: 1,
+    rationale:
+      'Taking concentrated bets means having high conviction in a few investments and allocating a significant amount of capital to them. While this can lead to high returns if correct, it also dramatically increases the risk of substantial losses if a bet goes wrong.',
+  },
+  {
+    question: 'How can a performance-based fee structure create a potential risk for hedge fund investors?',
+    answers: [
+      'It encourages the manager to be overly conservative and avoid all risk.',
+      'It guarantees that the fund will never lose money.',
+      'It may incentivize the manager to take excessive risks to generate a large performance bonus.',
+      'It reduces the total amount of capital the fund can manage.',
+    ],
+    correctAnswerIndex: 2,
+    rationale:
+      'Because managers earn a large percentage of the profits, they might be tempted to take on excessive risk (a "heads I win, tails you lose" scenario) to maximize their own bonus, even if it\'s not in the long-term best interest of the investors.',
+  },
+  {
+    question: 'What is a "Fund of Hedge Funds" (FOHF)?',
+    answers: [
+      'A single, very large hedge fund that dominates the market.',
+      'A government agency that regulates hedge funds.',
+      'An investment portfolio that is composed of several different underlying hedge funds.',
+      'A type of ETF that tracks a hedge fund index.',
+    ],
+    correctAnswerIndex: 2,
+    rationale:
+      'A Fund of Hedge Funds is a pooled investment vehicle that builds a portfolio by investing in a selection of different hedge funds, rather than directly in stocks or bonds.',
+  },
+  {
+    question: 'What is a primary advantage of investing in a Fund of Hedge Funds (FOHF)?',
+    answers: [
+      'It has zero management fees.',
+      'It provides instant liquidity with no lock-in periods.',
+      'It offers diversification across multiple managers and strategies for smaller investors.',
+      'It guarantees a higher return than any single hedge fund.',
+    ],
+    correctAnswerIndex: 2,
+    rationale:
+      'FOHFs allow smaller-scale investors to gain access to a diversified portfolio of hedge funds and strategies, which would be difficult to achieve by investing directly due to high minimum investment requirements.',
+  },
+  {
+    question: 'What is the main disadvantage of a Fund of Hedge Funds (FOHF)?',
+    answers: [
+      'They are legally required to invest only in government bonds.',
+      'They suffer from an extra layer of fees, reducing net returns.',
+      'They are not managed by professional investors.',
+      'They are less regulated than individual hedge funds.',
+    ],
+    correctAnswerIndex: 1,
+    rationale:
+      'The most significant drawback of a FOHF is the "double layer" of fees. Investors pay fees to the managers of the underlying hedge funds, AND they pay a separate layer of fees to the manager of the FOHF itself.',
+  },
+  {
+    question: 'A hedge fund manager using a "fixed-income arbitrage" strategy is most likely trying to profit from:',
+    answers: [
+      'The overall direction of the stock market.',
+      'The long-term growth of a specific company.',
+      'Small price differences between related debt securities.',
+      'The bankruptcy of a major corporation.',
+    ],
+    correctAnswerIndex: 2,
+    rationale:
+      'Fixed-income arbitrage involves looking for small, temporary pricing discrepancies between related fixed-income securities (like a US Treasury bond and a Treasury futures contract) and using leverage to turn these small differences into meaningful profits.',
+  },
+  {
+    question: 'The tendency for hedge fund managers to focus on niche markets or complex strategies is known as:',
+    answers: [
+      'Diversification.',
+      'Indexing.',
+      'Specialization.',
+      'Asset allocation.',
+    ],
+    correctAnswerIndex: 2,
+    rationale:
+      'Many hedge funds gain an edge by specializing in a particular area, such as distressed debt, healthcare stocks, or Asian market derivatives, where they can develop deep expertise that is not common in the broader market.',
+  },
+  {
+    question: 'From an investor\'s perspective, what is the primary consequence of "liquidity risk" in a hedge fund?',
+    answers: [
+      'The fund\'s NAV will increase unexpectedly.',
+      'The investor may be unable to redeem their shares and access their money when needed.',
+      'The manager is forced to buy more assets.',
+      'The fund\'s performance fees are automatically waived.',
+    ],
+    correctAnswerIndex: 1,
+    rationale:
+      'Liquidity risk, exacerbated by lock-in periods and gates, means an investor may not be able to get their cash out of the fund when they want or need to, as the fund may hold illiquid assets or have restrictions on redemptions.',
+  },
+  {
+    question: 'A key distinction between a traditional mutual fund and a hedge fund is that the mutual fund aims for ________ returns, while the hedge fund aims for ________ returns.',
+    answers: [
+      'absolute; relative',
+      'relative; absolute',
+      'guaranteed; speculative',
+      'domestic; international',
+    ],
+    correctAnswerIndex: 1,
+    rationale:
+      'Traditional mutual funds are typically judged on their performance relative to a benchmark (e.g., "did it beat the S&P 500?"). Hedge funds, however, aim for absolute returns, seeking to make money regardless of the benchmark\'s performance.',
+  },
+  {
+    question: 'Why is holding "illiquid securities" a significant risk for a hedge fund?',
+    answers: [
+      'Because they are too easy to value.',
+      'Because they generate no performance fees.',
+      'Because they are guaranteed by the government.',
+      'Because they cannot be sold quickly to meet redemptions without causing a large price drop.',
+    ],
+    correctAnswerIndex: 3,
+    rationale:
+      'If a fund needs to raise cash quickly (e.g., to meet investor redemptions), holding illiquid assets is a major problem. Forcing a sale of such assets can lead to a steep price discount, crystallizing losses for the fund.',
+  },
+  {
+    question: 'A hedge fund\'s value drops from a peak of $120 per share to $100, then recovers to $115. Will the manager earn a performance fee on the recovery to $115?',
+    answers: [
+      'Yes, because the fund made a 15% profit from the bottom.',
+      'No, because the fund\'s value is still below the high-water mark of $120.',
+      'Yes, but only on 50% of the gains.',
+      'It depends on the management fee.',
+    ],
+    correctAnswerIndex: 1,
+    rationale:
+      'The high-water mark ensures that managers are only paid for generating new profits. Since the current value of $115 is below the previous peak of $120, no performance fees can be charged until the fund\'s value exceeds $120.',
+  },
+  {
+    question: 'An investor in a Fund of Hedge Funds (FOHF) is concerned about fees. Their concern is most likely related to:',
+    answers: [
+      'The absence of any fees, which seems suspicious.',
+      'Paying a single, low, all-inclusive fee.',
+      'Paying multiple layers of fees (both at the FOHF level and the underlying fund level).',
+      'The fees being paid directly to the government instead of the manager.',
+    ],
+    correctAnswerIndex: 2,
+    rationale:
+      'The most common and significant drawback of FOHFs is the compounding effect of fees. Investors pay fees to the FOHF manager, who in turn invests in funds that also charge their own management and performance fees, eroding the investor\'s net return.',
+  },
 ];
+
