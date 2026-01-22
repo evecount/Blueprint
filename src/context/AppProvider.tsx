@@ -6,18 +6,7 @@ import { seedQuizQuestions } from '@/lib/seed-data';
 
 // A custom hook to synchronize state with localStorage
 function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => void] {
-  const [storedValue, setStoredValue] = useState<T>(() => {
-    if (typeof window === 'undefined') {
-      return initialValue;
-    }
-    try {
-      const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      console.error(error);
-      return initialValue;
-    }
-  });
+  const [storedValue, setStoredValue] = useState<T>(initialValue);
 
   const setValue = (value: T) => {
     try {
@@ -32,14 +21,12 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => voi
   };
 
   useEffect(() => {
-    // This effect ensures that the state is updated on the client side
-    // after the initial server render.
     try {
       const item = window.localStorage.getItem(key);
       if (item) {
         setStoredValue(JSON.parse(item));
       }
-    } catch (error) {
+    } catch (error)      {
       console.error(error);
     }
   }, [key]);
@@ -69,11 +56,6 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [resources, setResources] = useLocalStorage<Resource[]>('reviewmate-resources', [defaultResource]);
   const [performance, setPerformance] = useLocalStorage<Performance>('reviewmate-performance', {});
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   const addResource = (resourceData: Omit<Resource, 'id' | 'createdAt'>) => {
     const newResource: Resource = {
@@ -111,7 +93,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     getResourceById,
   };
 
-  return <AppContext.Provider value={value}>{isClient ? children : null}</AppContext.Provider>;
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
 export const useAppContext = () => {
