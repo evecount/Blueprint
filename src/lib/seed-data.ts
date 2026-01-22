@@ -11,7 +11,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
     ],
     correctAnswerIndex: 1,
     rationale:
-      'A unit trust is a collective investment scheme where funds from many investors are pooled to purchase a diversified portfolio of assets, spreading risk.',
+      'A unit trust is a form of collective investment where multiple investors\' money is pooled together. This pool of money is then used to invest in a wide range of assets (a diversified portfolio), which helps to spread risk. (a) is incorrect because no investment guarantees returns. (c) describes a bank account. (d) describes direct stock ownership, not a pooled fund.',
   },
   {
     question: 'What is the primary role of a fund manager in a unit trust?',
@@ -23,32 +23,32 @@ export const seedQuizQuestions: QuizQuestion[] = [
     ],
     correctAnswerIndex: 1,
     rationale:
-      'A fund manager\'s main responsibility is to manage the fund\'s investment portfolio to achieve its stated objectives.',
+      'The fund manager is responsible for making investment decisions to meet the fund\'s objectives. (a) is the role of legal counsel, (c) is the role of a custodian or administrator, and (d) is the role of a distributor or financial advisor.',
   },
   {
     question: 'An investor who is risk-averse and has a small amount of capital would find which of the following most suitable?',
     answers: ['Derivatives', 'A single, high-growth stock', 'A unit trust', 'A hedge fund'],
     correctAnswerIndex: 2,
     rationale:
-      'Unit trusts offer diversification, which lowers risk, making them suitable for risk-averse investors with limited capital.',
+      'Unit trusts offer diversification, which lowers risk, making them suitable for risk-averse investors. It also allows investment with small amounts of capital. Derivatives (a) and hedge funds (d) are high-risk, and a single stock (b) is not diversified.',
   },
   {
     question: 'What does NAV stand for in the context of a unit trust?',
     answers: ['Net Asset Value', 'New Asset Valuation', 'Nominal Asset Value', 'Net-Associated Value'],
     correctAnswerIndex: 0,
-    rationale: 'NAV stands for Net Asset Value, which represents the per-unit market value of the fund.',
+    rationale: 'NAV stands for Net Asset Value. It represents the per-unit market value of the fund, calculated by taking the total value of the fund\'s assets and subtracting its liabilities, then dividing by the number of units outstanding.',
   },
   {
     question: 'If a unit trust\'s NAV is $2.00 per unit and it has a front-end load of 5%, what is the offer price for an investor?',
     answers: ['$1.90', '$2.00', '$2.05', '$2.10'],
     correctAnswerIndex: 3,
-    rationale: 'The offer price is NAV + (NAV * front-end load). $2.00 + ($2.00 * 0.05) = $2.10.',
+    rationale: 'The offer price includes the sales charge (front-end load). Calculation: Offer Price = NAV + (NAV * 5%) = $2.00 + ($2.00 * 0.05) = $2.00 + $0.10 = $2.10.',
   },
   {
     question: 'Which of the following is NOT a typical risk associated with bond funds?',
     answers: ['Interest rate risk', 'Credit risk', 'Liquidity risk', 'unlimited upside potential'],
     correctAnswerIndex: 3,
-    rationale: 'Bonds offer fixed-income, so their upside potential is limited, which is a characteristic, not a risk.',
+    rationale: 'Unlimited upside potential is a characteristic of growth assets like stocks, not a risk. Bonds and bond funds have limited upside as their returns are based on fixed interest payments. The other options are all real risks for bond funds.',
   },
   {
     question: 'A "growth" investment strategy primarily focuses on:',
@@ -59,7 +59,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'Investing in a mix of assets to minimize risk.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'Growth investing targets companies expected to have high earnings growth in the future, aiming for capital appreciation.',
+    rationale: 'Growth investing targets companies expected to have high earnings growth in the future, aiming for capital appreciation rather than income. (a) describes value investing, (c) describes an income strategy, and (d) describes diversification.',
   },
   {
     question: 'What is a feeder fund?',
@@ -70,7 +70,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'A fund that is managed by multiple fund managers.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'A feeder fund pools capital and "feeds" it into a central master fund, which handles the investments.',
+    rationale: 'A feeder fund is a structure where a fund pools capital and "feeds" it into a central master fund. The master fund then makes all the investment decisions. This structure is common for hedge funds.',
   },
   {
     question: 'Which of the following is a key feature of Real Estate Investment Trusts (REITs)?',
@@ -81,7 +81,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'They are exempt from all market risks.',
     ],
     correctAnswerIndex: 2,
-    rationale: 'REITs are investment vehicles that allow individuals to invest in a diversified portfolio of real estate properties.',
+    rationale: 'REITs are investment vehicles that allow individuals to invest in a diversified portfolio of income-generating real estate properties. They are typically traded on stock exchanges (making \'a\' incorrect), do not invest in stocks (making \'b\' incorrect), and are subject to market risks (making \'d\' incorrect).',
   },
   {
     question: 'What is dollar-cost averaging?',
@@ -92,7 +92,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'A strategy to only invest in US dollar-denominated assets.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'Dollar-cost averaging involves investing a fixed sum regularly, which can reduce the impact of market volatility.',
+    rationale: 'Dollar-cost averaging is an investment strategy that involves investing a fixed sum of money at regular intervals. This approach can help reduce the impact of market volatility by averaging out the purchase price over time. It is the opposite of market timing (a).',
   },
   {
     question: 'What is the primary purpose of a "prospectus" for a unit trust?',
@@ -103,13 +103,13 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'To list the names of all the current unitholders.',
     ],
     correctAnswerIndex: 2,
-    rationale: 'A prospectus is a legal document that provides comprehensive details about an investment offering to help investors make informed decisions.',
+    rationale: 'A prospectus is a mandatory legal document that provides investors with all the material information about an investment offering, helping them make an informed decision. While it contains performance data (a), it is much more than a marketing brochure (b) or a list of unitholders (d).',
   },
   {
     question: 'An investor seeking a regular income stream would be most interested in which type of fund?',
     answers: ['A growth fund', 'An aggressive growth fund', 'An income fund', 'A sector fund focused on technology.'],
     correctAnswerIndex: 2,
-    rationale: 'Income funds are designed to provide a steady stream of income by investing in dividend-paying stocks and bonds.',
+    rationale: 'Income funds are specifically designed to provide a steady stream of income by investing in dividend-paying stocks and interest-paying bonds. Growth funds (a, b, d) prioritize capital appreciation over income.',
   },
   {
     question: 'In which of the following situations would a currency swap be most useful?',
@@ -120,7 +120,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'When a company wants to convert its debt into equity.',
     ],
     correctAnswerIndex: 2,
-    rationale: 'Currency swaps are used to hedge against exchange rate fluctuations by exchanging principal and/or interest payments in different currencies.',
+    rationale: 'Currency swaps are derivative contracts used to hedge against foreign exchange rate risk. They allow parties to exchange principal and/or interest payments on loans denominated in different currencies. (b) describes an interest rate swap.',
   },
   {
     question: 'What does "beta" measure?',
@@ -131,7 +131,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'The credit rating of a bond.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'Beta is a measure of systematic risk, indicating how much an asset\'s price moves in relation to the overall market.',
+    rationale: 'Beta is a measure of systematic risk (market risk). It indicates how much an asset\'s price is expected to move in relation to the overall market. A beta of 1 means it moves with the market, while a beta > 1 means it\'s more volatile.',
   },
   {
     question: 'A fund with a beta of 1.5 would be expected to:',
@@ -142,13 +142,13 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'Perfectly track the market\'s performance.',
     ],
     correctAnswerIndex: 2,
-    rationale: 'A beta greater than 1 indicates that the asset is more volatile than the market. A beta of 1.5 suggests it is 50% more volatile.',
+    rationale: 'A beta greater than 1 indicates higher volatility than the market. A beta of 1.5 suggests that for every 1% move in the market, the fund is expected to move 1.5% in the same direction, making it 50% more volatile.',
   },
   {
     question: 'Which of the following is considered a "money market" instrument?',
     answers: ['A 30-year government bond', 'A common stock', 'A commercial paper', 'A real estate property'],
     correctAnswerIndex: 2,
-    rationale: 'Money market instruments are short-term, highly liquid debt securities. Commercial paper is a common example.',
+    rationale: 'Money market instruments are short-term (typically maturing in less than a year), highly liquid debt securities. Commercial paper, which is short-term unsecured debt issued by corporations, is a classic example. A 30-year bond (a) is a capital market instrument.',
   },
   {
     question: 'What is "diversification"?',
@@ -159,7 +159,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'A way to guarantee that an investment will not lose money.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'Diversification is a core risk management principle that involves spreading investments across various assets to reduce the impact of any single asset\'s performance.',
+    rationale: 'Diversification is the principle of "not putting all your eggs in one basket." It involves spreading investments across various assets, industries, and geographic locations to reduce unsystematic (specific) risk. (a) is the opposite of diversification.',
   },
   {
     question: 'For a "value" investor, which of the following is the most important factor?',
@@ -170,13 +170,13 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'The level of media attention the company is receiving.',
     ],
     correctAnswerIndex: 2,
-    rationale: 'Value investing focuses on finding and investing in stocks that appear to be trading for less than their intrinsic or book value.',
+    rationale: 'Value investing is an investment strategy that involves picking stocks that appear to be trading for less than their intrinsic or book value. Value investors are looking for bargains, not necessarily rapid growth (b) or media hype (d).',
   },
   {
     question: 'What is the main risk associated with a "junk bond" fund?',
     answers: ['Interest rate risk', 'Inflation risk', 'Credit or default risk', 'Liquidity risk'],
     correctAnswerIndex: 2,
-    rationale: 'Junk bonds are issued by companies with a higher risk of default, so the main risk is credit risk—the risk that the issuer will not be able to make its payments.',
+    rationale: 'Junk bonds (or high-yield bonds) are issued by companies with a lower credit rating, meaning they have a higher risk of defaulting on their debt payments. Therefore, credit risk is the primary concern for investors in these funds.',
   },
   {
     question: 'Which of the following best describes an Exchange-Traded Fund (ETF)?',
@@ -187,7 +187,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'A fund that is actively managed and aims to beat the market.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'ETFs are traded on stock exchanges, similar to stocks, allowing for intraday buying and selling.',
+    rationale: 'ETFs are similar to mutual funds in that they hold a basket of assets, but they trade on stock exchanges like individual stocks. This allows for intraday trading, which is a key difference from traditional mutual funds that are priced once per day.',
   },
   {
     question: '"Mark-to-market" is a method of:',
@@ -198,7 +198,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'Calculating the historical average return of a fund.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'Mark-to-market accounting values assets at their current market price to provide a realistic assessment of their value.',
+    rationale: 'Mark-to-market is an accounting practice of valuing an asset or portfolio at its current market price rather than its book value or original purchase price. This provides a realistic assessment of its current value.',
   },
   {
     question: 'What is a "Collateralized Debt Obligation" (CDO)?',
@@ -209,7 +209,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'A type of insurance policy for investments.',
     ],
     correctAnswerIndex: 2,
-    rationale: 'CDOs are complex financial instruments that pool together cash flow-generating assets and repackage them into tranches with different risk profiles.',
+    rationale: 'CDOs are complex financial instruments that bundle together various debt obligations (like mortgages, auto loans, or corporate debt) and sell tranches of this pooled debt to investors. They are not simple or low-risk investments (b).',
   },
   {
     question: 'An annuity is primarily used for:',
@@ -220,7 +220,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'Investing in emerging market stocks.',
     ],
     correctAnswerIndex: 2,
-    rationale: 'Annuities are financial products that provide a steady stream of income, making them a popular tool for retirement planning.',
+    rationale: 'Annuities are insurance contracts that an investor buys to ensure a steady stream of income at a later point, most commonly during retirement. (b) describes a life insurance policy.',
   },
   {
     question: 'In the context of derivatives, what is the "initial margin"?',
@@ -231,7 +231,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'The collateral required to open and maintain a position.',
     ],
     correctAnswerIndex: 3,
-    rationale: 'Initial margin is the good-faith deposit or collateral required to initiate and hold a leveraged position in derivatives.',
+    rationale: 'Initial margin is the amount of collateral required by a broker to open a leveraged position (like a futures or options contract). It is a good-faith deposit to cover potential losses.',
   },
   {
     question: 'If inflation is expected to rise, an investor holding long-duration bonds should consider:',
@@ -242,7 +242,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'Ignoring the inflation forecast as it does not affect bond prices.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'Rising inflation often leads to rising interest rates, which causes the price of existing bonds (especially long-duration ones) to fall.',
+    rationale: 'Rising inflation typically leads to higher interest rates. When interest rates rise, the price of existing bonds falls, and bonds with longer durations are more sensitive to these changes. Therefore, an investor would consider selling to avoid losses.',
   },
   {
     question: 'What is the role of a "custodian" in a collective investment scheme?',
@@ -253,13 +253,13 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'To audit the fund\'s financial statements.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'A custodian is a financial institution responsible for holding and safeguarding the securities and assets of a fund.',
+    rationale: 'A custodian is a specialized financial institution responsible for holding and safeguarding the securities and assets of a fund on behalf of the investors. This separation of duties protects the assets from being misappropriated. The fund manager (a) makes investment decisions.',
   },
   {
     question: 'A "balanced fund" typically invests in:',
     answers: ['Only equities.', 'Only bonds.', 'A mix of equities and bonds.', 'Only money market instruments.'],
     correctAnswerIndex: 2,
-    rationale: 'Balanced funds aim to provide a balance of growth and income by investing in a mix of stocks (equities) and bonds.',
+    rationale: 'Balanced funds aim to provide a "balance" of growth (from equities) and income (from bonds). They hold a mix of both asset classes to moderate risk compared to a pure equity fund.',
   },
   {
     question: 'What is "alpha" in the context of fund performance?',
@@ -270,7 +270,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'The expense ratio of the fund.',
     ],
     correctAnswerIndex: 2,
-    rationale: 'Alpha measures a portfolio manager\'s ability to generate returns above a benchmark, adjusted for the risk taken.',
+    rationale: 'Alpha represents the value a fund manager adds (or subtracts) to a portfolio. A positive alpha means the fund has performed better than its benchmark index after accounting for its risk (beta). (a) describes beta or standard deviation.',
   },
   {
     question: 'Which of the following is a feature of a "credit-linked note"?',
@@ -281,7 +281,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'It is guaranteed by a third-party insurance provider.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'A credit-linked note is a security whose return is dependent on a specific credit event, such as the default of a particular company.',
+    rationale: 'A credit-linked note (CLN) is a structured product whose performance is tied to a specific credit event (e.g., bankruptcy, failure to pay) of a "reference entity" (a company or sovereign). The investor receives a higher yield for taking on this credit risk.',
   },
   {
     question: 'The "expense ratio" of a fund has what effect on its performance?',
@@ -292,7 +292,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'The expense ratio is only relevant for bond funds.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'The expense ratio represents the annual costs of operating the fund, which are deducted from the fund\'s assets, thereby reducing returns for investors.',
+    rationale: 'The expense ratio represents the annual fees charged by the fund to cover its operational costs. These fees are deducted directly from the fund\'s assets, so a higher expense ratio directly reduces the net return for the investor.',
   },
   {
     question: 'A "debt-to-equity swap" involves:',
@@ -303,7 +303,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'Swapping currencies between two parties.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'This is a recapitalization strategy where a company\'s debt is exchanged for a portion of its equity, often to relieve financial distress.',
+    rationale: 'A debt-to-equity swap is a restructuring process where a company\'s debtholders agree to cancel some or all of the debt in exchange for an equity position in the company. This is often done to help a financially distressed company avoid bankruptcy.',
   },
   {
     question: 'What is the primary risk associated with "distressed debt" investing?',
@@ -314,7 +314,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'The company\'s credit rating may improve too quickly.',
     ],
     correctAnswerIndex: 0,
-    rationale: 'Distressed debt investing is high-risk because it involves buying the debt of companies in financial trouble. If the company fails, the investment can be lost entirely.',
+    rationale: 'Distressed debt investing involves buying the bonds of companies that are in or near bankruptcy. The primary risk is that the company will fail to recover, and the debt will become worthless, leading to a complete loss of the invested capital.',
   },
   {
     question: 'As an investment horizon lengthens, what is a likely benefit?',
@@ -325,49 +325,49 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'The potential for high short-term gains increases.',
     ],
     correctAnswerIndex: 0,
-    rationale: 'Longer investment horizons allow time to recover from market downturns, generally leading to less volatility (lower standard deviation) in average annual returns.',
+    rationale: 'Over longer periods, short-term market volatility tends to smooth out. This means that while there can be large fluctuations year-to-year, the average annual return becomes more predictable and less volatile, which is reflected in a lower standard deviation of returns.',
   },
   {
     question: 'For an investor focused on capital preservation, which instrument is most suitable?',
     answers: ['Derivatives', 'Growth stocks', 'Money market funds', 'Structured products'],
     correctAnswerIndex: 2,
-    rationale: 'Money market funds are highly liquid and low-risk, making them suitable for investors whose primary goal is to preserve capital.',
+    rationale: 'Money market funds invest in short-term, highly liquid, and low-risk debt instruments. Their primary goal is to preserve capital and maintain liquidity, making them very suitable for conservative investors.',
   },
   {
     question: 'A "regular investment plan" is another term for:',
     answers: ['Value investing', 'Growth investing', 'Dollar-cost averaging', 'Market timing'],
     correctAnswerIndex: 2,
-    rationale: 'A regular investment plan is synonymous with dollar-cost averaging, where a fixed amount is invested at regular intervals.',
+    rationale: 'A regular investment plan, where an investor contributes a fixed amount of money at set intervals, is the practical application of the dollar-cost averaging strategy.',
   },
   {
     question: 'The duration of the underlying securities in a fixed income fund is a key measure of its:',
     answers: ['Credit quality', 'Sensitivity to interest rate changes', 'Yield to maturity', 'Liquidity'],
     correctAnswerIndex: 1,
-    rationale: 'Duration measures how much a bond\'s price is likely to change in response to a 1% change in interest rates.',
+    rationale: 'Duration is a measure, expressed in years, of a bond or bond fund\'s price sensitivity to changes in interest rates. A higher duration means a greater price fluctuation when interest rates change.',
   },
   {
     question: 'Which market is a specialty market often dominated by hedge funds?',
     answers: ['Government bonds', 'Blue-chip stocks', 'Distressed debt', 'Index funds'],
     correctAnswerIndex: 2,
-    rationale: 'Distressed debt is a niche and complex market that requires specialized expertise, making it a common area for hedge funds.',
+    rationale: 'Distressed debt is a niche, complex, and high-risk market that requires specialized expertise to analyze and trade. This makes it an area where specialized investment vehicles like hedge funds are dominant players.',
   },
   {
     question: 'If interest rates are rising, what is the likely impact on a long-duration income fund?',
     answers: ['Its value will increase.', 'Its value will decrease.', 'Its value will remain unchanged.', 'Its credit risk will decrease.'],
     correctAnswerIndex: 1,
-    rationale: 'When interest rates rise, newly issued bonds have higher yields, making existing bonds with lower yields (especially long-duration ones) less attractive and causing their prices to fall.',
+    rationale: 'When interest rates rise, newly issued bonds offer higher yields. This makes existing, lower-yielding bonds less attractive, causing their market prices to fall. Funds with a long duration are particularly sensitive to these price drops.',
   },
   {
     question: 'What is a significant risk for most common Exchange Traded Funds (ETFs)?',
     answers: ['Counterparty risk', 'Market risk', 'Default risk of the fund itself', 'Lack of diversification'],
     correctAnswerIndex: 1,
-    rationale: 'Because ETFs track market indexes, they are subject to the same market risks as the indexes they follow. If the market goes down, the ETF value will go down.',
+    rationale: 'Since most ETFs are designed to track a broad market index (like the S&P 500), they are inherently exposed to market risk. If the overall market declines, the value of the ETF will also decline.',
   },
   {
     question: 'Using the Capital Asset Pricing Model (CAPM), what is the formula for expected return?',
     answers: ['Rf + Beta * (Rm - Rf)', 'Rf - Beta * (Rm - Rf)', 'Alpha + Rf + Beta * (Rm - Rf)', '(Rm - Rf) / Beta'],
     correctAnswerIndex: 0,
-    rationale: 'The CAPM formula calculates the expected return of an asset based on the risk-free rate (Rf), the asset\'s beta, and the expected market return (Rm).',
+    rationale: 'The CAPM formula is: Expected Return = Risk-Free Rate + Beta * (Expected Market Return - Risk-Free Rate). It describes the relationship between systematic risk and expected return for assets.',
   },
   {
     question: 'What is a "sovereign bond"?',
@@ -378,7 +378,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'A bond with a very high risk of default.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'Sovereign bonds are debt securities issued by a national government to finance its spending.',
+    rationale: 'Sovereign bonds are debt instruments issued by a national government in its own currency or a foreign currency to finance government spending.',
   },
   {
     question: 'A "debt-for-debt swap" typically involves:',
@@ -389,7 +389,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'A mechanism to eliminate all debt from a company\'s balance sheet.',
     ],
     correctAnswerIndex: 2,
-    rationale: 'In a debt-for-debt swap, a company exchanges its existing debt instruments for new ones with different conditions, often to improve its financial standing.',
+    rationale: 'A debt-for-debt swap is a form of restructuring where a company exchanges its existing debt securities for new ones with different terms. This might be done to extend maturity dates or change interest rates to improve the company\'s financial position.',
   },
   {
     question: 'The "Sharpe Ratio" is used to measure:',
@@ -400,7 +400,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'The amount of leverage used by a fund.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'The Sharpe Ratio measures the performance of an investment compared to a risk-free asset, after adjusting for its risk (volatility).',
+    rationale: 'The Sharpe Ratio measures the average return earned in excess of the risk-free rate per unit of volatility or total risk. A higher Sharpe Ratio indicates better performance on a risk-adjusted basis.',
   },
   {
     question: 'What is a primary characteristic of a "closed-end fund"?',
@@ -411,25 +411,25 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'It is not professionally managed.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'A closed-end fund has a fixed number of shares that are traded on a stock exchange, with prices determined by market supply and demand.',
+    rationale: 'Unlike open-end funds (a), closed-end funds issue a fixed number of shares in an initial public offering (IPO). After that, the shares trade on a stock exchange, with their price determined by market supply and demand, which can be at a premium or discount to NAV.',
   },
   {
     question: '"Systematic risk" is also known as:',
     answers: ['Unsystematic risk', 'Diversifiable risk', 'Market risk', 'Specific risk'],
     correctAnswerIndex: 2,
-    rationale: 'Systematic risk, or market risk, is inherent to the entire market and cannot be eliminated through diversification.',
+    rationale: 'Systematic risk, also known as market risk, is risk that is inherent to the entire market or a market segment. It is undiversifiable, meaning it affects all investments and cannot be eliminated through portfolio diversification. Examples include interest rate changes and recessions.',
   },
   {
     question: 'Which of the following is an example of "unsystematic risk"?',
     answers: ['A global recession', 'A sudden increase in interest rates', 'A labor strike at a single company', 'A change in the inflation rate'],
     correctAnswerIndex: 2,
-    rationale: 'Unsystematic risk is specific to a company or industry and can be reduced through diversification. A labor strike at one company is a specific event.',
+    rationale: 'Unsystematic risk (or specific risk) is risk that is unique to a specific company or industry. It can be reduced or eliminated through diversification. A labor strike at one company (c) is a perfect example, as it would not affect all companies in the market.',
   },
   {
     question: 'A "fund of funds" is a portfolio that invests in:',
     answers: ['Direct real estate', 'A variety of other funds', 'Physical commodities', 'A single company\'s stock'],
     correctAnswerIndex: 1,
-    rationale: 'A fund of funds is a mutual fund that invests in other mutual funds rather than individual securities.',
+    rationale: 'A fund of funds (FoF) is a mutual fund or hedge fund that invests in other funds rather than investing directly in individual securities like stocks and bonds. This provides another layer of diversification.',
   },
   {
     question: 'What is the main objective of an "index fund"?',
@@ -440,7 +440,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'To provide a fixed income stream to investors.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'Index funds are passively managed and aim to match the performance of a particular market index, such as the S&P 500.',
+    rationale: 'Index funds are a form of passive investing. Their goal is not to beat the market (a), but to match the performance of a designated benchmark index, such as the S&P 500, as closely as possible. This is typically achieved with lower fees than actively managed funds.',
   },
   {
     question: 'An investment with high liquidity means:',
@@ -451,7 +451,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'It can be quickly converted to cash without significantly affecting its market price.',
     ],
     correctAnswerIndex: 3,
-    rationale: 'Liquidity refers to the ease with which an asset can be bought or sold in the market without causing a significant change in its price.',
+    rationale: 'Liquidity refers to the efficiency and ease with which an asset can be converted into ready cash without affecting its market price. Publicly traded stocks are highly liquid, while real estate is generally considered illiquid.',
   },
   {
     question: 'What is "short selling"?',
@@ -462,7 +462,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'Holding an investment for a very short period.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'Short selling involves selling a borrowed security in the hope that its price will decline, allowing the seller to buy it back at a lower price for a profit.',
+    rationale: 'Short selling is an advanced trading strategy where an investor borrows a security and sells it on the open market, planning to buy it back later for less money. The investor profits from a decline in the security\'s price.',
   },
   {
     question: 'Which of the following is a characteristic of a hedge fund?',
@@ -473,7 +473,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'They guarantee positive returns regardless of market conditions.',
     ],
     correctAnswerIndex: 2,
-    rationale: 'Hedge funds are known for using advanced and often aggressive strategies, including leverage, to generate high returns for their accredited investors.',
+    rationale: 'Hedge funds are private investment partnerships that are lightly regulated (making b incorrect) and open to accredited/wealthy investors (making a incorrect). They use a wide variety of complex strategies, often including leverage and derivatives, to generate returns. They do not guarantee returns (d).',
   },
   {
     question: 'An investor expecting a market downturn might engage in which of the following strategies?',
@@ -484,7 +484,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'Investing in a leveraged ETF.',
     ],
     correctAnswerIndex: 2,
-    rationale: 'Short selling and buying put options are bearish strategies that profit from a decline in an asset\'s price, making them suitable for market downturns.',
+    rationale: 'Short selling and buying put options are "bearish" strategies, meaning they profit when the price of the underlying asset falls. These are common ways to hedge against or profit from an expected market downturn. Buying call options (a) and high-growth stocks (b) are "bullish" strategies.',
   },
   {
     question: 'The expense ratio of a unit trust represents the:',
@@ -495,6 +495,6 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'The commission paid to the broker for buying the units.',
     ],
     correctAnswerIndex: 2,
-    rationale: 'The expense ratio covers the fund\'s operating costs, such as management fees and administrative expenses, and is expressed as a percentage of the fund\'s average assets.',
+    rationale: 'The expense ratio is a measure of the annual cost to operate a fund. It includes management fees, administrative costs, and other operational expenses. This amount is deducted from the fund\'s assets and directly reduces investor returns.',
   },
 ];
