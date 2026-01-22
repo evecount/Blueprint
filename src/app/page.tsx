@@ -1,8 +1,13 @@
 'use client';
 
-import { PlayCircle, UploadCloud } from 'lucide-react';
+import {
+  PlayCircle,
+  UploadCloud,
+  FileText,
+  MoreVertical,
+  Trash2,
+} from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -13,26 +18,35 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { useState } from 'react';
 import UploadResourceDialog from '@/components/resources/UploadResourceDialog';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useAppContext } from '@/context/AppProvider';
 
 export default function DashboardPage() {
   const [isUploadDialogOpen, setUploadDialogOpen] = useState(false);
-  const { resources } = useAppContext();
-  const heroImage = PlaceHolderImages.find((img) => img.id === 'dashboard-hero');
-
-  // We will feature the pre-loaded quiz.
-  const featuredResource = resources.find((r) => r.id === 'm8-cis-question-bank');
+  const { resources, deleteResource } = useAppContext();
 
   return (
     <div className="flex flex-col gap-8">
-      <UploadResourceDialog open={isUploadDialogOpen} onOpenChange={setUploadDialogOpen} />
+      <UploadResourceDialog
+        open={isUploadDialogOpen}
+        onOpenChange={setUploadDialogOpen}
+      />
       <header className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-1">
-          <h1 className="text-3xl font-bold tracking-tight font-headline">Welcome to ReviewMate</h1>
-          <p className="text-muted-foreground">An AI-powered proficiency app for your workforce.</p>
+          <h1 className="text-3xl font-bold tracking-tight font-headline">
+            Welcome to ReviewMate
+          </h1>
+          <p className="text-muted-foreground">
+            Your available quizzes are listed below. Create a new one to get
+            started.
+          </p>
         </div>
         <Button onClick={() => setUploadDialogOpen(true)} variant="outline">
           <UploadCloud className="mr-2 h-4 w-4" />
@@ -41,50 +55,70 @@ export default function DashboardPage() {
       </header>
 
       <main>
-        {featuredResource ? (
-          <Card className="overflow-hidden grid md:grid-cols-2 items-center shadow-lg">
-            <div className="p-6 sm:p-8">
-              <CardHeader className="p-0">
-                <CardTitle className="text-3xl font-headline">{featuredResource.name}</CardTitle>
-                <CardDescription className="pt-2 text-base">
-                  Ready to test your knowledge? This quiz contains {featuredResource.questions.length} questions to
-                  help you prepare for your exam. Start your study session now!
-                </CardDescription>
-              </CardHeader>
-              <CardFooter className="p-0 pt-6">
-                <Link href={`/quiz/${featuredResource.id}`}>
-                  <Button size="lg" className="shadow-md">
-                    <PlayCircle className="mr-2 h-5 w-5" />
-                    Start Quiz
-                  </Button>
-                </Link>
-              </CardFooter>
-            </div>
-            {heroImage && (
-              <div className="relative w-full h-64 md:h-full min-h-[250px]">
-                <Image
-                  src={heroImage.imageUrl}
-                  alt={heroImage.description}
-                  fill
-                  className="object-cover"
-                  data-ai-hint={heroImage.imageHint}
-                />
-              </div>
-            )}
-          </Card>
+        {resources.length === 0 ? (
+          <div className="flex flex-col items-center justify-center h-64 gap-4 text-center border-2 border-dashed rounded-lg">
+            <h3 className="text-xl font-semibold font-headline">
+              No Quizzes Found
+            </h3>
+            <p className="text-muted-foreground">
+              Click "Create Your Own Quiz" to generate your first quiz from a
+              Markdown file.
+            </p>
+          </div>
         ) : (
-          <Card className="flex flex-col items-center justify-center p-8 text-center">
-            <CardHeader>
-              <CardTitle className="font-headline">Get Started</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-col items-center gap-4">
-              <p className="text-muted-foreground">Upload your first study material to begin generating quizzes.</p>
-              <Button onClick={() => setUploadDialogOpen(true)}>
-                <UploadCloud className="mr-2 h-4 w-4" />
-                Create a Quiz
-              </Button>
-            </CardContent>
-          </Card>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {resources.map((resource) => (
+              <Card key={resource.id}>
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <FileText className="w-8 h-8 text-accent" />
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="w-8 h-8 -mt-2 -mr-2"
+                        >
+                          <MoreVertical className="w-4 h-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem
+                          onClick={() => deleteResource(resource.id)}
+                        >
+                          <Trash2 className="w-4 h-4 mr-2" />
+                          Delete
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
+                  <CardTitle className="pt-4 font-headline">
+                    {resource.name}
+                  </CardTitle>
+                  <CardDescription>
+                    Created {new Date(resource.createdAt).toLocaleDateString()}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    {resource.questions.length} questions available
+                  </p>
+                </CardContent>
+                <CardFooter>
+                  <Link
+                    href={`/quiz/${resource.id}`}
+                    passHref
+                    className="w-full"
+                  >
+                    <Button className="w-full">
+                      <PlayCircle className="w-4 h-4 mr-2" />
+                      Start Quiz
+                    </Button>
+                  </Link>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
         )}
       </main>
     </div>
