@@ -1,6 +1,6 @@
 'use client';
 
-import { Check, Home, Repeat, X } from 'lucide-react';
+import { Check, Home, Repeat, TrendingUp, X } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
@@ -62,15 +62,21 @@ export default function QuizResults({ questions, userAnswers, score, resourceNam
             </p>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <Button onClick={() => window.location.reload()}>
               <Repeat className="w-4 h-4 mr-2" />
               Retry Quiz
             </Button>
-            <Link href="/dashboard" passHref>
+            <Link href="/" passHref>
               <Button variant="outline">
                 <Home className="w-4 h-4 mr-2" />
                 Go to Dashboard
+              </Button>
+            </Link>
+            <Link href="/performance" passHref>
+              <Button variant="outline">
+                <TrendingUp className="w-4 h-4 mr-2" />
+                View Performance
               </Button>
             </Link>
           </div>

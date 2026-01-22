@@ -1,6 +1,6 @@
 'use client';
 
-import { BarChart2, BookOpen, Bot, PanelLeft, Settings } from 'lucide-react';
+import { BarChart2, BookOpen, Bot, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -16,14 +16,14 @@ import {
   SidebarTrigger,
   SidebarInset,
 } from '@/components/ui/sidebar';
-import { Button } from './ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { ReactNode } from 'react';
 
 const menuItems = [
   { href: '/', label: 'Dashboard', icon: BarChart2 },
-  { href: '/resources', label: 'My Resources', icon: BookOpen },
+  { href: '/resources', label: 'My Quizzes', icon: BookOpen },
+  { href: '/performance', label: 'Performance', icon: TrendingUp },
 ];
 
 export function AppLayout({ children }: { children: ReactNode }) {
@@ -45,16 +45,15 @@ export function AppLayout({ children }: { children: ReactNode }) {
           <SidebarMenu>
             {menuItems.map((item) => (
               <SidebarMenuItem key={item.href}>
-                <SidebarMenuButton
-                  asChild
-                  isActive={pathname === item.href}
-                  tooltip={isMobile ? undefined : item.label}
-                >
-                  <Link href={item.href}>
+                <Link href={item.href}>
+                  <SidebarMenuButton
+                    isActive={pathname === item.href}
+                    tooltip={isMobile ? undefined : item.label}
+                  >
                     <item.icon />
                     <span>{item.label}</span>
-                  </Link>
-                </SidebarMenuButton>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
             ))}
           </SidebarMenu>
@@ -81,7 +80,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
               </div>
             <h2 className="text-lg font-bold tracking-tight font-headline">StudyBuddy AI</h2>
           </div>
-          <SidebarTrigger variant="outline" />
+          <SidebarTrigger />
         </header>
         {children}
       </SidebarInset>
