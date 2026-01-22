@@ -63,10 +63,10 @@ export function AppLayout({ children }: { children: ReactNode }) {
             <SidebarMenuItem>
               <SidebarMenuButton>
                 <Avatar className="w-8 h-8">
-                  <AvatarImage src="https://picsum.photos/seed/avatar/40/40" />
-                  <AvatarFallback>U</AvatarFallback>
+                  <AvatarImage src="https://picsum.photos/seed/gwen/40/40" />
+                  <AvatarFallback>GL</AvatarFallback>
                 </Avatar>
-                <span>User</span>
+                <span>Gwendalynn</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
