@@ -580,7 +580,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
     question: 'A pension system that lacks "Adequacy" most likely has:',
     answers: [
       'Poor communication with members.',
-      'Payouts that do not meet the basic cost of living.',
+      'Payout\'s that do not meet the basic cost of living.',
       'Low government debt.',
       'High participation rates.',
     ],
@@ -1043,10 +1043,22 @@ export const seedQuizQuestions: QuizQuestion[] = [
     rationale: 'The geometric mean is a more accurate measure of average returns over multiple periods. Formula: [ (1 + R1) * (1 + R2) * ... ]^(1/n) - 1. Calculation: [ (1 + 0.10) * (1 - 0.05) ]^(1/2) - 1 = [ 1.045 ]^(0.5) - 1 ≈ 2.22%.',
   },
   {
-    question: 'A savings account offers a nominal annual interest rate of 12%, with interest compounded monthly. The effective annual rate (EAR) will be:',
-    answers: ['Lower than 12%', 'Exactly 12%', 'Higher than 12%', 'Equal to the inflation rate'],
+    question: 'An investor places $10,000 in an account that earns 5% interest compounded annually. What will be the future value of this investment after 3 years?',
+    answers: ['$11,500.00', '$10,500.00', '$11,576.25', '$15,000.00'],
     correctAnswerIndex: 2,
-    rationale: 'When interest is compounded more frequently than annually, the interest earned in each period starts earning its own interest. This effect makes the effective annual rate (EAR) higher than the stated nominal annual rate.',
+    rationale: 'The formula for Future Value (FV) is PV * (1 + r)^n, where PV is present value, r is the interest rate, and n is the number of periods. Calculation: $10,000 * (1 + 0.05)^3 = $10,000 * 1.157625 = $11,576.25.',
+  },
+  {
+    question: 'An individual wants to have $50,000 in 5 years. If they can earn an annual interest rate of 6%, what is the present value they must invest today?',
+    answers: ['$47,169.81', '$37,362.91', '$40,000.00', '$53,000.00'],
+    correctAnswerIndex: 1,
+    rationale: 'The formula for Present Value (PV) is FV / (1 + r)^n, where FV is future value, r is the interest rate, and n is the number of periods. Calculation: $50,000 / (1 + 0.06)^5 = $50,000 / 1.338225 = $37,362.91.',
+  },
+  {
+    question: 'A fund returns +10% in its first year and -5% in its second year. What is the fund\'s geometric mean annual return over the two-year period?',
+    answers: ['2.50%', '5.00%', '2.22%', '4.75%'],
+    correctAnswerIndex: 2,
+    rationale: 'The geometric mean is a more accurate measure of average returns over multiple periods. Formula: [ (1 + R1) * (1 + R2) * ... ]^(1/n) - 1. Calculation: [ (1 + 0.10) * (1 - 0.05) ]^(1/2) - 1 = [ 1.045 ]^(0.5) - 1 ≈ 2.22%.',
   },
   {
     question: 'A unit trust has total assets valued at $100 million and total liabilities of $5 million. If there are 50 million units outstanding, what is the Net Asset Value (NAV) per unit?',
@@ -2022,6 +2034,32 @@ export const seedQuizQuestions: QuizQuestion[] = [
     answers: ['1.7%', '18.3%', '-1.7%', '2.7%'],
     correctAnswerIndex: 0,
     rationale: 'First, calculate the expected return using CAPM: 4% + 1.3 * (15% - 4%) = 18.3%. Then, calculate Alpha: Actual Return - Expected Return = 20% - 18.3% = 1.7%.',
+  },
+  {
+    question: 'A portfolio gains 15% in the first year, loses 5% in the second year, and gains 8% in the third year. What is its geometric mean annual return?',
+    answers: ['6.00%', '5.67%', '5.89%', '7.50%'],
+    correctAnswerIndex: 1,
+    rationale: 'The geometric mean return is calculated by multiplying the returns for each period (as multipliers), taking the nth root where n is the number of periods, and subtracting 1. Calculation: [(1.15 * 0.95 * 1.08)]^(1/3) - 1 ≈ 5.67%.',
+  },
+  {
+    question: 'An investment doubles in value over 5 years. What is the approximate geometric mean annual return?',
+    answers: ['20.0%', '15.5%', '14.87%', '12.5%'],
+    correctAnswerIndex: 2,
+    rationale: 'If an investment doubles, the total return multiplier is 2. To find the geometric mean annual return over 5 years, you calculate the 5th root of 2 and subtract 1. Calculation: (2)^(1/5) - 1 ≈ 14.87%.',
+  },
+  {
+    question: 'A fund returns +50% in year one and -50% in year two. What is the geometric mean annual return?',
+    answers: ['0%', '-10.5%', '-13.4%', '-25.0%'],
+    correctAnswerIndex: 2,
+    rationale: 'A simple average would misleadingly suggest a 0% return. The geometric mean correctly shows the loss. Calculation: [(1.50 * 0.50)]^(1/2) - 1 = [0.75]^(0.5) - 1 ≈ -13.4%. This demonstrates that a 50% loss requires a 100% gain to break even, not just a 50% gain.',
+  },
+  {
+    question: 'A savings account offers a nominal annual interest rate of 12%, with interest compounded monthly. The effective annual rate (EAR) will be:',
+    answers: ['Lower than 12%', 'Exactly 12%', 'Higher than 12%', 'Equal to the inflation rate'],
+    correctAnswerIndex: 2,
+    rationale: 'When interest is compounded more frequently than annually, the interest earned in each period starts earning its own interest. This effect makes the effective annual rate (EAR) higher than the stated nominal annual rate.',
   }
 ];
+
+
 
