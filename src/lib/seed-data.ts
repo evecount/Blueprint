@@ -1843,66 +1843,6 @@ export const seedQuizQuestions: QuizQuestion[] = [
     rationale: 'When a bond trades at par, its market price is equal to its par value. In this case, the Current Yield formula (Annual Coupon / Price) and the Coupon Rate formula (Annual Coupon / Par Value) have the same inputs, resulting in the same value.',
   },
   {
-    question: 'A bond with a par value of $1,000 makes an annual interest payment of $45. What is its coupon rate?',
-    answers: ['4.0%', '4.5%', '5.0%', '$45'],
-    correctAnswerIndex: 1,
-    rationale: 'The Coupon Rate is the annual interest payment divided by the bond\'s face (or par) value. Calculation: ($45 / $1,000) * 100 = 4.5%.',
-  },
-  {
-    question: 'An investor holds a bond with a face value of $5,000 and a coupon rate of 8%. How much will they receive in annual coupon payments?',
-    answers: ['$80', '$400', '$500', '$5,400'],
-    correctAnswerIndex: 1,
-    rationale: 'The annual coupon payment is calculated by multiplying the face value of the bond by its coupon rate. Calculation: $5,000 * 0.08 = $400.',
-  },
-  {
-    question: 'When a bond is sold on the secondary market between its coupon payment dates, who is entitled to receive the accrued interest from the buyer?',
-    answers: ['The bond issuer', 'The buyer', 'The seller', 'The stock exchange'],
-    correctAnswerIndex: 2,
-    rationale: 'The seller is entitled to the interest that has accrued during the period they held the bond. Since the buyer will receive the next full coupon payment, the buyer compensates the seller for this accrued portion at the time of the sale.',
-  },
-  {
-    question: 'A bond with a face value of $1,000 has a coupon rate of 7.3%. An investor sells the bond when there are exactly 50 days until the next payment. Using the formula Accrued Coupon = (Face Value * Coupon Rate * Days to Next Payment) / 365, what is the accrued coupon?',
-    answers: ['$10', '$20', '$36.50', '$7.30'],
-    correctAnswerIndex: 0,
-    rationale: 'Using the provided formula: Accrued Coupon = ($1,000 * 0.073 * 50) / 365. This simplifies to ($73 * 50) / 365 = $3650 / 365 = $10.',
-  },
-  {
-    question: 'A corporate bond with a face value of $10,000 has an 8% coupon rate. It is sold 45 days before its next payment date. Assuming a 360-day year is used for calculation per the provided formula, what is the accrued interest owed to the seller?',
-    answers: ['$800.00', '$200.00', '$100.00', '$45.00'],
-    correctAnswerIndex: 2,
-    rationale: 'Using the formula Accrued Coupon = (Face Value * Coupon Rate * Days to Next Payment) / Days in Year. Calculation: ($10,000 * 0.08 * 45) / 360 = ($800 * 45) / 360 = $800 / 8 = $100.',
-  },
-  {
-    question: 'Bond A has a Macaulay Duration of 7 years. Bond B has a Macaulay Duration of 10 years. Which bond\'s price will be more affected by a 1% change in interest rates?',
-    answers: ['Bond A', 'Bond B', 'They will be affected equally.', 'Cannot be determined.'],
-    correctAnswerIndex: 1,
-    rationale: 'Macaulay Duration is a measure of a bond\'s interest rate sensitivity. A higher duration means a greater price change for a given change in interest rates. Therefore, Bond B is more sensitive.',
-  },
-  {
-    question: 'A bond paying semi-annual coupons has a Macaulay Duration of 8 years and a YTM of 4%. What is its Modified Duration?',
-    answers: ['8.16 years', '8.00 years', '7.84 years', '7.69 years'],
-    correctAnswerIndex: 2,
-    rationale: 'The formula for Modified Duration for a semi-annual bond is: Macaulay Duration / (1 + YTM/2). Calculation: 8 / (1 + 0.04/2) = 8 / 1.02 ≈ 7.84 years.',
-  },
-  {
-    question: 'A bond has a Modified Duration of 9 years. If market interest rates increase by 1% (dy = 0.01), what is the approximate percentage change in the bond\'s price?',
-    answers: ['+9%', '-9%', '+1%', '-1%'],
-    correctAnswerIndex: 1,
-    rationale: 'The formula for approximate price change is: -Modified Duration * Change in Interest Rates (in decimal). Calculation: -9 * 0.01 = -0.09, which is a -9% change.',
-  },
-  {
-    question: 'Which of the following bonds would likely have the longest Macaulay Duration?',
-    answers: ['A 10-year bond with a 10% coupon.', 'A 10-year zero-coupon bond.', 'A 5-year bond with a 5% coupon.', 'A 5-year zero-coupon bond.'],
-    correctAnswerIndex: 1,
-    rationale: 'Duration increases with maturity and decreases with coupon rate. A zero-coupon bond has the highest duration for a given maturity because all of its cash flow occurs at the very end. Therefore, the 10-year zero-coupon bond will have the longest duration.',
-  },
-  {
-    question: 'A bond\'s price fell by approximately 6% when interest rates rose by 1.5%. What is the bond\'s approximate Modified Duration?',
-    answers: ['4 years', '6 years', '9 years', '1.5 years'],
-    correctAnswerIndex: 0,
-    rationale: 'The formula can be rearranged to solve for Modified Duration: D* ≈ -(% Change in Price / Change in Rates). Calculation: -(-6% / 1.5%) = 4. The bond has a modified duration of approximately 4 years.',
-  },
-  {
     question: "An investment gains 20% in year one and then loses 10% in year two. What is the geometric mean return for the two-year period?",
     answers: ['5.00%', '3.92%', '10.0%', '4.50%'],
     correctAnswerIndex: 1,
@@ -1992,5 +1932,65 @@ export const seedQuizQuestions: QuizQuestion[] = [
     ],
     correctAnswerIndex: 1,
     rationale: "The premium paid for a bond is amortized, or gradually reduced, over its life. At maturity, the bond is redeemed for its face value. Therefore, the initial premium amount effectively decreases to zero by the time the bond matures."
+  },
+  {
+    question: 'A bond with a face value of $1,000 makes an annual interest payment of $45. What is its coupon rate?',
+    answers: ['4.0%', '4.5%', '5.0%', '$45'],
+    correctAnswerIndex: 1,
+    rationale: 'The Coupon Rate is the annual interest payment divided by the bond\'s face (or par) value. Calculation: ($45 / $1,000) * 100 = 4.5%.',
+  },
+  {
+    question: 'An investor holds a bond with a face value of $5,000 and a coupon rate of 8%. How much will they receive in annual coupon payments?',
+    answers: ['$80', '$400', '$500', '$5,400'],
+    correctAnswerIndex: 1,
+    rationale: 'The annual coupon payment is calculated by multiplying the face value of the bond by its coupon rate. Calculation: $5,000 * 0.08 = $400.',
+  },
+  {
+    question: 'When a bond is sold on the secondary market between its coupon payment dates, who is entitled to receive the accrued interest from the buyer?',
+    answers: ['The bond issuer', 'The buyer', 'The seller', 'The stock exchange'],
+    correctAnswerIndex: 2,
+    rationale: 'The seller is entitled to the interest that has accrued during the period they held the bond. Since the buyer will receive the next full coupon payment, the buyer compensates the seller for this accrued portion at the time of the sale.',
+  },
+  {
+    question: 'A bond with a face value of $1,000 has a coupon rate of 7.3%. An investor sells the bond when there are exactly 50 days until the next payment. Using the formula Accrued Coupon = (Face Value * Coupon Rate * Days to Next Payment) / 365, what is the accrued coupon?',
+    answers: ['$10', '$20', '$36.50', '$7.30'],
+    correctAnswerIndex: 0,
+    rationale: 'Using the provided formula: Accrued Coupon = ($1,000 * 0.073 * 50) / 365. This simplifies to ($73 * 50) / 365 = $3650 / 365 = $10.',
+  },
+  {
+    question: 'A corporate bond with a face value of $10,000 has an 8% coupon rate. It is sold 45 days before its next payment date. Assuming a 360-day year is used for calculation per the provided formula, what is the accrued interest owed to the seller?',
+    answers: ['$800.00', '$200.00', '$100.00', '$45.00'],
+    correctAnswerIndex: 2,
+    rationale: 'Using the formula Accrued Coupon = (Face Value * Coupon Rate * Days to Next Payment) / Days in Year. Calculation: ($10,000 * 0.08 * 45) / 360 = ($800 * 45) / 360 = $800 / 8 = $100.',
+  },
+  {
+    question: 'Bond A has a Macaulay Duration of 7 years. Bond B has a Macaulay Duration of 10 years. Which bond\'s price will be more affected by a 1% change in interest rates?',
+    answers: ['Bond A', 'Bond B', 'They will be affected equally.', 'Cannot be determined.'],
+    correctAnswerIndex: 1,
+    rationale: 'Macaulay Duration is a measure of a bond\'s interest rate sensitivity. A higher duration means a greater price change for a given change in interest rates. Therefore, Bond B is more sensitive.',
+  },
+  {
+    question: 'A bond paying semi-annual coupons has a Macaulay Duration of 8 years and a YTM of 4%. What is its Modified Duration?',
+    answers: ['8.16 years', '8.00 years', '7.84 years', '7.69 years'],
+    correctAnswerIndex: 2,
+    rationale: 'The formula for Modified Duration for a semi-annual bond is: Macaulay Duration / (1 + YTM/2). Calculation: 8 / (1 + 0.04/2) = 8 / 1.02 ≈ 7.84 years.',
+  },
+  {
+    question: 'A bond has a Modified Duration of 9 years. If market interest rates increase by 1% (dy = 0.01), what is the approximate percentage change in the bond\'s price?',
+    answers: ['+9%', '-9%', '+1%', '-1%'],
+    correctAnswerIndex: 1,
+    rationale: 'The formula for approximate price change is: -Modified Duration * Change in Interest Rates (in decimal). Calculation: -9 * 0.01 = -0.09, which is a -9% change.',
+  },
+  {
+    question: 'Which of the following bonds would likely have the longest Macaulay Duration?',
+    answers: ['A 10-year bond with a 10% coupon.', 'A 10-year zero-coupon bond.', 'A 5-year bond with a 5% coupon.', 'A 5-year zero-coupon bond.'],
+    correctAnswerIndex: 1,
+    rationale: 'Duration increases with maturity and decreases with coupon rate. A zero-coupon bond has the highest duration for a given maturity because all of its cash flow occurs at the very end. Therefore, the 10-year zero-coupon bond will have the longest duration.',
+  },
+  {
+    question: 'A bond\'s price fell by approximately 6% when interest rates rose by 1.5%. What is the bond\'s approximate Modified Duration?',
+    answers: ['4 years', '6 years', '9 years', '1.5 years'],
+    correctAnswerIndex: 0,
+    rationale: 'The formula can be rearranged to solve for Modified Duration: D* ≈ -(% Change in Price / Change in Rates). Calculation: -(-6% / 1.5%) = 4. The bond has a modified duration of approximately 4 years.',
   }
 ];
