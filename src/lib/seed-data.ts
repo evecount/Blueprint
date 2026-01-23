@@ -1877,5 +1877,35 @@ export const seedQuizQuestions: QuizQuestion[] = [
     answers: ['5.00%', '3.92%', '10.0%', '4.50%'],
     correctAnswerIndex: 1,
     rationale: "To find the geometric mean, convert percentages to multipliers (1.20 for a 20% gain, 0.90 for a 10% loss), multiply them together, take the nth root for n periods, and subtract 1. Calculation: [(1.20 * 0.90)]^(1/2) - 1 = [1.08]^(0.5) - 1 ≈ 3.92%. This is a more accurate measure of compound growth than a simple average."
-  }
+  },
+  {
+    question: 'A Credit-Linked Note (CLN) is a structured product that combines a standard debt instrument with what embedded derivative?',
+    answers: ['A call option', 'A credit default swap (CDS)', 'An interest rate future', 'A currency forward'],
+    correctAnswerIndex: 1,
+    rationale: 'A CLN\'s core feature is its link to a credit event. This is achieved by embedding a credit default swap (CDS). The investor in the note is effectively selling credit protection and receives a higher yield for taking on the credit risk of the reference entity.',
+  },
+  {
+    question: 'An investor in an Equity-Linked Note (ELN) with a \'knock-out\' barrier will receive the enhanced coupon payment only if:',
+    answers: ['The underlying stock price crosses above the barrier.', 'The underlying stock price stays below the barrier for the entire term.', 'The underlying stock price finishes exactly at the strike price.', 'The issuer\'s credit rating is upgraded.'],
+    correctAnswerIndex: 1,
+    rationale: 'Many ELNs are designed to provide an enhanced yield in stable or range-bound markets. A \'knock-out\' feature means the enhanced coupon is paid only if the underlying stock\'s price does not touch or cross a pre-defined upper barrier, keeping the investor\'s return profile within the intended range.',
+  },
+  {
+    question: 'What is the single most significant risk an investor faces when purchasing a principal-protected structured note from a single issuer?',
+    answers: ['Interest rate risk', 'Market risk of the underlying asset', 'Issuer default risk (credit risk)', 'Inflation risk'],
+    correctAnswerIndex: 2,
+    rationale: 'The \'principal protection\' on a structured note is a promise from the issuer, not a guarantee from a third party. If the issuer (the bank or financial institution) defaults and goes bankrupt, the protection becomes worthless, and the investor can lose their entire principal.',
+  },
+  {
+    question: 'What is the primary reason an investor would choose a structured product like an ELN over a standard bank deposit?',
+    answers: ['To get government-guaranteed returns.', 'To achieve a potentially higher yield than what is offered by deposits.', 'To eliminate all investment risk.', 'To invest directly in physical real estate.'],
+    correctAnswerIndex: 1,
+    rationale: 'Structured products are designed to offer a yield that is potentially higher than traditional savings accounts or time deposits. Investors accept additional risks (like market risk on an underlying asset or issuer credit risk) in exchange for this enhanced yield potential.',
+  },
+  {
+    question: 'In a Credit-Linked Note (CLN), the investor\'s principal and/or coupon payments are at risk if what event occurs?',
+    answers: ['The stock market has a positive year.', 'Interest rates fall by 1%.', 'A credit event (like a default) occurs for the \'reference entity\'.', 'The fund manager is changed.'],
+    correctAnswerIndex: 2,
+    rationale: 'The entire premise of a CLN is that its payments are linked to the creditworthiness of a separate entity (the \'reference entity\'). If that entity experiences a specified credit event, such as bankruptcy or failure to pay its debts, the CLN investor will lose principal or coupon payments.',
+  },
 ];
