@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Loader2 } from 'lucide-react';
 
@@ -21,6 +21,7 @@ export default function QuizClientPage({ resourceId }: { resourceId: string }) {
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState<number[]>([]);
+  const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -42,35 +43,28 @@ export default function QuizClientPage({ resourceId }: { resourceId: string }) {
   }, [resourceId, getResourceById, router, toast]);
   
 
-  const handleNextQuestion = (selectedAnswer: number, isCorrect: boolean) => {
-    setUserAnswers([...userAnswers, selectedAnswer]);
+  const handleNextQuestion = (selectedAnswer: number) => {
+    const newAnswers = [...userAnswers, selectedAnswer];
+    setUserAnswers(newAnswers);
+
+    const newScore = newAnswers.reduce((acc, answer, index) => {
+      return questions[index].correctAnswerIndex === answer ? acc + 1 : acc;
+    }, 0);
+    setScore(newScore);
 
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      finishQuiz();
+      finishQuiz(newScore);
     }
   };
 
-  const finishQuiz = () => {
+  const finishQuiz = (finalScore: number) => {
     if (!resource) return;
-    const score = questions.reduce((acc, question, index) => {
-      return question.correctAnswerIndex === userAnswers[index] ? acc + 1 : acc;
-    }, 0);
-    updatePerformance(resource.name, score, questions.length);
+    updatePerformance(resource.name, finalScore, questions.length);
     setIsFinished(true);
   };
   
-  const score = useMemo(() => {
-    return questions.reduce((acc, question, index) => {
-      const userAnswer = userAnswers[index];
-      if (userAnswer !== undefined && userAnswer === question.correctAnswerIndex) {
-        return acc + 1;
-      }
-      return acc;
-    }, 0);
-  }, [userAnswers, questions]);
-
   if (isLoading || !resource) {
     return (
       <div className="flex items-center justify-center h-full">
@@ -94,9 +88,14 @@ export default function QuizClientPage({ resourceId }: { resourceId: string }) {
         </Button>
         <div className="flex-1 space-y-1">
           <h1 className="text-xl font-bold truncate font-headline">{resource.name}</h1>
-          <p className="text-sm text-muted-foreground">
-            Question {currentQuestionIndex + 1} of {questions.length}
-          </p>
+          <div className="flex justify-between text-sm text-muted-foreground">
+            <span>
+              Question {currentQuestionIndex + 1} of {questions.length}
+            </span>
+            {userAnswers.length > 0 && (
+              <span className="font-semibold">Score: {score} / {userAnswers.length}</span>
+            )}
+          </div>
         </div>
       </div>
       <Progress value={progress} className="mb-8" />
@@ -105,7 +104,7 @@ export default function QuizClientPage({ resourceId }: { resourceId: string }) {
         <QuestionCard
           key={currentQuestionIndex}
           question={currentQuestion}
-          onAnswer={handleNextQuestion}
+          onAnswer={(selectedAnswer, isCorrect) => handleNextQuestion(selectedAnswer)}
         />
       ) : (
          <div className="flex flex-col items-center justify-center h-64 gap-4 text-center">

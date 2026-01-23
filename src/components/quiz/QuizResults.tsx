@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { Check, Home, Repeat, TrendingUp, X } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -16,6 +17,8 @@ import {
   PieChart,
 } from 'recharts';
 import type { ChartConfig } from '@/components/ui/chart';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
 
 interface QuizResultsProps {
   questions: QuizQuestion[];
@@ -32,6 +35,7 @@ const chartConfig = {
 export default function QuizResults({ questions, userAnswers, score, resourceName }: QuizResultsProps) {
   const router = useRouter();
   const percentage = Math.round((score / questions.length) * 100);
+  const [showOnlyIncorrect, setShowOnlyIncorrect] = useState(false);
 
   const chartData = [
     { name: 'correct', value: score, fill: 'var(--color-correct)' },
@@ -84,11 +88,25 @@ export default function QuizResults({ questions, userAnswers, score, resourceNam
       </Card>
 
       <div className="mt-8">
-        <h3 className="mb-4 text-xl font-bold font-headline">Review Your Answers</h3>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-bold font-headline">Review Your Answers</h3>
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="show-incorrect"
+              checked={showOnlyIncorrect}
+              onCheckedChange={setShowOnlyIncorrect}
+            />
+            <Label htmlFor="show-incorrect">Show incorrect only</Label>
+          </div>
+        </div>
         <Accordion type="single" collapsible className="w-full">
           {questions.map((question, index) => {
             const userAnswerIndex = userAnswers[index];
             const isCorrect = question.correctAnswerIndex === userAnswerIndex;
+
+            if (showOnlyIncorrect && isCorrect) {
+              return null;
+            }
 
             return (
               <AccordionItem value={`item-${index}`} key={index}>
