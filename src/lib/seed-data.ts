@@ -1843,6 +1843,36 @@ export const seedQuizQuestions: QuizQuestion[] = [
     rationale: 'When a bond trades at par, its market price is equal to its par value. In this case, the Current Yield formula (Annual Coupon / Price) and the Coupon Rate formula (Annual Coupon / Par Value) have the same inputs, resulting in the same value.',
   },
   {
+    question: 'A bond with a par value of $1,000 makes an annual interest payment of $45. What is its coupon rate?',
+    answers: ['4.0%', '4.5%', '5.0%', '$45'],
+    correctAnswerIndex: 1,
+    rationale: 'The Coupon Rate is the annual interest payment divided by the bond\'s face (or par) value. Calculation: ($45 / $1,000) * 100 = 4.5%.',
+  },
+  {
+    question: 'An investor holds a bond with a face value of $5,000 and a coupon rate of 8%. How much will they receive in annual coupon payments?',
+    answers: ['$80', '$400', '$500', '$5,400'],
+    correctAnswerIndex: 1,
+    rationale: 'The annual coupon payment is calculated by multiplying the face value of the bond by its coupon rate. Calculation: $5,000 * 0.08 = $400.',
+  },
+  {
+    question: 'When a bond is sold on the secondary market between its coupon payment dates, who is entitled to receive the accrued interest from the buyer?',
+    answers: ['The bond issuer', 'The buyer', 'The seller', 'The stock exchange'],
+    correctAnswerIndex: 2,
+    rationale: 'The seller is entitled to the interest that has accrued during the period they held the bond. Since the buyer will receive the next full coupon payment, the buyer compensates the seller for this accrued portion at the time of the sale.',
+  },
+  {
+    question: 'A bond with a face value of $1,000 has a coupon rate of 7.3%. An investor sells the bond when there are exactly 50 days until the next payment. Using the formula Accrued Coupon = (Face Value * Coupon Rate * Days to Next Payment) / 365, what is the accrued coupon?',
+    answers: ['$10', '$20', '$36.50', '$7.30'],
+    correctAnswerIndex: 0,
+    rationale: 'Using the provided formula: Accrued Coupon = ($1,000 * 0.073 * 50) / 365. This simplifies to ($73 * 50) / 365 = $3650 / 365 = $10.',
+  },
+  {
+    question: 'A corporate bond with a face value of $10,000 has an 8% coupon rate. It is sold 45 days before its next payment date. Assuming a 360-day year is used for calculation per the provided formula, what is the accrued interest owed to the seller?',
+    answers: ['$800.00', '$200.00', '$100.00', '$45.00'],
+    correctAnswerIndex: 2,
+    rationale: 'Using the formula Accrued Coupon = (Face Value * Coupon Rate * Days to Next Payment) / Days in Year. Calculation: ($10,000 * 0.08 * 45) / 360 = ($800 * 45) / 360 = $800 / 8 = $100.',
+  },
+  {
     question: 'Bond A has a Macaulay Duration of 7 years. Bond B has a Macaulay Duration of 10 years. Which bond\'s price will be more affected by a 1% change in interest rates?',
     answers: ['Bond A', 'Bond B', 'They will be affected equally.', 'Cannot be determined.'],
     correctAnswerIndex: 1,
@@ -1909,33 +1939,58 @@ export const seedQuizQuestions: QuizQuestion[] = [
     rationale: 'The entire premise of a CLN is that its payments are linked to the creditworthiness of a separate entity (the \'reference entity\'). If that entity experiences a specified credit event, such as bankruptcy or failure to pay its debts, the CLN investor will lose principal or coupon payments.',
   },
   {
-    question: 'A bond with a par value of $1,000 makes an annual interest payment of $45. What is its coupon rate?',
-    answers: ['4.0%', '4.5%', '5.0%', '$45'],
+    question: "If market interest rates fall from 5% to 3%, what is the most likely impact on an existing bond with a 5% coupon rate?",
+    answers: [
+        "The bond's price will fall below par (discount).",
+        "The bond's price will rise above par (premium).",
+        "The bond's price will not change.",
+        "The bond's coupon rate will adjust to 3%."
+    ],
     correctAnswerIndex: 1,
-    rationale: 'The Coupon Rate is the annual interest payment divided by the bond\'s face (or par) value. Calculation: ($45 / $1,000) * 100 = 4.5%.',
+    rationale: "When market interest rates (3%) fall below a bond's fixed coupon rate (5%), the bond becomes more attractive because it pays a higher interest than new bonds. This increased demand causes its price to rise above its face value, and it trades at a premium."
   },
   {
-    question: 'An investor holds a bond with a face value of $5,000 and a coupon rate of 8%. How much will they receive in annual coupon payments?',
-    answers: ['$80', '$400', '$500', '$5,400'],
+    question: "An investor buys a bond that is trading at a premium. How will the bond's Yield to Maturity (YTM) compare to its coupon rate?",
+    answers: [
+        "The YTM will be higher than the coupon rate.",
+        "The YTM will be lower than the coupon rate.",
+        "The YTM will be equal to the coupon rate.",
+        "The YTM is not related to the coupon rate."
+    ],
     correctAnswerIndex: 1,
-    rationale: 'The annual coupon payment is calculated by multiplying the face value of the bond by its coupon rate. Calculation: $5,000 * 0.08 = $400.',
+    rationale: "When an investor pays a premium (more than face value) for a bond, the total return they receive if they hold it to maturity is reduced. This is because the price paid is higher than the face value they get back at the end. As a result, the Yield to Maturity (YTM) will be lower than the bond's fixed coupon rate."
   },
   {
-    question: 'When a bond is sold on the secondary market between its coupon payment dates, who is entitled to receive the accrued interest from the buyer?',
-    answers: ['The bond issuer', 'The buyer', 'The seller', 'The stock exchange'],
+    question: "A bond with a face value of $1,000 is currently trading on the market for $1,050. This bond is said to be trading at a:",
+    answers: [
+        "Par",
+        "Discount",
+        "Premium",
+        "Maturity"
+    ],
     correctAnswerIndex: 2,
-    rationale: 'The seller is entitled to the interest that has accrued during the period they held the bond. Since the buyer will receive the next full coupon payment, the buyer compensates the seller for this accrued portion at the time of the sale.',
+    rationale: "A bond trades at a premium when its market price is higher than its face value (par value). In this case, the price of $1,050 is greater than the $1,000 face value."
   },
   {
-    question: 'A bond with a face value of $1,000 has a coupon rate of 7.3%. An investor sells the bond when there are exactly 50 days until the next payment. Using the formula Accrued Coupon = (Face Value * Coupon Rate * Days to Next Payment) / 365, what is the accrued coupon?',
-    answers: ['$10', '$20', '$36.50', '$7.30'],
-    correctAnswerIndex: 0,
-    rationale: 'Using the provided formula: Accrued Coupon = ($1,000 * 0.073 * 50) / 365. This simplifies to ($73 * 50) / 365 = $3650 / 365 = $10.',
+    question: "If new bonds are being issued with a 6% interest rate, what would likely happen to an older, existing bond with a 4% coupon rate?",
+    answers: [
+        "It would trade at a premium.",
+        "It would trade at a discount.",
+        "Its coupon rate would automatically increase to 6%.",
+        "It would be recalled by the issuer."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "The older bond with a 4% coupon is less attractive than new bonds paying 6%. To entice a buyer, the price of the older bond must fall below its face value, causing it to trade at a discount. This lower price increases the bond's overall yield to be competitive with new bonds."
   },
   {
-    question: 'A corporate bond with a face value of $10,000 has an 8% coupon rate. It is sold 45 days before its next payment date. Assuming a 360-day year is used for calculation per the provided formula, what is the accrued interest owed to the seller?',
-    answers: ['$800.00', '$200.00', '$100.00', '$45.00'],
-    correctAnswerIndex: 2,
-    rationale: 'Using the formula Accrued Coupon = (Face Value * Coupon Rate * Days to Next Payment) / Days in Year. Calculation: ($10,000 * 0.08 * 45) / 360 = ($800 * 45) / 360 = $800 / 8 = $100.',
-  },
+    question: "An investor pays a premium for a bond. Over the life of the bond, the 'premium' portion of the investment's value is expected to:",
+    answers: [
+        "Increase until maturity.",
+        "Decrease until the bond's value reaches its face value at maturity.",
+        "Stay the same.",
+        "Be paid back as a special dividend."
+    ],
+    correctAnswerIndex: 1,
+    rationale: "The premium paid for a bond is amortized, or gradually reduced, over its life. At maturity, the bond is redeemed for its face value. Therefore, the initial premium amount effectively decreases to zero by the time the bond matures."
+  }
 ];
