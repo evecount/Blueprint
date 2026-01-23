@@ -8,6 +8,7 @@ import {
   Trash2,
 } from 'lucide-react';
 import Link from 'next/link';
+import { format } from 'date-fns';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -96,7 +97,7 @@ export default function DashboardPage() {
                     {resource.name}
                   </CardTitle>
                   <CardDescription>
-                    Created {new Date(resource.createdAt).toLocaleDateString()}
+                    Created {format(new Date(resource.createdAt), 'MM/dd/yyyy')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>

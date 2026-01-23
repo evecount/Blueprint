@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { FileText, MoreVertical, PlayCircle, Trash2, UploadCloud } from 'lucide-react';
 import Link from 'next/link';
+import { format } from 'date-fns';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -61,7 +62,7 @@ export default function ResourcesPage() {
                 </div>
                 <CardTitle className="pt-4 font-headline">{resource.name}</CardTitle>
                 <CardDescription>
-                  Created {new Date(resource.createdAt).toLocaleDateString()}
+                  Created {format(new Date(resource.createdAt), 'MM/dd/yyyy')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
