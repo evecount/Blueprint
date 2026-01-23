@@ -585,13 +585,13 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'Its focus on short-term gains.',
     ],
     correctAnswerIndex: 1,
-    rationale: 'Singapore\'s CPF system scores highly on the Integrity pillar due to its strong regulatory framework, well-defined governance structure (Trustee-Manager model), and clear communication with its members, which builds trust and ensures the protection of members\' assets.',
+    rationale: 'Singapore\'s CPF system scores highly on the Integrity pillar due to its strong regulatory framework, a well-defined governance structure (Trustee-Manager model), and clear communication with its members, which builds trust and ensures the protection of members\' assets.',
   },
   {
     question: 'A pension system that lacks "Adequacy" most likely has:',
     answers: [
       'Poor communication with members.',
-      'Payouts that do not meet the basic cost of living.',
+      "Payouts that do not meet the basic cost of living.",
       'Low government debt.',
       'High participation rates.',
     ],
@@ -1733,5 +1733,64 @@ export const seedQuizQuestions: QuizQuestion[] = [
     correctAnswerIndex: 2,
     rationale: 'Value-at-Risk (VAR) is a statistical technique used to measure and quantify the level of financial risk within a firm or investment portfolio over a specific time frame. It uses standard deviation and mean return to estimate the maximum loss that an investment is likely to suffer with a certain level of confidence (e.g., "a 5% VAR of $1 million" means there\'s a 5% chance of losing at least $1 million).',
   },
+  {
+    question: 'A bond provides $70 of annual income and has a current market price of $1,050. If the investor\'s marginal tax rate (MRT) is 22%, what is the after-tax current yield?',
+    answers: ['6.67%', '5.20%', '1.47%', '8.55%'],
+    correctAnswerIndex: 1,
+    rationale: 'First, calculate the before-tax current yield: (Annual Income / Current Market Price) = ($70 / $1,050) = 6.67%. Then, apply the after-tax formula: Before-Tax Yield * (1 - MRT) = 6.67% * (1 - 0.22) = 5.20%.',
+  },
+  {
+    question: 'You expect to receive a payment of $10,000 one year from now. The payments will grow at a constant rate of 4% per year for a total of 20 years. If the appropriate discount rate (i) is 7%, what is the present value (PV) of this entire stream of payments?',
+    answers: ['$144,033', '$200,000', '$100,000', '$135,903'],
+    correctAnswerIndex: 0,
+    rationale: 'This requires the formula for the present value of a growing annuity: PV = Pmt1 / (i - g) * [1 - ((1+g)/(1+i))^n]. Plugging in the values: PV = $10,000 / (0.07 - 0.04) * [1 - ((1.04)/(1.07))^20] = $144,033.',
+  },
+  {
+    question: 'You are setting up a trust that will make its first payment of $5,000 immediately. The payments will then grow by 2% each year for 15 years. If the discount rate (i) is 5%, what is the present value (PV) of these payments?',
+    answers: ['$58,683', '$61,617', '$75,000', '$52,500'],
+    correctAnswerIndex: 1,
+    rationale: 'This requires the formula for the present value of a growing annuity due, as the first payment is immediate. Formula: PV = [Pmt1 / (i - g) * [1 - ((1+g)/(1+i))^n]] * (1+i). Plugging in the values: PV = [$5,000 / (0.05 - 0.02) * [1 - ((1.02)/(1.05))^15]] * 1.05 = $61,617.',
+  },
+  {
+    question: 'You plan to make your first deposit of $2,000 into a savings plan one year from now. You will increase your deposits by 3% each year for a total of 10 years. The plan earns an annual interest rate of 6%. What is the future value (FV) of your investment at the end of the 10th year?',
+    answers: ['$26,361', '$29,793', '$20,000', '$31,580'],
+    correctAnswerIndex: 1,
+    rationale: 'This uses the formula for the future value of a growing ordinary annuity: FV = Dep1 * [((1+i)^n - (1+g)^n) / (i-g)]. Plugging in the values: FV = $2,000 * [((1.06)^10 - (1.03)^10) / (0.06 - 0.03)] = $29,793.',
+  },
+  {
+    question: 'You plan to deposit $5,000 into an account one year from today. Your deposits will increase by 4% each year for a total of 15 years. The account earns 7% annually. What is the future value of this stream of deposits at the end of the 15th year?',
+    answers: ['$125,560', '$159,680', '$75,000', '$170,857'],
+    correctAnswerIndex: 1,
+    rationale: 'Using the formula for the future value of a growing ordinary annuity: FV = Dep1 * [((1+i)^n - (1+g)^n) / (i-g)]. Calculation: FV = $5,000 * [((1.07)^15 - (1.04)^15) / (0.07 - 0.04)] = $159,680.',
+  },
+  {
+    question: 'A corporate bond has a current market price of $980 and pays an annual coupon (income) of $50. What is the before-tax current yield?',
+    answers: ['5.00%', '4.90%', '5.10%', '5.20%'],
+    correctAnswerIndex: 2,
+    rationale: 'The before-tax current yield is calculated by dividing the annual income from the investment by its current market price. Calculation: $50 / $980 = 5.10%.',
+  },
+  {
+    question: 'A bond\'s before-tax current yield is 8%. Its after-tax current yield is 6%. What is the investor\'s marginal tax rate (MRT)?',
+    answers: ['20%', '25%', '30%', '14%'],
+    correctAnswerIndex: 1,
+    rationale: 'The formula is After-tax yield = Before-tax yield * (1 - MRT). Rearranging to solve for MRT: MRT = 1 - (After-tax yield / Before-tax yield). Calculation: MRT = 1 - (6% / 8%) = 1 - 0.75 = 0.25, or 25%.',
+  },
+  {
+    question: 'An annuity will pay you $20,000 immediately, and the payments will grow by 3% annually for 25 years. If the discount rate is 8%, what is the present value?',
+    answers: ['$282,000', '$500,000', '$304,560', '$216,000'],
+    correctAnswerIndex: 2,
+    rationale: 'This is a growing annuity due. Formula: PV = [Pmt1 / (i - g) * [1 - ((1+g)/(1+i))^n]] * (1+i). Calculation: PV = [$20,000 / (0.08 - 0.03) * [1 - ((1.03)/(1.08))^25]] * 1.08 = $304,560.',
+  },
+  {
+    question: 'A fund generates $120 of annual income. Its current market price is $2,000. For an investor with a 15% marginal tax rate (MRT), what is the after-tax current yield?',
+    answers: ['6.0%', '5.1%', '4.9%', '0.9%'],
+    correctAnswerIndex: 1,
+    rationale: 'First, find the before-tax yield: ($120 / $2,000) = 6.0%. Then, calculate the after-tax yield: 6.0% * (1 - 0.15) = 5.1%.',
+  },
+  {
+    question: 'A retirement plan promises to pay you $50,000 one year from now, with payments growing at 2% per year for 30 years. If the discount rate is 6%, what is the present value of this plan?',
+    answers: ['$853,750', '$1,250,000', '$780,550', '$820,330'],
+    correctAnswerIndex: 0,
+    rationale: 'This uses the formula for the present value of a growing ordinary annuity: PV = Pmt1 / (i - g) * [1 - ((1+g)/(1+i))^n]. Calculation: PV = $50,000 / (0.06 - 0.02) * [1 - ((1.02)/(1.06))^30] = $853,750.',
+  },
 ];
-
