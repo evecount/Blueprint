@@ -132,6 +132,11 @@ export default function QuizClientPage({ resourceId }: { resourceId: string }) {
   if (isFinished) {
     return <QuizResults questions={questions} userAnswers={userAnswers} score={score} resourceName={resource.name} onRestart={handleRestart} />;
   }
+  
+  // Guard against out-of-bounds-access
+  if (currentQuestionIndex >= questions.length && questions.length > 0) {
+    return <QuizResults questions={questions} userAnswers={userAnswers} score={score} resourceName={resource.name} onRestart={handleRestart} />;
+  }
 
   const progressPercentage = ((currentQuestionIndex) / questions.length) * 100;
   const currentQuestion = questions[currentQuestionIndex];
