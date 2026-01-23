@@ -1992,5 +1992,36 @@ export const seedQuizQuestions: QuizQuestion[] = [
     answers: ['4 years', '6 years', '9 years', '1.5 years'],
     correctAnswerIndex: 0,
     rationale: 'The formula can be rearranged to solve for Modified Duration: D* ≈ -(% Change in Price / Change in Rates). Calculation: -(-6% / 1.5%) = 4. The bond has a modified duration of approximately 4 years.',
+  },
+  {
+    question: 'A fund has an actual return of 12%, a Beta of 0.9, a market return of 11%, and a risk-free rate of 3%. What is its Alpha?',
+    answers: ['1.8%', '10.2%', '-1.8%', '2.2%'],
+    correctAnswerIndex: 0,
+    rationale: 'First, calculate the expected return using CAPM: 3% + 0.9 * (11% - 3%) = 10.2%. Then, calculate Alpha: Actual Return - Expected Return = 12% - 10.2% = 1.8%.',
+  },
+  {
+    question: 'A fund returns 8%. It has a Beta of 1.5, the market returned 6%, and the risk-free rate is 1%. What is the fund\'s Alpha?',
+    answers: ['-0.5%', '8.5%', '0.5%', '2.5%'],
+    correctAnswerIndex: 0,
+    rationale: 'First, calculate the expected return using CAPM: 1% + 1.5 * (6% - 1%) = 8.5%. Then, calculate Alpha: Actual Return - Expected Return = 8% - 8.5% = -0.5%. A negative alpha indicates underperformance.',
+  },
+  {
+    question: 'A fund has a Beta of 1.0 and returned 15%. If the market return was 13% and the risk-free rate was 3%, what is the fund\'s Alpha?',
+    answers: ['2.0%', '13.0%', '-2.0%', '1.0%'],
+    correctAnswerIndex: 0,
+    rationale: 'First, calculate the expected return using CAPM: 3% + 1.0 * (13% - 3%) = 13%. Then, calculate Alpha: Actual Return - Expected Return = 15% - 13% = 2.0%.',
+  },
+  {
+    question: 'An investment returned 5%. It has a Beta of 0.8, the market return was 7%, and the risk-free rate was 4%. What is its Alpha?',
+    answers: ['-1.4%', '6.4%', '1.4%', '-2.4%'],
+    correctAnswerIndex: 0,
+    rationale: 'First, calculate the expected return using CAPM: 4% + 0.8 * (7% - 4%) = 6.4%. Then, calculate Alpha: Actual Return - Expected Return = 5% - 6.4% = -1.4%.',
+  },
+  {
+    question: 'A portfolio generated a 20% return. It has a Beta of 1.3, while the market returned 15% and the risk-free rate was 4%. What is the portfolio\'s Alpha?',
+    answers: ['1.7%', '18.3%', '-1.7%', '2.7%'],
+    correctAnswerIndex: 0,
+    rationale: 'First, calculate the expected return using CAPM: 4% + 1.3 * (15% - 4%) = 18.3%. Then, calculate Alpha: Actual Return - Expected Return = 20% - 18.3% = 1.7%.',
   }
 ];
+
