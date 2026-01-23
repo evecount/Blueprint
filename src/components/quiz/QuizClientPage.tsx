@@ -87,7 +87,7 @@ export default function QuizClientPage({ resourceId }: { resourceId: string }) {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-6xl mx-auto">
       <div className="flex items-center gap-4 mb-4">
         <Button variant="outline" size="icon" onClick={() => router.back()}>
           <ArrowLeft className="w-4 h-4" />
