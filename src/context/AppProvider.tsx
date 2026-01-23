@@ -4,6 +4,7 @@ import type { Resource, Performance, QuizQuestion } from '@/lib/types';
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { seedQuizQuestions } from '@/lib/seed-data';
 import { mathQuizQuestions } from '@/lib/math-quiz-data';
+import { m8aQuizQuestions } from '@/lib/m8a-rules-regs-data';
 
 // A custom hook to synchronize state with localStorage
 function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val: T) => T)) => void] {
@@ -50,6 +51,13 @@ const mathResource: Resource = {
   createdAt: '2024-01-01T00:00:00.000Z',
 };
 
+const m8aResource: Resource = {
+  id: 'm8a-rules-regs-data',
+  name: 'M8A Rules & Regulations',
+  questions: m8aQuizQuestions,
+  createdAt: '2024-01-01T00:00:00.000Z',
+};
+
 
 interface AppContextType {
   resources: Resource[];
@@ -63,7 +71,7 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [resources, setResources] = useLocalStorage<Resource[]>('reviewmate-resources', [m8Resource, mathResource]);
+  const [resources, setResources] = useLocalStorage<Resource[]>('reviewmate-resources', [m8Resource, mathResource, m8aResource]);
   const [performance, setPerformance] = useLocalStorage<Performance>('reviewmate-performance', {});
   
   useEffect(() => {
@@ -91,6 +99,17 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         newResources.push(mathResource);
       }
 
+      // Update M8A Quiz
+      const m8aIndex = newResources.findIndex(r => r.id === m8aResource.id);
+      if (m8aIndex !== -1) {
+          if (newResources[m8aIndex].questions.length !== m8aQuizQuestions.length) {
+            newResources[m8aIndex].questions = m8aQuizQuestions;
+          }
+      } else {
+        newResources.push(m8aResource);
+      }
+
+
       return newResources;
     });
   }, []); // Run only once on mount
@@ -106,7 +125,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   const deleteResource = (resourceId: string) => {
     // Prevent deleting the default quizzes. The UI also hides the delete button for them.
-    if (resourceId === m8Resource.id || resourceId === mathResource.id) {
+    if (resourceId === m8Resource.id || resourceId === mathResource.id || resourceId === m8aResource.id) {
       return; 
     }
     setResources(resources.filter((r) => r.id !== resourceId));
