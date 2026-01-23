@@ -580,7 +580,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
     question: 'A pension system that lacks "Adequacy" most likely has:',
     answers: [
       'Poor communication with members.',
-      'Payout\'s that do not meet the basic cost of living.',
+      'Payouts that do not meet the basic cost of living.',
       'Low government debt.',
       'High participation rates.',
     ],
@@ -2058,8 +2058,64 @@ export const seedQuizQuestions: QuizQuestion[] = [
     answers: ['Lower than 12%', 'Exactly 12%', 'Higher than 12%', 'Equal to the inflation rate'],
     correctAnswerIndex: 2,
     rationale: 'When interest is compounded more frequently than annually, the interest earned in each period starts earning its own interest. This effect makes the effective annual rate (EAR) higher than the stated nominal annual rate.',
+  },
+  {
+    question: 'In a Credit-Linked Note (CLN), what is the primary consequence for the investor if a "credit event" occurs for the reference entity?',
+    answers: [
+      'The coupon payments are increased to compensate for the risk.',
+      'The investor loses a portion or all of their principal.',
+      'The note\'s maturity is automatically extended.',
+      'The investor can convert the note into shares of the reference entity.',
+    ],
+    correctAnswerIndex: 1,
+    rationale: 'The core feature of a CLN is that the investor takes on the credit risk of a third-party reference entity. If that entity defaults (the credit event), the investor, who is effectively selling insurance, will lose principal as per the note\'s terms.',
+  },
+  {
+    question: 'An investor holds a principal-protected note issued by Bank X, linked to the S&P 500 index. If Bank X declares bankruptcy before the note matures, what happens to the investor\'s principal?',
+    answers: [
+      'It is fully safe because the S&P 500 did not default.',
+      'It is at risk due to the issuer\'s (Bank X\'s) credit risk.',
+      'It is automatically paid out by the stock exchange.',
+      'It is converted into shares of the top 10 companies in the S&P 500.',
+    ],
+    correctAnswerIndex: 1,
+    rationale: 'The "principal protection" is a promise from the issuer, not a third-party guarantee. If the issuer defaults, the protection becomes worthless. This highlights issuer/counterparty risk, which is a key risk in all structured products.',
+  },
+  {
+    question: 'In a Credit Default Swap (CDS), the "protection seller" receives regular premium payments in exchange for what obligation?',
+    answers: [
+      'An obligation to buy the reference bond at a premium.',
+      'An obligation to provide investment advice.',
+      'An obligation to compensate the protection buyer if a specified credit event occurs.',
+      'An obligation to pay a higher interest rate to the buyer.',
+    ],
+    correctAnswerIndex: 2,
+    rationale: 'The protection seller in a CDS acts like an insurance company. They collect premiums and, in return, agree to make the protection buyer whole if the reference entity (the borrower) defaults on its debt.',
+  },
+  {
+    question: 'A financial instrument offers a higher-than-market yield by linking its payout to the performance of an underlying stock, but the investor could lose principal if the stock falls below a certain barrier. This instrument is most likely a:',
+    answers: [
+      'Government Treasury bill.',
+      'Standard bank deposit.',
+      'Structured note, such as an Equity-Linked Note (ELN).',
+      'Money market fund.',
+    ],
+    correctAnswerIndex: 2,
+    rationale: 'This describes a typical structured note. They are complex instruments created to offer enhanced yields by taking on specific risks, such as the performance of an underlying asset or the credit risk of an issuer. Government bills, deposits, and money market funds prioritize capital preservation and offer lower yields.',
+  },
+  {
+    question: 'A U.S.-based company wants to borrow in Euros but can get better loan terms in USD. A European company wants to borrow in USD but can get better terms in Euros. Which derivative would allow both companies to efficiently achieve their goals?',
+    answers: [
+      'An equity swap.',
+      'A commodity swap.',
+      'A credit default swap.',
+      'A cross-currency swap.',
+    ],
+    correctAnswerIndex: 3,
+    rationale: 'A cross-currency swap is designed for this exact situation. It allows two parties to exchange principal and/or interest payments on loans denominated in two different currencies, effectively allowing each party to leverage their advantage in their local market and hedge against foreign exchange risk.',
   }
 ];
+
 
 
 
