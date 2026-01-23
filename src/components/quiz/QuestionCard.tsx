@@ -17,7 +17,11 @@ export default function QuestionCard({ question, onAnswer }: QuestionCardProps) 
   const [isAnswered, setIsAnswered] = useState(false);
 
   const handleSelectAnswer = (index: number) => {
-    if (isAnswered) return;
+    if (isAnswered) {
+      // After an answer is selected, subsequent clicks do not change the state.
+      // This allows the user to click and re-read other options while viewing the rationale.
+      return;
+    }
     setSelectedAnswer(index);
     setIsAnswered(true);
   };
@@ -45,7 +49,6 @@ export default function QuestionCard({ question, onAnswer }: QuestionCardProps) 
                   isAnswered && isSelected && !isCorrectAnswer && 'bg-red-100 border-red-400 text-red-800 hover:bg-red-200 dark:bg-red-900/50 dark:border-red-700 dark:text-red-300'
                 )}
                 onClick={() => handleSelectAnswer(index)}
-                disabled={isAnswered}
               >
                 <div className="flex items-start w-full gap-4">
                   <div className="flex items-center justify-center w-6 h-6 mt-1 font-bold rounded-full bg-primary/10 text-primary">
