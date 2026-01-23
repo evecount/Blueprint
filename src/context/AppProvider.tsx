@@ -5,10 +5,21 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import { seedQuizQuestions } from '@/lib/seed-data';
 
 // A custom hook to synchronize state with localStorage
-function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => void] {
-  const [storedValue, setStoredValue] = useState<T>(initialValue);
+function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val: T) => T)) => void] {
+  const [storedValue, setStoredValue] = useState<T>(() => {
+    if (typeof window === 'undefined') {
+      return initialValue;
+    }
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
+    }
+  });
 
-  const setValue = (value: T) => {
+  const setValue = (value: T | ((val: T) => T)) => {
     try {
       const valueToStore = value instanceof Function ? value(storedValue) : value;
       setStoredValue(valueToStore);
@@ -20,19 +31,9 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => voi
     }
   };
 
-  useEffect(() => {
-    try {
-      const item = window.localStorage.getItem(key);
-      if (item) {
-        setStoredValue(JSON.parse(item));
-      }
-    } catch (error)      {
-      console.error(error);
-    }
-  }, [key]);
-
   return [storedValue, setValue];
 }
+
 
 const defaultResource: Resource = {
   id: 'm8-cis-question-bank',
@@ -56,6 +57,25 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [resources, setResources] = useLocalStorage<Resource[]>('reviewmate-resources', [defaultResource]);
   const [performance, setPerformance] = useLocalStorage<Performance>('reviewmate-performance', {});
+  
+  useEffect(() => {
+    // This effect ensures the default M8 quiz in localStorage is always up-to-date with the latest questions from the codebase.
+    setResources(prevResources => {
+      const m8Index = prevResources.findIndex(r => r.id === 'm8-cis-question-bank');
+      const newResources = [...prevResources];
+      
+      if (m8Index !== -1) {
+        // If M8 quiz exists, update its questions if they are different from the seed data.
+        if (newResources[m8Index].questions.length !== seedQuizQuestions.length) {
+          newResources[m8Index].questions = seedQuizQuestions;
+        }
+      } else {
+        // If M8 quiz was deleted or doesn't exist, add it back.
+        newResources.push(defaultResource);
+      }
+      return newResources;
+    });
+  }, []); // Run only once on mount
 
   const addResource = (resourceData: Omit<Resource, 'id' | 'createdAt'>) => {
     const newResource: Resource = {
@@ -63,21 +83,27 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       id: crypto.randomUUID(),
       createdAt: new Date().toISOString(),
     };
-    setResources([...resources, newResource]);
+    setResources(prevResources => [...prevResources, newResource]);
   };
 
   const deleteResource = (resourceId: string) => {
+    // Prevent deleting the default M8 quiz. The UI also hides the delete button for it.
+    if (resourceId === 'm8-cis-question-bank') {
+      return; 
+    }
     setResources(resources.filter((r) => r.id !== resourceId));
   };
   
   const updatePerformance = (topic: string, score: number, total: number) => {
-    const newPerformance = { ...performance };
-    if (!newPerformance[topic]) {
-      newPerformance[topic] = { correct: 0, total: 0 };
-    }
-    newPerformance[topic].correct += score;
-    newPerformance[topic].total += total;
-    setPerformance(newPerformance);
+    setPerformance(prevPerformance => {
+        const newPerformance = { ...prevPerformance };
+        if (!newPerformance[topic]) {
+          newPerformance[topic] = { correct: 0, total: 0 };
+        }
+        newPerformance[topic].correct += score;
+        newPerformance[topic].total += total;
+        return newPerformance;
+    });
   };
   
   const getResourceById = (id: string) => {
