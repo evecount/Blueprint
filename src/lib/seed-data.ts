@@ -945,7 +945,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
       'The MAS',
     ],
     correctAnswerIndex: 1,
-    rationale: 'The primary market is where securities are created and sold for the first time (e.g., in an IPO). The proceeds from these sales go directly to the issuing entity (the corporation or government) to raise capital.',
+    rationale: 'The primary market is where securities are created and sold for the first time (e.g., in an an IPO). The proceeds from these sales go directly to the issuing entity (the corporation or government) to raise capital.',
   },
   {
     question: 'A "Unit Trust" is legally structured as a:',
@@ -1091,298 +1091,202 @@ export const seedQuizQuestions: QuizQuestion[] = [
     rationale: 'First, calculate the gross redemption value: 5,000 units * $1.20/unit = $6,000. Then, calculate the redemption fee: $6,000 * 1% = $60. Finally, subtract the fee from the gross value to find the net proceeds: $6,000 - $60 = $5,940.',
   },
   {
-    question: "Which of the following is evaluated under the 'Integrity' pillar of the Melbourne Mercer Global Pension Index?",
+    question: 'Which of the following is evaluated under the \'Integrity\' pillar of the Melbourne Mercer Global Pension Index?',
     answers: [
-      "The level of real economic growth.",
-      "The regulation, governance, and communication of the pension system."
+      'The level of real economic growth.',
+      'The regulation, governance, and communication of the pension system.',
     ],
     correctAnswerIndex: 1,
-    rationale: "The 'Integrity' pillar of the Mercer Index focuses on the trust and governance of a pension system. It evaluates factors like regulation, how the system is governed, and how clearly it communicates with its members, rather than broad economic indicators."
+    rationale: 'The \'Integrity\' pillar of the Mercer Index focuses on the trust and governance of a pension system. It evaluates factors like regulation, how the system is governed, and how clearly it communicates with its members, rather than broad economic indicators.',
   },
   {
-    question: "A pension system is being assessed on its 'Sustainability.' What is the primary focus?",
+    question: 'A pension system is being assessed on its \'Sustainability.\' What is the primary focus?',
     answers: [
-      "Whether current benefits are sufficient for retirees.",
-      "The demographic trends and the ability to maintain the system long-term."
+      'Whether current benefits are sufficient for retirees.',
+      'The demographic trends and the ability to maintain the system long-term.',
     ],
     correctAnswerIndex: 1,
-    rationale: "Sustainability in the Mercer Index is all about the future viability of the fund. It assesses whether the system can continue to provide benefits over the long term, considering factors like demographic shifts, pension coverage, and total assets."
+    rationale: 'Sustainability in the Mercer Index is all about the future viability of the fund. It assesses whether the system can continue to provide benefits over the long term, considering factors like demographic shifts, pension coverage, and total assets.',
   },
   {
-    question: "When calculating a unit trust's Expense Ratio, which of the following is EXCLUDED?",
+    question: 'When calculating a unit trust\'s Expense Ratio, which of the following is EXCLUDED?',
     answers: [
-      "Trustee fees and audit fees.",
-      "Brokerage and transaction costs."
+      'Trustee fees and audit fees.',
+      'Brokerage and transaction costs.',
     ],
     correctAnswerIndex: 1,
-    rationale: "The Expense Ratio (or Reporting Ratio) covers the recurring, operational costs of the fund. Costs associated with trading assets, such as brokerage commissions and interest on borrowing, are considered capital costs and are not included in this calculation."
+    rationale: 'The Expense Ratio (or Reporting Ratio) covers the recurring, operational costs of the fund. Costs associated with trading assets, such as brokerage commissions and interest on borrowing, are considered capital costs and are not included in this calculation.',
   },
   {
-    question: "A manager achieves an 8% return against a benchmark of 4%. If the tracking error (standard deviation of active return) is 8%, what is the Information Ratio?",
+    question: 'A manager achieves an 8% return against a benchmark of 4%. If the tracking error (standard deviation of active return) is 8%, what is the Information Ratio?',
+    answers: ['0.25', '0.50', '1.00', '1.50'],
+    correctAnswerIndex: 1,
+    rationale: 'The Information Ratio is calculated as (Active Return) / (Tracking Error). The Active Return is the fund\'s return minus the benchmark\'s return (8% - 4% = 4%). So, the Information Ratio is 4% / 8% = 0.50.',
+  },
+  {
+    question: 'Why might a \'Feeder Fund\' have a significantly higher reporting ratio than a standard unit trust?',
     answers: [
-      "0.25",
-      "0.50",
-      "1.00",
-      "1.50"
+      'It invests in higher-risk assets.',
+      'It has two layers of fees: the feeder fund and the parent fund.',
     ],
     correctAnswerIndex: 1,
-    rationale: "The Information Ratio is calculated as (Active Return) / (Tracking Error). The Active Return is the fund's return minus the benchmark's return (8% - 4% = 4%). So, the Information Ratio is 4% / 8% = 0.50."
+    rationale: 'A \'Feeder Fund\' structure involves one fund (the feeder) investing into another (the master/parent fund). This creates a \'double layer\' of expenses, as the investor effectively pays the fees of both the feeder fund and the underlying master fund, which must be reflected in the reporting ratio.',
   },
   {
-    question: "Why might a 'Feeder Fund' have a significantly higher reporting ratio than a standard unit trust?",
+    question: 'Which entity acts as the agent for the Singapore Government in issuing T-bills and SGS Bonds?',
+    answers: ['Singapore Exchange (SGX).', 'Monetary Authority of Singapore (MAS).'],
+    correctAnswerIndex: 1,
+    rationale: 'The Monetary Authority of Singapore (MAS) is the central bank and regulator that acts as the agent for the government to issue securities like T-bills and SGS Bonds. The Singapore Exchange (SGX) is the marketplace where these securities are traded after issuance.',
+  },
+  {
+    question: 'What is the defining maturity characteristic of a Treasury bill (T-bill)?',
+    answers: ['It has a maturity of more than 2 years.', 'It has a maturity of one year or less.'],
+    correctAnswerIndex: 1,
+    rationale: 'T-bills are short-term debt instruments, classified as money market instruments, with maturities of one year or less. Longer-term government debt is issued as SGS Bonds.',
+  },
+  {
+    question: 'Which government security allows an individual to redeem their investment at par in any month without penalty?',
+    answers: ['SGS Bonds.', 'Singapore Savings Bonds (SSB).'],
+    correctAnswerIndex: 1,
+    rationale: 'Singapore Savings Bonds (SSBs) are designed for individual investors and offer great flexibility. A key feature is the ability to redeem them in any given month at their par value plus any accrued interest, without incurring a penalty.',
+  },
+  {
+    question: 'Bond ratings are determined solely by quantitative financial ratios. True or False?',
+    answers: ['True', 'False'],
+    correctAnswerIndex: 1,
+    rationale: 'False. While quantitative financial ratios are a major part of the analysis, credit rating agencies also consider qualitative factors, such as the quality of management, industry outlook, and the competitive landscape.',
+  },
+  {
+    question: 'A manager starts by analyzing the global economy and interest rates before choosing a country. What style is this?',
+    answers: ['Bottom-up investing.', 'Top-down investing.'],
+    correctAnswerIndex: 1,
+    rationale: 'This is a classic example of Top-down investing. The analysis starts from the macroeconomic \'big picture\' (global economy) and progressively narrows down to specific markets and securities.',
+  },
+  {
+    question: 'A \'Bottom-up\' investor is primarily concerned with:',
+    answers: ['Sector trends and GDP growth.', 'Individual company attributes and fundamentals.'],
+    correctAnswerIndex: 1,
+    rationale: 'Bottom-up investing focuses on the specific merits of a single company—its financial health, management quality, and competitive position—irrespective of the broader economic or sector trends.',
+  },
+  {
+    question: 'Unlike standard exchange-traded options, warrants are typically:',
+    answers: ['Short-term (3 to 9 months).', 'Long-term (several years).'],
+    correctAnswerIndex: 1,
+    rationale: 'Warrants are issued by companies themselves and have much longer lifespans than standardized, exchange-traded options. Their expiration dates are often set several years in the future.',
+  },
+  {
+    question: 'A convertible bond provides an \'Equity Floor.\' What does this mean?',
     answers: [
-      "It invests in higher-risk assets.",
-      "It has two layers of fees: the feeder fund and the parent fund."
+      'It is guaranteed by the SGX.',
+      'It will never be worth less than its value as a pure bond.',
     ],
     correctAnswerIndex: 1,
-    rationale: "A 'Feeder Fund' structure involves one fund (the feeder) investing into another (the master/parent fund). This creates a 'double layer' of expenses, as the investor effectively pays the fees of both the feeder fund and the underlying master fund, which must be reflected in the reporting ratio."
+    rationale: 'The \'Equity Floor\' refers to the bond\'s intrinsic value as a fixed-income instrument. If the company\'s stock price falls, making the conversion feature unattractive, the convertible bond still provides interest payments and principal repayment, so its price is supported by this underlying bond value.',
   },
   {
-    question: "Which entity acts as the agent for the Singapore Government in issuing T-bills and SGS Bonds?",
+    question: 'What is a unique risk associated with Synthetic ETFs that use swaps instead of physical stocks?',
+    answers: ['Inflation risk.', 'Counterparty risk (the swap provider failing).'],
+    correctAnswerIndex: 1,
+    rationale: 'Synthetic ETFs don\'t hold the actual assets. They use a derivative (a swap) with a counterparty (usually a bank) to get the return of an index. This introduces counterparty risk: the risk that the bank providing the swap could default on its obligation.',
+  },
+  {
+    question: 'If an ETF\'s return deviates significantly from its benchmark index, this is known as:',
+    answers: ['Market risk.', 'Tracking error risk.'],
+    correctAnswerIndex: 1,
+    rationale: 'Tracking error is the measure of how much an ETF or index fund\'s performance differs from the performance of the benchmark index it is supposed to be tracking.',
+  },
+  {
+    question: 'Money market funds are most suitable for which type of investor?',
     answers: [
-      "Singapore Exchange (SGX).",
-      "Monetary Authority of Singapore (MAS)."
+      'Investors seeking high capital appreciation over 10 years.',
+      'Investors with a low-risk tolerance seeking liquidity.',
     ],
     correctAnswerIndex: 1,
-    rationale: "The Monetary Authority of Singapore (MAS) is the central bank and regulator that acts as the agent for the government to issue securities like T-bills and SGS Bonds. The Singapore Exchange (SGX) is the marketplace where these securities are traded after issuance."
+    rationale: 'Money market funds invest in short-term, low-risk debt and are designed for capital preservation and high liquidity. They are ideal for conservative investors or for holding cash that may be needed in the short term.',
   },
   {
-    question: "What is the defining maturity characteristic of a Treasury bill (T-bill)?",
-    answers: [
-      "It has a maturity of more than 2 years.",
-      "It has a maturity of one year or less."
-    ],
+    question: 'Which risk cannot be eliminated through diversification?',
+    answers: ['Unsystematic risk (Specific risk).', 'Systematic risk (Market risk).'],
     correctAnswerIndex: 1,
-    rationale: "T-bills are short-term debt instruments, classified as money market instruments, with maturities of one year or less. Longer-term government debt is issued as SGS Bonds."
+    rationale: 'Systematic risk, or market risk, affects the entire market (e.g., recessions, interest rate changes). It cannot be diversified away. Unsystematic risk is specific to a company or industry and can be reduced through diversification.',
   },
   {
-    question: "Which government security allows an individual to redeem their investment at par in any month without penalty?",
-    answers: [
-      "SGS Bonds.",
-      "Singapore Savings Bonds (SSB)."
-    ],
+    question: 'A fund has a return of 10%, a risk-free rate of 2%, and a standard deviation of 10%. What is its Sharpe Ratio?',
+    answers: ['0.6', '0.8', '1.0', '1.2'],
     correctAnswerIndex: 1,
-    rationale: "Singapore Savings Bonds (SSBs) are designed for individual investors and offer great flexibility. A key feature is the ability to redeem them in any given month at their par value plus any accrued interest, without incurring a penalty."
+    rationale: 'The Sharpe Ratio is calculated as (Fund Return - Risk-Free Rate) / Standard Deviation. In this case, (10% - 2%) / 10% = 8% / 10% = 0.8.',
   },
   {
-    question: "Bond ratings are determined solely by quantitative financial ratios. True or False?",
-    answers: [
-      "True",
-      "False"
-    ],
+    question: 'A fund with a Beta of 1.5 is:',
+    answers: ['50% less volatile than the market.', '50% more volatile than the market.'],
     correctAnswerIndex: 1,
-    rationale: "False. While quantitative financial ratios are a major part of the analysis, credit rating agencies also consider qualitative factors, such as the quality of management, industry outlook, and the competitive landscape."
+    rationale: 'Beta measures a security\'s volatility in relation to the overall market. A Beta greater than 1 indicates that the security is more volatile than the market. A Beta of 1.5 means it\'s expected to be 50% more volatile.',
   },
   {
-    question: "A manager starts by analyzing the global economy and interest rates before choosing a country. What style is this?",
-    answers: [
-      "Bottom-up investing.",
-      "Top-down investing."
-    ],
+    question: 'A company-specific strike is an example of what type of risk?',
+    answers: ['Systematic risk.', 'Unsystematic risk.'],
     correctAnswerIndex: 1,
-    rationale: "This is a classic example of Top-down investing. The analysis starts from the macroeconomic 'big picture' (global economy) and progressively narrows down to specific markets and securities."
+    rationale: 'This is an example of Unsystematic (or Specific) Risk because it affects only a single company. An investor can mitigate this risk by diversifying their portfolio across different companies and industries.',
   },
   {
-    question: "A 'Bottom-up' investor is primarily concerned with:",
-    answers: [
-      "Sector trends and GDP growth.",
-      "Individual company attributes and fundamentals."
-    ],
-    correctAnswerIndex: 1,
-    rationale: "Bottom-up investing focuses on the specific merits of a single company—its financial health, management quality, and competitive position—irrespective of the broader economic or sector trends."
-  },
-  {
-    question: "Unlike standard exchange-traded options, warrants are typically:",
-    answers: [
-      "Short-term (3 to 9 months).",
-      "Long-term (several years)."
-    ],
-    correctAnswerIndex: 1,
-    rationale: "Warrants are issued by companies themselves and have much longer lifespans than standardized, exchange-traded options. Their expiration dates are often set several years in the future."
-  },
-  {
-    question: "A convertible bond provides an 'Equity Floor.' What does this mean?",
-    answers: [
-      "It is guaranteed by the SGX.",
-      "It will never be worth less than its value as a pure bond."
-    ],
-    correctAnswerIndex: 1,
-    rationale: "The 'Equity Floor' refers to the bond's intrinsic value as a fixed-income instrument. If the company's stock price falls, making the conversion feature unattractive, the convertible bond still provides interest payments and principal repayment, so its price is supported by this underlying bond value."
-  },
-  {
-    question: "What is a unique risk associated with Synthetic ETFs that use swaps instead of physical stocks?",
-    answers: [
-      "Inflation risk.",
-      "Counterparty risk (the swap provider failing)."
-    ],
-    correctAnswerIndex: 1,
-    rationale: "Synthetic ETFs don't hold the actual assets. They use a derivative (a swap) with a counterparty (usually a bank) to get the return of an index. This introduces counterparty risk: the risk that the bank providing the swap could default on its obligation."
-  },
-  {
-    question: "If an ETF's return deviates significantly from its benchmark index, this is known as:",
-    answers: [
-      "Market risk.",
-      "Tracking error risk."
-    ],
-    correctAnswerIndex: 1,
-    rationale: "Tracking error is the measure of how much an ETF or index fund's performance differs from the performance of the benchmark index it is supposed to be tracking."
-  },
-  {
-    question: "Money market funds are most suitable for which type of investor?",
-    answers: [
-      "Investors seeking high capital appreciation over 10 years.",
-      "Investors with a low-risk tolerance seeking liquidity."
-    ],
-    correctAnswerIndex: 1,
-    rationale: "Money market funds invest in short-term, low-risk debt and are designed for capital preservation and high liquidity. They are ideal for conservative investors or for holding cash that may be needed in the short term."
-  },
-  {
-    question: "Which risk cannot be eliminated through diversification?",
-    answers: [
-      "Unsystematic risk (Specific risk).",
-      "Systematic risk (Market risk)."
-    ],
-    correctAnswerIndex: 1,
-    rationale: "Systematic risk, or market risk, affects the entire market (e.g., recessions, interest rate changes). It cannot be diversified away. Unsystematic risk is specific to a company or industry and can be reduced through diversification."
-  },
-  {
-    question: "A fund has a return of 10%, a risk-free rate of 2%, and a standard deviation of 10%. What is its Sharpe Ratio?",
-    answers: [
-      "0.6",
-      "0.8",
-      "1.0",
-      "1.2"
-    ],
-    correctAnswerIndex: 1,
-    rationale: "The Sharpe Ratio is calculated as (Fund Return - Risk-Free Rate) / Standard Deviation. In this case, (10% - 2%) / 10% = 8% / 10% = 0.8."
-  },
-  {
-    question: "A fund with a Beta of 1.5 is:",
-    answers: [
-      "50% less volatile than the market.",
-      "50% more volatile than the market."
-    ],
-    correctAnswerIndex: 1,
-    rationale: "Beta measures a security's volatility in relation to the overall market. A Beta greater than 1 indicates that the security is more volatile than the market. A Beta of 1.5 means it's expected to be 50% more volatile."
-  },
-  {
-    question: "A company-specific strike is an example of what type of risk?",
-    answers: [
-      "Systematic risk.",
-      "Unsystematic risk."
-    ],
-    correctAnswerIndex: 1,
-    rationale: "This is an example of Unsystematic (or Specific) Risk because it affects only a single company. An investor can mitigate this risk by diversifying their portfolio across different companies and industries."
-  },
-  {
-    question: "A tech company's quarterly earnings report shows a 30% drop in net profit due to a failed product launch. What is the primary source of risk?",
-    answers: [
-      "Business Risk",
-      "Financial Risk",
-      "Market Risk",
-      "Country Risk"
-    ],
+    question: 'A tech company\'s quarterly earnings report shows a 30% drop in net profit due to a failed product launch. What is the primary source of risk?',
+    answers: ['Business Risk', 'Financial Risk', 'Market Risk', 'Country Risk'],
     correctAnswerIndex: 0,
-    rationale: "M8 defines Business Risk specifically as the risk that a company's profits will fall unexpectedly due to factors related to its operations, such as a failed product launch, poor management, or increased competition."
+    rationale: 'M8 defines Business Risk specifically as the risk that a company\'s profits will fall unexpectedly due to factors related to its operations, such as a failed product launch, poor management, or increased competition.',
   },
   {
-    question: "The US Federal Reserve announces an unexpected hike in interest rates, causing the market value of your bond portfolio to drop. What is the primary source of risk?",
-    answers: [
-      "Business Risk",
-      "Financial Risk",
-      "Inflation Risk",
-      "Reinvestment Risk"
-    ],
+    question: 'The US Federal Reserve announces an unexpected hike in interest rates, causing the market value of your bond portfolio to drop. What is the primary source of risk?',
+    answers: ['Business Risk', 'Financial Risk', 'Inflation Risk', 'Reinvestment Risk'],
     correctAnswerIndex: 1,
-    rationale: "In the M8 curriculum, 'Financial Risk' is specifically the risk that interest rate changes negatively affect investment value. Rising rates cause the price of existing, lower-rate bonds to fall."
+    rationale: 'In the M8 curriculum, \'Financial Risk\' is specifically the risk that interest rate changes negatively affect investment value. Rising rates cause the price of existing, lower-rate bonds to fall.',
   },
   {
-    question: "You own a large piece of physical commercial real estate and need to sell it today to cover a debt, but there are no buyers available in the current week.",
-    answers: [
-      "Credit Risk",
-      "Marketability Risk",
-      "Systematic Risk",
-      "Business Risk"
-    ],
+    question: 'You own a large piece of physical commercial real estate and need to sell it today to cover a debt, but there are no buyers available in the current week.',
+    answers: ['Credit Risk', 'Marketability Risk', 'Systematic Risk', 'Business Risk'],
     correctAnswerIndex: 1,
-    rationale: "This is Marketability Risk (also known as Liquidity Risk), which is the risk that an asset cannot be traded quickly enough at its prevailing market price to prevent a loss or meet an immediate cash need."
+    rationale: 'This is Marketability Risk (also known as Liquidity Risk), which is the risk that an asset cannot be traded quickly enough at its prevailing market price to prevent a loss or meet an immediate cash need.',
   },
   {
-    question: "You invest in a Brazilian utility company, and the Brazilian Real suddenly loses 20% of its value against the Singapore Dollar.",
-    answers: [
-      "Country Risk",
-      "Financial Risk",
-      "Business Risk",
-      "Liquidity Risk"
-    ],
+    question: 'You invest in a Brazilian utility company, and the Brazilian Real suddenly loses 20% of its value against the Singapore Dollar.',
+    answers: ['Country Risk', 'Financial Risk', 'Business Risk', 'Liquidity Risk'],
     correctAnswerIndex: 0,
-    rationale: "This is an example of Country Risk, which covers economic and political risks specific to a foreign country, including the risk of adverse movements in its domestic currency."
+    rationale: 'This is an example of Country Risk, which covers economic and political risks specific to a foreign country, including the risk of adverse movements in its domestic currency.',
   },
   {
-    question: "A global pandemic causes the entire world's stock markets to crash simultaneously. How is this risk classified?",
-    answers: [
-      "Systematic Risk",
-      "Unsystematic Risk",
-      "Business Risk",
-      "Credit Risk"
-    ],
+    question: 'A global pandemic causes the entire world\'s stock markets to crash simultaneously. How is this risk classified?',
+    answers: ['Systematic Risk', 'Unsystematic Risk', 'Business Risk', 'Credit Risk'],
     correctAnswerIndex: 0,
-    rationale: "This is Systematic Risk (or Nondiversifiable Risk). It is caused by broad macroeconomic or social factors that affect the value of all risky assets and cannot be eliminated through diversification."
+    rationale: 'This is Systematic Risk (or Nondiversifiable Risk). It is caused by broad macroeconomic or social factors that affect the value of all risky assets and cannot be eliminated through diversification.',
   },
   {
-    question: "A specific airline's pilots go on strike, causing only that company's stock to plummet while other airline stocks remain stable.",
-    answers: [
-      "Systematic Risk",
-      "Unsystematic Risk",
-      "Financial Risk",
-      "Inflation Risk"
-    ],
+    question: 'A specific airline\'s pilots go on strike, causing only that company\'s stock to plummet while other airline stocks remain stable.',
+    answers: ['Systematic Risk', 'Unsystematic Risk', 'Financial Risk', 'Inflation Risk'],
     correctAnswerIndex: 1,
-    rationale: "This is Unsystematic Risk (or Diversifiable Risk). These factors are unique to a single company or industry and can be eliminated by diversifying investments across different companies."
+    rationale: 'This is Unsystematic Risk (or Diversifiable Risk). These factors are unique to a single company or industry and can be eliminated by diversifying investments across different companies.',
   },
   {
-    question: "You hold a 10-year bond and receive regular interest payments. When you try to reinvest those payments, you find that current market rates have dropped to 1%.",
-    answers: [
-      "Reinvestment Risk",
-      "Interest Rate Risk",
-      "Credit Risk",
-      "Inflation Risk"
-    ],
+    question: 'You hold a 10-year bond and receive regular interest payments. When you try to reinvest those payments, you find that current market rates have dropped to 1%.',
+    answers: ['Reinvestment Risk', 'Interest Rate Risk', 'Credit Risk', 'Inflation Risk'],
     correctAnswerIndex: 0,
-    rationale: "This is specifically Reinvestment Risk. It is the risk that future cash flows—such as coupon payments from a bond—will have to be reinvested at a lower interest rate, reducing the investor's total return."
+    rationale: 'This is specifically Reinvestment Risk. It is the risk that future cash flows—such as coupon payments from a bond—will have to be reinvested at a lower interest rate, reducing the investor\'s total return.',
   },
   {
-    question: "A government declares that it can no longer pay back its sovereign debt obligations.",
-    answers: [
-      "Credit / Default Risk",
-      "Liquidity Risk",
-      "Market Risk",
-      "Interest Rate Risk"
-    ],
+    question: 'A government declares that it can no longer pay back its sovereign debt obligations.',
+    answers: ['Credit / Default Risk', 'Liquidity Risk', 'Market Risk', 'Interest Rate Risk'],
     correctAnswerIndex: 0,
-    rationale: "This is Credit Risk or Default Risk (also called Sovereign Risk when referring to a government). It is the risk that the issuer of a debt instrument will be unable to make its promised interest payments or repay the principal amount at maturity."
+    rationale: 'This is Credit Risk or Default Risk (also called Sovereign Risk when referring to a government). It is the risk that the issuer of a debt instrument will be unable to make its promised interest payments or repay the principal amount at maturity.',
   },
   {
-    question: "An investor is worried that the rising cost of bread and milk will make their fixed monthly annuity payments less valuable over time.",
-    answers: [
-      "Inflation Risk",
-      "Financial Risk",
-      "Business Risk",
-      "Marketability Risk"
-    ],
+    question: 'An investor is worried that the rising cost of bread and milk will make their fixed monthly annuity payments less valuable over time.',
+    answers: ['Inflation Risk', 'Financial Risk', 'Business Risk', 'Marketability Risk'],
     correctAnswerIndex: 0,
-    rationale: "This is Inflation Risk, or purchasing power risk. It's the risk that the rate of inflation will be higher than the return on an investment, causing the real value of that investment to decrease over time. Fixed-income assets are particularly vulnerable to this."
+    rationale: 'This is Inflation Risk, or purchasing power risk. It\'s the risk that the rate of inflation will be higher than the return on an investment, causing the real value of that investment to decrease over time. Fixed-income assets are particularly vulnerable to this.',
   },
   {
-    question: "A fund manager is forced to sell assets at a loss because a massive wave of investors all requested redemptions on the same day.",
-    answers: [
-      "Business Risk",
-      "Systematic Risk",
-      "Liquidity Risk",
-      "Credit Risk"
-    ],
+    question: 'A fund manager is forced to sell assets at a loss because a massive wave of investors all requested redemptions on the same day.',
+    answers: ['Business Risk', 'Systematic Risk', 'Liquidity Risk', 'Credit Risk'],
     correctAnswerIndex: 2,
-    rationale: "This is a classic example of Liquidity Risk. It is the difficulty of converting assets to cash at prevailing prices within a stipulated time, often forced by a high volume of redemption requests from investors."
+    rationale: 'This is a classic example of Liquidity Risk. It is the difficulty of converting assets to cash at prevailing prices within a stipulated time, often forced by a high volume of redemption requests from investors.',
   },
   {
     question: 'What is the primary investment objective of a typical hedge fund?',
@@ -1855,10 +1759,10 @@ export const seedQuizQuestions: QuizQuestion[] = [
     rationale: 'When a bond trades at par, its market price is equal to its par value. In this case, the Current Yield formula (Annual Coupon / Price) and the Coupon Rate formula (Annual Coupon / Par Value) have the same inputs, resulting in the same value.',
   },
   {
-    question: "An investment gains 20% in year one and then loses 10% in year two. What is the geometric mean return for the two-year period?",
+    question: 'An investment gains 20% in year one and then loses 10% in year two. What is the geometric mean return for the two-year period?',
     answers: ['5.00%', '3.92%', '10.0%', '4.50%'],
     correctAnswerIndex: 1,
-    rationale: "To find the geometric mean, convert percentages to multipliers (1.20 for a 20% gain, 0.90 for a 10% loss), multiply them together, take the nth root for n periods, and subtract 1. Calculation: [(1.20 * 0.90)]^(1/2) - 1 = [1.08]^(0.5) - 1 ≈ 3.92%. This is a more accurate measure of compound growth than a simple average."
+    rationale: 'To find the geometric mean, convert percentages to multipliers (1.20 for a 20% gain, 0.90 for a 10% loss), multiply them together, take the nth root for n periods, and subtract 1. Calculation: [(1.20 * 0.90)]^(1/2) - 1 = [1.08]^(0.5) - 1 ≈ 3.92%. This is a more accurate measure of compound growth than a simple average.',
   },
   {
     question: 'A Credit-Linked Note (CLN) is a structured product that combines a standard debt instrument with what embedded derivative?',
@@ -1880,70 +1784,75 @@ export const seedQuizQuestions: QuizQuestion[] = [
   },
   {
     question: 'What is the primary reason an investor would choose a structured product like an ELN over a standard bank deposit?',
-    answers: ['To get government-guaranteed returns.', 'To achieve a potentially higher yield than what is offered by deposits.', 'To eliminate all investment risk.', 'To invest directly in physical real estate.'],
+    answers: [
+      'To get government-guaranteed returns.',
+      'To achieve a potentially higher yield than what is offered by deposits.',
+      'To eliminate all investment risk.',
+      'To invest directly in physical real estate.',
+    ],
     correctAnswerIndex: 1,
     rationale: 'Structured products are designed to offer a yield that is potentially higher than traditional savings accounts or time deposits. Investors accept additional risks (like market risk on an underlying asset or issuer credit risk) in exchange for this enhanced yield potential.',
   },
   {
     question: 'In a Credit-Linked Note (CLN), the investor\'s principal and/or coupon payments are at risk if what event occurs?',
-    answers: ['The stock market has a positive year.', 'Interest rates fall by 1%.', 'A credit event (like a default) occurs for the \'reference entity\'.', 'The fund manager is changed.'],
+    answers: [
+      'The stock market has a positive year.',
+      'Interest rates fall by 1%.',
+      'A credit event (like a default) occurs for the \'reference entity\'.',
+      'The fund manager is changed.',
+    ],
     correctAnswerIndex: 2,
     rationale: 'The entire premise of a CLN is that its payments are linked to the creditworthiness of a separate entity (the \'reference entity\'). If that entity experiences a specified credit event, such as bankruptcy or failure to pay its debts, the CLN investor will lose principal or coupon payments.',
   },
   {
-    question: "If market interest rates fall from 5% to 3%, what is the most likely impact on an existing bond with a 5% coupon rate?",
+    question: 'If market interest rates fall from 5% to 3%, what is the most likely impact on an existing bond with a 5% coupon rate?',
     answers: [
-        "The bond's price will fall below par (discount).",
-        "The bond's price will rise above par (premium).",
-        "The bond's price will not change.",
-        "The bond's coupon rate will adjust to 3%."
+      'The bond\'s price will fall below par (discount).',
+      'The bond\'s price will rise above par (premium).',
+      'The bond\'s price will not change.',
+      'The bond\'s coupon rate will adjust to 3%.',
     ],
     correctAnswerIndex: 1,
-    rationale: "When market interest rates (3%) fall below a bond's fixed coupon rate (5%), the bond becomes more attractive because it pays a higher interest than new bonds. This increased demand causes its price to rise above its face value, and it trades at a premium."
+    rationale: 'When market interest rates (3%) fall below a bond\'s fixed coupon rate (5%), the bond becomes more attractive because it pays a higher interest than new bonds. This increased demand causes its price to rise above its face value, and it trades at a premium.',
   },
   {
-    question: "An investor buys a bond that is trading at a premium. How will the bond's Yield to Maturity (YTM) compare to its coupon rate?",
+    question: 'An investor buys a bond that is trading at a premium. How will the bond\'s Yield to Maturity (YTM) compare to its coupon rate?',
     answers: [
-        "The YTM will be higher than the coupon rate.",
-        "The YTM will be lower than the coupon rate.",
-        "The YTM will be equal to the coupon rate.",
-        "The YTM is not related to the coupon rate."
+      'The YTM will be higher than the coupon rate.',
+      'The YTM will be lower than the coupon rate.',
+      'The YTM will be equal to the coupon rate.',
+      'The YTM is not related to the coupon rate.',
     ],
     correctAnswerIndex: 1,
-    rationale: "When an investor pays a premium (more than face value) for a bond, the total return they receive if they hold it to maturity is reduced. This is because the price paid is higher than the face value they get back at the end. As a result, the Yield to Maturity (YTM) will be lower than the bond's fixed coupon rate."
+    rationale: 'When an investor pays a premium (more than face value) for a bond, the total return they receive if they hold it to maturity is reduced. This is because the price paid is higher than the face value they get back at the end. As a result, the Yield to Maturity (YTM) will be lower than the bond\'s fixed coupon rate.',
   },
   {
-    question: "A bond with a face value of $1,000 is currently trading on the market for $1,050. This bond is said to be trading at a:",
-    answers: [
-        "Par",
-        "Discount",
-        "Premium",
-        "Maturity"
-    ],
+    question: 'A bond with a face value of $1,000 is currently trading on the market for $1,050. This bond is said to be trading at a:',
+    answers: ['Par', 'Discount', 'Premium', 'Maturity'],
     correctAnswerIndex: 2,
-    rationale: "A bond trades at a premium when its market price is higher than its face value (par value). In this case, the price of $1,050 is greater than the $1,000 face value."
+    rationale: 'A bond trades at a premium when its market price is higher than its face value (par value). In this case, the price of $1,050 is greater than the $1,000 face value.',
   },
   {
-    question: "If new bonds are being issued with a 6% interest rate, what would likely happen to an older, existing bond with a 4% coupon rate?",
+    question: 'If new bonds are being issued with a 6% interest rate, what would likely happen to an older, existing bond with a 4% coupon rate?',
     answers: [
-        "It would trade at a premium.",
-        "It would trade at a discount.",
-        "Its coupon rate would automatically increase to 6%.",
-        "It would be recalled by the issuer."
+      'It would trade at a premium.',
+      'It would trade at a discount.',
+      'Its coupon rate would automatically increase to 6%.',
+      'It would be recalled by the issuer.',
     ],
     correctAnswerIndex: 1,
-    rationale: "The older bond with a 4% coupon is less attractive than new bonds paying 6%. To entice a buyer, the price of the older bond must fall below its face value, causing it to trade at a discount. This lower price increases the bond's overall yield to be competitive with new bonds."
+    rationale: 'The older bond with a 4% coupon is less attractive than new bonds paying 6%. To entice a buyer, the price of the older bond must fall below its face value, causing it to trade at a discount. This lower price increases the bond\'s overall yield to be competitive with new bonds.',
   },
   {
-    question: "An investor pays a premium for a bond. Over the life of the bond, the 'premium' portion of the investment's value is expected to:",
+    question: 'An investor pays a premium for a bond. Over the life of the bond, the \'premium\' portion of the investment\'s value is expected to:',
     answers: [
-        "Increase until maturity.",
-        "Decrease until the bond's value reaches its face value at maturity.",
-        "Stay the same.",
-        "Be paid back as a special dividend."
+      'Increase until maturity.',
+      'Decrease until the bond\'s value reaches its face value at maturity.',
+      'Stay the same.',
+      'Be paid back as a special dividend.',
     ],
     correctAnswerIndex: 1,
-    rationale: "The premium paid for a bond is amortized, or gradually reduced, over its life. At maturity, the bond is redeemed for its face value. Therefore, the initial premium amount effectively decreases to zero by the time the bond matures."
+    rationale: 'The premium paid for a bond is amortized, or gradually reduced, over its life. At maturity, the bond is redeemed for its face value. Therefore, the initial premium amount effectively decreases to zero by the time the bond matures.',
   },
   {
     question: 'A bond with a face value of $1,000 makes an annual interest payment of $45. What is its coupon rate?',
@@ -1995,7 +1904,12 @@ export const seedQuizQuestions: QuizQuestion[] = [
   },
   {
     question: 'Which of the following bonds would likely have the longest Macaulay Duration?',
-    answers: ['A 10-year bond with a 10% coupon.', 'A 10-year zero-coupon bond.', 'A 5-year bond with a 5% coupon.', 'A 5-year zero-coupon bond.'],
+    answers: [
+      'A 10-year bond with a 10% coupon.',
+      'A 10-year zero-coupon bond.',
+      'A 5-year bond with a 5% coupon.',
+      'A 5-year zero-coupon bond.',
+    ],
     correctAnswerIndex: 1,
     rationale: 'Duration increases with maturity and decreases with coupon rate. A zero-coupon bond has the highest duration for a given maturity because all of its cash flow occurs at the very end. Therefore, the 10-year zero-coupon bond will have the longest duration.',
   },
@@ -2113,8 +2027,64 @@ export const seedQuizQuestions: QuizQuestion[] = [
     ],
     correctAnswerIndex: 3,
     rationale: 'A cross-currency swap is designed for this exact situation. It allows two parties to exchange principal and/or interest payments on loans denominated in two different currencies, effectively allowing each party to leverage their advantage in their local market and hedge against foreign exchange risk.',
+  },
+  {
+    question: 'What is the fundamental difference in the legal structure between an ETF and an ETN?',
+    answers: [
+        'An ETF is a debt security, while an ETN is an investment fund.',
+        'An ETF is an investment fund that holds assets, while an ETN is a debt security (a promise to pay by an issuer).',
+        'Both are legally structured as investment funds.',
+        'Both are legally structured as debt securities.'
+    ],
+    correctAnswerIndex: 1,
+    rationale: 'The core difference is that an ETF is a fund that owns a basket of underlying assets (stocks, bonds). An ETN does not own any assets; it is a senior unsecured debt security, essentially a type of bond issued by a financial institution that promises to pay the return of an index.'
+  },
+  {
+      question: 'An investor is choosing between an ETF and an ETN that both track the same index. What is the primary unique risk associated with the ETN that is not present in the ETF?',
+      answers: [
+          'Tracking error risk.',
+          'Market risk.',
+          'Credit risk of the issuer.',
+          'Liquidity risk.'
+      ],
+      correctAnswerIndex: 2,
+      rationale: 'Because an ETN is a debt instrument, the investor is exposed to the credit risk of the issuing bank. If the issuer goes bankrupt, the ETN can become worthless, regardless of the index performance. Physical ETFs hold the assets, so they do not have this specific issuer credit risk.'
+  },
+  {
+      question: 'When you buy shares of a standard physical ETF that tracks the S&P 500, what do you own?',
+      answers: [
+          'A debt obligation from the fund manager.',
+          'A small ownership stake in the basket of 500 underlying stocks held by the fund.',
+          'A contract that promises to pay the return of the S&P 500.',
+          'Shares of the fund manager\'s company.'
+      ],
+      correctAnswerIndex: 1,
+      rationale: 'A physical ETF is a fund that physically holds the stocks or bonds of its index. Owning a share of the ETF gives you a fractional, beneficial ownership of those underlying assets.'
+  },
+  {
+      question: 'An Exchange-Traded Note (ETN) is best described as what type of security?',
+      answers: [
+          'A unit in a collective investment scheme.',
+          'A share of company equity.',
+          'A senior unsecured debt security.',
+          'A secured commodity-backed instrument.'
+      ],
+      correctAnswerIndex: 2,
+      rationale: 'An ETN is fundamentally a bond-like instrument. It is a debt note from the issuer (usually a bank), and it is \'unsecured,\' meaning it is not backed by specific collateral, relying only on the issuer\'s creditworthiness.'
+  },
+  {
+      question: 'Which of the following scenarios highlights the main risk of an ETN over an ETF?',
+      answers: [
+          'The fund\'s return is 9.8% while the index it tracks returned 10%.',
+          'The market crashes and both the index and the fund lose 20% of their value.',
+          'The bank that issued the note goes bankrupt, and the note\'s value drops to zero even though the index is up.',
+          'The trading volume for the product is low, making it hard to sell.'
+      ],
+      correctAnswerIndex: 2,
+      rationale: 'Scenario A is tracking error risk (more associated with ETFs). Scenario B is market risk (affects both). Scenario C is issuer credit risk, the defining and most critical risk of an ETN. Scenario D is liquidity risk (can affect both).'
   }
 ];
+
 
 
 
