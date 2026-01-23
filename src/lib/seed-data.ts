@@ -1908,4 +1908,34 @@ export const seedQuizQuestions: QuizQuestion[] = [
     correctAnswerIndex: 2,
     rationale: 'The entire premise of a CLN is that its payments are linked to the creditworthiness of a separate entity (the \'reference entity\'). If that entity experiences a specified credit event, such as bankruptcy or failure to pay its debts, the CLN investor will lose principal or coupon payments.',
   },
+  {
+    question: 'A bond with a par value of $1,000 makes an annual interest payment of $45. What is its coupon rate?',
+    answers: ['4.0%', '4.5%', '5.0%', '$45'],
+    correctAnswerIndex: 1,
+    rationale: 'The Coupon Rate is the annual interest payment divided by the bond\'s face (or par) value. Calculation: ($45 / $1,000) * 100 = 4.5%.',
+  },
+  {
+    question: 'An investor holds a bond with a face value of $5,000 and a coupon rate of 8%. How much will they receive in annual coupon payments?',
+    answers: ['$80', '$400', '$500', '$5,400'],
+    correctAnswerIndex: 1,
+    rationale: 'The annual coupon payment is calculated by multiplying the face value of the bond by its coupon rate. Calculation: $5,000 * 0.08 = $400.',
+  },
+  {
+    question: 'When a bond is sold on the secondary market between its coupon payment dates, who is entitled to receive the accrued interest from the buyer?',
+    answers: ['The bond issuer', 'The buyer', 'The seller', 'The stock exchange'],
+    correctAnswerIndex: 2,
+    rationale: 'The seller is entitled to the interest that has accrued during the period they held the bond. Since the buyer will receive the next full coupon payment, the buyer compensates the seller for this accrued portion at the time of the sale.',
+  },
+  {
+    question: 'A bond with a face value of $1,000 has a coupon rate of 7.3%. An investor sells the bond when there are exactly 50 days until the next payment. Using the formula Accrued Coupon = (Face Value * Coupon Rate * Days to Next Payment) / 365, what is the accrued coupon?',
+    answers: ['$10', '$20', '$36.50', '$7.30'],
+    correctAnswerIndex: 0,
+    rationale: 'Using the provided formula: Accrued Coupon = ($1,000 * 0.073 * 50) / 365. This simplifies to ($73 * 50) / 365 = $3650 / 365 = $10.',
+  },
+  {
+    question: 'A corporate bond with a face value of $10,000 has an 8% coupon rate. It is sold 45 days before its next payment date. Assuming a 360-day year is used for calculation per the provided formula, what is the accrued interest owed to the seller?',
+    answers: ['$800.00', '$200.00', '$100.00', '$45.00'],
+    correctAnswerIndex: 2,
+    rationale: 'Using the formula Accrued Coupon = (Face Value * Coupon Rate * Days to Next Payment) / Days in Year. Calculation: ($10,000 * 0.08 * 45) / 360 = ($800 * 45) / 360 = $800 / 8 = $100.',
+  },
 ];
