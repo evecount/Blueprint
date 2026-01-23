@@ -46,7 +46,7 @@ export default function ResourcesPage() {
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <FileText className="w-8 h-8 text-accent" />
-                   {resource.id !== 'm8-cis-question-bank' && (
+                   {resource.id !== 'm8-cis-question-bank' && resource.id !== 'just-math-stuff' && (
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant="ghost" size="icon" className="w-8 h-8 -mt-2 -mr-2">

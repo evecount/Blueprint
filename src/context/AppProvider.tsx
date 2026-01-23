@@ -3,6 +3,7 @@
 import type { Resource, Performance, QuizQuestion } from '@/lib/types';
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { seedQuizQuestions } from '@/lib/seed-data';
+import { mathQuizQuestions } from '@/lib/math-quiz-data';
 
 // A custom hook to synchronize state with localStorage
 function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val: T) => T)) => void] {
@@ -35,10 +36,17 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val
 }
 
 
-const defaultResource: Resource = {
+const m8Resource: Resource = {
   id: 'm8-cis-question-bank',
   name: 'M8 Collective Investment Schemes',
   questions: seedQuizQuestions,
+  createdAt: '2024-01-01T00:00:00.000Z',
+};
+
+const mathResource: Resource = {
+  id: 'just-math-stuff',
+  name: 'Just Math Stuff',
+  questions: mathQuizQuestions,
   createdAt: '2024-01-01T00:00:00.000Z',
 };
 
@@ -55,24 +63,34 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [resources, setResources] = useLocalStorage<Resource[]>('reviewmate-resources', [defaultResource]);
+  const [resources, setResources] = useLocalStorage<Resource[]>('reviewmate-resources', [m8Resource, mathResource]);
   const [performance, setPerformance] = useLocalStorage<Performance>('reviewmate-performance', {});
   
   useEffect(() => {
-    // This effect ensures the default M8 quiz in localStorage is always up-to-date with the latest questions from the codebase.
+    // This effect ensures the default quizzes in localStorage are always up-to-date with the latest questions from the codebase.
     setResources(prevResources => {
-      const m8Index = prevResources.findIndex(r => r.id === 'm8-cis-question-bank');
       const newResources = [...prevResources];
       
+      // Update M8 Quiz
+      const m8Index = newResources.findIndex(r => r.id === m8Resource.id);
       if (m8Index !== -1) {
-        // If M8 quiz exists, update its questions if they are different from the seed data.
         if (newResources[m8Index].questions.length !== seedQuizQuestions.length) {
           newResources[m8Index].questions = seedQuizQuestions;
         }
       } else {
-        // If M8 quiz was deleted or doesn't exist, add it back.
-        newResources.push(defaultResource);
+        newResources.push(m8Resource);
       }
+      
+      // Update Math Quiz
+      const mathIndex = newResources.findIndex(r => r.id === mathResource.id);
+      if (mathIndex !== -1) {
+         if (newResources[mathIndex].questions.length !== mathQuizQuestions.length) {
+          newResources[mathIndex].questions = mathQuizQuestions;
+        }
+      } else {
+        newResources.push(mathResource);
+      }
+
       return newResources;
     });
   }, []); // Run only once on mount
@@ -87,8 +105,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const deleteResource = (resourceId: string) => {
-    // Prevent deleting the default M8 quiz. The UI also hides the delete button for it.
-    if (resourceId === 'm8-cis-question-bank') {
+    // Prevent deleting the default quizzes. The UI also hides the delete button for them.
+    if (resourceId === m8Resource.id || resourceId === mathResource.id) {
       return; 
     }
     setResources(resources.filter((r) => r.id !== resourceId));
