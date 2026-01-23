@@ -488,17 +488,6 @@ export const seedQuizQuestions: QuizQuestion[] = [
     rationale: 'Short selling and buying put options are "bearish" strategies, meaning they profit when the price of the underlying asset falls. These are common ways to hedge against or profit from an expected market downturn. Buying call options (a) and high-growth stocks (b) are "bullish" strategies.',
   },
   {
-    question: 'The expense ratio of a unit trust represents the:',
-    answers: [
-      'The fund\'s historical performance.',
-      'The total return an investor can expect.',
-      'The annual cost of running the fund, expressed as a percentage of the fund\'s assets.',
-      'The commission paid to the broker for buying the units.',
-    ],
-    correctAnswerIndex: 2,
-    rationale: 'The expense ratio is a measure of the annual cost to operate a fund. It includes management fees, administrative costs, and other operational expenses. This amount is deducted from the fund\'s assets and directly reduces investor returns.',
-  },
-  {
     question: 'Which of the following is typically excluded from the calculation of a unit trust’s "Reporting Ratio" (Expense Ratio)?',
     answers: [
       'Trustee and custodian fees',
@@ -591,7 +580,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
     question: 'A pension system that lacks "Adequacy" most likely has:',
     answers: [
       'Poor communication with members.',
-      "Payouts that do not meet the basic cost of living.",
+      'Payouts that do not meet the basic cost of living.',
       'Low government debt.',
       'High participation rates.',
     ],
@@ -1793,4 +1782,94 @@ export const seedQuizQuestions: QuizQuestion[] = [
     correctAnswerIndex: 0,
     rationale: 'This uses the formula for the present value of a growing ordinary annuity: PV = Pmt1 / (i - g) * [1 - ((1+g)/(1+i))^n]. Calculation: PV = $50,000 / (0.06 - 0.02) * [1 - ((1.02)/(1.06))^30] = $853,750.',
   },
+  {
+    question: 'A company has an EBIT Margin of 10%, Asset Turnover of 2, and Financial Leverage of 1.5. Ignoring tax and interest burdens, what is its approximate Return on Equity (ROE)?',
+    answers: ['20%', '30%', '15%', '25%'],
+    correctAnswerIndex: 1,
+    rationale: 'Using the DuPont analysis, ROE is the product of its components. ROE ≈ EBIT Margin * Asset Turnover * Financial Leverage. Calculation: 10% * 2 * 1.5 = 30%.',
+  },
+  {
+    question: 'A company increases its Asset Turnover from 1.5 to 2.0. If all other factors in the DuPont analysis remain constant, what is the effect on its ROE?',
+    answers: ['ROE will decrease.', 'ROE will increase.', 'ROE will remain unchanged.', 'Cannot be determined.'],
+    correctAnswerIndex: 1,
+    rationale: 'Asset Turnover (Sales/Assets) is a measure of efficiency. An increase in this ratio is a direct multiplier in the ROE formula, so if all other factors are constant, ROE will increase, signifying better use of assets to generate sales.',
+  },
+  {
+    question: 'A company takes on more debt, causing its Financial Leverage (Assets/Equity) to increase. If other components of the ROE formula are unchanged, what happens to ROE?',
+    answers: ['ROE will decrease.', 'ROE will increase.', 'ROE will remain unchanged.', 'It depends on the interest rate.'],
+    correctAnswerIndex: 1,
+    rationale: 'Financial Leverage amplifies the returns to shareholders. As long as the company is profitable, increasing leverage (taking on more debt relative to equity) will increase the Return on Equity (ROE).',
+  },
+  {
+    question: 'Which component of the DuPont formula measures a company\'s core profitability from its operations before interest and taxes?',
+    answers: ['Asset Turnover', 'Financial Leverage', 'EBIT Margin', 'Tax Burden'],
+    correctAnswerIndex: 2,
+    rationale: 'The EBIT Margin (EBIT/Sales) specifically measures a company\'s operational profitability by showing how much it earns from each dollar of sales before accounting for interest payments and taxes.',
+  },
+  {
+    question: 'Two companies have the same EBIT Margin and Financial Leverage. Company A has an Asset Turnover of 2.0, while Company B has an Asset Turnover of 1.0. Which company has a higher ROE?',
+    answers: ['Company A', 'Company B', 'Their ROEs are equal.', 'Cannot be determined without sales figures.'],
+    correctAnswerIndex: 0,
+    rationale: 'With all other factors being equal, the company with the higher Asset Turnover will have a higher Return on Equity (ROE). Company A is more efficient at using its assets to generate sales, leading to a better ROE.',
+  },
+  {
+    question: 'A bond with a par value of $1,000 pays an annual coupon of $50. What is its Coupon Rate?',
+    answers: ['4%', '5%', '6%', '$50'],
+    correctAnswerIndex: 1,
+    rationale: 'The Coupon Rate is the annual coupon payment expressed as a percentage of the bond\'s par value. Formula: (Annual Coupon / Par Value) * 100. Calculation: ($50 / $1,000) * 100 = 5%.',
+  },
+  {
+    question: 'A bond has a par value of $1,000 and a coupon rate of 8%. It is currently trading for $1,250. What is its Current Yield?',
+    answers: ['8.0%', '10.0%', '6.4%', '7.2%'],
+    correctAnswerIndex: 2,
+    rationale: 'First, find the annual coupon payment: 8% * $1,000 = $80. Then, calculate Current Yield = (Annual Coupon / Bond Price) * 100. Calculation: ($80 / $1,250) * 100 = 6.4%.',
+  },
+  {
+    question: 'A bond\'s Coupon Rate is 7%. Its Current Yield is 8%. Is the bond trading at a premium, discount, or par?',
+    answers: ['Premium (above par)', 'Discount (below par)', 'Par', 'Cannot be determined'],
+    correctAnswerIndex: 1,
+    rationale: 'If the Current Yield (which is based on the market price) is higher than the fixed Coupon Rate (which is based on par value), it means the market price must be lower than the par value. Therefore, the bond is trading at a discount.',
+  },
+  {
+    question: 'If a bond\'s price rises, what happens to its Yield to Maturity (YTM), assuming the coupon rate is fixed?',
+    answers: ['YTM increases.', 'YTM decreases.', 'YTM remains unchanged.', 'YTM becomes equal to the coupon rate.'],
+    correctAnswerIndex: 1,
+    rationale: 'Bond prices and yields have an inverse relationship. As the price an investor pays for the bond goes up, the overall yield they will receive if they hold it to maturity (YTM) goes down.',
+  },
+  {
+    question: 'A bond with a 5% coupon rate is trading at par. What is its Current Yield?',
+    answers: ['Higher than 5%', 'Lower than 5%', 'Exactly 5%', 'Cannot be determined'],
+    correctAnswerIndex: 2,
+    rationale: 'When a bond trades at par, its market price is equal to its par value. In this case, the Current Yield formula (Annual Coupon / Price) and the Coupon Rate formula (Annual Coupon / Par Value) have the same inputs, resulting in the same value.',
+  },
+  {
+    question: 'Bond A has a Macaulay Duration of 7 years. Bond B has a Macaulay Duration of 10 years. Which bond\'s price will be more affected by a 1% change in interest rates?',
+    answers: ['Bond A', 'Bond B', 'They will be affected equally.', 'Cannot be determined.'],
+    correctAnswerIndex: 1,
+    rationale: 'Macaulay Duration is a measure of a bond\'s interest rate sensitivity. A higher duration means a greater price change for a given change in interest rates. Therefore, Bond B is more sensitive.',
+  },
+  {
+    question: 'A bond paying semi-annual coupons has a Macaulay Duration of 8 years and a YTM of 4%. What is its Modified Duration?',
+    answers: ['8.16 years', '8.00 years', '7.84 years', '7.69 years'],
+    correctAnswerIndex: 2,
+    rationale: 'The formula for Modified Duration for a semi-annual bond is: Macaulay Duration / (1 + YTM/2). Calculation: 8 / (1 + 0.04/2) = 8 / 1.02 ≈ 7.84 years.',
+  },
+  {
+    question: 'A bond has a Modified Duration of 9 years. If market interest rates increase by 1% (dy = 0.01), what is the approximate percentage change in the bond\'s price?',
+    answers: ['+9%', '-9%', '+1%', '-1%'],
+    correctAnswerIndex: 1,
+    rationale: 'The formula for approximate price change is: -Modified Duration * Change in Interest Rates (in decimal). Calculation: -9 * 0.01 = -0.09, which is a -9% change.',
+  },
+  {
+    question: 'Which of the following bonds would likely have the longest Macaulay Duration?',
+    answers: ['A 10-year bond with a 10% coupon.', 'A 10-year zero-coupon bond.', 'A 5-year bond with a 5% coupon.', 'A 5-year zero-coupon bond.'],
+    correctAnswerIndex: 1,
+    rationale: 'Duration increases with maturity and decreases with coupon rate. A zero-coupon bond has the highest duration for a given maturity because all of its cash flow occurs at the very end. Therefore, the 10-year zero-coupon bond will have the longest duration.',
+  },
+  {
+    question: 'A bond\'s price fell by approximately 6% when interest rates rose by 1.5%. What is the bond\'s approximate Modified Duration?',
+    answers: ['4 years', '6 years', '9 years', '1.5 years'],
+    correctAnswerIndex: 0,
+    rationale: 'The formula can be rearranged to solve for Modified Duration: D* ≈ -(% Change in Price / Change in Rates). Calculation: -(-6% / 1.5%) = 4. The bond has a modified duration of approximately 4 years.',
+  }
 ];
