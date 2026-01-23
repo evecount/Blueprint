@@ -1761,7 +1761,7 @@ export const seedQuizQuestions: QuizQuestion[] = [
   {
     question: 'A bond\'s before-tax current yield is 8%. Its after-tax current yield is 6%. What is the investor\'s marginal tax rate (MRT)?',
     answers: ['20%', '25%', '30%', '14%'],
-    correctAnswerIndex: 1,
+    correctAnswerIndex: 2,
     rationale: 'The formula is After-tax yield = Before-tax yield * (1 - MRT). Rearranging to solve for MRT: MRT = 1 - (After-tax yield / Before-tax yield). Calculation: MRT = 1 - (6% / 8%) = 1 - 0.75 = 0.25, or 25%.',
   },
   {
@@ -1871,5 +1871,11 @@ export const seedQuizQuestions: QuizQuestion[] = [
     answers: ['4 years', '6 years', '9 years', '1.5 years'],
     correctAnswerIndex: 0,
     rationale: 'The formula can be rearranged to solve for Modified Duration: D* ≈ -(% Change in Price / Change in Rates). Calculation: -(-6% / 1.5%) = 4. The bond has a modified duration of approximately 4 years.',
+  },
+  {
+    question: "An investment gains 20% in year one and then loses 10% in year two. What is the geometric mean return for the two-year period?",
+    answers: ['5.00%', '3.92%', '10.0%', '4.50%'],
+    correctAnswerIndex: 1,
+    rationale: "To find the geometric mean, convert percentages to multipliers (1.20 for a 20% gain, 0.90 for a 10% loss), multiply them together, take the nth root for n periods, and subtract 1. Calculation: [(1.20 * 0.90)]^(1/2) - 1 = [1.08]^(0.5) - 1 ≈ 3.92%. This is a more accurate measure of compound growth than a simple average."
   }
 ];
