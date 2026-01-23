@@ -43,19 +43,21 @@ export default function QuizClientPage({ resourceId }: { resourceId: string }) {
   }, [resourceId, getResourceById, router, toast]);
   
 
-  const handleNextQuestion = (selectedAnswer: number) => {
+  const handleNextQuestion = (selectedAnswer: number, isCorrect: boolean) => {
     const newAnswers = [...userAnswers, selectedAnswer];
     setUserAnswers(newAnswers);
 
-    const newScore = newAnswers.reduce((acc, answer, index) => {
-      return questions[index].correctAnswerIndex === answer ? acc + 1 : acc;
-    }, 0);
-    setScore(newScore);
+    let updatedScore = score;
+    if (isCorrect) {
+      updatedScore = score + 1;
+    }
+    // We set score here to update the UI immediately
+    setScore(updatedScore);
 
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      finishQuiz(newScore);
+      finishQuiz(updatedScore);
     }
   };
 
@@ -104,7 +106,7 @@ export default function QuizClientPage({ resourceId }: { resourceId: string }) {
         <QuestionCard
           key={currentQuestionIndex}
           question={currentQuestion}
-          onAnswer={(selectedAnswer, isCorrect) => handleNextQuestion(selectedAnswer)}
+          onAnswer={handleNextQuestion}
         />
       ) : (
          <div className="flex flex-col items-center justify-center h-64 gap-4 text-center">
