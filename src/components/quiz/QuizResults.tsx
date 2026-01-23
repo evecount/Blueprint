@@ -25,6 +25,7 @@ interface QuizResultsProps {
   userAnswers: number[];
   score: number;
   resourceName: string;
+  onRestart: () => void;
 }
 
 const chartConfig = {
@@ -32,7 +33,7 @@ const chartConfig = {
   incorrect: { label: 'Incorrect', color: 'hsl(var(--destructive))' },
 } satisfies ChartConfig;
 
-export default function QuizResults({ questions, userAnswers, score, resourceName }: QuizResultsProps) {
+export default function QuizResults({ questions, userAnswers, score, resourceName, onRestart }: QuizResultsProps) {
   const router = useRouter();
   const percentage = Math.round((score / questions.length) * 100);
   const [showOnlyIncorrect, setShowOnlyIncorrect] = useState(false);
@@ -67,16 +68,14 @@ export default function QuizResults({ questions, userAnswers, score, resourceNam
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Button onClick={() => window.location.reload()}>
+            <Button onClick={onRestart}>
               <Repeat className="w-4 h-4 mr-2" />
               Retry Quiz
             </Button>
-            <Link href="/" passHref>
-              <Button variant="outline">
-                <Home className="w-4 h-4 mr-2" />
-                Go to Dashboard
-              </Button>
-            </Link>
+            <Button variant="outline" onClick={() => router.push('/')}>
+              <Home className="w-4 h-4 mr-2" />
+              Go to Dashboard
+            </Button>
             <Link href="/performance" passHref>
               <Button variant="outline">
                 <TrendingUp className="w-4 h-4 mr-2" />
