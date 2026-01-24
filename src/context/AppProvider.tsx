@@ -40,6 +40,7 @@ interface AppContextType {
   deleteResource: (resourceId: string) => void;
   updatePerformance: (topic: string, score: number, total: number) => void;
   getResourceById: (id: string) => Resource | undefined;
+  addQuestionToResource: (resourceId: string, question: QuizQuestion) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -77,6 +78,22 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     return resources.find((r) => r.id === id);
   };
 
+  const addQuestionToResource = (resourceId: string, newQuestion: QuizQuestion) => {
+    setResources(prevResources =>
+      prevResources.map(resource => {
+        if (resource.id === resourceId) {
+          // Create a new question object to be safe, although newQuestion should be fine
+          const questionToAdd = { ...newQuestion };
+          return {
+            ...resource,
+            questions: [...resource.questions, questionToAdd],
+          };
+        }
+        return resource;
+      })
+    );
+  };
+
   const value = {
     resources,
     performance,
@@ -84,6 +101,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     deleteResource,
     updatePerformance,
     getResourceById,
+    addQuestionToResource,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

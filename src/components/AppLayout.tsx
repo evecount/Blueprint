@@ -1,6 +1,6 @@
 'use client';
 
-import { BarChart2, BookOpen, Bot, MessageSquare, TrendingUp } from 'lucide-react';
+import { BarChart2, BookOpen, Bot, Gift, MessageSquare, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -25,6 +25,7 @@ const menuItems = [
   { href: '/resources', label: 'My Quiz Decks', icon: BookOpen },
   { href: '/performance', label: 'My Progress', icon: TrendingUp },
   { href: '/chat', label: 'Chat with Notes', icon: MessageSquare },
+  { href: '/donate', label: 'Contribute Question', icon: Gift },
 ];
 
 export function AppLayout({ children }: { children: ReactNode }) {
