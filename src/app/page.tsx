@@ -71,27 +71,25 @@ export default function DashboardPage() {
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <FileText className="w-8 h-8 text-accent" />
-                    {resource.id !== 'm8-cis-question-bank' && resource.id !== 'just-math-stuff' && resource.id !== 'm8a-rules-regs-data' && (
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="w-8 h-8 -mt-2 -mr-2"
-                          >
-                            <MoreVertical className="w-4 h-4" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuItem
-                            onClick={() => deleteResource(resource.id)}
-                          >
-                            <Trash2 className="w-4 h-4 mr-2" />
-                            Delete
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    )}
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="w-8 h-8 -mt-2 -mr-2"
+                        >
+                          <MoreVertical className="w-4 h-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem
+                          onClick={() => deleteResource(resource.id)}
+                        >
+                          <Trash2 className="w-4 h-4 mr-2" />
+                          Delete
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </div>
                   <CardTitle className="pt-4 font-headline">
                     {resource.name}
