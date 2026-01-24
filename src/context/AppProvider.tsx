@@ -2,6 +2,7 @@
 
 import type { Resource, Performance, QuizQuestion } from '@/lib/types';
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { seedResources } from '@/lib/seed-data';
 
 // A custom hook to synchronize state with localStorage
 function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val: T) => T)) => void] {
@@ -11,6 +12,8 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val
     // This effect runs only on the client, after hydration.
     try {
       const item = window.localStorage.getItem(key);
+      // If there's an item in localStorage, use it. This will overwrite the initial server-rendered value.
+      // This is safe because it runs after hydration.
       if (item) {
         setStoredValue(JSON.parse(item));
       }
@@ -49,7 +52,7 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [resources, setResources] = useLocalStorage<Resource[]>('reviewmate-resources', []);
+  const [resources, setResources] = useLocalStorage<Resource[]>('reviewmate-resources', seedResources);
   const [performance, setPerformance] = useLocalStorage<Performance>('reviewmate-performance', {});
   
   const addResource = (resourceData: Omit<Resource, 'id' | 'createdAt'>) => {
