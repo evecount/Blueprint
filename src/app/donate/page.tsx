@@ -193,7 +193,7 @@ export default function DonatePage() {
     <Card className="text-center">
       <CardHeader>
         <CardTitle>Stuck on Homework?</CardTitle>
-        <CardDescription>Scan your question with your camera, get an AI-powered answer, and donate it to the community.</CardDescription>
+        <CardDescription>Scan your question to get an AI answer. When you donate it, you're helping the next person who gets stuck.</CardDescription>
       </CardHeader>
       <CardContent>
          <Button size="lg" onClick={() => setIsCameraActive(true)}>
@@ -289,7 +289,7 @@ export default function DonatePage() {
       <header>
         <h1 className="text-3xl font-bold tracking-tight font-headline">Contribute a Question</h1>
         <p className="text-muted-foreground">
-          Get help with your homework and enrich the community question bank.
+          Get help with your homework and help someone else pass. Because education should be free.
         </p>
       </header>
 
