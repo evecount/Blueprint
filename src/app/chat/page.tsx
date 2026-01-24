@@ -93,9 +93,9 @@ export default function ChatPage() {
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)] md:h-[calc(100vh-6rem)] lg:h-[calc(100vh-8rem)]">
       <header className="mb-4">
-        <h1 className="text-3xl font-bold tracking-tight font-headline">Chat with Document</h1>
+        <h1 className="text-3xl font-bold tracking-tight font-headline">Chat with Your Notes</h1>
         <p className="text-muted-foreground">
-          Upload a document and ask questions to get answers from the text.
+          Upload your notes and get instant answers to your questions.
         </p>
       </header>
 
@@ -104,13 +104,13 @@ export default function ChatPage() {
           <div className="flex items-center justify-center h-full">
             <Card className="w-full max-w-md text-center">
               <CardHeader>
-                <CardTitle className="font-headline">Upload a Document to Start</CardTitle>
+                <CardTitle className="font-headline">Upload Your Notes to Start</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="mb-4 text-muted-foreground">Select a Markdown (.md) or text (.txt) file to begin your chat session.</p>
+                <p className="mb-4 text-muted-foreground">Select a Markdown (.md) or text (.txt) file with your notes to begin.</p>
                 <Button onClick={() => fileInputRef.current?.click()}>
                   <UploadCloud className="w-4 h-4 mr-2" />
-                  Upload Document
+                  Upload Notes
                 </Button>
                 <input
                   type="file"

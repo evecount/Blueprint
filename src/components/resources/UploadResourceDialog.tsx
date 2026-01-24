@@ -23,7 +23,7 @@ import { generateQuiz } from '@/ai/flows/initial-quiz-codification';
 import type { QuizQuestion } from '@/lib/types';
 
 const formSchema = z.object({
-  name: z.string().min(3, { message: 'Resource name must be at least 3 characters.' }),
+  name: z.string().min(3, { message: 'Deck name must be at least 3 characters.' }),
   file: z.any().refine((files) => files?.length === 1, 'File is required.'),
 });
 
@@ -90,7 +90,7 @@ export default function UploadResourceDialog({ open, onOpenChange }: UploadResou
 
       toast({
         title: 'Upload Successful',
-        description: `"${values.name}" has been added and a quiz was created.`,
+        description: `"${values.name}" has been created and is ready to share.`,
       });
       form.reset();
       onOpenChange(false);
@@ -98,7 +98,7 @@ export default function UploadResourceDialog({ open, onOpenChange }: UploadResou
       console.error(error);
       toast({
         variant: 'destructive',
-        title: 'Failed to Create Quiz',
+        title: 'Failed to Create Deck',
         description: error instanceof Error ? error.message : 'An unknown error occurred. Please try again.',
       });
     } finally {
@@ -110,8 +110,8 @@ export default function UploadResourceDialog({ open, onOpenChange }: UploadResou
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="font-headline">Create a Quiz</DialogTitle>
-          <DialogDescription>Upload a Markdown (.md) file with your study notes to generate a quiz.</DialogDescription>
+          <DialogTitle className="font-headline">Create a Quiz Deck</DialogTitle>
+          <DialogDescription>Upload a Markdown (.md) file with your notes to generate a quiz deck.</DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -120,9 +120,9 @@ export default function UploadResourceDialog({ open, onOpenChange }: UploadResou
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Quiz Name</FormLabel>
+                  <FormLabel>Deck Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., Chapter 1, Midterm Study Guide" {...field} />
+                    <Input placeholder="e.g., Biology Midterm, History Ch. 5" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -151,7 +151,7 @@ export default function UploadResourceDialog({ open, onOpenChange }: UploadResou
                 ) : (
                   <>
                     <UploadCloud className="mr-2 h-4 w-4" />
-                    Upload & Generate
+                    Create Deck
                   </>
                 )}
               </Button>

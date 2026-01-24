@@ -7,16 +7,16 @@ export default function PerformancePage() {
   return (
     <div className="space-y-8">
       <header>
-        <h1 className="text-3xl font-bold tracking-tight font-headline">My Performance</h1>
+        <h1 className="text-3xl font-bold tracking-tight font-headline">My Progress</h1>
         <p className="text-muted-foreground">
-          Track your quiz scores over time to see your progress.
+          Track your scores and see how you improve over time.
         </p>
       </header>
       <Card>
         <CardHeader>
-          <CardTitle>Overall Score by Quiz</CardTitle>
+          <CardTitle>Overall Score by Deck</CardTitle>
           <CardDescription>
-            This chart shows your average percentage score for each quiz you've completed.
+            This chart shows your average score for each deck you've completed.
           </CardDescription>
         </CardHeader>
         <CardContent>

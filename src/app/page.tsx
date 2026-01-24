@@ -42,16 +42,15 @@ export default function DashboardPage() {
       <header className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-1">
           <h1 className="text-3xl font-bold tracking-tight font-headline">
-            Welcome to ReviewMate
+            Welcome to QuizUp
           </h1>
           <p className="text-muted-foreground">
-            Your available quizzes are listed below. Create a new one to get
-            started.
+            Your quiz decks are ready. Create and share a new one!
           </p>
         </div>
         <Button onClick={() => setUploadDialogOpen(true)} variant="outline">
           <UploadCloud className="mr-2 h-4 w-4" />
-          Create Your Own Quiz
+          Create New Deck
         </Button>
       </header>
 
@@ -59,11 +58,10 @@ export default function DashboardPage() {
         {resources.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-64 gap-4 text-center border-2 border-dashed rounded-lg">
             <h3 className="text-xl font-semibold font-headline">
-              No Quizzes Found
+              No Quiz Decks Yet
             </h3>
             <p className="text-muted-foreground">
-              Click "Create Your Own Quiz" to generate your first quiz from a
-              Markdown file.
+              Click "Create New Deck" to build your first quiz.
             </p>
           </div>
         ) : (
@@ -104,7 +102,7 @@ export default function DashboardPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground">
-                    {resource.questions.length} questions available
+                    {resource.questions.length} cards
                   </p>
                 </CardContent>
                 <CardFooter>

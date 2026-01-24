@@ -1,19 +1,20 @@
-# ReviewMate
+# QuizUp
 
-Welcome to ReviewMate, your AI-powered proficiency testing partner! This application is designed to help companies test the proficiency of their workforce by turning materials into interactive quizzes.
+Welcome to QuizUp, your AI-powered collaborative learning partner! This application is designed to help students create and share interactive quizzes to master any subject.
 
 ## Features
 
-- **AI-Powered Quiz Generation**: Upload your training materials or notes in Markdown (`.md`) format, and let our AI generate a comprehensive quiz for you in seconds.
-- **Pre-loaded Quiz**: Jump right in with a pre-loaded question bank for the "M8 Collective Investment Schemes" to test the platform.
+- **AI-Powered Quiz Generation**: Upload your notes in Markdown (`.md`) format, and let our AI generate a comprehensive quiz deck for you in seconds.
+- **Share and Collaborate**: Create study decks for your class and share them with friends.
+- **Pre-loaded Decks**: Jump right in with pre-loaded question banks for subjects like "M8 Collective Investment Schemes" to see how it works.
 - **Instant Feedback & Rationales**: Don't just know if you're right or wrong—understand *why*. Each question comes with a detailed rationale to reinforce learning.
-- **Performance Tracking**: Monitor progress over time with a dedicated Performance page that charts scores for each quiz taken.
+- **Performance Tracking**: Monitor your progress over time with a dedicated Performance page that charts your scores for each quiz you take.
 
 ## Getting Started
 
-1.  **Explore the Dashboard**: The main page gives you direct access to start the featured quiz.
-2.  **Create Your Own Quiz**: Click the "Create Your Own Quiz" button to upload a Markdown file and generate a new quiz.
-3.  **Manage Your Quizzes**: Navigate to the "My Quizzes" page to see all your available quizzes.
-4.  **Track Your Progress**: After completing a quiz, head over to the "Performance" page to see how you did.
+1.  **Explore the Dashboard**: The main page gives you direct access to available quiz decks.
+2.  **Create Your Own Deck**: Click the "Create New Deck" button to upload a Markdown file and generate a new quiz.
+3.  **Manage Your Decks**: Navigate to the "My Quiz Decks" page to see all your available quizzes.
+4.  **Track Your Progress**: After completing a quiz, head over to the "My Progress" page to see how you did.
 
 This project is built with Next.js, React, ShadCN, Tailwind CSS, and Genkit.

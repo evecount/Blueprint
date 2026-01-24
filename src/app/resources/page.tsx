@@ -25,19 +25,19 @@ export default function ResourcesPage() {
       <UploadResourceDialog open={isUploadDialogOpen} onOpenChange={setUploadDialogOpen} />
       <header className="flex items-center justify-between">
         <div className="space-y-1">
-          <h1 className="text-3xl font-bold tracking-tight font-headline">My Quizzes</h1>
-          <p className="text-muted-foreground">Manage your quizzes and start a new session.</p>
+          <h1 className="text-3xl font-bold tracking-tight font-headline">My Quiz Decks</h1>
+          <p className="text-muted-foreground">Manage your decks and challenge your friends.</p>
         </div>
         <Button onClick={() => setUploadDialogOpen(true)}>
           <UploadCloud className="mr-2 h-4 w-4" />
-          Create New Quiz
+          Create New Deck
         </Button>
       </header>
 
       {resources.length === 0 ? (
         <div className="flex flex-col items-center justify-center h-64 gap-4 text-center border-2 border-dashed rounded-lg">
-          <h3 className="text-xl font-semibold font-headline">No Quizzes Found</h3>
-          <p className="text-muted-foreground">Click "Create New Quiz" to generate your first quiz from a Markdown file.</p>
+          <h3 className="text-xl font-semibold font-headline">No Decks Found</h3>
+          <p className="text-muted-foreground">Click "Create New Deck" to generate your first quiz from a Markdown file.</p>
         </div>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -68,7 +68,7 @@ export default function ResourcesPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">{resource.questions.length} questions available</p>
+                <p className="text-sm text-muted-foreground">{resource.questions.length} cards</p>
               </CardContent>
               <CardFooter>
                 <Link href={`/quiz/${resource.id}`} passHref className="w-full">
