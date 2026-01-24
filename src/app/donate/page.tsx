@@ -18,7 +18,7 @@ function GeneratedQuestionPreview({ question }: { question: SolveQuestionOutput 
         <CardTitle className="flex items-center gap-2 font-headline">
           <Sparkles className="text-accent" /> AI Generated Question
         </CardTitle>
-        <CardDescription>Review the generated question before donating it.</CardDescription>
+        <CardDescription>Review the generated question and its source before donating it.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="font-semibold">{question.question}</p>
@@ -36,6 +36,22 @@ function GeneratedQuestionPreview({ question }: { question: SolveQuestionOutput 
           <h4 className="font-semibold">Rationale:</h4>
           <p className="text-sm text-muted-foreground">{question.rationale}</p>
         </div>
+
+        {question.sourceDetails && Object.values(question.sourceDetails).some(v => v) && (
+            <div className="pt-4 mt-4 border-t">
+                <h4 className="mb-2 font-semibold">Extracted Source Details</h4>
+                <div className="grid grid-cols-1 gap-2 text-sm md:grid-cols-2 text-muted-foreground">
+                    {Object.entries(question.sourceDetails).map(([key, value]) => 
+                        value ? (
+                            <div key={key} className="flex flex-wrap gap-x-2">
+                                <span className="font-medium capitalize text-foreground">{key.replace(/([A-Z])/g, ' $1')}:</span>
+                                <span>{value}</span>
+                            </div>
+                        ) : null
+                    )}
+                </div>
+            </div>
+        )}
       </CardContent>
     </Card>
   );

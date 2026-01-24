@@ -3,6 +3,14 @@ export interface QuizQuestion {
   answers: string[];
   correctAnswerIndex: number;
   rationale: string;
+  sourceDetails?: {
+    publisher?: string;
+    website?: string;
+    school?: string;
+    documentTitle?: string;
+    timestamp?: string;
+    pageNumber?: string;
+  };
 }
 
 export interface Resource {
