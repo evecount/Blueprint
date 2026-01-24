@@ -1,0 +1,38 @@
+//// ----------------------------------------------------
+//// DBML for QuizUp
+//// This schema represents the data structure of the application.
+//// ----------------------------------------------------
+
+// Each Resource is a "Quiz Deck"
+Table resources {
+  id string [pk, unique, note: 'Unique identifier for the quiz deck (e.g., "p4-science")']
+  name varchar [not null, note: 'Display name of the quiz deck (e.g., "Primary 4 Science")']
+  created_at datetime [not null, note: 'Timestamp of when the deck was created']
+}
+
+// Each Question belongs to a Resource (Quiz Deck)
+Table questions {
+  id int [pk, increment, note: 'Auto-incrementing primary key for each question']
+  resource_id string [ref: > resources.id, not null]
+  
+  question_text text [not null]
+  answers json [not null, note: 'JSON array of strings representing possible answers. e.g., ["Answer A", "Answer B"]']
+  correct_answer_index int [not null, note: 'Zero-based index of the correct answer in the answers array']
+  rationale text [not null, note: 'Explanation of why the answer is correct']
+
+  // Extracted metadata from user-submitted images/screenshots
+  source_publisher varchar
+  source_website varchar
+  source_school varchar
+  source_document_title varchar
+  source_timestamp varchar
+  source_page_number varchar
+}
+
+// Performance tracks user scores for each quiz deck
+Table performance_tracking {
+  // In the current app, this is keyed by resource.name, but a foreign key is better for relational models.
+  resource_id string [ref: > resources.id, pk]
+  correct_count int [not null, default: 0]
+  total_count int [not null, default: 0]
+}
