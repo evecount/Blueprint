@@ -5,18 +5,21 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 
 // A custom hook to synchronize state with localStorage
 function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val: T) => T)) => void] {
-  const [storedValue, setStoredValue] = useState<T>(() => {
-    if (typeof window === 'undefined') {
-      return initialValue;
-    }
+  const [storedValue, setStoredValue] = useState<T>(initialValue);
+
+  useEffect(() => {
+    // This effect runs only on the client, after hydration.
     try {
       const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
+      if (item) {
+        setStoredValue(JSON.parse(item));
+      }
     } catch (error) {
       console.error(error);
-      return initialValue;
+      // If there's an error, we'll just stick with the initial value.
     }
-  });
+    // We only want this to run once on mount, so we pass a dependency array with the key.
+  }, [key]);
 
   const setValue = (value: T | ((val: T) => T)) => {
     try {
