@@ -12,16 +12,27 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val
     // This effect runs only on the client, after hydration.
     try {
       const item = window.localStorage.getItem(key);
-      // If there's an item in localStorage, use it. This will overwrite the initial server-rendered value.
-      // This is safe because it runs after hydration.
-      if (item) {
-        setStoredValue(JSON.parse(item));
+      const parsedItem = item ? JSON.parse(item) : null;
+
+      const hasSeedData = Array.isArray(initialValue) && initialValue.length > 0;
+      const storageIsEmpty = !parsedItem || (Array.isArray(parsedItem) && parsedItem.length === 0);
+
+      // If storage is empty but we have seed data, it means we need to initialize storage.
+      if (storageIsEmpty && hasSeedData) {
+        setStoredValue(initialValue);
+        window.localStorage.setItem(key, JSON.stringify(initialValue));
+      } else if (parsedItem) {
+        setStoredValue(parsedItem);
       }
+      // If storage is empty and there's no seed data, it will correctly remain as an empty array.
+      
     } catch (error) {
       console.error(error);
       // If there's an error, we'll just stick with the initial value.
+      setStoredValue(initialValue);
     }
-    // We only want this to run once on mount, so we pass a dependency array with the key.
+    // We only want this to run once on mount. `initialValue` is included in case seed data changes.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
 
   const setValue = (value: T | ((val: T) => T)) => {
