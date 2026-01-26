@@ -20,7 +20,14 @@ export function Footer() {
                         Sponsored By
                     </p>
                     <p className="mt-2 font-medium text-foreground">
-                       artSTREAM.media
+                       <a
+                        href="https://artstream.sg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-colors hover:text-primary"
+                       >
+                        artSTREAM.media
+                       </a>
                     </p>
                 </div>
             </div>
