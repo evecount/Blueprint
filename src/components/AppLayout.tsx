@@ -118,9 +118,6 @@ export function AppLayout({ children }: { children: ReactNode }) {
            <Link href="/about" passHref>
             <Button variant="ghost">About</Button>
           </Link>
-           <Link href="/sponsorship" passHref>
-            <Button variant="ghost">Sponsorship</Button>
-          </Link>
           <Avatar>
             <AvatarImage src="https://picsum.photos/seed/gwen/40/40" />
             <AvatarFallback>GL</AvatarFallback>

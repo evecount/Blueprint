@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -38,7 +37,7 @@ export default function SponsorshipPage() {
             </div>
            <div className="pt-6 text-center">
                 <h3 className="font-semibold text-foreground">Get in Touch</h3>
-                <p>To learn more about sponsorship opportunities, please contact us at <a href="mailto:sponsorship@quizup.example.com" className="font-medium underline text-primary hover:text-primary/80">sponsorship@quizup.example.com</a>.</p>
+                <p>To learn more about sponsorship opportunities, please contact us at <a href="mailto:gwen@evecount.com" className="font-medium underline text-primary hover:text-primary/80">gwen@evecount.com</a>.</p>
            </div>
         </CardContent>
       </Card>
