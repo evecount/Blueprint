@@ -1,0 +1,14 @@
+<svg width="160" height="32" viewBox="0 0 160 32" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .logo-text { fill: hsl(215 20% 55%); }
+    @media (prefers-color-scheme: dark) {
+      .logo-text { fill: hsl(215 20% 65%); }
+    }
+  </style>
+  <text x="0" y="22" font-family="Lexend, Arial, sans-serif" font-size="20" class="logo-text">
+    art<tspan font-weight="bold">STREAM</tspan>
+  </text>
+  <text x="96" y="29" font-family="Lexend, Arial, sans-serif" font-size="8" class="logo-text">
+    .media
+  </text>
+</svg>

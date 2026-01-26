@@ -1,5 +1,6 @@
 import { Bot } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function Footer() {
   return (
@@ -19,16 +20,20 @@ export function Footer() {
                     <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                         Sponsored By
                     </p>
-                    <p className="mt-2 font-medium text-foreground">
-                       <a
+                    <a
                         href="https://artstream.sg"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="transition-colors hover:text-primary"
+                        className="mt-2 block"
                        >
-                        artSTREAM.media
+                        <Image
+                          src="/artstream-logo.svg"
+                          alt="artSTREAM.media logo"
+                          width={160}
+                          height={32}
+                          className="h-auto w-40"
+                        />
                        </a>
-                    </p>
                 </div>
             </div>
              <div className="mt-8 border-t border-border pt-4">
