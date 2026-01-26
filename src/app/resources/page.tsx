@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { FileText, MoreVertical, PlayCircle, Trash2, UploadCloud } from 'lucide-react';
+import { FileText, MoreVertical, PlayCircle, Trash2, Gift } from 'lucide-react';
 import Link from 'next/link';
 import { format } from 'date-fns';
 
@@ -14,30 +13,29 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useAppContext } from '@/context/AppProvider';
-import UploadResourceDialog from '@/components/resources/UploadResourceDialog';
 
 export default function ResourcesPage() {
   const { resources, deleteResource } = useAppContext();
-  const [isUploadDialogOpen, setUploadDialogOpen] = useState(false);
 
   return (
     <div className="flex flex-col gap-8">
-      <UploadResourceDialog open={isUploadDialogOpen} onOpenChange={setUploadDialogOpen} />
       <header className="flex items-center justify-between">
         <div className="space-y-1">
           <h1 className="text-3xl font-bold tracking-tight font-headline">My Quiz Decks</h1>
           <p className="text-muted-foreground">Manage your decks and challenge your friends.</p>
         </div>
-        <Button onClick={() => setUploadDialogOpen(true)}>
-          <UploadCloud className="mr-2 h-4 w-4" />
-          Create New Deck
-        </Button>
+        <Link href="/donate" passHref>
+          <Button>
+            <Gift className="mr-2 h-4 w-4" />
+            Submit a Question
+          </Button>
+        </Link>
       </header>
 
       {resources.length === 0 ? (
         <div className="flex flex-col items-center justify-center h-64 gap-4 text-center border-2 border-dashed rounded-lg">
           <h3 className="text-xl font-semibold font-headline">No Decks Found</h3>
-          <p className="text-muted-foreground">Click "Create New Deck" to generate your first quiz from a Markdown file.</p>
+          <p className="text-muted-foreground">Click "Submit a Question" to help build our first quiz deck.</p>
         </div>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

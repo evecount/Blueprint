@@ -2,7 +2,7 @@
 
 import {
   PlayCircle,
-  UploadCloud,
+  Gift,
   FileText,
   MoreVertical,
   Trash2,
@@ -25,33 +25,28 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { useState } from 'react';
-import UploadResourceDialog from '@/components/resources/UploadResourceDialog';
 import { useAppContext } from '@/context/AppProvider';
 
 export default function DashboardPage() {
-  const [isUploadDialogOpen, setUploadDialogOpen] = useState(false);
   const { resources, deleteResource } = useAppContext();
 
   return (
     <div className="flex flex-col gap-8">
-      <UploadResourceDialog
-        open={isUploadDialogOpen}
-        onOpenChange={setUploadDialogOpen}
-      />
       <header className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-1">
           <h1 className="text-3xl font-bold tracking-tight font-headline">
             Welcome to QuizUp
           </h1>
           <p className="text-muted-foreground">
-            Your quiz decks are ready. Create and share a new one!
+            Your quiz decks are ready. Submit a question to help others learn!
           </p>
         </div>
-        <Button onClick={() => setUploadDialogOpen(true)} variant="outline">
-          <UploadCloud className="mr-2 h-4 w-4" />
-          Create New Deck
-        </Button>
+        <Link href="/donate" passHref>
+          <Button variant="outline">
+            <Gift className="mr-2 h-4 w-4" />
+            Submit a Question
+          </Button>
+        </Link>
       </header>
 
       <main>
@@ -61,7 +56,7 @@ export default function DashboardPage() {
               No Quiz Decks Yet
             </h3>
             <p className="text-muted-foreground">
-              Click "Create New Deck" to build your first quiz.
+              Click "Submit a Question" to help build our first quiz deck.
             </p>
           </div>
         ) : (
