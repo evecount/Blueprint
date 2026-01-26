@@ -25,7 +25,7 @@ export default function ResourcesPage() {
           <h1 className="text-3xl font-bold tracking-tight font-headline">My Quiz Decks</h1>
           <p className="text-muted-foreground">Manage your decks and challenge your friends.</p>
         </div>
-        <Link href="/donate" passHref>
+        <Link href="/contribute" passHref>
           <Button>
             <Gift className="mr-2 h-4 w-4" />
             Submit a Question

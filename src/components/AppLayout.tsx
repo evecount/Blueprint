@@ -32,7 +32,7 @@ const menuItems = [
   { href: '/resources', label: 'My Quiz Decks', icon: BookOpen },
   { href: '/performance', label: 'My Progress', icon: TrendingUp },
   { href: '/chat', label: 'Chat with Notes', icon: MessageSquare },
-  { href: '/donate', label: 'Contribute Question', icon: Gift },
+  { href: '/contribute', label: 'Contribute Question', icon: Gift },
   { href: '/about', label: 'About', icon: Info },
 ];
 
