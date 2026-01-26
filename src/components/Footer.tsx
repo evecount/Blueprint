@@ -1,7 +1,6 @@
 
 import { Bot } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export function Footer() {
   return (
@@ -43,7 +42,7 @@ export function Footer() {
                     </p>
                     <nav className="mt-4 flex flex-col gap-2 text-sm">
                         <Link href="/terms" className="text-muted-foreground transition-colors hover:text-foreground">
-                            Terms & Conditions
+                            Terms &amp; Conditions
                         </Link>
                         <Link href="/privacy" className="text-muted-foreground transition-colors hover:text-foreground">
                             Privacy Policy
@@ -61,7 +60,7 @@ export function Footer() {
                         rel="noopener noreferrer"
                         className="mt-4 block"
                        >
-                        <Image
+                        <img
                           src="/images/artSTREAM-logo.png"
                           alt="artSTREAM.media logo"
                           width={160}

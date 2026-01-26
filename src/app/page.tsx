@@ -8,7 +8,6 @@ import {
   Cpu,
 } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -56,13 +55,11 @@ export default function DashboardPage() {
         </div>
         <div className="relative w-full overflow-hidden rounded-lg shadow-2xl aspect-square">
           {heroImage && (
-            <Image
+            <img
               src={heroImage.imageUrl}
               alt={heroImage.description}
-              fill
-              className="object-cover"
+              className="absolute inset-0 w-full h-full object-cover"
               data-ai-hint={heroImage.imageHint}
-              priority
             />
           )}
         </div>
@@ -100,11 +97,10 @@ export default function DashboardPage() {
                     </Link>
                     
                     {resourceImage && (
-                      <Image
+                      <img
                         src={resourceImage.imageUrl}
                         alt={resourceImage.description}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         data-ai-hint={resourceImage.imageHint}
                       />
                     )}
