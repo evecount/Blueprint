@@ -27,7 +27,7 @@ export function Footer() {
                         className="mt-2 block"
                        >
                         <Image
-                          src="/artstream-logo.svg"
+                          src="/images/artSTREAM-logo.png"
                           alt="artSTREAM.media logo"
                           width={160}
                           height={32}
