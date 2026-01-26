@@ -10,13 +10,15 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import type { QuizQuestion } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
   Pie,
   PieChart,
 } from 'recharts';
-import type { ChartConfig } from '@/components/ui/chart';
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from '@/components/ui/chart';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 
