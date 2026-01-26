@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -5,6 +6,7 @@ import {
   BookOpen,
   Bot,
   Gift,
+  Handshake,
   Info,
   Menu,
   MessageSquare,
@@ -34,6 +36,7 @@ const menuItems = [
   { href: '/chat', label: 'Chat with Notes', icon: MessageSquare },
   { href: '/contribute', label: 'Contribute Question', icon: Gift },
   { href: '/about', label: 'About', icon: Info },
+  { href: '/sponsorship', label: 'Sponsorship', icon: Handshake },
 ];
 
 export function AppLayout({ children }: { children: ReactNode }) {
@@ -112,8 +115,11 @@ export function AppLayout({ children }: { children: ReactNode }) {
         </div>
 
         <div className="flex items-center gap-2">
-          <Link href="/about" passHref>
+           <Link href="/about" passHref>
             <Button variant="ghost">About</Button>
+          </Link>
+           <Link href="/sponsorship" passHref>
+            <Button variant="ghost">Sponsorship</Button>
           </Link>
           <Avatar>
             <AvatarImage src="https://picsum.photos/seed/gwen/40/40" />
