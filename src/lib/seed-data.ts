@@ -14,6 +14,24 @@ export const seedResources: Resource[] = [
         correctAnswerIndex: 2,
         rationale: 'Words that rhyme have the same ending sound. "Cat" and "hat" both end with the "-at" sound.'
       },
+      {
+        question: 'What is the plural of "apple"?',
+        answers: ['Apples', 'Apple', 'Appless', 'An apple'],
+        correctAnswerIndex: 0,
+        rationale: 'To make most nouns plural, we add an "s" to the end. One apple, two apples.'
+      },
+      {
+        question: 'Choose the correct sentence: The dog ___ running.',
+        answers: ['are', 'is', 'am', 'be'],
+        correctAnswerIndex: 1,
+        rationale: 'Since "dog" is a singular noun, we use the singular verb "is".'
+      },
+      {
+        question: 'Which of these is a verb (action word)?',
+        answers: ['Happy', 'Table', 'Jump', 'Green'],
+        correctAnswerIndex: 2,
+        rationale: '"Jump" is an action word, or a verb. "Happy" and "green" are adjectives, and "table" is a noun.'
+      }
     ]
   },
   {
@@ -27,6 +45,18 @@ export const seedResources: Resource[] = [
         correctAnswerIndex: 2,
         rationale: 'To add 25 and 15, you can add the tens (20 + 10 = 30) and the ones (5 + 5 = 10). Then, add the results: 30 + 10 = 40.'
       },
+      {
+        question: 'If you have 3 bags with 5 sweets in each, how many sweets do you have in total?',
+        answers: ['8', '15', '12', '20'],
+        correctAnswerIndex: 1,
+        rationale: 'This is a multiplication problem. 3 bags multiplied by 5 sweets per bag equals 15 sweets (3 x 5 = 15).'
+      },
+      {
+        question: 'What is 50 - 12?',
+        answers: ['48', '40', '38', '32'],
+        correctAnswerIndex: 2,
+        rationale: 'You can subtract 10 from 50 to get 40, and then subtract the remaining 2 to get 38.'
+      }
     ]
   },
   {
@@ -40,6 +70,18 @@ export const seedResources: Resource[] = [
         correctAnswerIndex: 1,
         rationale: 'The life cycle of a butterfly begins with an egg, which then hatches into a larva (caterpillar).'
       },
+      {
+        question: 'Which part of a plant absorbs water and nutrients from the soil?',
+        answers: ['Leaves', 'Stem', 'Flower', 'Roots'],
+        correctAnswerIndex: 3,
+        rationale: 'The roots anchor the plant and are responsible for absorbing water and essential nutrients from the soil.'
+      },
+      {
+        question: 'Which of these is NOT a living thing?',
+        answers: ['A tree', 'A rock', 'A bird', 'A fish'],
+        correctAnswerIndex: 1,
+        rationale: 'A rock does not grow, breathe, or reproduce, which are characteristics of living things.'
+      }
     ]
   },
   {
@@ -53,6 +95,12 @@ export const seedResources: Resource[] = [
         correctAnswerIndex: 2,
         rationale: 'The Vanda Miss Joaquim, a hybrid orchid, was named Singapore\'s national flower in 1981 for its vibrancy and hardiness.'
       },
+      {
+        question: 'Who was the first Prime Minister of Singapore?',
+        answers: ['Goh Chok Tong', 'Lee Kuan Yew', 'Yusof Ishak', 'Lee Hsien Loong'],
+        correctAnswerIndex: 1,
+        rationale: 'Lee Kuan Yew was a key figure in Singapore\'s independence and served as its first Prime Minister from 1959 to 1990.'
+      }
     ]
   },
   {
@@ -66,6 +114,12 @@ export const seedResources: Resource[] = [
         correctAnswerIndex: 1,
         rationale: 'To convert a fraction to a decimal, you divide the numerator by the denominator. 3 ÷ 5 = 0.6.'
       },
+      {
+        question: 'A rectangle has a length of 8cm and a width of 5cm. What is its area?',
+        answers: ['13 cm²', '26 cm²', '40 cm²', '32 cm²'],
+        correctAnswerIndex: 2,
+        rationale: 'The area of a rectangle is calculated by multiplying its length by its width. 8 cm * 5 cm = 40 cm².'
+      }
     ]
   },
   {
@@ -79,6 +133,12 @@ export const seedResources: Resource[] = [
         correctAnswerIndex: 2,
         rationale: 'Renewable energy sources are naturally replenished. Solar power, derived from the sun, is a key example. Coal, natural gas, and petroleum are fossil fuels and are non-renewable.'
       },
+      {
+        question: 'What process do plants use to make their own food?',
+        answers: ['Respiration', 'Photosynthesis', 'Transpiration', 'Decomposition'],
+        correctAnswerIndex: 1,
+        rationale: 'Photosynthesis is the process by which green plants use sunlight, water, and carbon dioxide to create their own food and release oxygen.'
+      }
     ]
   },
   // Secondary School
@@ -93,6 +153,12 @@ export const seedResources: Resource[] = [
         correctAnswerIndex: 2,
         rationale: 'The ancient Olympic Games were held in Olympia, Greece, from the 8th century BC to the 4th century AD.'
       },
+      {
+        question: 'Which ancient civilization is famous for its pyramids?',
+        answers: ['Ancient Rome', 'Ancient Greece', 'Ancient Egypt', 'Mesopotamia'],
+        correctAnswerIndex: 2,
+        rationale: 'The ancient Egyptians built massive pyramids as tombs for their pharaohs and queens. The most famous are the Pyramids of Giza.'
+      }
     ]
   },
   {
@@ -106,6 +172,12 @@ export const seedResources: Resource[] = [
         correctAnswerIndex: 2,
         rationale: 'The mitochondrion is known as the powerhouse of the cell. It generates most of the cell\'s supply of adenosine triphosphate (ATP), used as a source of chemical energy.'
       },
+      {
+        question: 'Which system in the human body is responsible for pumping blood?',
+        answers: ['Respiratory System', 'Nervous System', 'Digestive System', 'Circulatory System'],
+        correctAnswerIndex: 3,
+        rationale: 'The circulatory system, which includes the heart, blood, and blood vessels, is responsible for pumping and circulating blood throughout the body.'
+      }
     ]
   },
   {
@@ -119,6 +191,12 @@ export const seedResources: Resource[] = [
         correctAnswerIndex: 2,
         rationale: "Newton's Second Law states that the force acting on an object is equal to the mass of that object times its acceleration (F = ma). This fundamental principle connects force, mass, and motion."
       },
+      {
+        question: 'What is the unit of electrical resistance?',
+        answers: ['Volt', 'Ampere', 'Watt', 'Ohm'],
+        correctAnswerIndex: 3,
+        rationale: 'The Ohm (symbol: Ω) is the SI derived unit of electrical resistance, named after German physicist Georg Simon Ohm.'
+      }
     ]
   },
   {
@@ -132,6 +210,18 @@ export const seedResources: Resource[] = [
         correctAnswerIndex: 3,
         rationale: 'The chemical symbol for gold is Au, which comes from its Latin name, "aurum".'
       },
+      {
+        question: 'What is the pH of a neutral substance, like pure water?',
+        answers: ['0', '7', '14', '1'],
+        correctAnswerIndex: 1,
+        rationale: 'The pH scale ranges from 0 to 14. A pH of 7 is neutral. A pH less than 7 is acidic, and a pH greater than 7 is basic (alkaline).'
+      },
+      {
+        question: 'Which gas is most abundant in the Earth\'s atmosphere?',
+        answers: ['Oxygen', 'Carbon Dioxide', 'Nitrogen', 'Argon'],
+        correctAnswerIndex: 2,
+        rationale: 'Nitrogen makes up about 78% of the Earth\'s atmosphere, making it the most abundant gas. Oxygen is second, at about 21%.'
+      }
     ]
   },
   // Advanced
