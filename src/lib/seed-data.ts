@@ -169,6 +169,36 @@ export const seedResources: Resource[] = [
         answers: ['A type of black hole.', 'Physical matter that does not have color.', 'A type of anti-matter.', 'A hypothetical form of matter that does not emit or reflect light.'],
         correctAnswerIndex: 3,
         rationale: 'Dark matter is a mysterious, non-luminous material that is believed to make up about 27% of the universe. It does not interact with light, making it invisible, but its existence is inferred from its gravitational effects on visible matter, such as galaxies.'
+      },
+       {
+        question: 'The microchips in your phone are made of semiconductors. What kind of engineer designs and fabricates these tiny components?',
+        answers: ['Mechanical Engineer', 'Chemical Engineer', 'Electrical Engineer', 'Civil Engineer'],
+        correctAnswerIndex: 2,
+        rationale: 'Electrical Engineers and Materials Scientists design and manufacture semiconductors, the foundation of all modern electronics.'
+      },
+      {
+        question: 'To help protect our planet, an environmental scientist might study ecosystems to develop new conservation policies. What is one career path this could lead to?',
+        answers: ['Chef', 'Musician', 'Environmental Policy Advisor', 'Software Developer'],
+        correctAnswerIndex: 2,
+        rationale: 'Environmental scientists provide the data and analysis that governments and organizations use to create effective policies for conservation, pollution control, and sustainable development.'
+      },
+      {
+        question: 'Biotechnology uses living organisms to create products like vaccines. What kind of job involves editing genes to develop new medicines?',
+        answers: ['Architect', 'Geneticist', 'Accountant', 'Librarian'],
+        correctAnswerIndex: 1,
+        rationale: 'Geneticists and Biotechnologists work at the genetic level, manipulating DNA and other cellular components to develop new medical treatments, more resilient crops, and biofuels.'
+      },
+      {
+        question: 'Aerospace engineers apply physics to design spacecraft. What is a major challenge they solve to launch a rocket into space?',
+        answers: ['Choosing the best color', 'Overcoming Earth\'s gravity', 'Designing the logo', 'Writing the user manual'],
+        correctAnswerIndex: 1,
+        rationale: 'A primary challenge for aerospace engineers is designing engines and structures powerful and light enough to overcome Earth\'s immense gravitational pull and escape the atmosphere.'
+      },
+      {
+        question: 'Data scientists analyze huge datasets from satellites to model climate change. How does their work influence global decisions?',
+        answers: ['It helps them choose which movies to watch.', 'It has no influence.', 'It provides evidence for policy changes and predicts future impacts.', 'It helps design better video games.'],
+        correctAnswerIndex: 2,
+        rationale: 'By analyzing vast amounts of climate data, data scientists create models that show the effects of climate change. This scientific evidence is crucial for convincing governments and international bodies to take action.'
       }
     ]
   },
@@ -243,6 +273,140 @@ export const seedResources: Resource[] = [
             "correctAnswerIndex": 2,
             "rationale": "Balanced funds aim to provide a \"balance\" of growth (from equities) and income (from bonds). They hold a mix of both asset classes to moderate risk compared to a pure equity fund."
         }
+    ]
+  },
+  {
+    id: 'adv-math',
+    name: 'Just Math Stuff',
+    createdAt: new Date().toISOString(),
+    questions: [
+      {
+        question: 'Logarithms help measure earthquakes on the Richter scale. What job might use logarithms daily to analyze data that spans a huge range of values?',
+        answers: ['Chef', 'Seismologist', 'Gardener', 'Librarian'],
+        correctAnswerIndex: 1,
+        rationale: 'Seismologists study earthquakes and use the logarithmic Richter scale to measure their magnitude. Data scientists also use logarithms to handle data with wide-ranging values.'
+      },
+      {
+        question: 'Calculus (dy/dx) is all about the rate of change. Which career path uses this to model things like rocket trajectories or stock market trends?',
+        answers: ['Historian', 'Aerospace Engineer', 'Artist', 'Journalist'],
+        correctAnswerIndex: 1,
+        rationale: 'Aerospace engineers and financial analysts use calculus to model and predict how things change over time, from the path of a spacecraft to the price of a stock.'
+      },
+      {
+        question: 'Matrices are grids of numbers used to create 3D graphics in video games and movies. What job involves using matrices to render and manipulate images?',
+        answers: ['Farmer', 'Doctor', 'Game Developer', 'Lawyer'],
+        correctAnswerIndex: 2,
+        rationale: 'Game developers and CGI artists use matrices for almost everything in 3D graphics, including rotating, scaling, and positioning objects in a virtual world.'
+      },
+      {
+        question: 'Statistics helps companies like Netflix recommend movies you might like. What role uses data to predict customer behavior?',
+        answers: ['Data Scientist', 'Plumber', 'Firefighter', 'Musician'],
+        correctAnswerIndex: 0,
+        rationale: 'Data scientists and market research analysts use statistical models to analyze user data and predict what products, movies, or services a person is likely to enjoy.'
+      },
+      {
+        question: 'Trigonometry is essential for building bridges and creating GPS systems. Which profession relies on precise angle calculations to create maps?',
+        answers: ['Writer', 'Surveyor', 'Baker', 'Dancer'],
+        correctAnswerIndex: 1,
+        rationale: 'Surveyors use trigonometry and GPS technology to measure large areas of land with incredible precision, forming the basis for maps and construction projects.'
+      },
+      {
+        question: 'Algebra is the language of logic used in computer programming. What career involves writing the code that makes your favorite apps work?',
+        answers: ['Software Developer', 'Teacher', 'Politician', 'Athlete'],
+        correctAnswerIndex: 0,
+        rationale: 'Software and app developers use algebraic thinking to create logical instructions (algorithms) that tell computers and phones what to do.'
+      },
+      {
+        question: 'Geometry is used by architects to design beautiful and safe buildings. What field requires a deep understanding of shapes and spaces?',
+        answers: ['Biologist', 'Architect', 'Psychologist', 'Chef'],
+        correctAnswerIndex: 1,
+        rationale: 'Architects and urban planners use geometry every day to design buildings, public spaces, and even entire cities that are both functional and aesthetically pleasing.'
+      },
+      {
+        question: 'Probability helps insurance companies calculate the risk of an accident to set their prices. What job uses math to assess financial risk?',
+        answers: ['Artist', 'Actuary', 'Historian', 'Philosopher'],
+        correctAnswerIndex: 1,
+        rationale: 'Actuaries are professionals who specialize in using mathematics, statistics, and financial theory to analyze the financial consequences of risk.'
+      },
+      {
+        question: 'Airlines use a type of math called linear programming to schedule flights efficiently. What field focuses on optimizing complex systems?',
+        answers: ['Linguistics', 'Operations Research', 'Poetry', 'Sculpture'],
+        correctAnswerIndex: 1,
+        rationale: 'Operations Research is a field of applied mathematics that uses advanced analytical methods to help make better decisions in complex systems, like airline scheduling or supply chain management.'
+      },
+      {
+        question: 'Number theory is the foundation of modern cryptography that keeps your data safe online. What career involves creating these secure systems?',
+        answers: ['Marine Biologist', 'Cryptographer', 'Geologist', 'Astronomer'],
+        correctAnswerIndex: 1,
+        rationale: 'Cryptographers use principles from number theory to design the complex algorithms that secure everything from your bank account to private messages.'
+      },
+    ]
+  },
+   {
+    id: 'adv-art',
+    name: 'Just Art Stuff',
+    createdAt: new Date().toISOString(),
+    questions: [
+      {
+        question: 'Philosophy teaches you to analyze arguments and think critically. How does this skill help a lawyer make a better case?',
+        answers: ['It helps them run faster.', 'It helps them build stronger, more logical arguments.', 'It helps them paint better pictures.', 'It has no use.'],
+        correctAnswerIndex: 1,
+        rationale: 'The study of philosophy trains the mind in logic and critical thinking, which are essential skills for a lawyer to construct persuasive arguments and deconstruct weak ones.'
+      },
+      {
+        question: 'Art historians understand the context behind art. What job involves selecting and arranging art for a museum exhibit?',
+        answers: ['Engineer', 'Museum Curator', 'Accountant', 'Scientist'],
+        correctAnswerIndex: 1,
+        rationale: 'Museum curators use their deep knowledge of art history and theory to select artworks and present them in a compelling and educational way for the public.'
+      },
+      {
+        question: 'Design thinking, a process from art, is used by companies like Apple to create user-friendly products. What career focuses on making technology easier to use?',
+        answers: ['UX/UI Designer', 'Botanist', 'Geographer', 'Astrologer'],
+        correctAnswerIndex: 0,
+        rationale: 'User Experience (UX) and User Interface (UI) designers apply principles of design thinking to create products that are intuitive, effective, and enjoyable for people to use.'
+      },
+      {
+        question: 'Graphic designers use color and typography to communicate ideas for brands. What field combines art with marketing?',
+        answers: ['Medicine', 'Brand Strategy', 'Construction', 'Farming'],
+        correctAnswerIndex: 1,
+        rationale: 'Graphic designers and brand strategists work together to create a cohesive visual identity for a company, using art to communicate its values and attract customers.'
+      },
+      {
+        question: 'Filmmakers use visual storytelling to create emotional impact. What role is responsible for the overall artistic look and feel of a movie?',
+        answers: ['The Caterer', 'The Film Director', 'The Accountant', 'The Driver'],
+        correctAnswerIndex: 1,
+        rationale: 'The film director is responsible for overseeing the artistic and dramatic aspects of a film, turning the script into a finished visual and auditory experience.'
+      },
+      {
+        question: 'The principles of aesthetics help create products that are both functional and beautiful. What career blends engineering with art to design things like cars and phones?',
+        answers: ['Industrial Designer', 'Sociologist', 'Poet', 'Dramatist'],
+        correctAnswerIndex: 0,
+        rationale: 'Industrial designers are responsible for the conceptual design and development of manufactured products, combining art, business, and engineering to make products that people use every day.'
+      },
+      {
+        question: 'Public art can transform a city space and reflect its culture. What job involves integrating art into public environments?',
+        answers: ['Veterinarian', 'Urban Planner', 'Pharmacist', 'Dentist'],
+        correctAnswerIndex: 1,
+        rationale: 'Urban planners design the layout of cities and towns. A key part of their work is deciding how to incorporate public spaces, parks, and art to create vibrant and livable communities.'
+      },
+      {
+        question: 'Creative writing skills are essential for crafting compelling stories in advertising. What career uses storytelling to sell products?',
+        answers: ['Copywriter', 'Mathematician', 'Physicist', 'Chemist'],
+        correctAnswerIndex: 0,
+        rationale: 'Copywriters are professional writers who craft the text (or "copy") for advertisements, websites, and marketing materials, using storytelling to connect with consumers.'
+      },
+      {
+        question: 'Music theory is used to compose soundtracks for video games that adapt to a player\'s actions. What job creates the audio experience for games?',
+        answers: ['Judge', 'Police Officer', 'Game Audio Designer', 'Pilot'],
+        correctAnswerIndex: 2,
+        rationale: 'Game audio designers and composers create all the sound for a video game, including the music, sound effects, and dialogue, to make the experience more immersive.'
+      },
+      {
+        question: 'Ethics, a branch of philosophy, guides the development of artificial intelligence to ensure it is fair. What emerging field combines humanities with technology?',
+        answers: ['AI Ethicist', 'Chef', 'Mechanic', 'Athlete'],
+        correctAnswerIndex: 0,
+        rationale: 'AI Ethicists are specialists who help guide the design and deployment of artificial intelligence systems to ensure they are safe, unbiased, and beneficial for society.'
+      }
     ]
   }
 ];
