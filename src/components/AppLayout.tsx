@@ -5,7 +5,6 @@ import {
   BookOpen,
   Bot,
   Gift,
-  Handshake,
   Info,
   Menu,
   MessageSquare,
@@ -24,7 +23,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
 import { Footer } from './Footer';
@@ -36,7 +35,6 @@ const menuItems = [
   { href: '/chat', label: 'Chat with Notes', icon: MessageSquare },
   { href: '/contribute', label: 'Contribute Question', icon: Gift },
   { href: '/about', label: 'About', icon: Info },
-  { href: '/sponsorship', label: 'Sponsorship', icon: Handshake },
 ];
 
 export function AppLayout({ children }: { children: ReactNode }) {
@@ -55,6 +53,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="p-0">
+               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex flex-col h-full">
                 <SidebarHeader className="p-4 border-b">
                   <Link
