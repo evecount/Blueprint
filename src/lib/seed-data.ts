@@ -133,59 +133,5 @@ export const seedResources: Resource[] = [
         rationale: 'The chemical symbol for gold is Au, which comes from its Latin name, "aurum".'
       },
     ]
-  },
-    {
-    id: 'm8-cis',
-    name: 'M8 Collective Investment Schemes',
-    createdAt: new Date().toISOString(),
-    questions: [
-        {
-        "question": "Which of the following best describes a unit trust?",
-        "answers": [
-          "A high-risk investment product that guarantees returns.",
-          "A collective investment scheme where investors pool their money to invest in a diversified portfolio.",
-          "A type of savings account with a fixed interest rate.",
-          "A direct investment in a single company's stock."
-        ],
-        "correctAnswerIndex": 1,
-        "rationale": "A unit trust is a form of collective investment where multiple investors' money is pooled together. This pool of money is then used to invest in a wide range of assets (a diversified portfolio), which helps to spread risk. (a) is incorrect because no investment guarantees returns. (c) describes a bank account. (d) describes direct stock ownership, not a pooled fund."
-      }
-    ]
-  },
-  {
-    id: 'm8a-rules',
-    name: 'M8A Rules & Regulations',
-    createdAt: new Date().toISOString(),
-    questions: [
-      {
-        "question": "Under the Securities and Futures Act (SFA), what is the primary purpose of the licensing regime for capital markets intermediaries?",
-        "answers": [
-          "To generate revenue for the Monetary Authority of Singapore (MAS).",
-          "To ensure intermediaries are fit and proper, and to protect the investing public.",
-          "To limit the number of participants operating in the capital markets.",
-          "To provide employment for compliance officers."
-        ],
-        "correctAnswerIndex": 1,
-        "rationale": "The SFA's licensing requirements are designed to ensure that firms and individuals operating in the capital markets meet high standards of competence and integrity, thereby protecting the interests and trust of the public."
-      }
-    ]
-  },
-    {
-    id: 'just-math-stuff',
-    name: 'Just Math Stuff',
-    createdAt: new Date().toISOString(),
-    questions: [
-        {
-        "question": "A bond's Coupon Rate is 7%. Its Current Yield is 8%. Is the bond trading at a premium, discount, or par?",
-        "answers": [
-          "Premium (above par)",
-          "Discount (below par)",
-          "Par",
-          "Cannot be determined"
-        ],
-        "correctAnswerIndex": 1,
-        "rationale": "If the Current Yield (which is based on the market price) is higher than the fixed Coupon Rate (which is based on par value), it means the market price must be lower than the par value. Therefore, the bond is trading at a discount."
-      }
-    ]
   }
 ];
