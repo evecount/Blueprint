@@ -49,16 +49,16 @@
       "imageHint": "ancient greece"
     },
     {
-      "id": "s2-geography",
-      "description": "Diagram of tectonic plates.",
-      "imageUrl": "https://images.unsplash.com/photo-1702711667549-2ca76ac29143?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx0ZWN0b25pYyUyMHBsYXRlc3xlbnwwfHx8fDE3Njk0MDQwNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "tectonic plates"
+      "id": "s2-biology",
+      "description": "A microscopic view of plant cells.",
+      "imageUrl": "https://images.unsplash.com/photo-1579586337278-35d99a4a89cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtaWNyb3Njb3BpYyUyMGNlbGxzfGVufDB8fHx8MTc3MDE1ODgxNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "microscopic cells"
     },
     {
-      "id": "s3-literature",
-      "description": "An old book with a quill pen, representing literature.",
-      "imageUrl": "https://images.unsplash.com/photo-1656942320074-354fcb6c5876?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzaGFrZXNwZWFyZSUyMGJvb2t8ZW58MHx8fHwxNzY5NDA0MDQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "shakespeare book"
+      "id": "s3-physics",
+      "description": "An illustration of atoms and particles, representing physics.",
+      "imageUrl": "https://images.unsplash.com/photo-1582719471384-894fbb16e074?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwaHlzaWNzJTIwYXRvbXxlbnwwfHx8fDE3NzAxNTg4ODR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "physics atom"
     },
     {
       "id": "s4-chemistry",

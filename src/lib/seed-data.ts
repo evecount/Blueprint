@@ -96,28 +96,28 @@ export const seedResources: Resource[] = [
     ]
   },
   {
-    id: 's2-geography',
-    name: 'Secondary 2 Geography',
+    id: 's2-biology',
+    name: 'Secondary 2 Biology',
     createdAt: new Date().toISOString(),
     questions: [
       {
-        question: 'The movement of tectonic plates can cause which natural disaster?',
-        answers: ['Hurricanes', 'Tornadoes', 'Earthquakes', 'Floods'],
+        question: 'What is the function of the mitochondria in a cell?',
+        answers: ['To store water', 'To control cell activities', 'To generate energy (ATP)', 'To provide structural support'],
         correctAnswerIndex: 2,
-        rationale: 'Earthquakes are caused by the sudden movement of tectonic plates along fault lines in the Earth\'s crust.'
+        rationale: 'The mitochondrion is known as the powerhouse of the cell. It generates most of the cell\'s supply of adenosine triphosphate (ATP), used as a source of chemical energy.'
       },
     ]
   },
   {
-    id: 's3-literature',
-    name: 'Secondary 3 Literature',
+    id: 's3-physics',
+    name: 'Secondary 3 Physics',
     createdAt: new Date().toISOString(),
     questions: [
       {
-        question: 'In Shakespeare\'s "Romeo and Juliet," which family does Juliet belong to?',
-        answers: ['Montague', 'Capulet', 'Verona', 'Escalus'],
-        correctAnswerIndex: 1,
-        rationale: 'The play revolves around the feud between two prominent families: the Montagues (Romeo\'s family) and the Capulets (Juliet\'s family).'
+        question: "According to Newton's Second Law of Motion, what is the relationship between force (F), mass (m), and acceleration (a)?",
+        answers: ["F = m / a", "F = a / m", "F = m * a", "F = m + a"],
+        correctAnswerIndex: 2,
+        rationale: "Newton's Second Law states that the force acting on an object is equal to the mass of that object times its acceleration (F = ma). This fundamental principle connects force, mass, and motion."
       },
     ]
   },
