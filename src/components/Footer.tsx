@@ -39,7 +39,7 @@ export function Footer() {
              <div className="mt-8 border-t border-border pt-4">
                 <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
                     <p className="text-center text-xs/relaxed text-muted-foreground">
-                        © {new Date().getFullYear()} QuizUp, a property of Eve Count. All Rights Reserved.
+                        © {new Date().getFullYear()} QuizUp, a property of Eve Count Pte Ltd SINGAPORE. All Rights Reserved.
                     </p>
                     <nav className="flex gap-4 text-xs text-muted-foreground">
                         <Link href="/terms" className="transition-colors hover:text-foreground">
