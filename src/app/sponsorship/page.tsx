@@ -1,44 +1,102 @@
 'use client';
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Handshake, Heart } from 'lucide-react';
+import { Handshake, Users, Goal, Briefcase, Mail } from 'lucide-react';
 
 export default function SponsorshipPage() {
   return (
     <div className="space-y-8">
       <header>
-        <h1 className="text-3xl font-bold tracking-tight font-headline">Sponsor QuizUp</h1>
+        <h1 className="text-3xl font-bold tracking-tight font-headline">Partner with QuizUp</h1>
         <p className="text-muted-foreground">
-          Help us keep education free and accessible for every student.
+          Join us in democratizing education through community and technology.
         </p>
       </header>
       <Card>
         <CardHeader>
             <div className="flex items-center gap-3">
                 <Handshake className="w-8 h-8 text-primary" />
-                <CardTitle>Partner with Us</CardTitle>
+                <CardTitle>A Partnership for Impact, Not Profit</CardTitle>
             </div>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
           <p>
             QuizUp is a free, open-source educational platform dedicated to helping students learn collaboratively. Our mission is to provide high-quality study tools without cost or privacy concerns.
           </p>
-          <p>
-            We are looking for partners who share our vision for accessible education. Your sponsorship helps us cover our operational costs and continue to develop new features for learners everywhere.
+          <p className="text-foreground font-medium">
+            We are not seeking financial sponsorship. Thanks to a lean operational model and AI-powered development, our costs are minimal. Instead, we are looking for strategic partners willing to contribute their expertise, network, and time as part of their corporate ESG (Environmental, Social, and Governance) mandate.
           </p>
-          <div className="flex items-start gap-4 pt-4">
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
-                <Heart className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground">Why Sponsor Us?</h3>
-                <p>By sponsoring QuizUp, you are directly contributing to a safe, anonymous, and effective learning environment for students. Your support helps us remain a free resource, built by the community, for the community.</p>
-              </div>
+        </CardContent>
+      </Card>
+      
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions (FAQ)</CardTitle>
+        </CardHeader>
+        <CardContent>
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger>
+                    <div className="flex items-center gap-3">
+                        <Users className="w-5 h-5 text-primary" />
+                        <span className="font-semibold text-left">What kind of partnership are you looking for?</span>
+                    </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  We are looking for partners who can help us scale our impact. Your contribution of skills and network is far more valuable to us than funding. We're interested in skills-based volunteering, introductions to educational institutions and non-profits, and mentorship for our team.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger>
+                    <div className="flex items-center gap-3">
+                        <Goal className="w-5 h-5 text-primary" />
+                        <span className="font-semibold text-left">How does this align with our ESG goals?</span>
+                    </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Partnering with QuizUp is a direct and measurable way to advance the "Social" component of your ESG strategy. By supporting us, you are promoting educational equity, fostering digital inclusion for all students, and investing in community development. It's a tangible project that demonstrates a commitment to creating a positive social impact.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger>
+                    <div className="flex items-center gap-3">
+                        <Briefcase className="w-5 h-5 text-primary" />
+                        <span className="font-semibold text-left">What can our employees do to volunteer?</span>
+                    </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  We welcome skills-based volunteers from your organization. Your team can contribute in several ways:
+                  <ul className="mt-2 space-y-2 list-disc list-inside">
+                    <li><span className="font-semibold">Content Curators:</span> Help review and align quiz content with the latest Ministry of Education syllabus.</li>
+                    <li><span className="font-semibold">Community Ambassadors:</span> Champion QuizUp and help introduce the platform to schools, tuition centers, and community groups.</li>
+                    <li><span className="font-semibold">Tech & Strategy Mentors:</span> Provide guidance on scaling our technology, product strategy, and outreach efforts.</li>
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+             <div className="flex items-center gap-3">
+                <Mail className="w-6 h-6 text-primary" />
+                <CardTitle>Get in Touch</CardTitle>
             </div>
-           <div className="pt-6 text-center">
-                <h3 className="font-semibold text-foreground">Get in Touch</h3>
-                <p>To learn more about sponsorship opportunities, please contact us at <a href="mailto:gwen@evecount.com" className="font-medium underline text-primary hover:text-primary/80">gwen@evecount.com</a>.</p>
-           </div>
+        </CardHeader>
+        <CardContent>
+            <p className="text-muted-foreground">
+                If your organization is looking for a meaningful, high-impact ESG initiative and is passionate about the future of education, we would be delighted to explore a partnership.
+            </p>
+            <p className="mt-4">
+                Please contact us at <a href="mailto:gwen@evecount.com" className="font-medium underline text-primary hover:text-primary/80">gwen@evecount.com</a> to start the conversation.
+            </p>
         </CardContent>
       </Card>
     </div>
