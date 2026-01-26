@@ -54,14 +54,13 @@ export default function DashboardPage() {
             </Button>
           </Link>
         </div>
-        <div className="flex items-center justify-center">
+        <div className="relative w-full overflow-hidden rounded-lg shadow-2xl aspect-square">
           {heroImage && (
             <Image
               src={heroImage.imageUrl}
               alt={heroImage.description}
-              width={600}
-              height={400}
-              className="rounded-lg shadow-2xl"
+              fill
+              className="object-cover"
               data-ai-hint={heroImage.imageHint}
               priority
             />
