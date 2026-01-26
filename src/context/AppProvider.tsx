@@ -4,6 +4,9 @@ import type { Resource, Performance, QuizQuestion } from '@/lib/types';
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { seedResources } from '@/lib/seed-data';
 
+const LOCAL_STORAGE_VERSION_KEY = 'quizup-storage-version';
+const CURRENT_STORAGE_VERSION = '1.2'; // Increment this to force-refresh seed data
+
 // A custom hook to synchronize state with localStorage
 function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val: T) => T)) => void] {
   const [storedValue, setStoredValue] = useState<T>(initialValue);
@@ -12,26 +15,23 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val
     // This effect runs only on the client, after hydration.
     try {
       const item = window.localStorage.getItem(key);
-      const parsedItem = item ? JSON.parse(item) : null;
+      const storedVersion = window.localStorage.getItem(LOCAL_STORAGE_VERSION_KEY);
 
-      const hasSeedData = Array.isArray(initialValue) && initialValue.length > 0;
-      const storageIsEmpty = !parsedItem || (Array.isArray(parsedItem) && parsedItem.length === 0);
-
-      // If storage is empty but we have seed data, it means we need to initialize storage.
-      if (storageIsEmpty && hasSeedData) {
+      // If version mismatches or no item exists, reset with new seed data.
+      if (storedVersion !== CURRENT_STORAGE_VERSION || !item) {
         setStoredValue(initialValue);
         window.localStorage.setItem(key, JSON.stringify(initialValue));
-      } else if (parsedItem) {
-        setStoredValue(parsedItem);
+        window.localStorage.setItem(LOCAL_STORAGE_VERSION_KEY, CURRENT_STORAGE_VERSION);
+      } else {
+        // Version matches and item exists, load from storage.
+        setStoredValue(JSON.parse(item));
       }
-      // If storage is empty and there's no seed data, it will correctly remain as an empty array.
-      
     } catch (error) {
-      console.error(error);
-      // If there's an error, we'll just stick with the initial value.
+      console.error("Error with localStorage:", error);
+      // If there's an error, fall back to the initial value.
       setStoredValue(initialValue);
     }
-    // We only want this to run once on mount. `initialValue` is included in case seed data changes.
+  // We only want this to run once on mount to check the version.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
 
