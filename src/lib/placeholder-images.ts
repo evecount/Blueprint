@@ -1,3 +1,4 @@
+
 export type ImagePlaceholder = {
   id: string;
   description: string;
@@ -75,25 +76,25 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     {
       "id": "adv-science",
       "description": "A nebula in deep space.",
-      "imageUrl": "/images/adv-science.png",
+      "imageUrl": "/images/just-science.png",
       "imageHint": "galaxy science"
     },
     {
       "id": "adv-finance",
       "description": "Stock market data on a screen.",
-      "imageUrl": "/images/adv-finance.png",
+      "imageUrl": "/images/just-finance.png",
       "imageHint": "stock market"
     },
     {
       "id": "adv-math",
       "description": "A blackboard with complex mathematical formulas.",
-      "imageUrl": "/images/adv-math.png",
+      "imageUrl": "/images/just-math.png",
       "imageHint": "math blackboard"
     },
     {
       "id": "adv-art",
       "description": "A modern art gallery with colorful paintings.",
-      "imageUrl": "/images/adv-art.png",
+      "imageUrl": "/images/just-art.png",
       "imageHint": "art gallery"
     }
   ];
