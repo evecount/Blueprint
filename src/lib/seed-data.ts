@@ -174,7 +174,7 @@ export const seedResources: Resource[] = [
   },
   {
     id: 'adv-finance',
-    name: 'Financial Literacy',
+    name: 'Just Finance Stuff',
     createdAt: new Date().toISOString(),
     questions: [
         {
