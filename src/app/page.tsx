@@ -47,7 +47,7 @@ export default function DashboardPage() {
               <span className="font-medium">AI Powered</span>
             </div>
           </div>
-          <Link href="/resources" passHref>
+          <Link href="/resources" passHref className="block pt-4">
             <Button size="lg" className="w-full sm:w-auto">
               Explore Quiz Decks
             </Button>
