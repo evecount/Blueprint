@@ -5,6 +5,66 @@
       "description": "A student studying with books and a laptop, looking focused.",
       "imageUrl": "https://images.unsplash.com/photo-1596247290824-e9f12b8c574f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzdHVkZW50JTIwc3R1ZHlpbmd8ZW58MHx8fHwxNzY5MDA3MDc2fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "student studying"
+    },
+    {
+      "id": "p1-english",
+      "description": "Child playing with alphabet blocks.",
+      "imageUrl": "https://images.unsplash.com/photo-1657302155485-790b74d0b5d1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhbHBoYWJldCUyMGJsb2Nrc3xlbnwwfHx8fDE3NjkyODU1MjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "alphabet blocks"
+    },
+    {
+      "id": "p2-math",
+      "description": "Colorful counting blocks for kids.",
+      "imageUrl": "https://images.unsplash.com/photo-1641654781282-8b9987f810e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb3VudGluZyUyMGJsb2Nrc3xlbnwwfHx8fDE3Njk0MDQwNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "counting blocks"
+    },
+    {
+      "id": "p3-science",
+      "description": "Illustration of a butterfly life cycle.",
+      "imageUrl": "https://images.unsplash.com/photo-1580923172745-372cdae2ae25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxidXR0ZXJmbHklMjBjeWNsZXxlbnwwfHx8fDE3Njk0MDQwNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "butterfly cycle"
+    },
+    {
+      "id": "p4-social-studies",
+      "description": "A colorful map of Singapore.",
+      "imageUrl": "https://images.unsplash.com/photo-1667895725233-b766d6626e64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzaW5nYXBvcmUlMjBtYXB8ZW58MHx8fHwxNzY5NDA0MDQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "singapore map"
+    },
+    {
+      "id": "p5-math",
+      "description": "A chart showing fractions.",
+      "imageUrl": "https://images.unsplash.com/photo-1555602998-aaead0450f56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmcmFjdGlvbnMlMjBjaGFydHxlbnwwfHx8fDE3Njk0MDQwNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fractions chart"
+    },
+    {
+      "id": "p6-science",
+      "description": "Illustration of the solar system.",
+      "imageUrl": "https://images.unsplash.com/photo-1532798369041-b33eb576ef16?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzb2xhciUyMHN5c3RlbXxlbnwwfHx8fDE3NjkzNjAxMzV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "solar system"
+    },
+    {
+      "id": "s1-history",
+      "description": "An ancient Greek temple.",
+      "imageUrl": "https://images.unsplash.com/photo-1471724603960-98bc193c621d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhbmNpZW50JTIwZ3JlZWNlfGVufDB8fHx8MTc2OTI5NDA2MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ancient greece"
+    },
+    {
+      "id": "s2-geography",
+      "description": "Diagram of tectonic plates.",
+      "imageUrl": "https://images.unsplash.com/photo-1702711667549-2ca76ac29143?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx0ZWN0b25pYyUyMHBsYXRlc3xlbnwwfHx8fDE3Njk0MDQwNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tectonic plates"
+    },
+    {
+      "id": "s3-literature",
+      "description": "An old book with a quill pen, representing literature.",
+      "imageUrl": "https://images.unsplash.com/photo-1656942320074-354fcb6c5876?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzaGFrZXNwZWFyZSUyMGJvb2t8ZW58MHx8fHwxNzY5NDA0MDQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "shakespeare book"
+    },
+    {
+      "id": "s4-chemistry",
+      "description": "Colorful chemicals in beakers.",
+      "imageUrl": "https://images.unsplash.com/photo-1616996691029-96500d6523b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjaGVtaXN0cnklMjBiZWFrZXJzfGVufDB8fHx8MTc2OTMyMzgzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chemistry beakers"
     }
   ]
 }

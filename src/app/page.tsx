@@ -2,25 +2,16 @@
 
 import {
   PlayCircle,
-  FileText,
   MoreVertical,
   Trash2,
   Smartphone,
   Cpu,
 } from 'lucide-react';
 import Link from 'next/link';
-import { format } from 'date-fns';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -101,57 +92,57 @@ export default function DashboardPage() {
             </div>
           ) : (
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {resources.map((resource) => (
-                <Card key={resource.id}>
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <FileText className="w-8 h-8 text-accent" />
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="w-8 h-8 -mt-2 -mr-2"
-                          >
-                            <MoreVertical className="w-4 h-4" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuItem
-                            onClick={() => deleteResource(resource.id)}
-                          >
-                            <Trash2 className="w-4 h-4 mr-2" />
-                            Delete
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </div>
-                    <CardTitle className="pt-4 font-headline">
-                      {resource.name}
-                    </CardTitle>
-                    <CardDescription>
-                      Created {format(new Date(resource.createdAt), 'PP')}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      {resource.questions.length} cards
-                    </p>
-                  </CardContent>
-                  <CardFooter>
-                    <Link
-                      href={`/quiz/${resource.id}`}
-                      passHref
-                      className="w-full"
-                    >
-                      <Button className="w-full">
-                        <PlayCircle className="w-4 h-4 mr-2" />
-                        Start Quiz
-                      </Button>
+              {resources.map((resource) => {
+                const resourceImage = PlaceHolderImages.find((img) => img.id === resource.id);
+                return (
+                  <Card key={resource.id} className="relative overflow-hidden rounded-lg shadow-lg group aspect-square">
+                    <Link href={`/quiz/${resource.id}`} passHref className="absolute inset-0 z-0">
+                      <span className="sr-only">Start quiz for {resource.name}</span>
                     </Link>
-                  </CardFooter>
-                </Card>
-              ))}
+                    
+                    {resourceImage && (
+                      <Image
+                        src={resourceImage.imageUrl}
+                        alt={resourceImage.description}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        data-ai-hint={resourceImage.imageHint}
+                      />
+                    )}
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10" />
+
+                    {/* Content */}
+                    <div className="relative z-10 flex flex-col justify-between h-full p-4 text-white">
+                      {/* Top section with title and dropdown */}
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <h3 className="text-lg font-bold font-headline">{resource.name}</h3>
+                          <p className="text-sm text-white/80">{resource.questions.length} cards</p>
+                        </div>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" size="icon" className="relative z-20 text-white bg-black/20 hover:bg-black/50 hover:text-white h-8 w-8 -mr-2 -mt-2">
+                              <MoreVertical className="w-4 h-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem onClick={(e) => { e.preventDefault(); deleteResource(resource.id); }} className="text-red-500 focus:text-red-500">
+                              <Trash2 className="w-4 h-4 mr-2" />
+                              Delete
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </div>
+
+                      {/* Bottom section with play icon */}
+                      <div className="self-end">
+                          <PlayCircle className="w-10 h-10 opacity-80" />
+                      </div>
+                    </div>
+                  </Card>
+                )
+              })}
             </div>
           )}
         </div>
