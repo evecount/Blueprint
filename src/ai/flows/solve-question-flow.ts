@@ -44,15 +44,15 @@ const prompt = ai.definePrompt({
   name: 'solveQuestionPrompt',
   input: {schema: SolveQuestionInputSchema},
   output: {schema: SolveQuestionOutputSchema},
-  prompt: `You are an expert exam question creator and intelligence analyst specializing in extracting information from images. A user has submitted a photo or screenshot of a homework or exam question.
+  prompt: `You are an expert study assistant and intelligence analyst specializing in extracting information from images. A user has submitted a photo or screenshot of a homework question.
 
-Your primary task is to solve the question. Your secondary task is to extract all available metadata from the image to understand its origin.
+Your primary task is to convert the user's question into a high-quality, multiple-choice study card. Your secondary task is to extract all available metadata from the image to understand its origin.
 
-**Task 1: Solve the Question**
+**Task 1: Create a Study Card**
 1.  Analyze the image to identify and transcribe the user's primary question.
-2.  Rephrase it into a clear, high-quality multiple-choice question.
+2.  Rephrase it into a clear, high-quality multiple-choice question format.
 3.  Provide the single best correct answer and generate three plausible but incorrect distractor answers.
-4.  Provide a detailed rationale explaining why the correct answer is right and the others are wrong.
+4.  Provide a detailed rationale explaining why the correct answer is right and the others are wrong, suitable for a student.
 
 **Task 2: Extract Source Details**
 1.  Carefully examine the entire image, including headers, footers, and margins.

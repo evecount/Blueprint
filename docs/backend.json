@@ -1,0 +1,108 @@
+
+{
+  "entities": {
+    "QuizDeck": {
+      "title": "Quiz Deck",
+      "description": "A collection of quiz questions for a specific subject or topic.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the quiz deck."
+        },
+        "name": {
+          "type": "string",
+          "description": "The display name of the quiz deck."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the deck was created."
+        },
+        "questions": {
+          "type": "array",
+          "description": "An array of questions belonging to this deck.",
+          "items": {
+            "$ref": "#/entities/QuizQuestion"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "createdAt",
+        "questions"
+      ]
+    },
+    "QuizQuestion": {
+      "title": "Quiz Question",
+      "description": "A single multiple-choice quiz question with its details.",
+      "type": "object",
+      "properties": {
+        "question": {
+          "type": "string"
+        },
+        "answers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "correctAnswerIndex": {
+          "type": "number"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "sourceDetails": {
+          "$ref": "#/entities/SourceDetails"
+        }
+      },
+      "required": [
+        "question",
+        "answers",
+        "correctAnswerIndex",
+        "rationale"
+      ]
+    },
+    "SourceDetails": {
+      "title": "Source Details",
+      "description": "Optional metadata extracted from an image about the source of the question.",
+      "type": "object",
+      "properties": {
+        "publisher": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "school": {
+          "type": "string"
+        },
+        "documentTitle": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "pageNumber": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "auth": {
+    "providers": [
+      "anonymous"
+    ],
+    "description": "The application allows anonymous access for all users."
+  },
+  "firestore": {
+    "/decks/{deckId}": {
+      "schema": {
+        "$ref": "#/entities/QuizDeck"
+      },
+      "description": "Stores all the quiz decks for the application. Each document is a full quiz deck containing all of its questions."
+    }
+  }
+}
