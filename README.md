@@ -6,7 +6,6 @@ Welcome to QuizUp, your AI-powered collaborative learning partner! This applicat
 
 - **AI-Powered Quiz Generation**: Upload your notes in Markdown (`.md`) format, and let our AI generate a comprehensive quiz deck for you in seconds.
 - **Share and Collaborate**: Create study decks for your class and share them with friends.
-- **Pre-loaded Decks**: Jump right in with pre-loaded question banks for subjects like "M8 Collective Investment Schemes" to see how it works.
 - **Instant Feedback & Rationales**: Don't just know if you're right or wrong—understand *why*. Each question comes with a detailed rationale to reinforce learning.
 - **Performance Tracking**: Monitor your progress over time with a dedicated Performance page that charts your scores for each quiz you take.
 

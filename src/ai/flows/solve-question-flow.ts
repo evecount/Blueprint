@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -15,7 +16,7 @@ const SolveQuestionInputSchema = z.object({
   imageDataUri: z.string().describe(
     "A photo of the question, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
   ),
-  context: z.string().describe('The subject or context for the question (e.g., M8A Exam).'),
+  context: z.string().describe('The subject or context for the question (e.g., Secondary 4 Chemistry).'),
 });
 export type SolveQuestionInput = z.infer<typeof SolveQuestionInputSchema>;
 
