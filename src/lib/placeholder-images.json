@@ -80,9 +80,9 @@
     },
     {
       "id": "adv-math",
-      "description": "A complex mathematical formula written on a chalkboard.",
-      "imageUrl": "https://images.unsplash.com/photo-1542747754-5232a9c22890?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtYXRoJTIwZm9ybXVsYXxlbnwwfHx8fDE3Njk2NzgwMTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "math formula"
+      "description": "A blackboard with complex mathematical formulas.",
+      "imageUrl": "https://images.unsplash.com/photo-1509228468518-180dd4864904?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtYXRoJTIwYmxhY2tib2FyZHxlbnwwfHx8fDE3NzAwNTIzMDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "math blackboard"
     },
     {
       "id": "adv-art",
