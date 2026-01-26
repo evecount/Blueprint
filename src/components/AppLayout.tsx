@@ -19,6 +19,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { ReactNode } from 'react';
+import { Footer } from './Footer';
 
 const menuItems = [
   { href: '/', label: 'Dashboard', icon: BarChart2 },
@@ -74,17 +75,20 @@ export function AppLayout({ children }: { children: ReactNode }) {
           </SidebarMenu>
         </SidebarFooter>
       </Sidebar>
-      <SidebarInset className="p-4 md:p-6 lg:p-8">
-        <header className="flex items-center justify-between md:hidden mb-4">
-          <div className="flex items-center gap-2">
-             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <Bot className="h-5 w-5 text-primary-foreground" />
-              </div>
-            <h2 className="text-lg font-bold tracking-tight font-headline">QuizUp</h2>
-          </div>
-          <SidebarTrigger />
-        </header>
-        {children}
+      <SidebarInset className="p-0 flex flex-col">
+        <div className="flex-1 p-4 md:p-6 lg:p-8">
+            <header className="flex items-center justify-between md:hidden mb-4">
+            <div className="flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+                    <Bot className="h-5 w-5 text-primary-foreground" />
+                </div>
+                <h2 className="text-lg font-bold tracking-tight font-headline">QuizUp</h2>
+            </div>
+            <SidebarTrigger />
+            </header>
+            {children}
+        </div>
+        <Footer />
       </SidebarInset>
     </SidebarProvider>
   );
