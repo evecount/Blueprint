@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import { seedResources } from '@/lib/seed-data';
 
 const LOCAL_STORAGE_VERSION_KEY = 'quizup-storage-version';
-const CURRENT_STORAGE_VERSION = '1.2'; // Increment this to force-refresh seed data
+const CURRENT_STORAGE_VERSION = '1.3'; // Increment this to force-refresh seed data
 
 // A custom hook to synchronize state with localStorage
 function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val: T) => T)) => void] {
