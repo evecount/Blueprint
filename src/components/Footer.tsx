@@ -1,11 +1,5 @@
 import { Bot } from 'lucide-react';
-import Image from 'next/image';
-
-const sponsors = [
-    { name: 'Sponsor 1', logoUrl: 'https://picsum.photos/seed/sponsor1/120/40', href: '#' },
-    { name: 'Sponsor 2', logoUrl: 'https://picsum.photos/seed/sponsor2/120/40', href: '#' },
-    { name: 'Sponsor 3', logoUrl: 'https://picsum.photos/seed/sponsor3/120/40', href: '#' },
-];
+import Link from 'next/link';
 
 export function Footer() {
   return (
@@ -21,29 +15,29 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-4 sm:mt-0">
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground text-center sm:text-left">
+                <div className="mt-4 text-center sm:mt-0 sm:text-left">
+                    <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                         Sponsored By
-                    </h3>
-                    <div className="mt-2 flex flex-wrap items-center justify-center sm:justify-start gap-4">
-                        {sponsors.map((sponsor) => (
-                        <a key={sponsor.name} href={sponsor.href} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity">
-                            <Image 
-                                src={sponsor.logoUrl} 
-                                alt={sponsor.name} 
-                                width={100} 
-                                height={32}
-                                className="object-contain brightness-0 invert-[.25] dark:invert"
-                            />
-                        </a>
-                        ))}
-                    </div>
+                    </p>
+                    <p className="mt-2 font-medium text-foreground">
+                       artSTREAM.media
+                    </p>
                 </div>
             </div>
              <div className="mt-8 border-t border-border pt-4">
-                <p className="text-center text-xs/relaxed text-muted-foreground">
-                    © {new Date().getFullYear()} QuizUp. All Rights Reserved.
-                </p>
+                <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+                    <p className="text-center text-xs/relaxed text-muted-foreground">
+                        © {new Date().getFullYear()} QuizUp, a property of Eve Count. All Rights Reserved.
+                    </p>
+                    <nav className="flex gap-4 text-xs text-muted-foreground">
+                        <Link href="/terms" className="transition-colors hover:text-foreground">
+                            Terms & Conditions
+                        </Link>
+                        <Link href="/privacy" className="transition-colors hover:text-foreground">
+                            Privacy Policy
+                        </Link>
+                    </nav>
+                </div>
             </div>
         </div>
     </footer>
