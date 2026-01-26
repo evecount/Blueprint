@@ -40,14 +40,12 @@ export default function DashboardPage() {
       <section className="grid items-center gap-8 md:grid-cols-2">
         <div className="space-y-6">
           <h1 className="text-4xl font-bold tracking-tighter md:text-5xl lg:text-6xl font-headline">
-            Master Any Subject.
+            Learn Together.
             <br />
-            The First Time.
+            Succeed Together.
           </h1>
           <p className="text-lg text-muted-foreground">
-            The most effective AI-powered study platform for students. Practice
-            with high-quality mock exams, create your own, and help others
-            learn.
+            An open-source, AI-powered study platform for students. Create quizzes from your notes, master any subject, and help others learn—because education should be free.
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">
@@ -87,7 +85,7 @@ export default function DashboardPage() {
             Available Quiz Decks
           </h2>
           <p className="text-muted-foreground">
-            Jump right into a quiz or contribute your own questions.
+            Explore a community-built library of quizzes or contribute your own.
           </p>
         </div>
 

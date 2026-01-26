@@ -5,6 +5,7 @@ import {
   BookOpen,
   Bot,
   Gift,
+  Info,
   Menu,
   MessageSquare,
   TrendingUp,
@@ -32,6 +33,7 @@ const menuItems = [
   { href: '/performance', label: 'My Progress', icon: TrendingUp },
   { href: '/chat', label: 'Chat with Notes', icon: MessageSquare },
   { href: '/donate', label: 'Contribute Question', icon: Gift },
+  { href: '/about', label: 'About', icon: Info },
 ];
 
 export function AppLayout({ children }: { children: ReactNode }) {
@@ -109,7 +111,10 @@ export function AppLayout({ children }: { children: ReactNode }) {
           </Link>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <Link href="/about" passHref>
+            <Button variant="ghost">About</Button>
+          </Link>
           <Avatar>
             <AvatarImage src="https://picsum.photos/seed/gwen/40/40" />
             <AvatarFallback>GL</AvatarFallback>
