@@ -3,7 +3,6 @@
 import {
   BarChart2,
   BookOpen,
-  Bot,
   Gift,
   Info,
   Menu,
@@ -58,12 +57,9 @@ export function AppLayout({ children }: { children: ReactNode }) {
                 <SidebarHeader className="p-4 border-b">
                   <Link
                     href="/"
-                    className="flex items-center gap-2"
+                    className="flex items-center"
                     onClick={() => setIsSheetOpen(false)}
                   >
-                    <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary">
-                      <Bot className="w-6 h-6 text-primary-foreground" />
-                    </div>
                     <h2 className="text-xl font-bold tracking-tight font-headline">
                       QuizUp
                     </h2>
@@ -103,11 +99,8 @@ export function AppLayout({ children }: { children: ReactNode }) {
               </div>
             </SheetContent>
           </Sheet>
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary">
-              <Bot className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <h2 className="hidden text-lg font-bold tracking-tight font-headline sm:block">
+          <Link href="/" className="flex items-center">
+            <h2 className="text-lg font-bold tracking-tight font-headline">
               QuizUp
             </h2>
           </Link>
