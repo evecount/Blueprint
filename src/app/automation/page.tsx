@@ -48,6 +48,9 @@ export default function AutomationPage() {
             <li><span className="font-semibold text-foreground">Gain Curricular Insights:</span> Anonymized performance data can reveal which topics are most challenging for students across a cohort, allowing for curriculum adjustments.</li>
             <li><span className="font-semibold text-foreground">Enhance Teacher Effectiveness:</span> Free up teacher time by automating personalized practice, allowing them to focus on higher-level instruction and support.</li>
           </ul>
+           <p className="pt-4 mt-4 font-medium border-t text-foreground border-border/50">
+            Partners can begin using the current, stable MVP today to immediately help students improve their grades. The advanced learning optimization and automation capabilities can then be phased in over time, enhancing the experience without disrupting the core mission.
+          </p>
         </CardContent>
       </Card>
 
