@@ -127,12 +127,12 @@ export default function DashboardPage() {
       <section className="grid items-center gap-8 md:grid-cols-2">
         <div className="space-y-6">
           <h1 className="text-4xl font-bold tracking-tighter md:text-5xl lg:text-6xl font-headline">
-            Learn Together.
+            Ask Any Question.
             <br />
-            Succeed Together.
+            Understand the 'Why'.
           </h1>
           <p className="text-lg text-muted-foreground">
-            An open-source, AI-powered study platform for students. Create quizzes from your notes, master any subject, and help others learn—because education should be free.
+            Stuck on a problem? Scan it or type it in. Our AI will not only solve it but give you a clear, step-by-step rationale so you truly understand the concept.
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">
@@ -147,7 +147,7 @@ export default function DashboardPage() {
           <div className="pt-4">
             <Button size="lg" className="w-full sm:w-auto" onClick={() => setIsUploadDialogOpen(true)}>
               <Sparkles className="mr-2" />
-              Generate a Question
+              Ask Question
             </Button>
           </div>
         </div>
