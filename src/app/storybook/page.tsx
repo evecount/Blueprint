@@ -1,160 +1,98 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { BookImage, Loader2, Sparkles, Wand2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { createStorybook, StorybookOutput } from '@/ai/flows/create-storybook-flow';
+import { createPagePrompt } from '@/ai/flows/create-storybook-page-flow';
 import { illustrateScene } from '@/ai/flows/storybook-illustrator-flow';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '@/components/ui/carousel';
 import Image from 'next/image';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
-type StorybookWithImages = Omit<StorybookOutput, 'pages'> & {
-  pages: (StorybookOutput['pages'][0] & { imageUrl?: string; isGenerating?: boolean })[];
+// New type for a single page in our story
+type StoryPage = {
+  pageNumber: number;
+  text: string;
+  illustrationPrompt: string;
+  imageUrl: string | null;
+  isGenerating: boolean;
 };
 
 export default function StorybookCreatorPage() {
   const { toast } = useToast();
   const [authorName, setAuthorName] = useState('');
-  const [storyText, setStoryText] = useState('');
-  const [isEditing, setIsEditing] = useState(true);
-  const [isCreatingStory, setIsCreatingStory] = useState(false);
-  const [storybook, setStorybook] = useState<StorybookWithImages | null>(null);
-  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [isAuthorSet, setIsAuthorSet] = useState(false);
+  const [currentPageText, setCurrentPageText] = useState('');
+  const [pages, setPages] = useState<StoryPage[]>([]);
+  const [isGenerating, setIsGenerating] = useState(false);
 
-  // Function to generate an image for a specific page index
-  const generateImageForPage = async (pageIndex: number) => {
-    // This function is now async. We need to use `setStorybook` with a callback
-    // to correctly access the latest `storybook` state inside this async function.
-    let currentPrompt = '';
-    setStorybook(currentStorybook => {
-      if (!currentStorybook || !currentStorybook.pages[pageIndex]) return currentStorybook;
-
-      const page = currentStorybook.pages[pageIndex];
-      if (page.imageUrl || page.isGenerating) return currentStorybook;
-      
-      currentPrompt = page.illustrationPrompt;
-
-      const updatedPages = [...currentStorybook.pages];
-      updatedPages[pageIndex] = { ...updatedPages[pageIndex], isGenerating: true };
-      return { ...currentStorybook, pages: updatedPages };
-    });
-
-    if (!currentPrompt) return;
-
-    try {
-      const imageResult = await illustrateScene({ prompt: currentPrompt });
-      
-      setStorybook(currentStorybook => {
-        if (!currentStorybook) return null;
-        const updatedPages = [...currentStorybook.pages];
-        updatedPages[pageIndex] = { ...updatedPages[pageIndex], imageUrl: imageResult.imageUrl, isGenerating: false };
-        return { ...currentStorybook, pages: updatedPages };
-      });
-
-    } catch (imageError) {
-      console.error(`Failed to generate image for page ${pageIndex + 1}:`, imageError);
-      setStorybook(currentStorybook => {
-        if (!currentStorybook) return null;
-        const updatedPages = [...currentStorybook.pages];
-        updatedPages[pageIndex] = { ...updatedPages[pageIndex], isGenerating: false, imageUrl: '/images/error-placeholder.png' };
-        return { ...currentStorybook, pages: updatedPages };
-      });
+  const handleAddPage = async () => {
+    if (!currentPageText.trim()) {
       toast({
         variant: 'destructive',
-        title: `Image Generation Failed`,
-        description: `Could not create the illustration for page ${pageIndex + 1}.`,
-      });
-    }
-  };
-  
-  const handleCreateStory = async () => {
-    if (!authorName.trim() || !storyText.trim()) {
-      toast({
-        variant: 'destructive',
-        title: 'Missing Information',
-        description: 'Please enter your first name and a story.',
+        title: 'Empty Page',
+        description: 'Please write something for this page.',
       });
       return;
     }
-    setIsCreatingStory(true);
-    setIsEditing(false);
-    setStorybook(null);
+
+    setIsGenerating(true);
+    const newPageNumber = pages.length + 1;
+    let tempPage: StoryPage = {
+      pageNumber: newPageNumber,
+      text: currentPageText,
+      illustrationPrompt: '',
+      imageUrl: null,
+      isGenerating: true,
+    };
+    
+    // Add a temporary page to show loading state immediately
+    setPages(prev => [...prev, tempPage]);
+    setCurrentPageText(''); // Clear input for next page
 
     try {
-      const storyData = await createStorybook({
-        authorFirstName: authorName,
-        story: storyText,
-      });
-
-      if (storyData.title === 'Invalid Story' || storyData.pages.length === 0) {
-          toast({
-              variant: 'destructive',
-              title: 'Story Cannot Be Processed',
-              description: 'The AI could not process your story. Please ensure it is appropriate and does not contain personal details.',
-          });
-          setIsEditing(true);
-          return;
+      // Step 1: Generate the illustration prompt from the text
+      const promptResult = await createPagePrompt({ text: tempPage.text });
+      if (promptResult.illustrationPrompt === "Invalid content detected.") {
+          throw new Error("The AI detected inappropriate content. Please try again.");
       }
       
-      setStorybook(storyData); // Set the story structure. Images will be generated on demand.
+      // Update temp page with the prompt
+      tempPage.illustrationPrompt = promptResult.illustrationPrompt;
+
+      // Step 2: Generate the image from the prompt
+      const imageResult = await illustrateScene({ prompt: tempPage.illustrationPrompt });
+      tempPage.imageUrl = imageResult.imageUrl;
 
     } catch (error) {
-      console.error(error);
+      console.error('Error generating page:', error);
       toast({
         variant: 'destructive',
-        title: 'Story Creation Failed',
-        description: 'The AI could not create your story. Please try again.',
+        title: 'Page Creation Failed',
+        description: error instanceof Error ? error.message : 'Could not create the illustration for this page.',
       });
-      setIsEditing(true);
+      // Set an error image or remove the page
+      tempPage.imageUrl = '/images/error-placeholder.png'; 
     } finally {
-      setIsCreatingStory(false);
+      tempPage.isGenerating = false;
+      // Update the page in the state with the final result
+      setPages(prev => prev.map(p => p.pageNumber === newPageNumber ? tempPage : p));
+      setIsGenerating(false);
     }
   };
-  
-  // Effect to handle on-demand image generation when carousel slide changes
-  useEffect(() => {
-    if (!carouselApi) {
-      return;
-    }
 
-    // Generate for the initial page
-    generateImageForPage(carouselApi.selectedScrollSnap());
-
-    const handleSelect = () => {
-      const selectedIndex = carouselApi.selectedScrollSnap();
-      generateImageForPage(selectedIndex);
-    };
-
-    carouselApi.on("select", handleSelect);
-
-    return () => {
-      carouselApi.off("select", handleSelect);
-    };
-  // We want to re-run this effect only when the carousel API is available.
-  // generateImageForPage is stable due to using callbacks for state updates.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [carouselApi]);
-
-
-  const handleEdit = () => {
-      setIsEditing(true);
-      setStorybook(null);
-  };
-
-  const renderForm = () => (
-    <Card className="w-full max-w-2xl mx-auto">
+  const renderAuthorInput = () => (
+     <Card className="w-full max-w-2xl mx-auto">
         <CardHeader>
-            <CardTitle className="font-headline">Create Your Own Storybook</CardTitle>
-            <CardDescription>Write a short story and our AI will illustrate it for you, page by page.</CardDescription>
+            <CardTitle className="font-headline">Let's Write a Story!</CardTitle>
+            <CardDescription>First, tell us the author's name.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-            <div className="space-y-2">
+             <div className="space-y-2">
                 <Label htmlFor="authorName">Author's First Name</Label>
                 <Input
                     id="authorName"
@@ -162,121 +100,107 @@ export default function StorybookCreatorPage() {
                     value={authorName}
                     onChange={(e) => setAuthorName(e.target.value)}
                     maxLength={20}
+                    onKeyDown={(e) => e.key === 'Enter' && authorName.trim() && setIsAuthorSet(true)}
                 />
-                 <p className="text-xs text-muted-foreground">For your safety, please only use your first name.</p>
-            </div>
-            <div className="space-y-2">
-                <Label htmlFor="storyText">Your Short Story</Label>
-                <Textarea
-                    id="storyText"
-                    placeholder="Once upon a time, in a land full of talking animals..."
-                    rows={8}
-                    value={storyText}
-                    onChange={(e) => setStoryText(e.target.value)}
-                />
+                 <p className="text-xs text-muted-foreground">For your safety, please only use a first name.</p>
             </div>
         </CardContent>
         <CardFooter>
-            <Button onClick={handleCreateStory} disabled={isCreatingStory}>
-                {isCreatingStory ? (
-                  <>
-                    <Loader2 className="mr-2 animate-spin" />
-                    Creating Story...
-                  </>
-                ) : (
-                  <>
-                    <Wand2 className="mr-2" />
-                    Create My Storybook
-                  </>
-                )}
+            <Button onClick={() => setIsAuthorSet(true)} disabled={!authorName.trim()}>
+                Start Writing
             </Button>
         </CardFooter>
-    </Card>
+     </Card>
   );
 
-  const renderStorybook = () => {
-    if (isCreatingStory || !storybook) {
-        return (
-             <div className="flex flex-col items-center justify-center gap-4 text-center w-full max-w-3xl mx-auto h-96">
-                <Loader2 className="w-12 h-12 animate-spin text-primary" />
-                <p className="text-lg text-muted-foreground">Our AI Editor is reading your story...</p>
-                <p className="text-sm text-muted-foreground">This may take a moment.</p>
-            </div>
-        )
-    };
-
-    return (
-        <div className="w-full max-w-5xl mx-auto">
-            <div className="space-y-2 text-center mb-8">
-                <h1 className="text-4xl font-bold tracking-tight font-headline">{storybook.title}</h1>
-                <p className="text-lg text-muted-foreground">by {storybook.author}</p>
-            </div>
-            
-            <Carousel className="w-full" setApi={setCarouselApi}>
-                <CarouselContent>
-                    {storybook.pages.map((page) => (
-                        <CarouselItem key={page.pageNumber}>
-                            <div className="p-1">
-                                <Card className="overflow-hidden">
-                                    <div className="grid md:grid-cols-2">
-                                        <div className="flex items-center justify-center p-6 bg-muted aspect-square">
-                                            {page.isGenerating ? (
-                                                <div className="flex flex-col items-center gap-2 text-muted-foreground">
-                                                    <Loader2 className="w-8 h-8 animate-spin" />
-                                                    <p>Drawing...</p>
-                                                </div>
-                                            ): page.imageUrl ? (
-                                                <Image
-                                                    src={page.imageUrl}
-                                                    alt={`Illustration for page ${page.pageNumber}`}
-                                                    width={500}
-                                                    height={500}
-                                                    className="object-contain w-full h-full rounded-md"
-                                                />
-                                            ) : (
-                                                <div className="text-center text-muted-foreground">Image will appear here...</div>
-                                            )}
-                                        </div>
-                                        <div className="flex flex-col p-6">
-                                            <p className="flex-1 text-lg text-muted-foreground leading-relaxed">{page.text}</p>
-                                            <p className="self-end mt-4 text-sm font-medium">{page.pageNumber}</p>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </div>
-                        </CarouselItem>
-                    ))}
-                </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
-            </Carousel>
-            
-            <div className="flex justify-center mt-8">
-                 <Button onClick={handleEdit} variant="outline">
-                    Write a New Story
-                </Button>
-            </div>
+  const renderStoryCreator = () => (
+    <div className="w-full max-w-4xl mx-auto space-y-8">
+        <div className="space-y-2 text-center">
+            <h1 className="text-4xl font-bold tracking-tight font-headline">My Storybook</h1>
+            <p className="text-lg text-muted-foreground">by {authorName}</p>
         </div>
-    );
-  };
+
+        {/* Display completed pages */}
+        <div className="space-y-6">
+            {pages.map((page) => (
+                <Card key={page.pageNumber} className="overflow-hidden">
+                    <div className="grid md:grid-cols-2">
+                        <div className="flex items-center justify-center p-6 bg-muted aspect-square">
+                           {page.isGenerating ? (
+                                <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                                    <Loader2 className="w-8 h-8 animate-spin" />
+                                    <p>Drawing page {page.pageNumber}...</p>
+                                </div>
+                            ) : page.imageUrl ? (
+                                <Image
+                                    src={page.imageUrl}
+                                    alt={`Illustration for page ${page.pageNumber}`}
+                                    width={500}
+                                    height={500}
+                                    className="object-contain w-full h-full rounded-md"
+                                />
+                            ) : null}
+                        </div>
+                         <div className="flex flex-col justify-between p-6">
+                            <p className="flex-1 text-lg leading-relaxed text-muted-foreground">{page.text}</p>
+                            <p className="self-end mt-4 text-sm font-medium">{page.pageNumber}</p>
+                        </div>
+                    </div>
+                </Card>
+            ))}
+        </div>
+
+        {/* Input for the next page */}
+        <Card className="w-full">
+            <CardHeader>
+                <CardTitle>Page {pages.length + 1}</CardTitle>
+                <CardDescription>Write the next part of your story here.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <Textarea
+                    placeholder="What happens next?"
+                    rows={4}
+                    value={currentPageText}
+                    onChange={(e) => setCurrentPageText(e.target.value)}
+                    disabled={isGenerating}
+                />
+            </CardContent>
+            <CardFooter>
+                <Button onClick={handleAddPage} disabled={isGenerating}>
+                    {isGenerating ? (
+                        <>
+                            <Loader2 className="mr-2 animate-spin" />
+                            Illustrating...
+                        </>
+                    ) : (
+                        <>
+                            <Wand2 className="mr-2" />
+                            Add This Page
+                        </>
+                    )}
+                </Button>
+            </CardFooter>
+        </Card>
+    </div>
+  );
 
   return (
     <div className="space-y-8">
       <header>
         <h1 className="text-3xl font-bold tracking-tight font-headline">Storybook Creator</h1>
         <p className="text-muted-foreground">
-          Turn your imagination into a real book, illustrated by AI!
+          Write your story one page at a time and watch it come to life!
         </p>
       </header>
        <Alert>
             <Sparkles className="h-4 w-4" />
             <AlertTitle>How It Works</AlertTitle>
             <AlertDescription>
-                Write your story, and our AI "Editor" will split it into pages. Then, as you flip the pages, our AI "Illustrator" will draw a picture for each one.
+                Write one part of your story, click "Add This Page," and our AI will draw a picture for it. Then you can write the next part!
             </AlertDescription>
         </Alert>
 
-      {isEditing ? renderForm() : renderStorybook()}
+      {!isAuthorSet ? renderAuthorInput() : renderStoryCreator()}
     </div>
   );
 }
