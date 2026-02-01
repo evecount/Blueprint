@@ -1,108 +1,283 @@
-
 {
   "entities": {
-    "QuizDeck": {
-      "title": "Quiz Deck",
-      "description": "A collection of quiz questions for a specific subject or topic.",
+    "School": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "School",
       "type": "object",
+      "description": "Represents a school or educational institution that registers and manages rewards.",
       "properties": {
         "id": {
           "type": "string",
-          "description": "Unique identifier for the quiz deck."
+          "description": "Unique identifier for the School entity."
         },
         "name": {
           "type": "string",
-          "description": "The display name of the quiz deck."
+          "description": "Name of the school or institution."
         },
-        "createdAt": {
+        "contactEmail": {
           "type": "string",
-          "format": "date-time",
-          "description": "The timestamp when the deck was created."
+          "description": "Contact email for the school.",
+          "format": "email"
         },
-        "questions": {
-          "type": "array",
-          "description": "An array of questions belonging to this deck.",
-          "items": {
-            "$ref": "#/entities/QuizQuestion"
-          }
+        "registrationDate": {
+          "type": "string",
+          "description": "Date the school registered.",
+          "format": "date-time"
         }
       },
       "required": [
         "id",
         "name",
-        "createdAt",
-        "questions"
+        "contactEmail",
+        "registrationDate"
       ]
     },
-    "QuizQuestion": {
-      "title": "Quiz Question",
-      "description": "A single multiple-choice quiz question with its details.",
+    "RewardSystem": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "RewardSystem",
       "type": "object",
+      "description": "Defines a reward system configured by a school for its students.",
       "properties": {
-        "question": {
-          "type": "string"
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the RewardSystem entity."
         },
-        "answers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "schoolId": {
+          "type": "string",
+          "description": "Reference to School. (Relationship: School 1:N RewardSystem)"
         },
-        "correctAnswerIndex": {
-          "type": "number"
+        "grade": {
+          "type": "string",
+          "description": "Grade level this reward system applies to (e.g., '5th Grade')."
         },
-        "rationale": {
-          "type": "string"
+        "subject": {
+          "type": "string",
+          "description": "Subject area this reward system applies to (e.g., 'Math', 'Science')."
         },
-        "sourceDetails": {
-          "$ref": "#/entities/SourceDetails"
+        "description": {
+          "type": "string",
+          "description": "Description of the reward system."
         }
       },
       "required": [
-        "question",
-        "answers",
-        "correctAnswerIndex",
-        "rationale"
+        "id",
+        "schoolId",
+        "grade",
+        "subject",
+        "description"
       ]
     },
-    "SourceDetails": {
-      "title": "Source Details",
-      "description": "Optional metadata extracted from an image about the source of the question.",
+    "Reward": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Reward",
       "type": "object",
+      "description": "Represents a specific reward that can be earned by a student.",
       "properties": {
-        "publisher": {
-          "type": "string"
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Reward entity."
         },
-        "website": {
-          "type": "string"
+        "rewardSystemId": {
+          "type": "string",
+          "description": "Reference to RewardSystem. (Relationship: RewardSystem 1:N Reward)"
         },
-        "school": {
-          "type": "string"
+        "milestone": {
+          "type": "string",
+          "description": "Milestone or achievement required to earn this reward (e.g., 'Complete Chapter 1 Quiz')."
         },
-        "documentTitle": {
-          "type": "string"
+        "rewardName": {
+          "type": "string",
+          "description": "Name or title of the reward (e.g., 'Bronze Star', 'Certificate of Excellence')."
         },
-        "timestamp": {
-          "type": "string"
+        "rewardCode": {
+          "type": "string",
+          "description": "Special code associated with the reward to prevent duplication."
         },
-        "pageNumber": {
-          "type": "string"
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the reward image.",
+          "format": "uri"
         }
-      }
+      },
+      "required": [
+        "id",
+        "rewardSystemId",
+        "milestone",
+        "rewardName",
+        "rewardCode",
+        "imageUrl"
+      ]
+    },
+    "StudentReward": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "StudentReward",
+      "type": "object",
+      "description": "Represents a reward earned by a student.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the StudentReward entity."
+        },
+        "studentId": {
+          "type": "string",
+          "description": "Reference to Student. (Relationship: Student 1:N StudentReward)"
+        },
+        "rewardId": {
+          "type": "string",
+          "description": "Reference to Reward. (Relationship: Reward 1:N StudentReward)"
+        },
+        "dateEarned": {
+          "type": "string",
+          "description": "Date the reward was earned.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "studentId",
+        "rewardId",
+        "dateEarned"
+      ]
+    },
+    "Student": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Student",
+      "type": "object",
+      "description": "Represents a student user.  Student sign-in is anonymous.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Student entity."
+        },
+        "schoolId": {
+          "type": "string",
+          "description": "Reference to School. (Relationship: School 1:N Student)"
+        },
+        "grade": {
+          "type": "string",
+          "description": "The grade level of the student."
+        }
+      },
+      "required": [
+        "id",
+        "schoolId",
+        "grade"
+      ]
     }
   },
   "auth": {
     "providers": [
+      "password",
       "anonymous"
-    ],
-    "description": "The application allows anonymous access for all users."
+    ]
   },
   "firestore": {
-    "/decks/{deckId}": {
-      "schema": {
-        "$ref": "#/entities/QuizDeck"
+    "structure": [
+      {
+        "path": "/schools/{schoolId}",
+        "definition": {
+          "entityName": "School",
+          "schema": {
+            "$ref": "#/backend/entities/School"
+          },
+          "description": "Stores school registration information.",
+          "params": [
+            {
+              "name": "schoolId",
+              "description": "Unique identifier for the school."
+            }
+          ]
+        }
       },
-      "description": "Stores all the quiz decks for the application. Each document is a full quiz deck containing all of its questions."
-    }
+      {
+        "path": "/schools/{schoolId}/rewardSystems/{rewardSystemId}",
+        "definition": {
+          "entityName": "RewardSystem",
+          "schema": {
+            "$ref": "#/backend/entities/RewardSystem"
+          },
+          "description": "Defines reward systems for each school, grade, and subject. Includes denormalized 'schoolId' for authorization independence.",
+          "params": [
+            {
+              "name": "schoolId",
+              "description": "Unique identifier for the school."
+            },
+            {
+              "name": "rewardSystemId",
+              "description": "Unique identifier for the reward system."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/schools/{schoolId}/rewardSystems/{rewardSystemId}/rewards/{rewardId}",
+        "definition": {
+          "entityName": "Reward",
+          "schema": {
+            "$ref": "#/backend/entities/Reward"
+          },
+          "description": "Stores specific rewards within a reward system. Includes denormalized 'schoolId' for authorization independence.",
+          "params": [
+            {
+              "name": "schoolId",
+              "description": "Unique identifier for the school."
+            },
+            {
+              "name": "rewardSystemId",
+              "description": "Unique identifier for the reward system."
+            },
+            {
+              "name": "rewardId",
+              "description": "Unique identifier for the reward."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/schools/{schoolId}/students/{studentId}",
+        "definition": {
+          "entityName": "Student",
+          "schema": {
+            "$ref": "#/backend/entities/Student"
+          },
+          "description": "Stores student information for each school. Includes denormalized 'schoolId' for authorization independence.",
+          "params": [
+            {
+              "name": "schoolId",
+              "description": "Unique identifier for the school."
+            },
+            {
+              "name": "studentId",
+              "description": "Unique identifier for the student."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/schools/{schoolId}/students/{studentId}/studentRewards/{studentRewardId}",
+        "definition": {
+          "entityName": "StudentReward",
+          "schema": {
+            "$ref": "#/backend/entities/StudentReward"
+          },
+          "description": "Stores rewards earned by students.",
+          "params": [
+            {
+              "name": "schoolId",
+              "description": "Unique identifier for the school."
+            },
+            {
+              "name": "studentId",
+              "description": "Unique identifier for the student."
+            },
+            {
+              "name": "studentRewardId",
+              "description": "Unique identifier for the student reward."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore data structure is designed to support institutional registration, reward systems, and student participation. The structure emphasizes authorization independence and secure data access, achieved through path-based ownership for schools and denormalization of relevant school information into reward systems and student documents. Segregation is achieved by separating school management and reward configurations from student-specific data. The path structure clearly models 1:N relationships between schools, reward systems, rewards, students, and student rewards.\n\nSchools are top-level documents, while reward systems, rewards, and students are organized as subcollections under each school. This design ensures that each school can manage its own reward programs and student data independently.\n\nTo ensure authorization independence, `schoolId` is included in the `RewardSystem`, `Reward`, and `Student` documents, allowing rules to validate the document's ownership without performing expensive `get()` calls to parent documents. Students are identified by an anonymous ID, which can be stored in local storage. Schools do not need to manage a user list, simplifying GDPR compliance.\n\nThis structure facilitates secure `list` operations and supports ownership invariants. For example, listing reward systems or students associated with a school can be done efficiently and securely using collection group queries and rules that verify the `schoolId`."
   }
 }

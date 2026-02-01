@@ -1,0 +1,232 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * Core Philosophy: This ruleset enforces a strict institutional ownership model. Authenticated
+     * users represent schools, which have full control over their own data, including reward
+     * systems and student records. Students interact with the system as anonymous users. They can
+     * view public reward information and can only create records of rewards they have personally earned.
+     *
+     * Data Structure: All data is hierarchically organized under the /schools/{schoolId} path,
+     * where the {schoolId} is the UID of the authenticated school user. This structure naturally
+     * isolates each institution's data, preventing any cross-tenant data access. Subcollections
+     * for reward systems, rewards, and students are nested under their respective school.
+     *
+     * Key Security Decisions:
+     * - School Isolation: Rules strictly prevent one school from reading or writing to another
+     *   school's data by enforcing that the requestor's UID matches the {schoolId} in the path.
+     * - Public vs. Private Data: Reward system definitions are public to allow anonymous students
+     *   to participate, but all write operations are restricted to the owning school.
+     * - Anonymous Student Access: Students are anonymous users. They can create their own student
+     *   profile under a school and write to their own private `studentRewards` subcollection.
+     * - No School Listing: The top-level `/schools` collection cannot be listed to protect the
+     *   privacy of registered institutions.
+     *
+     * Denormalization for Authorization: To ensure performant and secure rules, critical
+     * identifiers are denormalized. The `schoolId` is included in `RewardSystem` and `Student`
+     * documents, and the `studentId` is included in `StudentReward` documents. This allows rules
+     * to validate ownership and relational integrity on create/update without needing costly `get`
+     * calls to parent documents.
+     *
+     * Structural Segregation: The data model naturally separates the concerns of school management
+     * (e.g., /schools/{schoolId}/rewardSystems) from student activity (e.g.,
+     * /schools/{schoolId}/students/{studentId}/studentRewards). This clear separation simplifies
+     * the security rules for each path.
+     */
+
+    // --------------------------------------------------------------------------
+    // Helper Functions
+    // --------------------------------------------------------------------------
+
+    /**
+     * Checks if a user is authenticated.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /**
+     * Checks if the authenticated user is a registered school (i.e., not an anonymous user).
+     * This is used to gate all administrative actions.
+     */
+    function isSchool() {
+      return isSignedIn() && request.auth.token.firebase.sign_in_provider != 'anonymous';
+    }
+
+    /**
+     * Checks if the authenticated user is an anonymous student.
+     * This is used for actions specific to students, like earning a reward.
+     */
+    function isStudent() {
+      return isSignedIn() && request.auth.token.firebase.sign_in_provider == 'anonymous';
+    }
+
+    /**
+     * Checks if the authenticated user's UID matches the document's owner ID.
+     * This is the primary ownership check throughout the ruleset.
+     */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    /**
+     * Verifies ownership for an existing document. Used for safe updates and deletes.
+     */
+    function isExistingOwner(userId) {
+      return isOwner(userId) && resource != null;
+    }
+
+    /**
+     * Validates a new School document on creation.
+     * Ensures the creator is a school admin and the document ID matches their UID.
+     */
+    function isValidNewSchool(schoolId) {
+      let isCreatingOwnRecord = isOwner(schoolId);
+      let hasCorrectIdField = request.resource.data.id == schoolId;
+      return isSchool() && isCreatingOwnRecord && hasCorrectIdField;
+    }
+
+    /**
+     * Validates a School document on update to prevent re-assigning ownership.
+     */
+    function isImmutableSchoolData() {
+      return request.resource.data.id == resource.data.id;
+    }
+
+    /**
+     * Validates a new RewardSystem, ensuring it's linked to the correct parent school.
+     */
+    function isValidNewRewardSystem(schoolId) {
+      return request.resource.data.schoolId == schoolId;
+    }
+
+    /**
+     * Validates a RewardSystem on update to prevent changing its parent school link.
+     */
+    function isImmutableRewardSystemData() {
+      return request.resource.data.schoolId == resource.data.schoolId;
+    }
+
+    /**
+     * Validates a new Reward, ensuring it's linked to the correct parent RewardSystem.
+     */
+    function isValidNewReward(rewardSystemId) {
+      return request.resource.data.rewardSystemId == rewardSystemId;
+    }
+
+    /**
+     * Validates a Reward on update to prevent changing its parent RewardSystem link.
+     */
+    function isImmutableRewardData() {
+      return request.resource.data.rewardSystemId == resource.data.rewardSystemId;
+    }
+
+    /**
+     * Validates a new Student document created by an anonymous user.
+     * Ensures the student is creating their own record under the correct school.
+     */
+    function isValidNewStudentByStudent(studentId, schoolId) {
+      let isCreatingOwnRecord = isOwner(studentId);
+      let hasCorrectIdField = request.resource.data.id == studentId;
+      let hasCorrectSchoolIdField = request.resource.data.schoolId == schoolId;
+      return isStudent() && isCreatingOwnRecord && hasCorrectIdField && hasCorrectSchoolIdField;
+    }
+
+    /**
+     * Validates a Student document on update to prevent changing its core identifiers.
+     */
+    function isImmutableStudentData() {
+      return request.resource.data.id == resource.data.id && request.resource.data.schoolId == resource.data.schoolId;
+    }
+
+    /**
+     * Validates a new StudentReward document created by a student.
+     * Ensures the student is creating a reward for themselves.
+     */
+    function isValidNewStudentReward(studentId) {
+      let isCreatingOwnRecord = isOwner(studentId);
+      let hasCorrectStudentIdField = request.resource.data.studentId == studentId;
+      return isStudent() && isCreatingOwnRecord && hasCorrectStudentIdField;
+    }
+
+    // --------------------------------------------------------------------------
+    // Collection Rules
+    // --------------------------------------------------------------------------
+
+    /**
+     * @description Manages School documents, representing registered institutions.
+     * @path /schools/{schoolId}
+     * @allow A school admin (auth.uid = 'school_abc') creating their own school document (create): /schools/school_abc
+     * @deny A different school admin (auth.uid = 'school_xyz') trying to read another school's data (get): /schools/school_abc
+     * @principle Enforces strict ownership. Schools can only manage their own root document. Listing schools is forbidden for privacy.
+     */
+    match /schools/{schoolId} {
+      allow get: if isOwner(schoolId);
+      allow list: if false;
+      allow create: if isValidNewSchool(schoolId);
+      allow update: if isExistingOwner(schoolId) && isImmutableSchoolData();
+      allow delete: if isExistingOwner(schoolId);
+
+      /**
+       * @description Defines reward systems for each school. Publicly readable by students.
+       * @path /schools/{schoolId}/rewardSystems/{rewardSystemId}
+       * @allow An anonymous student reading a list of reward systems (list): /schools/school_abc/rewardSystems
+       * @deny An anonymous student trying to create a new reward system (create): /schools/school_abc/rewardSystems
+       * @principle Implements a "Public Read, Owner Write" model. Anyone can see the reward systems, but only the owning school can manage them.
+       */
+      match /rewardSystems/{rewardSystemId} {
+        allow get: if true;
+        allow list: if true;
+        allow create: if isSchool() && isOwner(schoolId) && isValidNewRewardSystem(schoolId);
+        allow update: if isSchool() && isExistingOwner(schoolId) && isImmutableRewardSystemData();
+        allow delete: if isSchool() && isExistingOwner(schoolId);
+
+        /**
+         * @description Stores specific rewards within a reward system. Publicly readable by students.
+         * @path /schools/{schoolId}/rewardSystems/{rewardSystemId}/rewards/{rewardId}
+         * @allow An anonymous student viewing a specific reward's details (get): /schools/school_abc/rewardSystems/rs_123/rewards/r_456
+         * @deny Another school (auth.uid = 'school_xyz') trying to delete a reward (delete): /schools/school_abc/rewardSystems/rs_123/rewards/r_456
+         * @principle Inherits the "Public Read, Owner Write" model from its parent. Only the owning school can manage rewards.
+         */
+        match /rewards/{rewardId} {
+          allow get: if true;
+          allow list: if true;
+          allow create: if isSchool() && isOwner(schoolId) && isValidNewReward(rewardSystemId);
+          allow update: if isSchool() && isExistingOwner(schoolId) && isImmutableRewardData();
+          allow delete: if isSchool() && isExistingOwner(schoolId);
+        }
+      }
+
+      /**
+       * @description Stores student profiles. A student creates their own, and the school can manage them.
+       * @path /schools/{schoolId}/students/{studentId}
+       * @allow An anonymous student (auth.uid = 'student_xyz') creating their own profile (create): /schools/school_abc/students/student_xyz
+       * @deny A student (auth.uid = 'student_xyz') trying to list all other students (list): /schools/school_abc/students
+       * @principle A student can create and read their own record. The owning school can read and manage all student records within its scope.
+       */
+      match /students/{studentId} {
+        allow get: if isOwner(schoolId) || isOwner(studentId);
+        allow list: if isOwner(schoolId);
+        allow create: if isValidNewStudentByStudent(studentId, schoolId);
+        allow update: if isOwner(schoolId) && resource != null && isImmutableStudentData();
+        allow delete: if isOwner(schoolId) && resource != null;
+
+        /**
+         * @description Stores records of rewards earned by a specific student. Private to that student.
+         * @path /schools/{schoolId}/students/{studentId}/studentRewards/{studentRewardId}
+         * @allow A student (auth.uid = 'student_xyz') creating a record of a reward they earned (create): /schools/school_abc/students/student_xyz/studentRewards/sr_123
+         * @deny The school (auth.uid = 'school_abc') trying to read a student's private earned rewards (get, list).
+         * @principle Enforces strict ownership for private student data. Only the student can create and view their earned rewards. Earned rewards are immutable.
+         */
+        match /studentRewards/{studentRewardId} {
+          allow get: if isOwner(studentId);
+          allow list: if isOwner(studentId);
+          allow create: if isValidNewStudentReward(studentId);
+          allow update: if false;
+          allow delete: if false;
+        }
+      }
+    }
+  }
+}
