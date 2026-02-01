@@ -37,10 +37,30 @@ const illustratorFlow = ai.defineFlow(
       prompt: `Illustrate the following scene in a whimsical, clean, black-and-white coloring book style. The lines should be simple and clear, suitable for a child to color in. The overall feeling should be one of warmth, wonder, and charm.
 
       Scene: "${input.prompt}"`,
+      config: {
+        safetySettings: [
+          {
+            category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
+            threshold: 'BLOCK_NONE',
+          },
+          {
+            category: 'HARM_CATEGORY_HATE_SPEECH',
+            threshold: 'BLOCK_NONE',
+          },
+          {
+            category: 'HARM_CATEGORY_HARASSMENT',
+            threshold: 'BLOCK_NONE',
+          },
+           {
+            category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
+            threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+          },
+        ],
+      },
     });
 
     if (!media || !media.url) {
-      throw new Error('Image generation failed.');
+      throw new Error('Image generation failed. This might be due to safety filters. Please try rephrasing your story or being more specific.');
     }
     
     return { imageUrl: media.url };
