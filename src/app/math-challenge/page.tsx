@@ -227,12 +227,12 @@ const mathQuestions = [
   },
   {
     id: 'q21',
-    prompt: 'Belle saves $2 every day. How much money can she save in a week?',
-    visual: { type: 'grid', content: '💰💰', count: 7 },
+    prompt: 'A farmer sells eggs in trays of 4. He sold a total of 9 trays of eggs on Sunday. How many eggs did he sell altogether on Sunday?',
+    visual: { type: 'grid', content: '🥚🥚🥚🥚', count: 9 },
     items: [
-        { id: 'q21d1', text: '$9' },
-        { id: 'q21d2', text: '$14' },
-        { id: 'q21d3', text: '$7' }
+        { id: 'q21d1', text: '13' },
+        { id: 'q21d2', text: '36' },
+        { id: 'q21d3', text: '27' }
     ],
     target: { id: 'q21t1', correctItemId: 'q21d2' }
   }
