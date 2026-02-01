@@ -1,7 +1,16 @@
+'use client';
+
 import { Bot } from 'lucide-react';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export function Footer() {
+  const [year, setYear] = useState<number | ''>('');
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="border-t bg-card/50">
         <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
@@ -106,7 +115,7 @@ export function Footer() {
 
              <div className="mt-8 border-t border-border pt-6">
                 <p className="text-center text-xs/relaxed text-muted-foreground">
-                    © {new Date().getFullYear()} QuizUp, a property of <a href="https://evecount.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">Eve Count Pte Ltd SINGAPORE</a>. All Rights Reserved.
+                    © {year} QuizUp, a property of <a href="https://evecount.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">Eve Count Pte Ltd SINGAPORE</a>. All Rights Reserved.
                 </p>
             </div>
         </div>
