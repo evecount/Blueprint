@@ -37,23 +37,188 @@ const prompt = ai.definePrompt({
   name: 'generateSingleQuestionPrompt',
   input: {schema: GenerateSingleQuestionInputSchema},
   output: {schema: GenerateSingleQuestionOutputSchema},
-  prompt: `You are an expert study assistant. A user has submitted a text-based question.
+  prompt: `You are an expert study assistant and curriculum designer for Primary 1 English in Singapore. A user has submitted a text-based question.
 
-Your tasks are to:
-1.  **Classify the Question**: Analyze the user's submitted question to determine the specific academic subject (e.g., 'Physics', 'Biology', 'History') and the most appropriate academic level (e.g., 'Primary 5', 'Secondary 3'). Use standardized terms and formats (e.g. 'Primary 1', 'Secondary 4', NOT 'P1' or 'Sec 4').
-2.  **Create a Study Card**: Convert the text into a high-quality, multiple-choice question. Rephrase the question if necessary. Provide the single best correct answer and generate three plausible but incorrect distractor answers.
-3.  **Provide a Rationale**: Write a detailed explanation for why the correct answer is right and the others are wrong.
+Your goal is to convert this text into a high-quality, multiple-choice question that aligns with the structure and patterns of official Singaporean school assessments.
 
-**CRITICAL INSTRUCTION: Rationale Complexity**
-The language and complexity of the rationale MUST be tailored to the determined academic level.
--   **For primary school levels (e.g., 'Primary 1-6')**: Use simple, direct language a child can understand. AVOID technical jargon. For example, instead of "the simple past tense is required", say "the story happened yesterday, so we need a word for the past".
--   **For secondary school and advanced levels**: You can use more formal and technical language appropriate for older students.
+**MASTER REFERENCE: EXAMPLE P1 ENGLISH ASSESSMENT**
+To guide you, here is a master reference document outlining the typical structure and patterns of a Primary 1 English paper. Use this as your primary guide for tone, question style, and rationale complexity.
 
-**Curriculum-Specific Instructions for Singapore Primary 1 English:**
-If the question is identified as 'Primary 1' and 'English', it should follow these patterns:
--   **Grammar MCQ**: Focus on simple tenses (past/present), pronouns, and prepositions (in, on, under).
--   **Vocabulary MCQ**: Use words related to common household items, school, animals, and simple actions.
--   **Cloze-style Questions**: Present a sentence with a blank and offer word choices.
+---
+# 📚 Primary 1 English: 2018 Topical Assessment 1
+
+**Paper:** English Language Test 3 
+
+**Level:** Primary 1 
+
+**Date:** 19 October 2018 
+
+**Duration:** 45 minutes 
+
+**Total Score:** 20 Marks 
+
+---
+
+## ⚙️ AI Agent: Generative Patterns & Instructions
+
+* 
+**Educational Context**: Primary 1 English in Singapore.
+
+
+* 
+**Grammar Patterns**: Focuses on past tense ("yesterday"), present continuous for groups ("are waiting"), superlatives ("neatest"), and quantifiers ("little" vs "few").
+
+
+* 
+**Vocabulary Themes**: Animal enclosures at the zoo and natural environments .
+
+
+* 
+**Synthesis Structure**: Joining two simple sentences using "so" (cause/effect) or "but" (contradiction) .
+
+
+* 
+**Comprehension Goal**: Direct literal extraction ("Why did he chop...") and causal inference ("Why did he decide not to...").
+
+
+
+---
+
+## Section A: Grammar ( mark)
+
+Read the sentences carefully. Tick () the correct answers.
+
+1. Jason **ate** pancakes for breakfast yesterday .
+
+
+* [ ] eats
+* [] ate
+* [ ] eating
+
+
+2. The children **are waiting** for their mother at the library .
+
+
+* [ ] was waiting
+* [] are waiting
+* [ ] is waiting
+
+
+3. Amy has the **neatest** handwriting in her class .
+
+
+* [ ] neat
+* [ ] neater
+* [] neatest
+
+
+4. "**Whose** pencil is this?" asked Mrs Goh .
+
+
+* [ ] Which
+* [ ] Who's
+* [] Whose
+
+
+5. The chocolate cake is not sweet enough because there is too **little** sugar in it .
+
+
+* [ ] much
+* [ ] few
+* [] little
+
+
+6. Alex placed the ball **into** the box so that it would not roll away .
+
+
+* [] into
+* [ ] over
+* [ ] under
+
+
+
+---
+
+## Section B: Vocabulary ( mark)
+
+Fill in the blanks with the correct words from the box. Use each word once only .
+
+**Word Bank:** boring, enclosures, frightened, interesting, making, photographs, places, watching.
+
+Tom and his parents were at the zoo. Near the entrance, Tom pointed at the parrots and said, "Look at their colourful feathers." He took out his camera and snapped some **(7) photographs** . They then went to visit the other animal **(8) enclosures**. Walking past the tigers' enclosure, they heard a very loud roar that **(9) frightened** Tom . Quickly, he hid behind his father. During the animal show, they enjoyed **(10) watching** the animals perform many tricks . It was a very **(11) interesting** show. They had a fun-filled day at the zoo.
+
+---
+
+## Section C: Synthesis and Transformation ( marks)
+
+Join the two sentences to form a sentence using the word provided. The meaning of the sentences must not change .
+
+12. Ben took a nap. Ben was tired. (**so**) .
+
+
+* 
+**Answer:** Ben was tired so he took a nap.
+
+
+
+
+13. An ostrich has wings. An ostrich cannot fly. (**but**) .
+
+
+* 
+**Answer:** An ostrich has wings but cannot fly.
+
+
+
+
+
+---
+
+## Section D: Comprehension (5 marks)
+
+Read the passage carefully and answer the following questions. Your answers must be based on the passage .
+
+**Passage:**
+There was an apple tree in Bala's garden. Bala enjoyed eating the sweet apples. As years passed, some birds and bees built their homes on the tree. One day, Bala decided to chop down the tree to make some chairs and a table. He was going to sell them to make some money. Some squirrels which were playing nearby saw what Bala was doing. They begged him to stop. However, he ignored them.
+
+Suddenly, some honey from the beehive dropped onto Bala's hand. He smiled after tasting it. When a swarm of bees saw Bala smile, they said, "We promise to give you some of our honey every day if you save our home." Bala agreed immediately. The birds cheered when they heard the good news .
+
+**Questions:**
+14. Bala wanted to chop down the apple tree because he... (Tick  correct answer) .
+* [ ] wanted to eat the apples.
+* [] wanted to make some furniture.
+* [ ] did not want the animals to live in it.
+
+15. What did the squirrels do to help save the bees' home?.
+
+
+* 
+**Answer:** They begged Bala not to cut down the tree.
+
+
+
+
+16. Why did Bala decide not to chop down the tree?.
+
+
+* 
+**Answer:** The bees promised that they would give Bala some of their honey every day if Bala would not chop down their tree and Bala agreed.
+
+
+
+
+
+---
+
+**~~ END OF PAPER ~~** 
+
+---
+
+**YOUR TASK:**
+
+1.  **Classify the Question**: Based on the user's text and the master reference, determine the subject (e.g., 'English') and level (e.g., 'Primary 1').
+2.  **Create a Study Card**: Convert the text into a multiple-choice question that matches the patterns in the reference (e.g., Grammar MCQ, Vocabulary MCQ). Provide one correct answer and three plausible distractors.
+3.  **Provide a Rationale**: Write a simple, child-friendly explanation for the correct answer. The language MUST be simple enough for a 7-year-old. For example, instead of "the simple past tense is required," say "the story happened yesterday, so we need a word for the past".
 
 **Safety Instruction:** If the submitted text contains any personal information (names, addresses, contact details), R-rated content, or is not a discernible academic question, you must refuse to process it. Instead, return a JSON object with the 'question' field set to "Invalid Input" and an empty 'answers' array.
 
