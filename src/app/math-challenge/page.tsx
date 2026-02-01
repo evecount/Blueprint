@@ -54,6 +54,30 @@ const mathQuestions = [
         { id: 'q4d3', text: '2 + 3' }
     ],
     target: { id: 'q4t1', correctItemId: 'q4d1' }
+  },
+  {
+    id: 'q5',
+    prompt: 'What is the time shown on the clock? The short hand points to the 3 and the long hand points to the 1.',
+    visual: { type: 'grid', content: '🕒', count: 1 },
+    items: [
+        { id: 'q5d1', text: '1:03' },
+        { id: 'q5d2', text: '1:15' },
+        { id: 'q5d3', text: '3:01' },
+        { id: 'q5d4', text: '3:05' }
+    ],
+    target: { id: 'q5t1', correctItemId: 'q5d4' }
+  },
+  {
+    id: 'q6',
+    prompt: 'Devi played for half an hour. She stopped playing at 12 noon. What time did she start playing?',
+    visual: { type: 'grid', content: '🕛', count: 1 },
+    items: [
+        { id: 'q6d1', text: '11:30 am' },
+        { id: 'q6d2', text: '11:30 pm' },
+        { id: 'q6d3', text: '12:30 am' },
+        { id: 'q6d4', text: '12:30 pm' }
+    ],
+    target: { id: 'q6t1', correctItemId: 'q6d1' }
   }
 ];
 
