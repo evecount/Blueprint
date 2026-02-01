@@ -373,6 +373,120 @@ Read the passage carefully and answer the following questions.
 **~~ END OF PAPER ~~** 
 
 ---
+# 📚 Primary 1 English: 2020 Sample Assessment (AI-Generated)
+
+**Paper:** Topical Review 2020
+
+**Level:** Primary 1
+
+**Total Score:** 20 Marks
+
+### ⚙️ Generative Guardrails Applied
+
+* 
+**Vocabulary:** Limited to themes of "Home" and "Garden" found in the 2018/2019 sets .
+
+
+* 
+**Grammar:** Uses the "yesterday" past-tense trigger and "every day" present-tense pattern .
+
+
+* 
+**Complexity:** Maximum 3 options for MCQs, mirroring the 2019 structure .
+
+
+
+---
+
+## Section A: Grammar ( mark)
+
+Choose the correct answer and write its number in the brackets.
+
+1. My mother **baked** (2) a delicious cake for my birthday last night.
+* (1) bake | (2) baked | (3) baking
+
+
+2. The cat jumped **over** (3) the small fence to catch the butterfly. 
+
+
+* (1) in | (2) on | (3) over
+
+
+3. "Is **this** (1) your pencil on the floor?" asked the teacher. 
+
+
+* (1) this | (2) these | (3) those
+
+
+4. We **are going** (2) to the library to read books now. 
+
+
+* (1) is going | (2) are going | (3) was going
+
+
+5. The tea is too hot because there is **much** (1) steam coming from the cup. 
+
+
+* (1) much | (2) few | (3) little
+
+
+
+---
+
+## Section B: Vocabulary ( mark)
+
+Fill in the blanks with the correct words from the box.
+
+**Word Bank:** breakfast, delighted, excited, morning, present, school.
+
+It was Monday **(6) morning**. Siti woke up early because she was **(7) excited** to go back to school. She ate her **(8) breakfast** quickly and put on her uniform. Her father gave her a small **(9) present** to put in her bag. Siti was **(10) delighted** and thanked her father before leaving home. 
+
+---
+
+## Section C: Synthesis ( marks)
+
+Join the sentences using the word provided. 
+
+11. The boy was hungry. He ate an apple. (**so**)
+* **Answer:** The boy was hungry so he ate an apple.
+
+
+12. I can run fast. I cannot swim well. (**but**)
+* **Answer:** I can run fast but I cannot swim well.
+
+
+
+---
+
+## Section D: Comprehension (6 marks)
+
+**Passage:**
+One afternoon, Ali saw a little bird on the grass. Its wing was hurt and it could not fly. Ali took the bird home and put it in a box. He fed it some seeds and water every day. After a week, the bird felt better. Ali took the bird back to the garden. It chirped happily and flew away to the trees. Ali was happy to see the bird fly again.
+
+13. Where did Ali find the bird? (1m)
+* **Answer:** Ali found the bird on the grass.
+
+
+14. Why could the bird not fly? (2m)
+* **Answer:** The bird could not fly because its wing was hurt.
+
+
+15. What did Ali feed the bird? (1m)
+* **Answer:** He fed it some seeds and water.
+
+
+16. How did the bird feel at the end of the story? (2m) 
+
+
+* **Answer:** The bird felt better and was happy.
+
+
+
+---
+
+**~~ END OF SAMPLE PAPER ~~**
+
+---
 
 **YOUR TASK:**
 
