@@ -24,25 +24,36 @@ const mathQuestions = [
   },
   {
     id: 'q2',
-    prompt: 'Which number sentence matches the picture?',
-    visual: { type: 'grid', content: '🍎🍎🍎', count: 4 },
+    prompt: 'Which number sentence matches the groups of items shown?',
+    visual: { type: 'grid', content: '⭐⭐⭐', count: 4 },
     items: [
-        { id: 'q2d1', text: '4 + 3' },
-        { id: 'q2d2', text: '4 x 3' },
-        { id: 'q2d3', text: '4 - 3' }
+        { id: 'q2d1', text: '4 × 3' },
+        { id: 'q2d2', text: '3 × 4' },
+        { id: 'q2d3', text: '4 + 3' }
     ],
-    target: { id: 'q2t1', correctItemId: 'q2d2' }
+    target: { id: 'q2t1', correctItemId: 'q2d1' }
+  },
+   {
+    id: 'q3',
+    prompt: '10 oranges are packed equally into 5 bags. Which description matches how the oranges are packed?',
+    visual: { type: 'grid', content: '🍊🍊', count: 5 },
+    items: [
+        { id: 'q3d1', text: '5 groups of 2' },
+        { id: 'q3d2', text: '2 groups of 5' },
+        { id: 'q3d3', text: '5 + 2' }
+    ],
+    target: { id: 'q3t1', correctItemId: 'q3d1' }
   },
   {
-    id: 'q3',
-    prompt: 'There are 2 groups of smiley faces. Which description is correct?',
-    visual: { type: 'grid', content: '😊😊😊😊', count: 2 },
+    id: 'q4',
+    prompt: 'Which number sentence correctly describes the picture?',
+    visual: { type: 'grid', content: '😊😊', count: 3 },
     items: [
-        { id: 'q3d1', text: '4 groups of 2' },
-        { id: 'q3d2', text: '2 + 4' },
-        { id: 'q3d3', text: '2 groups of 4' }
+        { id: 'q4d1', text: '3 × 2' },
+        { id: 'q4d2', text: '2 × 3' },
+        { id: 'q4d3', text: '2 + 3' }
     ],
-    target: { id: 'q3t1', correctItemId: 'q3d3' }
+    target: { id: 'q4t1', correctItemId: 'q4d1' }
   }
 ];
 
@@ -198,7 +209,7 @@ export default function MathChallengePage() {
             <div className="flex flex-col items-center gap-8">
               
               <div className="p-6 border rounded-lg bg-muted/50">
-                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
                   {Array.from({ length: currentQuestion.visual.count }).map((_, index) => (
                     <div key={index} className="flex items-center justify-center p-2 text-3xl border rounded-lg shadow-sm bg-background aspect-square">
                       {currentQuestion.visual.content}
