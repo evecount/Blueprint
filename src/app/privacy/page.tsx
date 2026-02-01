@@ -11,16 +11,19 @@ export default function PrivacyPage() {
       </header>
       <Card>
         <CardHeader>
-          <CardTitle>Information We Collect</CardTitle>
+          <CardTitle>Our Commitment to Privacy</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
           <p>
-            QuizUp is designed to be used anonymously. We do not require you to create an account or provide
+            This Privacy Policy is for the Blueprint application ("Blueprint", "the Service"), a property of Eve Count Pte Ltd Singapore. This policy explains how we handle information.
+          </p>
+          <p>
+            Blueprint is designed to be used anonymously. We do not require you to create an account or provide
             any personal identification information to use the core features of our service.
           </p>
           <h3 className="pt-4 text-lg font-semibold text-foreground">Image Uploads</h3>
           <p>
-            When you use the "Contribute a Question" feature, you may upload images. These images are processed
+            When you use the "Ask a Question" feature, you may upload images. These images are processed
             by our AI to extract question text and source metadata. We do not store the original images after
             processing. The extracted text data is anonymized and stored to enrich our question bank.
           </p>
