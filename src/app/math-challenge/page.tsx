@@ -4,15 +4,16 @@ import { useState } from 'react';
 import { DndContext, useDraggable, useDroppable, DragEndEvent, UniqueIdentifier } from '@dnd-kit/core';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
+import { CheckCircle2, XCircle, ArrowRight, RefreshCw } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-// Draggable Item Component
+// Draggable Item Component (can be wider for text)
 function DraggableItem({ id, children, isPlaced }: { id: UniqueIdentifier; children: React.ReactNode; isPlaced: boolean }) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({ id });
   const style = transform ? {
     transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-  } : undefined;
+    zIndex: 10 // Ensure dragged item is on top
+  } : { zIndex: isPlaced ? -1 : 1 };
 
   return (
     <div
@@ -21,7 +22,7 @@ function DraggableItem({ id, children, isPlaced }: { id: UniqueIdentifier; child
       {...listeners}
       {...attributes}
       className={cn(
-        "p-4 m-2 text-2xl font-bold border rounded-lg shadow-md cursor-grab bg-background touch-none z-10 transition-opacity",
+        "p-4 text-center border rounded-lg shadow-md cursor-grab bg-background touch-none transition-opacity min-w-[150px]",
         isPlaced && 'opacity-0 pointer-events-none'
       )}
     >
@@ -31,15 +32,16 @@ function DraggableItem({ id, children, isPlaced }: { id: UniqueIdentifier; child
 }
 
 // Droppable Zone Component
-function DropTarget({ id, children }: { id: UniqueIdentifier; children: React.ReactNode }) {
+function DropTarget({ id, children, isOccupied }: { id: UniqueIdentifier; children: React.ReactNode; isOccupied: boolean }) {
   const { isOver, setNodeRef } = useDroppable({ id });
 
   return (
     <div
       ref={setNodeRef}
       className={cn(
-        'p-4 border-2 border-dashed rounded-lg flex items-center justify-center min-h-[80px] w-[120px] text-3xl font-bold transition-colors',
-        isOver && 'bg-accent/20 border-accent'
+        'p-4 border-2 border-dashed rounded-lg flex items-center justify-center min-h-[80px] w-full max-w-xs text-xl font-semibold transition-colors text-center',
+        isOver && 'bg-accent/20 border-accent',
+        isOccupied && 'border-solid border-foreground/50'
       )}
     >
       {children}
@@ -51,97 +53,113 @@ function DropTarget({ id, children }: { id: UniqueIdentifier; children: React.Re
 export default function MathChallengePage() {
   const question = {
     id: 'q1',
-    prompt: 'Count the fruit and place the correct number in each box.',
-    items: [{ id: 'd1', text: '3' }, { id: 'd2', text: '5' }],
-    targets: [
-      { id: 't1', emoji: '🍎🍎🍎', correctItemId: 'd1' },
-      { id: 't2', emoji: '🍊🍊🍊🍊🍊', correctItemId: 'd2' }
-    ]
+    prompt: 'The picture shows 30 tarts shared equally onto 6 plates. Which description below is correct?',
+    visual: '🥧🥧🥧🥧🥧',
+    items: [
+        { id: 'd1', text: '5 groups of 6' },
+        { id: 'd2', text: '6 groups of 5' },
+        { id: 'd3', text: '5 + 6' }
+    ],
+    target: { id: 't1', correctItemId: 'd2' }
   };
 
-  // State to track which droppable holds which draggable
-  const [droppedIn, setDroppedIn] = useState<Record<UniqueIdentifier, UniqueIdentifier | null>>({ t1: null, t2: null });
+  const [droppedItemId, setDroppedItemId] = useState<UniqueIdentifier | null>(null);
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { over, active } = event;
-    const draggableId = active.id;
-
-    setDroppedIn(prev => {
-      const newDroppedIn = { ...prev };
-      // Find and clear any previous location of this draggable
-      const oldTarget = Object.keys(newDroppedIn).find(key => newDroppedIn[key] === draggableId);
-      if (oldTarget) {
-        newDroppedIn[oldTarget] = null;
-      }
-      // If dropped over a new target, place it there
-      if (over) {
-        // If the new target is already occupied, swap items
-        const occupant = newDroppedIn[over.id];
-        if (occupant) {
-            newDroppedIn[oldTarget || 'pool'] = occupant;
+    
+    // Check if dropped over the target zone
+    if (over && over.id === question.target.id) {
+        setDroppedItemId(active.id);
+    } else {
+        // If an item was dragged from the target and not dropped on another valid target, reset its position in this simple case
+        if (droppedItemId === active.id) {
+            setDroppedItemId(null);
         }
-        newDroppedIn[over.id] = draggableId;
-      }
-      return newDroppedIn;
-    });
+    }
   };
   
-  const isComplete = question.targets.every(target => droppedIn[target.id] === target.correctItemId);
+  const isAnswered = droppedItemId !== null;
+  const isCorrect = isAnswered && droppedItemId === question.target.correctItemId;
 
   const getDraggableById = (id: UniqueIdentifier | null) => question.items.find(item => item.id === id);
+  const droppedItem = getDraggableById(droppedItemId);
+
+  const handleReset = () => {
+      setDroppedItemId(null);
+  }
 
   return (
     <div className="space-y-8">
        <header>
         <h1 className="text-3xl font-bold tracking-tight font-headline">Primary 1 Math Challenge</h1>
         <p className="text-muted-foreground">
-          Drag and drop the numbers to match the pictures!
+          An interactive way to learn grouping.
         </p>
       </header>
 
       <Card>
-        <CardHeader>
-          <CardTitle>Question 1</CardTitle>
+        <CardHeader className="text-center">
+          <CardTitle>Let's Learn Grouping!</CardTitle>
           <CardDescription>{question.prompt}</CardDescription>
         </CardHeader>
         <CardContent>
           <DndContext onDragEnd={handleDragEnd}>
-            <div className="flex flex-col items-center gap-12">
-              {/* Drop Targets */}
-              <div className="flex flex-wrap items-end justify-center gap-8">
-                {question.targets.map(target => {
-                  const droppedItemId = droppedIn[target.id];
-                  const isCorrect = droppedItemId && target.correctItemId === droppedItemId;
-                  return (
-                    <div key={target.id} className="relative flex flex-col items-center gap-2">
-                       <p className="text-4xl h-12">{target.emoji}</p>
-                       <DropTarget id={target.id}>
-                         {droppedItemId ? getDraggableById(droppedItemId)?.text : "?"}
-                       </DropTarget>
-                       {droppedItemId && (
-                           isCorrect 
-                           ? <CheckCircle2 className="absolute -top-2 -right-2 text-green-500 bg-background rounded-full" />
-                           : <XCircle className="absolute -top-2 -right-2 text-red-500 bg-background rounded-full" />
-                       )}
+            <div className="flex flex-col items-center gap-8">
+              
+              {/* Visual Prompt */}
+              <div className="p-6 border rounded-lg bg-muted/50">
+                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+                  {Array.from({ length: 6 }).map((_, index) => (
+                    <div key={index} className="flex items-center justify-center p-2 text-3xl border rounded-lg shadow-sm bg-background aspect-square">
+                      {question.visual}
                     </div>
-                  );
-                })}
+                  ))}
+                </div>
               </div>
 
-              {/* Draggable Items */}
-              <div className="flex flex-wrap items-center justify-center gap-4 p-4 border-2 border-dashed rounded-lg min-h-28 min-w-80">
-                {question.items.map(item => {
-                  const isPlaced = Object.values(droppedIn).includes(item.id);
-                  return (
-                    <DraggableItem key={item.id} id={item.id} isPlaced={isPlaced}>
-                      {item.text}
-                    </DraggableItem>
-                  )
-                })}
-                {isComplete && (
-                   <div className="flex flex-col items-center gap-2 text-center text-green-500">
-                      <CheckCircle2 className="w-12 h-12" />
-                      <p className="font-bold">Well done!</p>
+              {/* Drop Target */}
+              <div className="relative w-full max-w-xs">
+                <DropTarget id={question.target.id} isOccupied={!!droppedItem}>
+                  {droppedItem ? droppedItem.text : "Drag answer here"}
+                </DropTarget>
+                {isAnswered && (
+                    isCorrect 
+                    ? <CheckCircle2 className="absolute w-6 h-6 p-1 text-green-500 rounded-full -top-2 -right-2 bg-background" />
+                    : <XCircle className="absolute w-6 h-6 p-1 text-red-500 rounded-full -top-2 -right-2 bg-background" />
+                )}
+              </div>
+
+              {/* Draggable Items Pool */}
+              <div className="flex flex-wrap items-center justify-center gap-4 p-4 mt-4 border-2 border-dashed rounded-lg min-h-28 w-full">
+                {!isAnswered ? (
+                    question.items.map(item => {
+                        const isPlaced = droppedItemId === item.id;
+                        return (
+                            <DraggableItem key={item.id} id={item.id} isPlaced={isPlaced}>
+                            {item.text}
+                            </DraggableItem>
+                        )
+                    })
+                ) : (
+                   <div className="flex flex-col items-center gap-2 text-center">
+                        {isCorrect ? (
+                           <div className="text-green-500">
+                             <CheckCircle2 className="w-12 h-12 mx-auto" />
+                             <p className="mt-2 font-bold">That's right! It's 6 groups of 5.</p>
+                           </div>
+                        ) : (
+                            <div className="text-red-500">
+                                <XCircle className="w-12 h-12 mx-auto" />
+                                <p className="mt-2 font-bold">Not quite. Give it another try!</p>
+                            </div>
+                        )}
+                        {!isCorrect && 
+                            <Button onClick={handleReset} variant="outline" className="mt-4">
+                                <RefreshCw className="mr-2" />
+                                Try Again
+                            </Button>
+                        }
                    </div>
                 )}
               </div>
@@ -150,7 +168,7 @@ export default function MathChallengePage() {
         </CardContent>
       </Card>
 
-      {isComplete && (
+      {isCorrect && (
         <div className="flex justify-end">
             <Button disabled>
                 Next Question <ArrowRight className="ml-2" />
