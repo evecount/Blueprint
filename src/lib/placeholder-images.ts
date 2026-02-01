@@ -22,7 +22,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     {
       "id": "p1-math",
       "description": "A child learning to count with colorful abacus.",
-      "imageUrl": "https://picsum.photos/seed/p1-math/600/400",
+      "imageUrl": "/images/primary1-math.png",
       "imageHint": "child abacus"
     },
     {
