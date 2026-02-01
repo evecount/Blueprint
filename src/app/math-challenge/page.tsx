@@ -122,6 +122,17 @@ const mathQuestions = [
         { id: 'q10d3', text: '32' }
     ],
     target: { id: 'q10t1', correctItemId: 'q10d3' }
+  },
+  {
+    id: 'q11',
+    prompt: 'John had his breakfast at 7:10 am. Where should the minute hand point to show the time?',
+    visual: { type: 'grid', content: '🕖', count: 1 },
+    items: [
+        { id: 'q11d1', text: 'To the number 10' },
+        { id: 'q11d2', text: 'To the number 2' },
+        { id: 'q11d3', text: 'To the number 7' }
+    ],
+    target: { id: 'q11t1', correctItemId: 'q11d2' }
   }
 ];
 
