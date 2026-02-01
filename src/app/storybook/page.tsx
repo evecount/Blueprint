@@ -199,8 +199,8 @@ export default function StorybookCreatorPage() {
                                                         className="object-contain w-full h-full"
                                                     />
                                                     {authorName && (
-                                                        <div className="absolute bottom-2 right-2 bg-black/50 text-white text-[10px] px-2 py-1 rounded">
-                                                            This story was written by {authorName} with QuizUp
+                                                        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/50 text-white text-[10px] px-2 py-1 rounded">
+                                                            This story was written by {authorName} with QuizUp and Gemini AI
                                                         </div>
                                                     )}
                                                 </>
@@ -215,8 +215,8 @@ export default function StorybookCreatorPage() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious className="hidden -left-12 sm:flex" />
-                    <CarouselNext className="hidden -right-12 sm:flex" />
+                    <CarouselPrevious variant="default" className="hidden -left-12 sm:flex" />
+                    <CarouselNext variant="default" className="hidden -right-12 sm:flex" />
                 </Carousel>
                  <div className="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row">
                     <Button variant="outline" onClick={() => {
