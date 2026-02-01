@@ -64,7 +64,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     {
       "id": "s1-science",
       "description": "A microscope on a lab bench with beakers in the background.",
-      "imageUrl": "https://picsum.photos/seed/s1-science/600/400",
+      "imageUrl": "/images/secondary1-science.png",
       "imageHint": "science lab"
     },
     {
