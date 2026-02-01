@@ -129,7 +129,7 @@ export default function DashboardPage() {
           <h1 className="text-4xl font-bold tracking-tighter md:text-5xl lg:text-6xl font-headline">
             Ask Any Question.
             <br />
-            Understand the 'Why'.
+            Understand Why.
           </h1>
           <p className="text-lg text-muted-foreground">
             Stuck on a problem? Scan it or type it in. Our AI will not only solve it but give you a clear, step-by-step rationale so you truly understand the concept.
