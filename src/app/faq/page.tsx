@@ -41,7 +41,7 @@ export default function FaqPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                Our core mission is to make education accessible. We operate on a lean model, leveraging AI for development and relying on community contributions. We partner with organizations for ESG initiatives (skills-based volunteering) rather than financial sponsorship for our core platform. Read more on our <Link href="/sponsorship" className="underline">Sponsorship page</Link>.
+                QuizUp is free because it's built on a social enterprise model. Our mission is to make education accessible. The platform is open-source, and we operate on a lean model, leveraging AI for development and relying on community contributions. Instead of charging for the core product, we partner with organizations for ESG initiatives (skills-based volunteering). This keeps the tool free for students and schools forever. You can read more on our <Link href="/sponsorship" className="underline">Sponsorship page</Link>.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
@@ -52,7 +52,7 @@ export default function FaqPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                Yes. Safety and privacy are our top priorities. The student-facing platform is designed for anonymous use—no sign-ups, names, or personal information are required. Quiz progress is stored locally on the user's device. You can learn more in our <Link href="/privacy" className="underline">Privacy Policy</Link>.
+                Yes, absolutely. Safety is our most important design principle. The student-facing platform is designed for completely anonymous use. We do not require students to sign up, create accounts, or provide any personal information like names or emails. All quiz progress is stored locally on the user's own device. This privacy-first approach means students get a powerful study tool with zero risk to their personal data. You can learn more in our <Link href="/privacy" className="underline">Privacy Policy</Link>.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4">
