@@ -8,10 +8,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { createPagePrompt } from '@/ai/flows/create-storybook-page-flow';
 import { illustrateScene } from '@/ai/flows/storybook-illustrator-flow';
 import Image from 'next/image';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { createStory } from '@/ai/flows/create-story-flow';
 
 // New type for a single page in our story
 type StoryPage = {
@@ -30,57 +30,71 @@ export default function StorybookCreatorPage() {
   const [pages, setPages] = useState<StoryPage[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const handleAddPage = async () => {
+  const handleAddPages = async () => {
     if (!currentPageText.trim()) {
       toast({
         variant: 'destructive',
         title: 'Empty Page',
-        description: 'Please write something for this page.',
+        description: 'Please write something for your story.',
       });
       return;
     }
 
     setIsGenerating(true);
-    const newPageNumber = pages.length + 1;
-    let tempPage: StoryPage = {
-      pageNumber: newPageNumber,
-      text: currentPageText,
-      illustrationPrompt: '',
-      imageUrl: null,
-      isGenerating: true,
-    };
-    
-    // Add a temporary page to show loading state immediately
-    setPages(prev => [...prev, tempPage]);
-    setCurrentPageText(''); // Clear input for next page
+    const textToAdd = currentPageText;
+    setCurrentPageText(''); // Clear input immediately
 
     try {
-      // Step 1: Generate the illustration prompt from the text
-      const promptResult = await createPagePrompt({ text: tempPage.text });
-      if (promptResult.illustrationPrompt === "Invalid content detected.") {
-          throw new Error("The AI detected inappropriate content. Please try again.");
-      }
+      // Step 1: Call the new flow to split text into pages and get prompts.
+      const storyResult = await createStory({ text: textToAdd });
       
-      // Update temp page with the prompt
-      tempPage.illustrationPrompt = promptResult.illustrationPrompt;
+      if (!storyResult.pages || storyResult.pages.length === 0) {
+          throw new Error("The AI could not create pages from the text. It might be due to safety filters or unrecognized content.");
+      }
 
-      // Step 2: Generate the image from the prompt
-      const imageResult = await illustrateScene({ prompt: tempPage.illustrationPrompt });
-      tempPage.imageUrl = imageResult.imageUrl;
+      // Prepare an array of new pages to add to the state
+      const newPages: StoryPage[] = storyResult.pages.map((pageData, index) => ({
+        pageNumber: pages.length + index + 1,
+        text: pageData.text,
+        illustrationPrompt: pageData.illustrationPrompt,
+        imageUrl: null,
+        isGenerating: true,
+      }));
+
+      // Add all new pages to the state at once to render them
+      setPages(prev => [...prev, ...newPages]);
+
+      // Step 2: Sequentially generate the image for each new page
+      for (const newPage of newPages) {
+        try {
+            const imageResult = await illustrateScene({ prompt: newPage.illustrationPrompt });
+            // Update the specific page with its generated image
+            setPages(prev => prev.map(p => 
+                p.pageNumber === newPage.pageNumber 
+                ? { ...p, imageUrl: imageResult.imageUrl, isGenerating: false } 
+                : p
+            ));
+        } catch (imageError) {
+             console.error(`Error generating image for page ${newPage.pageNumber}:`, imageError);
+             // Update the specific page to show an error state
+             setPages(prev => prev.map(p => 
+                p.pageNumber === newPage.pageNumber 
+                ? { ...p, imageUrl: '/images/error-placeholder.png', isGenerating: false } 
+                : p
+            ));
+        }
+      }
 
     } catch (error) {
-      console.error('Error generating page:', error);
+      console.error('Error generating story pages:', error);
       toast({
         variant: 'destructive',
-        title: 'Page Creation Failed',
-        description: error instanceof Error ? error.message : 'Could not create the illustration for this page.',
+        title: 'Story Creation Failed',
+        description: error instanceof Error ? error.message : 'Could not create story pages from the text.',
       });
-      // Set an error image or remove the page
-      tempPage.imageUrl = '/images/error-placeholder.png'; 
+      // Re-add the text to the input so the user doesn't lose it
+      setCurrentPageText(textToAdd);
     } finally {
-      tempPage.isGenerating = false;
-      // Update the page in the state with the final result
-      setPages(prev => prev.map(p => p.pageNumber === newPageNumber ? tempPage : p));
       setIsGenerating(false);
     }
   };
@@ -153,8 +167,8 @@ export default function StorybookCreatorPage() {
         {/* Input for the next page */}
         <Card className="w-full">
             <CardHeader>
-                <CardTitle>Page {pages.length + 1}</CardTitle>
-                <CardDescription>Write the next part of your story here.</CardDescription>
+                <CardTitle>Add to Your Story</CardTitle>
+                <CardDescription>Write the next part of your story, or paste the whole thing in at once!</CardDescription>
             </CardHeader>
             <CardContent>
                 <Textarea
@@ -166,16 +180,16 @@ export default function StorybookCreatorPage() {
                 />
             </CardContent>
             <CardFooter>
-                <Button onClick={handleAddPage} disabled={isGenerating}>
+                <Button onClick={handleAddPages} disabled={isGenerating}>
                     {isGenerating ? (
                         <>
                             <Loader2 className="mr-2 animate-spin" />
-                            Illustrating...
+                            Adding to Story...
                         </>
                     ) : (
                         <>
                             <Wand2 className="mr-2" />
-                            Add This Page
+                            Add to My Storybook
                         </>
                     )}
                 </Button>
@@ -196,7 +210,7 @@ export default function StorybookCreatorPage() {
             <Sparkles className="h-4 w-4" />
             <AlertTitle>How It Works</AlertTitle>
             <AlertDescription>
-                Write one part of your story, click "Add This Page," and our AI will draw a picture for it. Then you can write the next part!
+                Write one part of your story, click "Add to My Storybook," and our AI will draw a picture for it. You can write a little or a lot!
             </AlertDescription>
         </Alert>
 
