@@ -7,7 +7,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Shield, DollarSign, BrainCircuit, Handshake, Info } from 'lucide-react';
+import { Shield, DollarSign, BrainCircuit, Handshake, Info, GraduationCap } from 'lucide-react';
 import Link from 'next/link';
 
 export default function FaqPage() {
@@ -78,6 +78,57 @@ export default function FaqPage() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <div className="flex items-start gap-4">
+            <GraduationCap className="w-8 h-8 mt-1 text-primary" />
+            <div>
+              <CardTitle>Teacher’s Guide: AI-Driven Curriculum Alignment</CardTitle>
+              <p className="italic text-muted-foreground">How we ensure 100% Safety and Academic Rigor</p>
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <p className="text-muted-foreground">To maintain the trust of educators, our AI agent operates within a <strong>Closed-Loop Knowledge Base</strong>. This means it does not "guess" what a 7-year-old should know; instead, it uses the provided papers as a structural and linguistic anchor.</p>
+          
+          <div>
+            <h3 className="text-lg font-semibold text-foreground">1. Linguistic Guardrails (The Vocabulary Filter)</h3>
+            <p className="mt-1 text-muted-foreground">The AI analyzes the "word density" of the provided assessments. For example:</p>
+            <ul className="mt-2 space-y-2 list-disc list-inside text-muted-foreground">
+              <li><span className="font-semibold text-foreground">Constraint:</span> Instead of using "enormous" or "colossal," the AI is instructed to use "very big," matching the level found in the <strong>2021 Revision Paper</strong>.</li>
+              <li><span className="font-semibold text-foreground">Safety:</span> This prevents students from being tested on words they haven't been taught in the MOE syllabus yet.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-foreground">2. Structural Pattern Recognition</h3>
+            <p className="mt-1 text-muted-foreground">Our database allows the AI to recognize that a <strong>Primary 1 English Assessment</strong> must follow a specific "scaffolding":</p>
+            <ol className="mt-2 space-y-1 list-decimal list-inside text-muted-foreground">
+              <li><strong>Grammar MCQs</strong> to build confidence (Tenses/Pronouns).</li>
+              <li><strong>Vocabulary MCQs</strong> to test world knowledge (Animal sounds/Transport).</li>
+              <li><strong>Synthesis & Cloze</strong> to test sentence logic and context.</li>
+              <li><strong>Comprehension</strong> to assess literal and inferential reading.</li>
+            </ol>
+          </div>
+          
+          <div>
+            <h3 className="text-lg font-semibold text-foreground">3. Verification through Verbatim Grounding</h3>
+            <p className="mt-1 text-muted-foreground">By including the 2018, 2019, and 2021 papers verbatim, we provide a "Source of Truth." If a teacher asks, <em>"Why did the AI generate a question about past tense?"</em> we can point directly to <strong>Paper 1 (2021)</strong> or <strong>Paper 4 (2018)</strong> where "yesterday" is used to trigger the past tense response "showed" or "ate".</p>
+          </div>
+
+          <div className="pt-4 border-t">
+            <h3 className="text-lg font-semibold text-foreground">The "Safe Generation" Workflow</h3>
+            <ol className="mt-2 space-y-1 list-decimal list-inside text-muted-foreground">
+                <li><strong>Input:</strong> Verbatim PDF data (The "Truth").</li>
+                <li><strong>Analysis:</strong> Extracting the "Pattern" (The "Rules").</li>
+                <li><strong>Generation:</strong> Creating new questions that fit the "Rules" but use new "Themes."</li>
+                <li><strong>Verification:</strong> Comparing the new question against the "Truth" to ensure it isn't too difficult.</li>
+            </ol>
+          </div>
+
         </CardContent>
       </Card>
     </div>
