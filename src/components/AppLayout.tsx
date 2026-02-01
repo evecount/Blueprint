@@ -10,6 +10,7 @@ import {
   TrendingUp,
   Cpu,
   LogIn,
+  ToyBrick,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -36,6 +37,7 @@ const studentMenuItems = [
   { href: '/performance', label: 'My Progress', icon: TrendingUp },
   { href: '/chat', label: 'Chat with Notes', icon: MessageSquare },
   { href: '/contribute', label: 'Contribute Question', icon: Gift },
+  { href: '/math-challenge', label: 'Math Challenge', icon: ToyBrick },
 ];
 
 const infoMenuItems = [
