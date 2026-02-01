@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BookImage, Loader2, Sparkles, Wand2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,7 +10,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { createStorybook, StorybookOutput } from '@/ai/flows/create-storybook-flow';
 import { illustrateScene } from '@/ai/flows/storybook-illustrator-flow';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '@/components/ui/carousel';
 import Image from 'next/image';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
@@ -23,9 +23,56 @@ export default function StorybookCreatorPage() {
   const [authorName, setAuthorName] = useState('');
   const [storyText, setStoryText] = useState('');
   const [isEditing, setIsEditing] = useState(true);
-  const [isGenerating, setIsGenerating] = useState(false);
+  const [isCreatingStory, setIsCreatingStory] = useState(false);
   const [storybook, setStorybook] = useState<StorybookWithImages | null>(null);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
 
+  // Function to generate an image for a specific page index
+  const generateImageForPage = async (pageIndex: number) => {
+    // This function is now async. We need to use `setStorybook` with a callback
+    // to correctly access the latest `storybook` state inside this async function.
+    let currentPrompt = '';
+    setStorybook(currentStorybook => {
+      if (!currentStorybook || !currentStorybook.pages[pageIndex]) return currentStorybook;
+
+      const page = currentStorybook.pages[pageIndex];
+      if (page.imageUrl || page.isGenerating) return currentStorybook;
+      
+      currentPrompt = page.illustrationPrompt;
+
+      const updatedPages = [...currentStorybook.pages];
+      updatedPages[pageIndex] = { ...updatedPages[pageIndex], isGenerating: true };
+      return { ...currentStorybook, pages: updatedPages };
+    });
+
+    if (!currentPrompt) return;
+
+    try {
+      const imageResult = await illustrateScene({ prompt: currentPrompt });
+      
+      setStorybook(currentStorybook => {
+        if (!currentStorybook) return null;
+        const updatedPages = [...currentStorybook.pages];
+        updatedPages[pageIndex] = { ...updatedPages[pageIndex], imageUrl: imageResult.imageUrl, isGenerating: false };
+        return { ...currentStorybook, pages: updatedPages };
+      });
+
+    } catch (imageError) {
+      console.error(`Failed to generate image for page ${pageIndex + 1}:`, imageError);
+      setStorybook(currentStorybook => {
+        if (!currentStorybook) return null;
+        const updatedPages = [...currentStorybook.pages];
+        updatedPages[pageIndex] = { ...updatedPages[pageIndex], isGenerating: false, imageUrl: '/images/error-placeholder.png' };
+        return { ...currentStorybook, pages: updatedPages };
+      });
+      toast({
+        variant: 'destructive',
+        title: `Image Generation Failed`,
+        description: `Could not create the illustration for page ${pageIndex + 1}.`,
+      });
+    }
+  };
+  
   const handleCreateStory = async () => {
     if (!authorName.trim() || !storyText.trim()) {
       toast({
@@ -35,7 +82,7 @@ export default function StorybookCreatorPage() {
       });
       return;
     }
-    setIsGenerating(true);
+    setIsCreatingStory(true);
     setIsEditing(false);
     setStorybook(null);
 
@@ -55,39 +102,7 @@ export default function StorybookCreatorPage() {
           return;
       }
       
-      const initialStorybookState: StorybookWithImages = {
-          ...storyData,
-          pages: storyData.pages.map(p => ({ ...p, isGenerating: true })),
-      };
-      setStorybook(initialStorybookState);
-      
-      // Generate images sequentially
-      for (let i = 0; i < storyData.pages.length; i++) {
-        const page = storyData.pages[i];
-        try {
-          const imageResult = await illustrateScene({ prompt: page.illustrationPrompt });
-          setStorybook(currentStorybook => {
-            if (!currentStorybook) return null;
-            const updatedPages = [...currentStorybook.pages];
-            updatedPages[i] = { ...updatedPages[i], imageUrl: imageResult.imageUrl, isGenerating: false };
-            return { ...currentStorybook, pages: updatedPages };
-          });
-        } catch (imageError) {
-            console.error(`Failed to generate image for page ${i+1}:`, imageError);
-            // Update state to show image generation failed for this page
-             setStorybook(currentStorybook => {
-                if (!currentStorybook) return null;
-                const updatedPages = [...currentStorybook.pages];
-                updatedPages[i] = { ...updatedPages[i], isGenerating: false, imageUrl: '/images/error-placeholder.png' }; // Use an error placeholder
-                return { ...currentStorybook, pages: updatedPages };
-            });
-             toast({
-                variant: 'destructive',
-                title: `Image Generation Failed`,
-                description: `Could not create the illustration for page ${i + 1}.`,
-            });
-        }
-      }
+      setStorybook(storyData); // Set the story structure. Images will be generated on demand.
 
     } catch (error) {
       console.error(error);
@@ -98,14 +113,39 @@ export default function StorybookCreatorPage() {
       });
       setIsEditing(true);
     } finally {
-      setIsGenerating(false);
+      setIsCreatingStory(false);
     }
   };
   
+  // Effect to handle on-demand image generation when carousel slide changes
+  useEffect(() => {
+    if (!carouselApi) {
+      return;
+    }
+
+    // Generate for the initial page
+    generateImageForPage(carouselApi.selectedScrollSnap());
+
+    const handleSelect = () => {
+      const selectedIndex = carouselApi.selectedScrollSnap();
+      generateImageForPage(selectedIndex);
+    };
+
+    carouselApi.on("select", handleSelect);
+
+    return () => {
+      carouselApi.off("select", handleSelect);
+    };
+  // We want to re-run this effect only when the carousel API is available.
+  // generateImageForPage is stable due to using callbacks for state updates.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [carouselApi]);
+
+
   const handleEdit = () => {
       setIsEditing(true);
       setStorybook(null);
-  }
+  };
 
   const renderForm = () => (
     <Card className="w-full max-w-2xl mx-auto">
@@ -137,16 +177,25 @@ export default function StorybookCreatorPage() {
             </div>
         </CardContent>
         <CardFooter>
-            <Button onClick={handleCreateStory} disabled={isGenerating}>
-                <Wand2 className="mr-2" />
-                Create My Storybook
+            <Button onClick={handleCreateStory} disabled={isCreatingStory}>
+                {isCreatingStory ? (
+                  <>
+                    <Loader2 className="mr-2 animate-spin" />
+                    Creating Story...
+                  </>
+                ) : (
+                  <>
+                    <Wand2 className="mr-2" />
+                    Create My Storybook
+                  </>
+                )}
             </Button>
         </CardFooter>
     </Card>
   );
 
   const renderStorybook = () => {
-    if (!storybook) {
+    if (isCreatingStory || !storybook) {
         return (
              <div className="flex flex-col items-center justify-center gap-4 text-center w-full max-w-3xl mx-auto h-96">
                 <Loader2 className="w-12 h-12 animate-spin text-primary" />
@@ -163,7 +212,7 @@ export default function StorybookCreatorPage() {
                 <p className="text-lg text-muted-foreground">by {storybook.author}</p>
             </div>
             
-            <Carousel className="w-full">
+            <Carousel className="w-full" setApi={setCarouselApi}>
                 <CarouselContent>
                     {storybook.pages.map((page) => (
                         <CarouselItem key={page.pageNumber}>
@@ -185,11 +234,11 @@ export default function StorybookCreatorPage() {
                                                     className="object-contain w-full h-full rounded-md"
                                                 />
                                             ) : (
-                                                <div className="text-center text-destructive">Image failed to load.</div>
+                                                <div className="text-center text-muted-foreground">Image will appear here...</div>
                                             )}
                                         </div>
                                         <div className="flex flex-col p-6">
-                                            <p className="flex-1 text-muted-foreground">{page.text}</p>
+                                            <p className="flex-1 text-lg text-muted-foreground leading-relaxed">{page.text}</p>
                                             <p className="self-end mt-4 text-sm font-medium">{page.pageNumber}</p>
                                         </div>
                                     </div>
@@ -198,8 +247,8 @@ export default function StorybookCreatorPage() {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious className="-left-4 md:-left-12" />
-                <CarouselNext className="-right-4 md:-right-12" />
+                <CarouselPrevious />
+                <CarouselNext />
             </Carousel>
             
             <div className="flex justify-center mt-8">
@@ -223,7 +272,7 @@ export default function StorybookCreatorPage() {
             <Sparkles className="h-4 w-4" />
             <AlertTitle>How It Works</AlertTitle>
             <AlertDescription>
-                Write your story, and our AI "Editor" will split it into pages. Then, our AI "Illustrator" will draw a picture for each page.
+                Write your story, and our AI "Editor" will split it into pages. Then, as you flip the pages, our AI "Illustrator" will draw a picture for each one.
             </AlertDescription>
         </Alert>
 
