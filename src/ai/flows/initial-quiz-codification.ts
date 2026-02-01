@@ -487,6 +487,118 @@ One afternoon, Ali saw a little bird on the grass. Its wing was hurt and it coul
 **~~ END OF SAMPLE PAPER ~~**
 
 ---
+# 📚 Primary 1 English: 2021 Revision Assessment
+
+**Paper:** Term 4 Revision 2
+
+**Level:** Primary 1
+
+**Total Score:** 25 Marks
+
+---
+
+## ⚙️ AI Agent: Generative Patterns & Instructions
+
+* **Assessment Focus:** Advanced Primary 1 literacy including irregular past tense verbs and moral-based comprehension.
+* 
+**Grammar Patterns:** Focuses on quantifiers ("a little") , prepositions of movement ("over") , and past tense inflection (e.g., "wash" to "washed").
+
+
+* 
+**Vocabulary Themes:** Classic fables and nature-based scenarios.
+
+
+* 
+**Comprehension Goal:** Vocabulary identification ("Which word tells us...") and character motivation analysis.
+
+
+
+---
+
+## Section A: Grammar MCQ (5 marks)
+
+Choose the correct answer and write its number (1, 2 or 3) in the brackets. 
+
+1. May I have **a little** (2) gravy on my rice, please? 
+
+
+2. The helicopter flies **over** (3) the sky. 
+
+
+3. Sulin **washed** (3) her hands before eating the sandwich just now. 
+
+
+4. "**How** (1) do you go to school every day?" Mrs Ong asked Lydia. 
+
+
+5. Father took a taxi to work this morning as his car could not **start** (1). 
+
+
+
+---
+
+## Section B: Grammar Cloze (5 marks)
+
+Fill in each blank with the correct form of the word in the brackets.  
+
+It was David's first visit to the swimming pool. He **(6) went** (go) there with his father . He **(7) held** (hold) on to his father's hand tightly. He **(8) trembled** (tremble) in fear as his feet touched the water . His father **(9) knew** (know) he was scared . He **(10) patted** (pat) David's head and said, "Don't be scared" .
+
+---
+
+## Section C: Vocabulary MCQ (5 marks)
+
+Choose the correct answer and write its number (1, 2 or 3) in the brackets. 
+
+11. The car crashed into a **bulldozer** (1) when it was clearing a fallen tree. 
+
+
+12. The giraffe is so tall that it has to **spread** (3) its legs when it wants to drink. 
+
+
+13. The nervous contestants were waiting **anxiously** (2) for the results. 
+
+
+14. July comes after **June** (2). 
+
+
+15. The lamb **bleated** (3) when its mother was nowhere in sight. 
+
+
+
+---
+
+## Section D: Vocabulary Cloze (5 marks)
+
+Fill in each blank with the most suitable word. Use each word once only.  
+
+**Word Bank:** quietly, unfortunately, gathered, walked, covered.
+
+One day, a wolf was hungry and wanted to eat a sheep. It **(16) covered** itself in a sheepskin . Then it crept **(17) quietly** to a field that had many sheep . When night came, the shepherd **(18) gathered** the sheep into a pen . When he left, the wolf **(19) walked** around to look for the fattest sheep . **(20) Unfortunately** for the wolf, the shepherd came back and picked the wolf to cook for his family .
+
+---
+
+## Section E: Open-Ended Comprehension (5 marks)
+
+Read this passage carefully. Then answer the questions that follow. 
+
+**Passage:**
+A colony of frogs was hopping through the woods. Two of them, Bouncy and Bumpy, fell into a deep pit. When the other frogs saw how deep the pit was, they frowned. They told Bouncy and Bumpy they would never get out. The two frogs refused to believe them. Soon, Bumpy was tired and gave up. Bouncy continued to jump as hard as he could. Once again, the other frogs yelled at him to stop jumping. However, he jumped even harder and finally made it out! Bouncy's friends were amazed and wanted to know how he did it. He told them that he was deaf and could not hear them. He had thought that they were cheering him! 
+
+**Questions:**
+21. What were Bumpy and Bouncy doing when they fell into the hole?
+* **Answer:** They were hopping through the woods. 
+22. Where was Bumpy in the end?
+* **Answer:** In the end, Bumpy was left in the pit. 
+23. Which word in paragraph 4 tells us that Bouncy's friends were surprised?
+* **Answer:** amazed. 
+24. Sentence: Bouncy gave up jumping out of the pit.
+* **Answer:** False. 
+25. Sentence: The other frogs were cheering Bouncy to jump out of the pit.
+* **Answer:** False. 
+
+---
+
+**~~ END OF CONSOLIDATED DATASET ~~**
 
 **YOUR TASK:**
 
