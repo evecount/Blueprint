@@ -2,6 +2,7 @@
 
 import { MoreVertical, Trash2, Gift, PlayCircle } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -9,6 +10,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useAppContext } from '@/context/AppProvider';
@@ -27,6 +29,7 @@ import {
 
 export default function ResourcesPage() {
   const { resources, deleteResource } = useAppContext();
+  const router = useRouter();
 
   return (
     <div className="flex flex-col gap-8">
@@ -54,7 +57,7 @@ export default function ResourcesPage() {
             const resourceImage = PlaceHolderImages.find((img) => img.id === resource.id);
             return (
                <Card key={resource.id} className="relative overflow-hidden rounded-lg shadow-lg group aspect-square">
-                  <Link href={`/quiz/${resource.id}`} passHref className="absolute inset-0 z-0">
+                  <Link href={`/quiz/${resource.id}`} passHref className="absolute inset-0 z-10">
                     <span className="sr-only">Start quiz for {resource.name}</span>
                   </Link>
                   
@@ -70,7 +73,7 @@ export default function ResourcesPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10" />
 
                   {/* Content */}
-                  <div className="relative z-10 flex flex-col justify-between h-full p-4 text-white">
+                  <div className="relative flex flex-col justify-between h-full p-4 text-white">
                     {/* Top section with title and dropdown */}
                     <div className="flex items-start justify-between">
                       <div>
@@ -84,6 +87,11 @@ export default function ResourcesPage() {
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
+                           <DropdownMenuItem onSelect={() => router.push(`/quiz/${resource.id}`)}>
+                                <PlayCircle className="w-4 h-4 mr-2" />
+                                Start Quiz
+                            </DropdownMenuItem>
+                            <DropdownMenuSeparator />
                           <AlertDialog>
                             <AlertDialogTrigger asChild>
                               <DropdownMenuItem

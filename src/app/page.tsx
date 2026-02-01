@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -17,6 +18,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useAppContext } from '@/context/AppProvider';
@@ -44,6 +46,7 @@ import UploadQuestionDialog from '@/components/home/UploadQuestionDialog';
 export default function DashboardPage() {
   const { resources, deleteResource } = useAppContext();
   const heroImage = PlaceHolderImages.find((img) => img.id === 'dashboard-hero');
+  const router = useRouter();
 
   // New state for filters
   const [selectedLevel, setSelectedLevel] = useState('all');
@@ -232,7 +235,7 @@ export default function DashboardPage() {
                 const resourceImage = PlaceHolderImages.find((img) => img.id === resource.id);
                 return (
                   <Card key={resource.id} className="relative overflow-hidden rounded-lg shadow-lg group aspect-square">
-                    <Link href={`/quiz/${resource.id}`} passHref className="absolute inset-0 z-0">
+                    <Link href={`/quiz/${resource.id}`} passHref className="absolute inset-0 z-10">
                       <span className="sr-only">Start quiz for {resource.name}</span>
                     </Link>
                     
@@ -248,7 +251,7 @@ export default function DashboardPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10" />
 
                     {/* Content */}
-                    <div className="relative z-10 flex flex-col justify-between h-full p-4 text-white">
+                    <div className="relative flex flex-col justify-between h-full p-4 text-white">
                       {/* Top section with title and dropdown */}
                       <div className="flex items-start justify-between">
                         <div>
@@ -262,6 +265,11 @@ export default function DashboardPage() {
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
+                            <DropdownMenuItem onSelect={() => router.push(`/quiz/${resource.id}`)}>
+                                <PlayCircle className="w-4 h-4 mr-2" />
+                                Start Quiz
+                            </DropdownMenuItem>
+                            <DropdownMenuSeparator />
                             <AlertDialog>
                               <AlertDialogTrigger asChild>
                                 <DropdownMenuItem
