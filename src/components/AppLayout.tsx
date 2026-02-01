@@ -136,6 +136,12 @@ export function AppLayout({ children }: { children: ReactNode }) {
            <Link href="/about" passHref>
             <Button variant="ghost">About</Button>
           </Link>
+          <Link href="/storybook" passHref>
+            <Button>
+              <BookImage className="mr-2" />
+              Create A Storybook
+            </Button>
+          </Link>
           <UserMenu />
         </div>
       </header>

@@ -53,12 +53,5 @@ export function UserMenu() {
     );
   }
 
-  return (
-    <Link href="/auth/login" passHref>
-      <Button variant="outline">
-        <LogIn className="w-4 h-4 mr-2" />
-        School Login
-      </Button>
-    </Link>
-  );
+  return null;
 }
