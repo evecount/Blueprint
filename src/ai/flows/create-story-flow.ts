@@ -13,6 +13,7 @@ import {z} from 'genkit';
 
 const StoryTextInputSchema = z.object({
   text: z.string().describe('The full text of the story to be split into pages.'),
+  characterDescription: z.string().optional().describe('A description of the main character to ensure visual consistency.'),
 });
 export type StoryTextInput = z.infer<typeof StoryTextInputSchema>;
 
@@ -46,6 +47,9 @@ const prompt = ai.definePrompt({
 3.  **Generate Illustration Prompts**: For each page you create, generate a detailed and whimsical prompt for an AI illustrator.
     *   **Style**: The prompt MUST specify a "whimsical, clean, black-and-white coloring book style, simple lines, full of wonder and charm."
     *   **Content**: The prompt should describe the main action, characters, and emotion of that specific page's text.
+    {{#if characterDescription}}
+    *   **CHARACTER CONSISTENCY**: The main character of this story is described as: '{{{characterDescription}}}'. When you generate a prompt that includes the main character, you MUST incorporate this description to ensure they look the same in every illustration. For example, instead of just "a girl," your prompt should say "a girl with short brown hair and glasses."
+    {{/if}}
 
 **Safety Guardrail**: If the text contains any inappropriate content or personal information, you MUST respond with an empty 'pages' array.
 
