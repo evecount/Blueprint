@@ -3,7 +3,7 @@ import type { Resource } from '@/lib/types';
 
 export const advMath: Resource = {
   id: 'adv-math',
-  name: 'Just Math Stuff',
+  name: 'Math & Your Career',
   createdAt: new Date().toISOString(),
   questions: [
     {

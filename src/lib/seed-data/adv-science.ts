@@ -3,7 +3,7 @@ import type { Resource } from '@/lib/types';
 
 export const advScience: Resource = {
   id: 'adv-science',
-  name: 'Just Science Stuff',
+  name: 'Science & Your Career',
   createdAt: new Date().toISOString(),
   questions: [
     {

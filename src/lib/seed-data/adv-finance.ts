@@ -3,7 +3,7 @@ import type { Resource } from '@/lib/types';
 
 export const advFinance: Resource = {
   id: 'adv-finance',
-  name: 'Just Finance Stuff',
+  name: 'Finance & Your Career',
   createdAt: new Date().toISOString(),
   questions: [
     {
