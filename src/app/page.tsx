@@ -8,6 +8,7 @@ import {
   Cpu,
 } from 'lucide-react';
 import Link from 'next/link';
+import { useState, useMemo } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -30,10 +31,92 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 export default function DashboardPage() {
   const { resources, deleteResource } = useAppContext();
   const heroImage = PlaceHolderImages.find((img) => img.id === 'dashboard-hero');
+
+  // New state for filters
+  const [selectedLevel, setSelectedLevel] = useState('all');
+  const [selectedSubject, setSelectedSubject] = useState('all');
+
+  // Derive filter options from resources
+  const { levels, subjects } = useMemo(() => {
+    const levelSet = new Set<string>();
+    const subjectSet = new Set<string>();
+    const levelLabels: { [key: string]: string } = {
+      p1: 'Primary 1',
+      p2: 'Primary 2',
+      p3: 'Primary 3',
+      p4: 'Primary 4',
+      p5: 'Primary 5',
+      p6: 'Primary 6',
+      s1: 'Secondary 1',
+      s2: 'Secondary 2',
+      s3: 'Secondary 3',
+      s4: 'Secondary 4',
+      adv: 'Advanced',
+    };
+    const subjectLabels: { [key: string]: string } = {
+      english: 'English',
+      math: 'Maths',
+      science: 'Science',
+      'social-studies': 'Social Studies',
+      history: 'History',
+      biology: 'Biology',
+      physics: 'Physics',
+      chemistry: 'Chemistry',
+      finance: 'Finance',
+      art: 'Art',
+    };
+
+    resources.forEach((r) => {
+      const parts = r.id.split('-');
+      if (parts.length > 0) levelSet.add(parts[0]);
+      if (parts.length > 1) {
+        const subject = parts.slice(1).join('-');
+        subjectSet.add(subject);
+      }
+    });
+
+    // Create a stable order for levels
+    const levelOrder = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 's1', 's2', 's3', 's4', 'adv'];
+    const sortedLevels = Array.from(levelSet).sort((a, b) => levelOrder.indexOf(a) - levelOrder.indexOf(b));
+
+    return {
+      levels: sortedLevels.map((l) => ({ value: l, label: levelLabels[l] || l })),
+      subjects: Array.from(subjectSet)
+        .map((s) => ({
+          value: s,
+          label:
+            subjectLabels[s] ||
+            s
+              .split('-')
+              .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+              .join(' '),
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
+    };
+  }, [resources]);
+
+  // Filter resources based on selection
+  const filteredResources = useMemo(() => {
+    return resources.filter((resource) => {
+      const [levelPrefix, ...subjectParts] = resource.id.split('-');
+      const subject = subjectParts.join('-');
+
+      const levelMatch = selectedLevel === 'all' || levelPrefix === selectedLevel;
+      const subjectMatch = selectedSubject === 'all' || subject === selectedSubject;
+      return levelMatch && subjectMatch;
+    });
+  }, [resources, selectedLevel, selectedSubject]);
 
   return (
     <div className="flex flex-col gap-12">
@@ -87,9 +170,41 @@ export default function DashboardPage() {
           </p>
         </div>
 
-        <div className="pt-8">
+        {/* Filters Section */}
+        {resources.length > 0 && (
+          <div className="flex flex-col gap-4 py-8 sm:flex-row">
+            <Select value={selectedLevel} onValueChange={setSelectedLevel}>
+              <SelectTrigger className="w-full sm:w-[200px]">
+                <SelectValue placeholder="Filter by level..." />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Levels</SelectItem>
+                {levels.map((level) => (
+                  <SelectItem key={level.value} value={level.value}>
+                    {level.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select value={selectedSubject} onValueChange={setSelectedSubject}>
+              <SelectTrigger className="w-full sm:w-[200px]">
+                <SelectValue placeholder="Filter by subject..." />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Subjects</SelectItem>
+                {subjects.map((subject) => (
+                  <SelectItem key={subject.value} value={subject.value}>
+                    {subject.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        )}
+
+        <div>
           {resources.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-64 gap-4 text-center border-2 border-dashed rounded-lg">
+            <div className="flex flex-col items-center justify-center h-64 gap-4 pt-8 text-center border-2 border-dashed rounded-lg">
               <h3 className="text-xl font-semibold font-headline">
                 No Quiz Decks Yet
               </h3>
@@ -97,9 +212,18 @@ export default function DashboardPage() {
                 Click "Submit a Question" to help build our first quiz deck.
               </p>
             </div>
+          ) : filteredResources.length === 0 ? (
+            <div className="flex flex-col items-center justify-center h-64 gap-4 text-center border-2 border-dashed rounded-lg">
+              <h3 className="text-xl font-semibold font-headline">
+                No Decks Found
+              </h3>
+              <p className="text-muted-foreground">
+                No quiz decks match your selected filters. Try a different combination.
+              </p>
+            </div>
           ) : (
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {resources.map((resource) => {
+              {filteredResources.map((resource) => {
                 const resourceImage = PlaceHolderImages.find((img) => img.id === resource.id);
                 return (
                   <Card key={resource.id} className="relative overflow-hidden rounded-lg shadow-lg group aspect-square">
