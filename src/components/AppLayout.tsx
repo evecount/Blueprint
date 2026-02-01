@@ -38,7 +38,7 @@ const studentMenuItems = [
   { href: '/resources', label: 'My Quiz Decks', icon: BookOpen },
   { href: '/performance', label: 'My Progress', icon: TrendingUp },
   { href: '/chat', label: 'Chat with Notes', icon: MessageSquare },
-  { href: '/contribute', label: 'Contribute Question', icon: Gift },
+  { href: '/contribute', label: 'Ask a Question', icon: Gift },
   { href: '/math-challenge', label: 'Math Challenge', icon: ToyBrick },
   { href: '/storybook', label: 'Storybook Creator', icon: BookImage },
 ];

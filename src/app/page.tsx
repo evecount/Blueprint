@@ -149,7 +149,7 @@ export default function DashboardPage() {
             <Link href="/contribute" passHref>
               <Button size="lg" className="w-full sm:w-auto">
                 <Gift className="mr-2" />
-                Contribute a Question
+                Ask a Question
               </Button>
             </Link>
           </div>
@@ -216,7 +216,7 @@ export default function DashboardPage() {
                 No Quiz Decks Yet
               </h3>
               <p className="text-muted-foreground">
-                Click "Submit a Question" to help build our first quiz deck.
+                Click "Ask a Question" to help build our first quiz deck.
               </p>
             </div>
           ) : filteredResources.length === 0 ? (

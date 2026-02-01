@@ -17,7 +17,7 @@ function GeneratedQuestionPreview({ question }: { question: SolveQuestionOutput 
         <CardTitle className="flex items-center gap-2 font-headline">
           <Sparkles className="text-accent" /> AI Generated Question
         </CardTitle>
-        <CardDescription>Review the generated question and its source before contributing it.</CardDescription>
+        <CardDescription>Review the generated question and its source before adding it to the library.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex flex-wrap gap-4 text-sm">
@@ -179,7 +179,7 @@ export default function ContributePage() {
       setGeneratedQuestion(result);
       toast({
         title: 'Question Generated!',
-        description: 'Review the question below and click "Contribute" to add it.',
+        description: 'Review the question below and click the button to add it to the library.',
       });
     } catch (error) {
       console.error(error);
@@ -231,7 +231,7 @@ export default function ContributePage() {
     <Card className="text-center">
       <CardHeader>
         <CardTitle>Stuck on Homework?</CardTitle>
-        <CardDescription>Scan your question to get an AI answer. When you contribute it, you're helping the next person who gets stuck.</CardDescription>
+        <CardDescription>Scan your question to get an AI answer. When you do, you're helping the next person who gets stuck.</CardDescription>
       </CardHeader>
       <CardContent>
          <Button size="lg" onClick={() => setIsCameraActive(true)}>
@@ -309,7 +309,7 @@ export default function ContributePage() {
   return (
     <div className="flex flex-col gap-8">
       <header>
-        <h1 className="text-3xl font-bold tracking-tight font-headline">Contribute a Question</h1>
+        <h1 className="text-3xl font-bold tracking-tight font-headline">Ask a Question</h1>
         <p className="text-muted-foreground">
           Get help with your homework and help someone else pass. Because education should be free.
         </p>
@@ -323,7 +323,7 @@ export default function ContributePage() {
             <div className="flex justify-end">
                 <Button onClick={handleContributeQuestion} size="lg">
                     <Gift className="mr-2"/>
-                    Confirm and Contribute
+                    Add Question to Library
                 </Button>
             </div>
         </div>

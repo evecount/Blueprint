@@ -41,7 +41,7 @@ export default function ResourcesPage() {
         <Link href="/contribute" passHref>
           <Button>
             <Gift className="mr-2 h-4 w-4" />
-            Submit a Question
+            Ask a Question
           </Button>
         </Link>
       </header>
@@ -49,7 +49,7 @@ export default function ResourcesPage() {
       {resources.length === 0 ? (
         <div className="flex flex-col items-center justify-center h-64 gap-4 text-center border-2 border-dashed rounded-lg">
           <h3 className="text-xl font-semibold font-headline">No Decks Found</h3>
-          <p className="text-muted-foreground">Click "Submit a Question" to help build our first quiz deck.</p>
+          <p className="text-muted-foreground">Click "Ask a Question" to help build our first quiz deck.</p>
         </div>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

@@ -31,7 +31,7 @@ function GeneratedQuestionPreview({ question }: { question: GeneratedQuestion })
         <CardTitle className="flex items-center gap-2 font-headline">
           <Sparkles className="text-accent" /> AI Generated Question
         </CardTitle>
-        <CardDescription>Review the generated question before contributing it.</CardDescription>
+        <CardDescription>Review the generated question before adding it to the library.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
          <div className="flex flex-wrap gap-4 text-sm">
@@ -176,7 +176,7 @@ export default function UploadQuestionDialog({ open, onOpenChange }: UploadQuest
       setGeneratedQuestion(result);
       toast({
         title: 'Question Generated!',
-        description: 'Review the question below and click "Contribute" to add it.',
+        description: 'Review the question below and click "Add to Library" to finish.',
       });
 
     } catch (error) {
@@ -228,7 +228,7 @@ export default function UploadQuestionDialog({ open, onOpenChange }: UploadQuest
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-xl">
         <DialogHeader>
-          <DialogTitle className="font-headline">Contribute a Question</DialogTitle>
+          <DialogTitle className="font-headline">Ask a Question</DialogTitle>
           <DialogDescription>
             Help the community by adding a new question. The AI will convert it into a multiple-choice format and categorize it automatically.
           </DialogDescription>
@@ -304,7 +304,7 @@ export default function UploadQuestionDialog({ open, onOpenChange }: UploadQuest
                     <Button variant="outline" onClick={() => setGeneratedQuestion(null)}>Back to Edit</Button>
                     <Button onClick={handleContributeQuestion}>
                         <Gift className="mr-2" />
-                        Confirm and Contribute
+                        Add to Library
                     </Button>
                 </div>
             ) : (

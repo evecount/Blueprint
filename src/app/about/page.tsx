@@ -28,7 +28,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-foreground">Community-Driven</h3>
-                <p>When you contribute a question, you're not just getting an answer—you're helping countless other students who will face the same challenge. It's about paying it forward and building a shared knowledge base for everyone.</p>
+                <p>When you ask a question, you're not just getting an answer—you're helping countless other students who will face the same challenge. It's about paying it forward and building a shared knowledge base for everyone.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
