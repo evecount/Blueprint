@@ -14,7 +14,7 @@ export function Footer() {
                         <h2 className="text-lg font-bold tracking-tight font-headline">QuizUp</h2>
                     </div>
                      <p className="mt-4 text-sm text-muted-foreground">
-                        A free, open-source learning platform for students. We provide AI-powered tools in a safe, anonymous environment—no sign-ups required.
+                        A free, open-source learning platform for students. We provide AI-powered tools in a safe, anonymous environment—no student sign-ups required.
                     </p>
                 </div>
 
@@ -27,7 +27,7 @@ export function Footer() {
                             Our Mission
                         </Link>
                          <Link href="/contribute" className="text-muted-foreground transition-colors hover:text-foreground">
-                            Contribute
+                            Ask a Question
                         </Link>
                         <Link href="/automation" className="text-muted-foreground transition-colors hover:text-foreground">
                             Automation
