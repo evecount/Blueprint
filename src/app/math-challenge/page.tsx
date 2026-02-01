@@ -133,6 +133,28 @@ const mathQuestions = [
         { id: 'q11d3', text: 'To the number 7' }
     ],
     target: { id: 'q11t1', correctItemId: 'q11d2' }
+  },
+  {
+    id: 'q12',
+    prompt: 'Which equation has the same answer as 3 + 3 + 3?',
+    visual: { type: 'grid', content: '❤️', count: 9 },
+    items: [
+        { id: 'q12d1', text: '2 + 2' },
+        { id: 'q12d2', text: '3 x 3' },
+        { id: 'q12d3', text: '6 x 2' }
+    ],
+    target: { id: 'q12t1', correctItemId: 'q12d2' }
+  },
+  {
+    id: 'q13',
+    prompt: 'Jayden baked 15 cupcakes. He put 3 cupcakes into one box. How many boxes would he need?',
+    visual: { type: 'grid', content: '🧁', count: 15 },
+    items: [
+        { id: 'q13d1', text: '3' },
+        { id: 'q13d2', text: '5' },
+        { id: 'q13d3', text: '15' }
+    ],
+    target: { id: 'q13t1', correctItemId: 'q13d2' }
   }
 ];
 
