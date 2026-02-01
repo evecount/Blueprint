@@ -133,21 +133,21 @@ export default function SponsorshipPage() {
         <CardHeader>
             <div className="flex items-center gap-3">
                 <BrainCircuit className="w-8 h-8 text-accent" />
-                <CardTitle className="text-accent font-headline">The Ultimate Vision: From Learner to Trainer</CardTitle>
+                <CardTitle className="text-accent font-headline">The Ultimate Vision: From Learner to Lifelong Learner</CardTitle>
             </div>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
           <p>
-            The final evolution of this model transforms students from passive learners into active trainers of their own personal AI. As they answer questions, they are not just scoring points—they are providing the data that trains a machine learning model unique to them. Their avatar isn't just a picture; it becomes a visual representation of how "smart" their personal AI has become.
+            The final evolution of this model transforms students from passive learners into active participants in their own educational journey. As they answer questions, they are not just scoring points—they are personalizing their own AI-powered study companion. Their avatar isn't just a picture; it becomes a visual representation of their learning progress and mastery.
           </p>
           <p className="font-medium text-foreground">
-            This creates a powerful feedback loop. Students understand that with every quiz, they are making their avatar smarter. Crucially, this gamified process separates learning from formal schoolwork. A student is free to explore any subject at any level—from advanced science to niche interests—because the motivation is personal: they are simply "gaming" to build the smartest avatar possible.
+            This creates a powerful feedback loop. Students see that with every quiz, their avatar grows 'smarter' alongside them. While the core focus remains on syllabus-aligned content, this gamified process encourages a love for learning. An ambitious student is free to explore advanced topics or niche interests on their own time.
           </p>
           <p>
-            This allows a 15-year-old to dive into quantum physics on their own time without interfering with their homework. We are not just teaching them course material; we are teaching them the fundamental principles of training and using AI in a practical, hands-on environment.
+            For example, a student can use the platform to master their school's physics syllabus and then, driven by curiosity, explore quantum mechanics—all within the same engaging framework. It becomes a personal journey of discovery, not just a study tool.
           </p>
-          <p>
-            Students become "AI native" from the moment they start. This offers a partnership opportunity to be at the forefront of STEM education, preparing an entire generation for the AI-driven future by letting them build it themselves.
+           <p>
+            This offers a unique partnership opportunity: to be at the forefront of modern education by supporting a platform that excels at curriculum-based learning while also providing a safe space for ambitious students to go above and beyond.
           </p>
         </CardContent>
       </Card>
