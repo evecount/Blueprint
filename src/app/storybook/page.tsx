@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { BookImage, Loader2, Sparkles, Wand2 } from 'lucide-react';
+import { BookImage, Loader2, Sparkles, Wand2, Handshake } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -19,6 +19,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import Link from 'next/link';
 
 // New type for a single page in our story
 type StoryPage = {
@@ -198,9 +199,9 @@ export default function StorybookCreatorPage() {
                                             />
                                         ) : null}
                                         </div>
-                                        <div className="flex flex-col justify-between p-6">
+                                        <div className="p-6 text-center">
                                             <p className="flex-1 text-lg leading-relaxed text-muted-foreground">{page.text}</p>
-                                            <p className="self-end mt-4 text-sm font-medium">{page.pageNumber}</p>
+                                            <p className="mt-4 text-sm font-medium">{page.pageNumber}</p>
                                         </div>
                                     </div>
                                 </Card>
@@ -210,11 +211,20 @@ export default function StorybookCreatorPage() {
                     <CarouselPrevious className="hidden -left-12 sm:flex" />
                     <CarouselNext className="hidden -right-12 sm:flex" />
                 </Carousel>
-                <div className="flex justify-center">
+                 <div className="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row">
                     <Button variant="outline" onClick={() => {
                         setPages([]);
                         setStoryText('');
-                    }}>Start a New Story</Button>
+                    }}>
+                        <Wand2 className="mr-2"/>
+                        Start a New Story
+                    </Button>
+                     <Link href="/sponsorship" passHref>
+                        <Button>
+                            <Handshake className="mr-2"/>
+                            Learn More for Schools
+                        </Button>
+                    </Link>
                 </div>
             </div>
         )}
