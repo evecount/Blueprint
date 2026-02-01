@@ -3,11 +3,11 @@
 import { useState } from 'react';
 import { DndContext, useDraggable, useDroppable, DragEndEvent, UniqueIdentifier } from '@dnd-kit/core';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle2, XCircle, ArrowRight, RefreshCw, Home } from 'lucide-react';
+import { CheckCircle2, XCircle, ArrowRight, RefreshCw, Home, ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Progress } from '@/components/ui/progress';
 import { useRouter } from 'next/navigation';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 // --- Data ---
 const mathQuestions = [
@@ -136,6 +136,12 @@ export default function MathChallengePage() {
     }
   };
 
+   const handlePreviousQuestion = () => {
+      if (currentQuestionIndex > 0) {
+          setCurrentQuestionIndex(prev => prev - 1);
+      }
+  };
+
   const handleTryAgain = () => {
       setAnswers(prev => {
           const newAnswers = {...prev};
@@ -154,11 +160,11 @@ export default function MathChallengePage() {
   const getDraggableById = (id: UniqueIdentifier | null) => currentQuestion.items.find(item => item.id === id);
   const droppedItem = getDraggableById(droppedItemId);
 
-  const progressPercentage = ((currentQuestionIndex + (isFinished ? 1 : 0)) / mathQuestions.length) * 100;
+  const progressPercentage = (currentQuestionIndex / mathQuestions.length) * 100;
 
   if (isFinished) {
     return (
-      <div className="max-w-2xl mx-auto text-center">
+      <div className="flex items-center justify-center h-full max-w-2xl mx-auto text-center">
         <Card>
           <CardHeader>
             <CardTitle className="text-3xl font-bold font-headline">Challenge Complete!</CardTitle>
@@ -183,94 +189,89 @@ export default function MathChallengePage() {
   }
 
   return (
-    <div className="space-y-8">
-       <header>
-        <h1 className="text-3xl font-bold tracking-tight font-headline">Primary 1 Math Challenge</h1>
-        <p className="text-muted-foreground">
-          An interactive way to learn grouping and multiplication.
-        </p>
+    <div className="flex flex-col max-w-5xl mx-auto h-[calc(100vh-8rem)]">
+      <header className="px-4 pt-4">
+        <h1 className="text-2xl font-bold tracking-tight text-center font-headline">Primary 1 Math Challenge</h1>
       </header>
 
-      <div className="space-y-2">
-        <div className="flex justify-between text-sm font-medium text-muted-foreground">
-            <span>Question {currentQuestionIndex + 1} of {mathQuestions.length}</span>
-            <span>Score: {score}</span>
-        </div>
-        <Progress value={progressPercentage} />
-      </div>
+      <div className="flex flex-col items-center justify-center flex-1 p-4">
+        <DndContext onDragEnd={handleDragEnd}>
+            <div className="w-full space-y-6 text-center">
+                <p className="text-xl">{currentQuestion.prompt}</p>
 
-      <Card>
-        <CardHeader className="text-center">
-          <CardTitle>Let's Learn Grouping!</CardTitle>
-          <CardDescription>{currentQuestion.prompt}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <DndContext onDragEnd={handleDragEnd}>
-            <div className="flex flex-col items-center gap-8">
-              
-              <div className="p-6 border rounded-lg bg-muted/50">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-                  {Array.from({ length: currentQuestion.visual.count }).map((_, index) => (
-                    <div key={index} className="flex items-center justify-center p-2 text-3xl border rounded-lg shadow-sm bg-background aspect-square">
-                      {currentQuestion.visual.content}
+                <div className="inline-block p-6 border rounded-lg bg-muted/50">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+                    {Array.from({ length: currentQuestion.visual.count }).map((_, index) => (
+                        <div key={index} className="flex items-center justify-center p-2 text-3xl border rounded-lg shadow-sm bg-background aspect-square">
+                        {currentQuestion.visual.content}
+                        </div>
+                    ))}
                     </div>
-                  ))}
                 </div>
-              </div>
 
-              <div className="relative w-full max-w-xs">
-                <DropTarget id={currentQuestion.target.id} isOccupied={!!droppedItem}>
-                  {droppedItem ? droppedItem.text : "Drag answer here"}
-                </DropTarget>
-                {isAnswered && (
-                    isCorrect 
-                    ? <CheckCircle2 className="absolute w-6 h-6 p-1 text-green-500 rounded-full -top-2 -right-2 bg-background" />
-                    : <XCircle className="absolute w-6 h-6 p-1 text-red-500 rounded-full -top-2 -right-2 bg-background" />
-                )}
-              </div>
+                <div className="relative w-full max-w-xs mx-auto">
+                    <DropTarget id={currentQuestion.target.id} isOccupied={!!droppedItem}>
+                    {droppedItem ? droppedItem.text : "Drag answer here"}
+                    </DropTarget>
+                    {isAnswered && (
+                        isCorrect 
+                        ? <CheckCircle2 className="absolute w-6 h-6 p-1 text-green-500 rounded-full -top-2 -right-2 bg-background" />
+                        : <XCircle className="absolute w-6 h-6 p-1 text-red-500 rounded-full -top-2 -right-2 bg-background" />
+                    )}
+                </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-4 p-4 mt-4 border-2 border-dashed rounded-lg min-h-28 w-full">
-                {!isAnswered ? (
-                    currentQuestion.items.map(item => (
-                        <DraggableItem key={item.id} id={item.id} isPlaced={droppedItemId === item.id}>
-                          {item.text}
-                        </DraggableItem>
-                    ))
-                ) : (
-                   <div className="flex flex-col items-center gap-2 text-center">
-                        {isCorrect ? (
-                           <div className="text-green-500">
-                             <CheckCircle2 className="w-12 h-12 mx-auto" />
-                             <p className="mt-2 font-bold">That's right!</p>
-                           </div>
-                        ) : (
-                            <div className="text-red-500">
-                                <XCircle className="w-12 h-12 mx-auto" />
-                                <p className="mt-2 font-bold">Not quite. Give it another try!</p>
+                <div className="flex flex-wrap items-center justify-center w-full gap-4 p-4 mt-4 border-2 border-dashed rounded-lg min-h-[110px]">
+                    {!isAnswered ? (
+                        currentQuestion.items.map(item => (
+                            <DraggableItem key={item.id} id={item.id} isPlaced={droppedItemId === item.id}>
+                            {item.text}
+                            </DraggableItem>
+                        ))
+                    ) : (
+                    <div className="flex flex-col items-center gap-2 text-center">
+                            {isCorrect ? (
+                            <div className="text-green-500">
+                                <CheckCircle2 className="w-12 h-12 mx-auto" />
+                                <p className="mt-2 font-bold">That's right!</p>
                             </div>
-                        )}
-                   </div>
-                )}
-              </div>
+                            ) : (
+                                <div className="text-red-500">
+                                    <XCircle className="w-12 h-12 mx-auto" />
+                                    <p className="mt-2 font-bold">Not quite. Give it another try!</p>
+                                </div>
+                            )}
+                    </div>
+                    )}
+                </div>
             </div>
-          </DndContext>
-        </CardContent>
-      </Card>
-
-      {isAnswered && (
-        <div className="flex justify-end gap-4">
-            {!isCorrect && 
-              <Button onClick={handleTryAgain} variant="outline">
-                  <RefreshCw className="mr-2" />
-                  Try Again
+        </DndContext>
+      </div>
+      
+      <div className="px-4 pb-4 mt-auto">
+          <div className="mb-4 space-y-2">
+              <div className="flex justify-between text-sm font-medium text-muted-foreground">
+                  <span>Question {currentQuestionIndex + 1} of {mathQuestions.length}</span>
+                  <span>Score: {score}</span>
+              </div>
+              <Progress value={progressPercentage} />
+          </div>
+          <div className="flex items-center justify-between">
+              <Button variant="outline" size="lg" onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>
+                  <ArrowLeft className="w-8 h-8" />
               </Button>
-            }
-            <Button onClick={handleNextQuestion}>
-                {currentQuestionIndex === mathQuestions.length - 1 ? 'Finish Challenge' : 'Next Question'}
-                <ArrowRight className="ml-2" />
-            </Button>
-        </div>
-      )}
+              
+              {!isCorrect && isAnswered && (
+                   <Button onClick={handleTryAgain}>
+                        <RefreshCw className="mr-2" />
+                        Try Again
+                    </Button>
+              )}
+
+              <Button size="lg" onClick={handleNextQuestion} disabled={!isCorrect}>
+                  <ArrowRight className="w-8 h-8" />
+              </Button>
+          </div>
+      </div>
     </div>
   );
 }
