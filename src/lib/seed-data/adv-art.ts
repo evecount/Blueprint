@@ -88,5 +88,135 @@ export const advArt: Resource = {
       rationale:
         'AI Ethicists are specialists who help guide the design and deployment of artificial intelligence systems to ensure they are safe, unbiased, and beneficial for society.',
     },
+    {
+      question:
+        'Which art movement is characterized by its attempt to portray the subjective emotions and responses that objects and events arouse in the artist?',
+      answers: ['Impressionism', 'Expressionism', 'Cubism', 'Surrealism'],
+      correctAnswerIndex: 1,
+      rationale:
+        'Expressionism is a modernist movement where the artist seeks to express emotional experience rather than objective reality. Famous expressionists include Edvard Munch and Wassily Kandinsky.',
+    },
+    {
+      question:
+        'What is the term for a type of printmaking where the image is incised into a surface and the incised line or sunken area holds the ink?',
+      answers: ['Relief printing', 'Intaglio', 'Planography', 'Stencil'],
+      correctAnswerIndex: 1,
+      rationale:
+        'Intaglio includes techniques like etching and engraving. It is the opposite of relief printing, where the ink is on the raised surfaces.',
+    },
+    {
+      question: 'Who painted the famous artwork "The Starry Night"?',
+      answers: ['Claude Monet', 'Pablo Picasso', 'Vincent van Gogh', 'Leonardo da Vinci'],
+      correctAnswerIndex: 2,
+      rationale:
+        'Vincent van Gogh, a Dutch Post-Impressionist painter, created "The Starry Night" in 1889. It is one of the most recognized paintings in the history of Western culture.',
+    },
+    {
+      question: 'In photography, what does the term "aperture" refer to?',
+      answers: [
+        'The speed at which the shutter closes',
+        'The sensitivity of the sensor to light',
+        'The opening in the lens through which light passes',
+        'The distance between the lens and the subject',
+      ],
+      correctAnswerIndex: 2,
+      rationale:
+        'The aperture is the opening within a lens that controls the amount of light that reaches the camera sensor. It is expressed in f-numbers, like f/1.8 or f/8.',
+    },
+    {
+      question: 'Which of these is considered a "primary color" in subtractive color models (like paint)?',
+      answers: ['Green', 'Orange', 'Yellow', 'Violet'],
+      correctAnswerIndex: 2,
+      rationale: 'In the traditional RYB (Red, Yellow, Blue) color model, yellow is a primary color. Green and orange are secondary colors, made by mixing primary colors.',
+    },
+    {
+      question: 'The architectural style characterized by pointed arches, ribbed vaults, and flying buttresses is known as:',
+      answers: ['Romanesque', 'Baroque', 'Gothic', 'Neoclassical'],
+      correctAnswerIndex: 2,
+      rationale:
+        'Gothic architecture flourished in Europe during the High and Late Middle Ages. It is best known for its grand cathedrals, such as Notre-Dame de Paris.',
+    },
+    {
+      question: 'What is a "maquette"?',
+      answers: [
+        'A large-scale finished sculpture',
+        'A type of paintbrush',
+        'A small-scale model or rough draft of an unfinished sculpture',
+        'A style of painting',
+      ],
+      correctAnswerIndex: 2,
+      rationale:
+        'A maquette is a small preliminary model used by sculptors to visualize and test ideas for a larger piece without incurring the cost and effort of producing the full-scale work.',
+    },
+    {
+      question:
+        'The concept of "form follows function" is a principle associated with which design movement?',
+      answers: ['Art Nouveau', 'Bauhaus', 'Art Deco', 'Postmodernism'],
+      correctAnswerIndex: 1,
+      rationale:
+        'The Bauhaus school in Germany promoted a style that sought to unify mass production with individual artistic vision, emphasizing function and simplicity.',
+    },
+    {
+      question: 'In visual art, what is "chiaroscuro"?',
+      answers: [
+        'A type of clay used for sculpting',
+        'The use of strong contrasts between light and dark',
+        'A method of painting with watercolors',
+        'A style of abstract art',
+      ],
+      correctAnswerIndex: 1,
+      rationale:
+        'Chiaroscuro is an artistic technique that uses bold contrasts of light and shadow to model three-dimensional forms, often for dramatic effect. It was widely used by artists like Caravaggio and Rembrandt.',
+    },
+    {
+      question: 'Which contemporary artist is famous for their large-scale "Infinity Mirror Rooms"?',
+      answers: ['Banksy', 'Jeff Koons', 'Yayoi Kusama', 'Ai Weiwei'],
+      correctAnswerIndex: 2,
+      rationale:
+        'Yayoi Kusama is a Japanese contemporary artist whose immersive installations, the "Infinity Mirror Rooms," use mirrors to create the illusion of endless, glittering space.',
+    },
+    {
+      question:
+        'What career involves restoring damaged or aged artworks to their former condition?',
+      answers: ['Art Critic', 'Art Conservator', 'Art Dealer', 'Auctioneer'],
+      correctAnswerIndex: 1,
+      rationale:
+        'Art conservators are highly skilled professionals who use a combination of art history knowledge, chemistry, and hands-on skill to preserve and repair artworks.',
+    },
+    {
+      question:
+        'The study of symbols and their interpretation in art is called:',
+      answers: ['Aesthetics', 'Iconography', 'Formalism', 'Perspective'],
+      correctAnswerIndex: 1,
+      rationale:
+        'Iconography is a branch of art history that focuses on identifying, describing, and interpreting the content of images and the symbolic meanings of the subjects depicted.',
+    },
+    {
+      question: 'Which digital tool is most commonly used by professionals for photo editing and manipulation?',
+      answers: ['Microsoft Word', 'Adobe Photoshop', 'Autodesk AutoCAD', 'Google Sheets'],
+      correctAnswerIndex: 1,
+      rationale:
+        'Adobe Photoshop is the industry-standard software for raster graphics editing, used by photographers, graphic designers, and digital artists worldwide.',
+    },
+    {
+      question:
+        'The use of perspective in painting creates the illusion of what?',
+      answers: ['Bright colors', 'Flatness', 'Three-dimensional depth', 'Abstract shapes'],
+      correctAnswerIndex: 2,
+      rationale:
+        'Linear perspective is a system developed during the Renaissance that allows artists to represent three-dimensional space on a two-dimensional surface.',
+    },
+    {
+      question: 'A career in "Art Therapy" uses the creative process of making art to:',
+      answers: [
+        'Sell paintings for a high price',
+        'Decorate hospitals',
+        'Improve a person\'s physical, mental, and emotional well-being',
+        'Teach art history',
+      ],
+      correctAnswerIndex: 2,
+      rationale:
+        'Art therapists are trained professionals who use art-making as a therapeutic tool to help clients explore their feelings, reconcile emotional conflicts, and reduce anxiety.',
+    },
   ],
 };
