@@ -30,6 +30,7 @@ import { Button } from './ui/button';
 import { Footer } from './Footer';
 import { UserMenu } from './auth/UserMenu';
 import { useUser } from '@/firebase';
+import { cn } from '@/lib/utils';
 
 const studentMenuItems = [
   { href: '/', label: 'Dashboard', icon: BarChart2 },
@@ -50,6 +51,12 @@ export function AppLayout({ children }: { children: ReactNode }) {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const { user } = useUser();
   const isSchoolUser = user && !user.isAnonymous;
+
+  const isMathChallengePage = pathname === '/math-challenge';
+
+  if (isMathChallengePage) {
+    return <main>{children}</main>;
+  }
 
   return (
     <SidebarProvider className="flex flex-col min-h-screen bg-background">
