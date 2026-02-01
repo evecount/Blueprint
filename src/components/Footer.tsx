@@ -90,6 +90,18 @@ export function Footer() {
                         />
                        </a>
                 </div>
+                <div className="text-center sm:text-left">
+                    <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                        Powered By
+                    </p>
+                    <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center justify-center sm:justify-start gap-2 text-foreground group">
+                        <svg viewBox="0 0 24 24" className="w-7 h-7 text-primary group-hover:text-primary/80 transition-colors" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C11.4082 4.93333 9.06667 7.275 6.13333 7.86667C9.06667 8.45833 11.4082 10.8 12 13.7333C12.5918 10.8 14.9333 8.45833 17.8667 7.86667C14.9333 7.275 12.5918 4.93333 12 2Z" fill="currentColor"/>
+                            <path d="M19 8C18.6667 9.4 17.6 10.4667 16.2 10.8C17.6 11.1333 18.6667 12.2 19 13.6C19.3333 12.2 20.4 11.1333 21.8 10.8C20.4 10.4667 19.3333 9.4 19 8Z" fill="currentColor"/>
+                        </svg>
+                        <span className="text-lg font-bold group-hover:text-foreground/80 transition-colors">Gemini</span>
+                    </a>
+                </div>
             </div>
 
              <div className="mt-8 border-t border-border pt-6">
