@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 export function Footer() {
-  const [year, setYear] = useState<number | ''>('');
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setYear(new Date().getFullYear());
+    setIsClient(true);
   }, []);
 
   return (
@@ -115,7 +115,7 @@ export function Footer() {
 
              <div className="mt-8 border-t border-border pt-6">
                 <p className="text-center text-xs/relaxed text-muted-foreground">
-                    © {year && `${year} `}QuizUp, a property of <a href="https://evecount.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">Eve Count Pte Ltd SINGAPORE</a>. All Rights Reserved.
+                    © {isClient && `${new Date().getFullYear()} `}QuizUp, a property of <a href="https://evecount.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">Eve Count Pte Ltd SINGAPORE</a>. All Rights Reserved.
                 </p>
             </div>
         </div>
