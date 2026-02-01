@@ -7,7 +7,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Handshake, Users, Goal, Briefcase, Mail, Rocket, Smile, Award, ToyBrick, BrainCircuit } from 'lucide-react';
+import { Handshake, Users, Goal, Briefcase, Mail, Smile, Award, ToyBrick, BrainCircuit } from 'lucide-react';
 
 export default function SponsorshipPage() {
   return (
@@ -83,16 +83,19 @@ export default function SponsorshipPage() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="border-accent">
         <CardHeader>
             <div className="flex items-center gap-3">
-                <Rocket className="w-8 h-8 text-primary" />
-                <CardTitle>Partnership Opportunity II: The Engagement & Rewards Model</CardTitle>
+                <BrainCircuit className="w-8 h-8 text-accent" />
+                <CardTitle className="text-accent font-headline">A Vision for Growth: Custom Rewards & Engagement</CardTitle>
             </div>
         </CardHeader>
         <CardContent className="space-y-6 text-muted-foreground">
           <p>
-           Beyond academics, our vision is to build a powerful motivational loop for students through gamification, personalization, and tangible rewards. This presents a unique commercial partnership opportunity for organizations interested in engaging with the youth market in a meaningful way.
+           Beyond the core academic mission, we envision a powerful engagement ecosystem built on personalization, gamification, and rewards. This presents a unique growth opportunity for a partner to co-create a system that genuinely connects with students and inspires a love for learning.
+          </p>
+          <p className="text-lg font-medium text-foreground">
+            This isn't a fixed roadmap, but a series of ideas to spark collaboration:
           </p>
           <div className="space-y-4">
               <div className="flex items-start gap-4">
@@ -100,8 +103,8 @@ export default function SponsorshipPage() {
                     <Smile className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground">Phase 1: AI-Powered Avatars</h3>
-                    <p>Students design their own unique profile avatars using text prompts (e.g., "a happy robot with a graduation cap"). Our AI generates a custom image, fostering identity and creativity.</p>
+                    <h3 className="font-semibold text-foreground">Idea 1: AI-Powered Avatars</h3>
+                    <p>Students could design unique avatars with AI, giving them a personal identity on the platform and a visual representation of their learning companion.</p>
                   </div>
               </div>
                <div className="flex items-start gap-4">
@@ -109,8 +112,8 @@ export default function SponsorshipPage() {
                     <Award className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground">Phase 2: Digital Badge System</h3>
-                    <p>As students master topics, they earn digital badges displayed on their profile. This creates a visual record of their achievements and encourages friendly competition.</p>
+                    <h3 className="font-semibold text-foreground">Idea 2: A Custom Badge & Points System</h3>
+                    <p>Students earn points and digital badges for mastering topics. This could be integrated with a partner's existing reward system or we could build a new one together.</p>
                   </div>
               </div>
                <div className="flex items-start gap-4">
@@ -118,36 +121,13 @@ export default function SponsorshipPage() {
                     <ToyBrick className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground">Phase 3: The Physical Connection</h3>
-                    <p>An e-commerce partnership to allow students to order custom plush toys of their AI-generated avatars. Physical versions of earned badges could be mailed out, creating a tangible trophy of their learning journey.</p>
+                    <h3 className="font-semibold text-foreground">Idea 3: The Physical-Digital Bridge</h3>
+                    <p>Imagine students ordering custom plush toys of their avatars, or receiving physical versions of badges in the mail—a tangible trophy for their hard work.</p>
                   </div>
               </div>
           </div>
            <p className="pt-4 mt-4 font-medium border-t text-foreground border-border/50">
-            This model offers a direct and authentic way to connect with students, building brand loyalty through a platform they love. We are seeking a partner to help build and scale this exciting commercial venture.
-          </p>
-        </CardContent>
-      </Card>
-      
-       <Card className="border-accent">
-        <CardHeader>
-            <div className="flex items-center gap-3">
-                <BrainCircuit className="w-8 h-8 text-accent" />
-                <CardTitle className="text-accent font-headline">The Ultimate Vision: From Learner to Lifelong Learner</CardTitle>
-            </div>
-        </CardHeader>
-        <CardContent className="space-y-4 text-muted-foreground">
-          <p>
-            The final evolution of this model transforms students from passive learners into active participants in their own educational journey. As they answer questions, they are not just scoring points—they are personalizing their own AI-powered study companion. Their avatar isn't just a picture; it becomes a visual representation of their learning progress and mastery.
-          </p>
-          <p className="font-medium text-foreground">
-            This creates a powerful feedback loop. Students see that with every quiz, their avatar grows 'smarter' alongside them. While the core focus remains on syllabus-aligned content, this gamified process encourages a love for learning. An ambitious student is free to explore advanced topics or niche interests on their own time.
-          </p>
-          <p>
-            For example, a student can use the platform to master their school's physics syllabus and then, driven by curiosity, explore quantum mechanics—all within the same engaging framework. It becomes a personal journey of discovery, not just a study tool.
-          </p>
-           <p>
-            This offers a unique partnership opportunity: to be at the forefront of modern education by supporting a platform that excels at curriculum-based learning while also providing a safe space for ambitious students to go above and beyond.
+            The goal is to build a system where students are motivated to learn. While the core focus remains on the syllabus, this framework allows ambitious students to explore advanced topics on their own time. It's a chance to be at the forefront of education, supporting a platform that excels at curriculum-based learning while also providing a safe space for curiosity to flourish. We are open to new ideas and a true partnership in building this out.
           </p>
         </CardContent>
       </Card>
