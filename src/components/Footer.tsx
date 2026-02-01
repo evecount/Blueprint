@@ -1,4 +1,3 @@
-
 import { Bot } from 'lucide-react';
 import Link from 'next/link';
 
@@ -30,8 +29,14 @@ export function Footer() {
                          <Link href="/contribute" className="text-muted-foreground transition-colors hover:text-foreground">
                             Contribute
                         </Link>
+                        <Link href="/automation" className="text-muted-foreground transition-colors hover:text-foreground">
+                            Automation
+                        </Link>
                         <Link href="/sponsorship" className="text-muted-foreground transition-colors hover:text-foreground">
                             Sponsorship
+                        </Link>
+                        <Link href="/faq" className="text-muted-foreground transition-colors hover:text-foreground">
+                            FAQ
                         </Link>
                     </nav>
                 </div>
