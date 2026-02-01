@@ -8,6 +8,7 @@ import {
   Menu,
   MessageSquare,
   TrendingUp,
+  Cpu,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -33,6 +34,7 @@ const menuItems = [
   { href: '/performance', label: 'My Progress', icon: TrendingUp },
   { href: '/chat', label: 'Chat with Notes', icon: MessageSquare },
   { href: '/contribute', label: 'Contribute Question', icon: Gift },
+  { href: '/automation', label: 'Automation', icon: Cpu },
   { href: '/about', label: 'About', icon: Info },
 ];
 
