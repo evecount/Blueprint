@@ -20,6 +20,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '../ui/label';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 type GeneratedQuestion = (SolveQuestionOutput | GenerateSingleQuestionOutput) & { level: string; subject: string; };
 
@@ -233,66 +234,68 @@ export default function UploadQuestionDialog({ open, onOpenChange }: UploadQuest
           </DialogDescription>
         </DialogHeader>
 
-        {!generatedQuestion ? (
-            <div className="space-y-4 pt-4">
-                <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                    <TabsList className="grid w-full grid-cols-2">
-                        <TabsTrigger value="text"><FileText className="mr-2"/>Enter Text</TabsTrigger>
-                        <TabsTrigger value="image"><ImageIcon className="mr-2"/>Upload Image</TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="text" className="pt-4">
-                        <Label htmlFor="question-text" className="sr-only">Your Question</Label>
-                        <Textarea
-                        id="question-text"
-                        placeholder="Type or paste your question here..."
-                        rows={5}
-                        value={questionText}
-                        onChange={(e) => setQuestionText(e.target.value)}
-                        disabled={isLoading}
-                        />
-                    </TabsContent>
-                    <TabsContent value="image" className="pt-4">
-                        <Input
-                            id="image-upload"
-                            type="file"
-                            ref={fileInputRef}
-                            onChange={handleFileChange}
-                            className="hidden"
-                            accept="image/*"
-                            disabled={isLoading}
-                        />
-                        <Button
-                            variant="outline"
-                            className="w-full"
-                            onClick={() => fileInputRef.current?.click()}
-                            disabled={isLoading}
-                        >
-                            <ImageIcon className="mr-2"/>
-                            {imageFileName ? `Selected: ${imageFileName}` : 'Choose an Image'}
-                        </Button>
-                         {imageDataUri && (
-                            <div className="relative mt-2">
-                                <img src={imageDataUri} alt="Preview" className="w-full h-auto border rounded-md max-h-48" />
-                                <Button
-                                    variant="destructive"
-                                    size="icon"
-                                    className="absolute top-1 right-1 h-7 w-7"
-                                    onClick={() => {
-                                        setImageDataUri(null);
-                                        setImageFileName(null);
-                                        if(fileInputRef.current) fileInputRef.current.value = '';
-                                    }}
-                                >
-                                    <X className="h-4 w-4" />
-                                </Button>
-                            </div>
-                        )}
-                    </TabsContent>
-                </Tabs>
-            </div>
-        ) : (
-            <GeneratedQuestionPreview question={generatedQuestion} />
-        )}
+        <ScrollArea className="max-h-[60vh] -mr-4 pr-4">
+          {!generatedQuestion ? (
+              <div className="space-y-4 pt-4">
+                  <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                      <TabsList className="grid w-full grid-cols-2">
+                          <TabsTrigger value="text"><FileText className="mr-2"/>Enter Text</TabsTrigger>
+                          <TabsTrigger value="image"><ImageIcon className="mr-2"/>Upload Image</TabsTrigger>
+                      </TabsList>
+                      <TabsContent value="text" className="pt-4">
+                          <Label htmlFor="question-text" className="sr-only">Your Question</Label>
+                          <Textarea
+                          id="question-text"
+                          placeholder="Type or paste your question here..."
+                          rows={5}
+                          value={questionText}
+                          onChange={(e) => setQuestionText(e.target.value)}
+                          disabled={isLoading}
+                          />
+                      </TabsContent>
+                      <TabsContent value="image" className="pt-4">
+                          <Input
+                              id="image-upload"
+                              type="file"
+                              ref={fileInputRef}
+                              onChange={handleFileChange}
+                              className="hidden"
+                              accept="image/*"
+                              disabled={isLoading}
+                          />
+                          <Button
+                              variant="outline"
+                              className="w-full"
+                              onClick={() => fileInputRef.current?.click()}
+                              disabled={isLoading}
+                          >
+                              <ImageIcon className="mr-2"/>
+                              {imageFileName ? `Selected: ${imageFileName}` : 'Choose an Image'}
+                          </Button>
+                          {imageDataUri && (
+                              <div className="relative mt-2">
+                                  <img src={imageDataUri} alt="Preview" className="w-full h-auto border rounded-md max-h-48" />
+                                  <Button
+                                      variant="destructive"
+                                      size="icon"
+                                      className="absolute top-1 right-1 h-7 w-7"
+                                      onClick={() => {
+                                          setImageDataUri(null);
+                                          setImageFileName(null);
+                                          if(fileInputRef.current) fileInputRef.current.value = '';
+                                      }}
+                                  >
+                                      <X className="h-4 w-4" />
+                                  </Button>
+                              </div>
+                          )}
+                      </TabsContent>
+                  </Tabs>
+              </div>
+          ) : (
+              <GeneratedQuestionPreview question={generatedQuestion} />
+          )}
+        </ScrollArea>
         
 
         <DialogFooter>
