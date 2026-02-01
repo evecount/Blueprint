@@ -206,6 +206,24 @@ const mathQuestions = [
         { id: 'q18d3', text: 'The Flash' }
     ],
     target: { id: 'q18t1', correctItemId: 'q18d2' }
+  },
+  {
+    id: 'q19',
+    prompt: 'Kim bought 2 boxes of apples (10 apples/box).\nLingli bought 4 bags of apples (5 apples/bag).\n\nTrue or False: "Lingli bought more apples than Kim."',
+    items: [
+        { id: 'q19d1', text: 'True' },
+        { id: 'q19d2', text: 'False' }
+    ],
+    target: { id: 'q19t1', correctItemId: 'q19d2' }
+  },
+  {
+    id: 'q20',
+    prompt: 'Kim has 20 apples in total.\n\nTrue or False: "Kim can pack all her apples equally into bags of 5."',
+    items: [
+        { id: 'q20d1', text: 'True' },
+        { id: 'q20d2', text: 'False' }
+    ],
+    target: { id: 'q20t1', correctItemId: 'q20d1' }
   }
 ];
 
