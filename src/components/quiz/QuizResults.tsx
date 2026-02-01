@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { Check, Home, Repeat, TrendingUp, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Check, Home, Repeat, TrendingUp, X, Gift, Loader2, Award } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/chart';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 interface QuizResultsProps {
   questions: QuizQuestion[];
@@ -35,15 +36,46 @@ const chartConfig = {
   incorrect: { label: 'Incorrect', color: 'hsl(var(--destructive))' },
 } satisfies ChartConfig;
 
+const PRIZES = [
+    "An extra 30 minutes of screen time!",
+    "Choose your favorite dinner this week!",
+    "One extra bedtime story tonight!",
+    "A special trip to the playground!",
+    "You earned a small treat (like an ice cream)!",
+];
+
 export default function QuizResults({ questions, userAnswers, score, resourceName, onRestart }: QuizResultsProps) {
   const router = useRouter();
   const percentage = Math.round((score / questions.length) * 100);
   const [showOnlyIncorrect, setShowOnlyIncorrect] = useState(false);
 
+  const [isSpinning, setIsSpinning] = useState(false);
+  const [prize, setPrize] = useState<string | null>(null);
+  const [spinningPrize, setSpinningPrize] = useState<string | null>(PRIZES[0]);
+  const [hasSpun, setHasSpun] = useState(false);
+
   const chartData = [
     { name: 'correct', value: score, fill: 'var(--color-correct)' },
     { name: 'incorrect', value: questions.length - score, fill: 'var(--color-incorrect)' },
   ];
+
+  const handleSpin = () => {
+    if (hasSpun) return;
+    setIsSpinning(true);
+    let spinCount = 0;
+    const interval = setInterval(() => {
+        setSpinningPrize(PRIZES[spinCount % PRIZES.length]);
+        spinCount++;
+    }, 100);
+
+    setTimeout(() => {
+        clearInterval(interval);
+        const finalPrize = PRIZES[Math.floor(Math.random() * PRIZES.length)];
+        setPrize(finalPrize);
+        setHasSpun(true);
+        setIsSpinning(false);
+    }, 3000); // Spin for 3 seconds
+  }
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -68,6 +100,40 @@ export default function QuizResults({ questions, userAnswers, score, resourceNam
               You answered {score} out of {questions.length} questions correctly.
             </p>
           </div>
+          
+          {/* Prize Spinner */}
+          <div className="w-full max-w-md p-6 text-center border-2 border-dashed rounded-lg">
+            {!hasSpun ? (
+                <>
+                    <h3 className="text-xl font-semibold font-headline">Great work!</h3>
+                    <p className="mb-4 text-muted-foreground">Spin the wheel to see what you've earned!</p>
+                    <Button onClick={handleSpin} disabled={isSpinning}>
+                        {isSpinning ? <Loader2 className="mr-2 animate-spin" /> : <Gift className="mr-2" />}
+                        {isSpinning ? 'Spinning...' : 'Spin for a Prize!'}
+                    </Button>
+                     {isSpinning && <p className="text-2xl font-bold text-primary font-headline py-4 min-h-[72px]">{spinningPrize}</p>}
+                </>
+            ) : (
+                <>
+                    <h3 className="text-lg font-semibold text-muted-foreground">You won:</h3>
+                    <p className="text-2xl font-bold text-primary font-headline py-4 min-h-[72px]">{prize}</p>
+                    <p className="text-sm text-muted-foreground">Show this to your parents!</p>
+                </>
+            )}
+        </div>
+
+        {/* CTA for schools */}
+         <Alert className="w-full max-w-md">
+            <Award className="w-4 h-4" />
+            <AlertTitle className="font-semibold">Teachers & Schools</AlertTitle>
+            <AlertDescription>
+                Want to create custom badges and rewards for your class? 
+                <Link href="/auth/register" className="ml-1 font-bold underline text-primary hover:text-primary/80">
+                    Register for free!
+                </Link>
+            </AlertDescription>
+        </Alert>
+
 
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Button onClick={onRestart}>
