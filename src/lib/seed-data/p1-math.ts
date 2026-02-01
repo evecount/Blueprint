@@ -1,0 +1,160 @@
+'use client';
+import type { Resource } from '@/lib/types';
+
+export const p1Math: Resource = {
+  id: 'p1-math',
+  name: 'Primary 1 Maths',
+  createdAt: new Date().toISOString(),
+  questions: [
+    {
+      question: 'How do you write the number that comes after 9?',
+      answers: ['7', '8', '10', '11'],
+      correctAnswerIndex: 2,
+      rationale: 'The number that comes directly after 9 when counting is 10.',
+    },
+    {
+      question: 'Which number is smaller: 15 or 12?',
+      answers: ['15', '12', 'They are the same', 'Cannot tell'],
+      correctAnswerIndex: 1,
+      rationale: 'When comparing numbers, 12 comes before 15 when counting, so it is the smaller number.',
+    },
+    {
+      question: 'What is 5 + 3?',
+      answers: ['7', '8', '9', '10'],
+      correctAnswerIndex: 1,
+      rationale: 'If you have 5 items and you add 3 more items, you will have a total of 8 items.',
+    },
+    {
+      question: 'What is 10 - 4?',
+      answers: ['5', '6', '7', '8'],
+      correctAnswerIndex: 1,
+      rationale: 'If you have 10 items and you take away 4 items, you will have 6 items left.',
+    },
+    {
+      question: 'Which shape has four equal sides and four right angles?',
+      answers: ['Triangle', 'Circle', 'Rectangle', 'Square'],
+      correctAnswerIndex: 3,
+      rationale: 'A square is a special type of rectangle where all four sides are equal in length.',
+    },
+    {
+      question: 'If you have 2 apples and your friend gives you 3 more, how many apples do you have?',
+      answers: ['4', '5', '6', '3'],
+      correctAnswerIndex: 1,
+      rationale: 'This is an addition problem. Starting with 2 apples and adding 3 gives you 2 + 3 = 5 apples.',
+    },
+    {
+      question: 'Count the number of circles: ⚫⚫⚫⚫⚫⚫',
+      answers: ['5', '6', '7', '8'],
+      correctAnswerIndex: 1,
+      rationale: 'By counting each circle individually, we find there are 6 circles in total.',
+    },
+    {
+      question: 'What number is one more than 19?',
+      answers: ['18', '20', '21', '19'],
+      correctAnswerIndex: 1,
+      rationale: 'The number that comes directly after 19 is 20.',
+    },
+    {
+      question: 'What is the missing number in the pattern: 2, 4, 6, __, 10?',
+      answers: ['7', '8', '9', '5'],
+      correctAnswerIndex: 1,
+      rationale: 'This is a pattern of counting by twos (even numbers). The number after 6 is 8.',
+    },
+    {
+      question: 'Sam has 8 pencils and he loses 3. How many pencils does he have left?',
+      answers: ['11', '6', '5', '4'],
+      correctAnswerIndex: 2,
+      rationale: 'This is a subtraction problem. Starting with 8 and taking away 3 leaves 8 - 3 = 5 pencils.',
+    },
+    {
+      question: 'Which is the tallest animal?',
+      answers: ['Cat', 'Giraffe', 'Mouse', 'Dog'],
+      correctAnswerIndex: 1,
+      rationale: 'A giraffe is known for its very long neck, making it the tallest land animal.',
+    },
+    {
+      question: 'How many corners does a triangle have?',
+      answers: ['2', '3', '4', '0'],
+      correctAnswerIndex: 1,
+      rationale: 'A triangle is a shape with three sides and three corners (vertices).',
+    },
+    {
+      question: 'What is 7 + 8?',
+      answers: ['14', '15', '16', '13'],
+      correctAnswerIndex: 1,
+      rationale: 'Adding 7 and 8 together gives a sum of 15.',
+    },
+    {
+      question: 'Which number is the greatest? 11, 19, 9, 13',
+      answers: ['11', '19', '9', '13'],
+      correctAnswerIndex: 1,
+      rationale: 'When comparing these numbers, 19 is the largest in value.',
+    },
+    {
+      question: 'There are 5 birds on a branch. 2 more birds join them. How many birds are there now?',
+      answers: ['3', '6', '7', '8'],
+      correctAnswerIndex: 2,
+      rationale: 'You are adding two groups together. 5 birds plus 2 birds equals 7 birds.',
+    },
+    {
+      question: 'What is the shape of a ball?',
+      answers: ['Square', 'Circle', 'Sphere', 'Cube'],
+      correctAnswerIndex: 2,
+      rationale: 'A ball is a three-dimensional object shaped like a sphere. A circle is a flat, 2D shape.',
+    },
+    {
+      question: 'What is 14 + 5?',
+      answers: ['18', '19', '20', '21'],
+      correctAnswerIndex: 1,
+      rationale: 'Starting from 14 and counting up 5 gives you 19.',
+    },
+    {
+      question: 'What number is ten less than 30?',
+      answers: ['10', '20', '40', '15'],
+      correctAnswerIndex: 1,
+      rationale: 'Ten less than 30 means you subtract 10 from 30, which is 20.',
+    },
+    {
+      question: 'Which object is the heaviest?',
+      answers: ['A feather', 'A leaf', 'A book', 'A balloon'],
+      correctAnswerIndex: 2,
+      rationale: 'Compared to a feather, leaf, and balloon, a book has the most mass and is therefore the heaviest.',
+    },
+    {
+      question: 'If yesterday was Monday, what day is tomorrow?',
+      answers: ['Sunday', 'Tuesday', 'Wednesday', 'Thursday'],
+      correctAnswerIndex: 2,
+      rationale: 'If yesterday was Monday, then today is Tuesday. The day after Tuesday is Wednesday.',
+    },
+    {
+      question: 'Look at the pattern: Red, Blue, Red, Blue, __. What comes next?',
+      answers: ['Blue', 'Green', 'Red', 'Yellow'],
+      correctAnswerIndex: 2,
+      rationale: 'The pattern alternates between Red and Blue. The last color was Blue, so the next color is Red.',
+    },
+    {
+      question: 'What is 9 - 9?',
+      answers: ['9', '18', '1', '0'],
+      correctAnswerIndex: 3,
+      rationale: 'When you subtract a number from itself, the result is always zero.',
+    },
+    {
+      question: 'There are 4 wheels on one car. How many wheels are on two cars?',
+      answers: ['4', '6', '8', '10'],
+      correctAnswerIndex: 2,
+      rationale: 'You can solve this by adding 4 + 4 or by multiplying 2 x 4. Both equal 8.',
+    },
+    {
+      question: 'Which number is between 17 and 19?',
+      answers: ['16', '18', '20', '21'],
+      correctAnswerIndex: 1,
+      rationale: 'When counting, the number 18 comes directly after 17 and before 19.',
+    },
+    {
+      question: 'What is 20 + 0?',
+      answers: ['0', '2', '20', '200'],
+      correctAnswerIndex: 2,
+      rationale: 'Adding zero to any number does not change the number. So, 20 + 0 is still 20.',
+    },
+  ],
+};

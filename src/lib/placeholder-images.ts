@@ -20,6 +20,12 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
       "imageHint": "alphabet blocks"
     },
     {
+      "id": "p1-math",
+      "description": "A child learning to count with colorful abacus.",
+      "imageUrl": "https://picsum.photos/seed/p1-math/600/400",
+      "imageHint": "child abacus"
+    },
+    {
       "id": "p2-math",
       "description": "Colorful counting blocks for kids.",
       "imageUrl": "/images/primary2-math.png",
@@ -54,6 +60,12 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
       "description": "An ancient Greek temple.",
       "imageUrl": "/images/secondary1-history.png",
       "imageHint": "ancient greece"
+    },
+    {
+      "id": "s1-science",
+      "description": "A microscope on a lab bench with beakers in the background.",
+      "imageUrl": "https://picsum.photos/seed/s1-science/600/400",
+      "imageHint": "science lab"
     },
     {
       "id": "s2-biology",
