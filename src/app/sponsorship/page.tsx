@@ -1,4 +1,3 @@
-
 'use client';
 
 import {
@@ -139,13 +138,16 @@ export default function SponsorshipPage() {
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
           <p>
-            The final evolution of this model transforms students from passive learners into active trainers of their own personal AI. As they answer questions, they are not just scoring points—they are providing crucial data that trains a machine learning model unique to them. Their avatar isn't just a picture; it becomes a visual representation of how "smart" their personal AI has become.
+            The final evolution of this model transforms students from passive learners into active trainers of their own personal AI. As they answer questions, they are not just scoring points—they are providing the data that trains a machine learning model unique to them. Their avatar isn't just a picture; it becomes a visual representation of how "smart" their personal AI has become.
           </p>
           <p className="font-medium text-foreground">
-            This creates a powerful feedback loop. Students understand that with every quiz, they are making their own AI model more effective. The platform's ultimate stage allows them to deploy this trained AI as a simple "agent," tasked to source new questions that are perfectly optimized for their learning style to maximize their points.
+            This creates a powerful feedback loop. Students understand that with every quiz, they are making their avatar smarter. Crucially, this gamified process separates learning from formal schoolwork. A student is free to explore any subject at any level—from advanced science to niche interests—because the motivation is personal: they are simply "gaming" to build the smartest avatar possible.
           </p>
           <p>
-            We are not just teaching them course material; we are teaching them the fundamental principles of training and using AI in a practical, hands-on environment. Students become "AI native" from the moment they start. This offers a partnership opportunity to be at the forefront of STEM education, preparing an entire generation for the AI-driven future by letting them build it themselves.
+            This allows a 15-year-old to dive into quantum physics on their own time without interfering with their homework. We are not just teaching them course material; we are teaching them the fundamental principles of training and using AI in a practical, hands-on environment.
+          </p>
+          <p>
+            Students become "AI native" from the moment they start. This offers a partnership opportunity to be at the forefront of STEM education, preparing an entire generation for the AI-driven future by letting them build it themselves.
           </p>
         </CardContent>
       </Card>
