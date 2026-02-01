@@ -50,7 +50,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
   const isSchoolUser = user && !user.isAnonymous;
 
   return (
-    <SidebarProvider className="flex flex-col min-h-screen bg-muted/40">
+    <SidebarProvider className="flex flex-col min-h-screen bg-background">
       <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between h-16 px-4 bg-background border-b shadow-sm md:px-6">
         <div className="flex items-center gap-4">
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
