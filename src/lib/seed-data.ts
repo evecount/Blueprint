@@ -31,6 +31,18 @@ export const seedResources: Resource[] = [
         answers: ['Happy', 'Table', 'Jump', 'Green'],
         correctAnswerIndex: 2,
         rationale: '"Jump" is an action word, or a verb. "Happy" and "green" are adjectives, and "table" is a noun.'
+      },
+      {
+        question: 'What is the opposite of "hot"?',
+        answers: ['Warm', 'Cold', 'Spicy', 'Sunny'],
+        correctAnswerIndex: 1,
+        rationale: 'The opposite of "hot" is "cold". They are contrasting temperatures.'
+      },
+      {
+        question: 'Which punctuation mark do you use at the end of a question?',
+        answers: ['. (Period)', ', (Comma)', '! (Exclamation Mark)', '? (Question Mark)'],
+        correctAnswerIndex: 3,
+        rationale: 'A question mark (?) is used to indicate a direct question.'
       }
     ]
   },
@@ -56,6 +68,24 @@ export const seedResources: Resource[] = [
         answers: ['48', '40', '38', '32'],
         correctAnswerIndex: 2,
         rationale: 'You can subtract 10 from 50 to get 40, and then subtract the remaining 2 to get 38.'
+      },
+      {
+        question: 'Which shape has 3 sides?',
+        answers: ['Square', 'Circle', 'Triangle', 'Rectangle'],
+        correctAnswerIndex: 2,
+        rationale: 'A triangle is a polygon with three edges and three vertices.'
+      },
+      {
+        question: 'How many cents are there in one dollar?',
+        answers: ['10', '50', '100', '1000'],
+        correctAnswerIndex: 2,
+        rationale: 'There are 100 cents in one Singapore dollar.'
+      },
+      {
+        question: 'What is the next even number after 18?',
+        answers: ['19', '20', '21', '22'],
+        correctAnswerIndex: 1,
+        rationale: 'Even numbers are numbers that can be divided by 2. The next even number after 18 is 20.'
       }
     ]
   },
@@ -81,6 +111,24 @@ export const seedResources: Resource[] = [
         answers: ['A tree', 'A rock', 'A bird', 'A fish'],
         correctAnswerIndex: 1,
         rationale: 'A rock does not grow, breathe, or reproduce, which are characteristics of living things.'
+      },
+      {
+        question: 'Which of these materials is waterproof?',
+        answers: ['Paper', 'Fabric', 'Plastic', 'Wood'],
+        correctAnswerIndex: 2,
+        rationale: 'Plastic does not allow water to pass through it, making it waterproof.'
+      },
+      {
+        question: 'What do we call animals that only eat plants?',
+        answers: ['Carnivores', 'Omnivores', 'Herbivores', 'Decomposers'],
+        correctAnswerIndex: 2,
+        rationale: 'Herbivores are animals whose primary food source is plant-based.'
+      },
+      {
+        question: 'Magnets can attract which of the following materials?',
+        answers: ['Glass', 'Iron', 'Wood', 'Plastic'],
+        correctAnswerIndex: 1,
+        rationale: 'Magnets attract ferromagnetic materials, such as iron.'
       }
     ]
   },
@@ -100,6 +148,30 @@ export const seedResources: Resource[] = [
         answers: ['Goh Chok Tong', 'Lee Kuan Yew', 'Yusof Ishak', 'Lee Hsien Loong'],
         correctAnswerIndex: 1,
         rationale: 'Lee Kuan Yew was a key figure in Singapore\'s independence and served as its first Prime Minister from 1959 to 1990.'
+      },
+      {
+        question: 'The Merlion is a mythical creature with the head of a lion and the body of a...',
+        answers: ['Fish', 'Dragon', 'Bird', 'Horse'],
+        correctAnswerIndex: 0,
+        rationale: 'The Merlion is the national symbol of Singapore, representing its origins as a fishing village (the fish body) and its original name, Singapura or "lion city" (the lion head).'
+      },
+      {
+        question: 'Which of these is NOT one of Singapore\'s four official languages?',
+        answers: ['English', 'Japanese', 'Malay', 'Tamil'],
+        correctAnswerIndex: 1,
+        rationale: 'The four official languages of Singapore are English, Malay, Mandarin Chinese, and Tamil. Japanese is not an official language.'
+      },
+      {
+        question: 'What is the main purpose of the "Total Defence" concept in Singapore?',
+        answers: ['To encourage tourism', 'To ensure everyone plays a part in defending the nation', 'To promote a single religion', 'To build more shopping malls'],
+        correctAnswerIndex: 1,
+        rationale: 'Total Defence is Singapore\'s national defence concept, which involves all citizens in a comprehensive, all-round defence of the country.'
+      },
+      {
+        question: 'What body of water surrounds the island of Singapore?',
+        answers: ['Pacific Ocean', 'Indian Ocean', 'Singapore Strait', 'South China Sea'],
+        correctAnswerIndex: 2,
+        rationale: 'Singapore is an island city-state located at the southern tip of the Malay Peninsula, bordered by the Singapore Strait.'
       }
     ]
   },
@@ -119,6 +191,30 @@ export const seedResources: Resource[] = [
         answers: ['13 cm²', '26 cm²', '40 cm²', '32 cm²'],
         correctAnswerIndex: 2,
         rationale: 'The area of a rectangle is calculated by multiplying its length by its width. 8 cm * 5 cm = 40 cm².'
+      },
+      {
+        question: 'Find the value of 20 - (5 x 2) + 3.',
+        answers: ['13', '33', '7', '17'],
+        correctAnswerIndex: 0,
+        rationale: 'According to the order of operations (BODMAS/PEMDAS), you must do the multiplication first: 5 x 2 = 10. Then, 20 - 10 = 10. Finally, 10 + 3 = 13.'
+      },
+      {
+        question: 'What is 25% of 80?',
+        answers: ['10', '15', '20', '25'],
+        correctAnswerIndex: 2,
+        rationale: '25% is equivalent to 1/4. So, 1/4 of 80 is 80 ÷ 4 = 20.'
+      },
+      {
+        question: 'An angle that is greater than 90 degrees but less than 180 degrees is called...',
+        answers: ['An acute angle', 'An obtuse angle', 'A right angle', 'A reflex angle'],
+        correctAnswerIndex: 1,
+        rationale: 'An obtuse angle is defined as an angle with a measure greater than 90° and less than 180°.'
+      },
+      {
+        question: 'The average of three numbers is 10. If two of the numbers are 8 and 12, what is the third number?',
+        answers: ['10', '15', '20', '30'],
+        correctAnswerIndex: 0,
+        rationale: 'If the average of three numbers is 10, their total sum is 3 x 10 = 30. The sum of the two given numbers is 8 + 12 = 20. Therefore, the third number is 30 - 20 = 10.'
       }
     ]
   },
@@ -138,6 +234,30 @@ export const seedResources: Resource[] = [
         answers: ['Respiration', 'Photosynthesis', 'Transpiration', 'Decomposition'],
         correctAnswerIndex: 1,
         rationale: 'Photosynthesis is the process by which green plants use sunlight, water, and carbon dioxide to create their own food and release oxygen.'
+      },
+      {
+        question: 'How does heat travel from the Sun to the Earth?',
+        answers: ['Conduction', 'Convection', 'Radiation', 'Evaporation'],
+        correctAnswerIndex: 2,
+        rationale: 'Heat travels through the vacuum of space from the Sun to Earth primarily through electromagnetic waves, a process called radiation. Conduction and convection require a medium.'
+      },
+      {
+        question: 'Which force pulls objects towards the center of the Earth?',
+        answers: ['Magnetism', 'Friction', 'Tension', 'Gravity'],
+        correctAnswerIndex: 3,
+        rationale: 'Gravity is the force of attraction between two objects with mass. On Earth, it is what pulls everything towards the planet\'s center.'
+      },
+      {
+        question: 'In the water cycle, what is the process of water turning into water vapor called?',
+        answers: ['Condensation', 'Precipitation', 'Evaporation', 'Collection'],
+        correctAnswerIndex: 2,
+        rationale: 'Evaporation is the process where a liquid, in this case water, turns into a gas (water vapor) when it is heated.'
+      },
+      {
+        question: 'What is the main function of the human skeletal system?',
+        answers: ['To pump blood', 'To digest food', 'To provide support and structure', 'To send signals to the brain'],
+        correctAnswerIndex: 2,
+        rationale: 'The skeletal system provides a framework for the body, giving it structure, protecting internal organs, and allowing movement.'
       }
     ]
   },
@@ -158,6 +278,30 @@ export const seedResources: Resource[] = [
         answers: ['Ancient Rome', 'Ancient Greece', 'Ancient Egypt', 'Mesopotamia'],
         correctAnswerIndex: 2,
         rationale: 'The ancient Egyptians built massive pyramids as tombs for their pharaohs and queens. The most famous are the Pyramids of Giza.'
+      },
+      {
+        question: 'The historical period characterized by the use of stone tools is known as the...',
+        answers: ['Iron Age', 'Bronze Age', 'Stone Age', 'Information Age'],
+        correctAnswerIndex: 2,
+        rationale: 'The Stone Age is a broad prehistoric period during which stone was widely used to make tools with an edge, a point, or a percussion surface.'
+      },
+      {
+        question: 'What was the main purpose of the Great Wall of China?',
+        answers: ['To be a tourist attraction', 'To mark a border', 'To protect against invasions from northern nomadic groups', 'To serve as a major road'],
+        correctAnswerIndex: 2,
+        rationale: 'The Great Wall was built over centuries primarily as a defensive barrier to protect Chinese states and empires against raids and invasions from various nomadic groups of the Eurasian Steppe.'
+      },
+      {
+        question: 'Who was the founder of the Mongol Empire, one of the largest empires in history?',
+        answers: ['Kublai Khan', 'Marco Polo', 'Genghis Khan', 'Attila the Hun'],
+        correctAnswerIndex: 2,
+        rationale: 'Genghis Khan, born Temüjin, was the founder and first Great Khan of the Mongol Empire.'
+      },
+      {
+        question: 'The Renaissance was a period of "rebirth" in Europe. In which country did it begin?',
+        answers: ['France', 'England', 'Spain', 'Italy'],
+        correctAnswerIndex: 3,
+        rationale: 'The Renaissance began in Florence, Italy, a place with a rich cultural history where wealthy citizens could afford to support budding artists.'
       }
     ]
   },
@@ -177,6 +321,30 @@ export const seedResources: Resource[] = [
         answers: ['Respiratory System', 'Nervous System', 'Digestive System', 'Circulatory System'],
         correctAnswerIndex: 3,
         rationale: 'The circulatory system, which includes the heart, blood, and blood vessels, is responsible for pumping and circulating blood throughout the body.'
+      },
+      {
+        question: 'Which of these is a key difference between a plant cell and an animal cell?',
+        answers: ['Animal cells have a nucleus, but plant cells do not.', 'Plant cells have a cell wall, but animal cells do not.', 'Animal cells have mitochondria, but plant cells do not.', 'Plant cells are always smaller than animal cells.'],
+        correctAnswerIndex: 1,
+        rationale: 'Plant cells have a rigid cell wall outside the cell membrane, which provides structural support. Animal cells lack this feature.'
+      },
+      {
+        question: 'What is the process by which organisms better adapted to their environment tend to survive and produce more offspring?',
+        answers: ['Genetics', 'Evolution', 'Natural Selection', 'Adaptation'],
+        correctAnswerIndex: 2,
+        rationale: 'Natural selection is the main mechanism of evolution, where traits that enhance survival and reproduction become more common in successive generations.'
+      },
+      {
+        question: 'Which gas do humans exhale during respiration?',
+        answers: ['Oxygen', 'Nitrogen', 'Carbon Dioxide', 'Hydrogen'],
+        correctAnswerIndex: 2,
+        rationale: 'During respiration, humans take in oxygen and release carbon dioxide as a waste product.'
+      },
+      {
+        question: 'What is a gene?',
+        answers: ['A type of cell', 'A segment of DNA that codes for a specific trait', 'A protein', 'An entire chromosome'],
+        correctAnswerIndex: 1,
+        rationale: 'A gene is the basic physical and functional unit of heredity. Genes are made up of DNA and act as instructions to make molecules called proteins.'
       }
     ]
   },
@@ -196,6 +364,30 @@ export const seedResources: Resource[] = [
         answers: ['Volt', 'Ampere', 'Watt', 'Ohm'],
         correctAnswerIndex: 3,
         rationale: 'The Ohm (symbol: Ω) is the SI derived unit of electrical resistance, named after German physicist Georg Simon Ohm.'
+      },
+      {
+        question: 'Which type of energy is stored in a stretched rubber band?',
+        answers: ['Kinetic Energy', 'Thermal Energy', 'Potential Energy', 'Chemical Energy'],
+        correctAnswerIndex: 2,
+        rationale: 'Potential energy is stored energy. In a stretched rubber band, it is specifically elastic potential energy, stored as a result of applying a force to deform an elastic object.'
+      },
+      {
+        question: 'The principle that for every action, there is an equal and opposite reaction is which of Newton\'s Laws?',
+        answers: ['First Law', 'Second Law', 'Third Law', 'Law of Gravitation'],
+        correctAnswerIndex: 2,
+        rationale: 'Newton\'s Third Law of Motion describes the interaction between two objects. It states that all forces between two objects exist in equal magnitude and opposite direction.'
+      },
+      {
+        question: 'What is density?',
+        answers: ['The amount of space an object takes up.', 'The amount of matter in an object.', 'The mass of an object per unit volume.', 'The weight of an object.'],
+        correctAnswerIndex: 2,
+        rationale: 'Density is a measure of how much mass is contained in a given unit volume (density = mass/volume). It describes how "compact" a substance is.'
+      },
+      {
+        question: 'Sound waves travel fastest through which medium?',
+        answers: ['Solids', 'Liquids', 'Gases', 'Vacuum'],
+        correctAnswerIndex: 0,
+        rationale: 'Sound travels as vibrations through a medium. Because the particles in a solid are packed much more closely together than in liquids or gases, sound waves can travel through them more quickly.'
       }
     ]
   },
@@ -221,6 +413,24 @@ export const seedResources: Resource[] = [
         answers: ['Oxygen', 'Carbon Dioxide', 'Nitrogen', 'Argon'],
         correctAnswerIndex: 2,
         rationale: 'Nitrogen makes up about 78% of the Earth\'s atmosphere, making it the most abundant gas. Oxygen is second, at about 21%.'
+      },
+      {
+        question: 'What is the process of a solid turning directly into a gas, skipping the liquid phase?',
+        answers: ['Evaporation', 'Condensation', 'Melting', 'Sublimation'],
+        correctAnswerIndex: 3,
+        rationale: 'Sublimation is the phase transition of a substance directly from the solid to the gas state, without passing through the liquid state. Dry ice (solid CO2) is a common example.'
+      },
+      {
+        question: 'In a chemical equation, what does the arrow (→) represent?',
+        answers: ['Equals', 'Yields or Produces', 'Is greater than', 'Is in equilibrium with'],
+        correctAnswerIndex: 1,
+        rationale: 'The arrow in a chemical equation separates the reactants (on the left) from the products (on the right) and indicates the direction of the reaction.'
+      },
+      {
+        question: 'What are isotopes?',
+        answers: ['Atoms of the same element with different numbers of protons.', 'Atoms of different elements with the same number of neutrons.', 'Atoms of the same element with different numbers of neutrons.', 'Atoms that have gained or lost electrons.'],
+        correctAnswerIndex: 2,
+        rationale: 'Isotopes are variants of a particular chemical element which differ in neutron number, and consequently in nucleon number (mass number). All isotopes of a given element have the same number of protons in each atom.'
       }
     ]
   },
