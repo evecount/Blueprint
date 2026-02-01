@@ -181,8 +181,8 @@ export default function StorybookCreatorPage() {
                         {pages.map((page) => (
                              <CarouselItem key={page.pageNumber}>
                                 <Card className="overflow-hidden">
-                                     <div className="grid md:grid-cols-2">
-                                        <div className="flex items-center justify-center p-6 bg-muted aspect-square">
+                                     <div>
+                                        <div className="flex items-center justify-center bg-muted aspect-[4/3]">
                                         {page.isGenerating ? (
                                             <div className="flex flex-col items-center gap-2 text-muted-foreground">
                                                 <Loader2 className="w-8 h-8 animate-spin" />
@@ -192,9 +192,9 @@ export default function StorybookCreatorPage() {
                                             <Image
                                                 src={page.imageUrl}
                                                 alt={`Illustration for page ${page.pageNumber}`}
-                                                width={500}
-                                                height={500}
-                                                className="object-contain w-full h-full rounded-md"
+                                                width={800}
+                                                height={600}
+                                                className="object-contain w-full h-full"
                                             />
                                         ) : null}
                                         </div>
