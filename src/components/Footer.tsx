@@ -23,7 +23,7 @@ export function Footer() {
                         <h2 className="text-lg font-bold tracking-tight font-headline">Blueprint</h2>
                     </div>
                      <p className="mt-4 text-sm text-muted-foreground">
-                        A free, open-source learning platform for students. We provide AI-powered tools in a safe, anonymous environment—no student sign-ups required.
+                        A free, open-source learning platform providing a plan for learning and a foundation for creating stories. We provide AI-powered tools in a safe, anonymous environment—no student sign-ups required.
                     </p>
                 </div>
 
