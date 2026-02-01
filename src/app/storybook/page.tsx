@@ -72,6 +72,7 @@ export default function StorybookCreatorPage() {
       setPages(newPages);
       setIsGenerating(false);
 
+      // Sequentially generate images
       for (const newPage of newPages) {
         try {
             const imageResult = await illustrateScene({ prompt: newPage.illustrationPrompt });
@@ -84,7 +85,7 @@ export default function StorybookCreatorPage() {
              console.error(`Error generating image for page ${newPage.pageNumber}:`, imageError);
              setPages(prev => prev.map(p => 
                 p.pageNumber === newPage.pageNumber 
-                ? { ...p, imageUrl: '/images/error-placeholder.png', isGenerating: false } 
+                ? { ...p, imageUrl: '/images/error-placeholder.png', isGenerating: false } // You should have a placeholder for errors
                 : p
             ));
         }
@@ -107,11 +108,11 @@ export default function StorybookCreatorPage() {
      <Card className="w-full max-w-2xl mx-auto">
         <CardHeader>
             <CardTitle className="font-headline">Let's Write a Story!</CardTitle>
-            <CardDescription>First, tell us about your author and main character.</CardDescription>
+            <CardDescription>First, tell us who you are and who your story is about.</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-6">
              <div className="space-y-2">
-                <Label htmlFor="authorName">Author's First Name</Label>
+                <Label htmlFor="authorName">What is the author's first name?</Label>
                 <Input
                     id="authorName"
                     placeholder="e.g., Alex"
@@ -122,19 +123,19 @@ export default function StorybookCreatorPage() {
                  <p className="text-xs text-muted-foreground">For your safety, please only use a first name.</p>
             </div>
             <div className="space-y-2">
-                <Label htmlFor="characterDescription">Describe Your Main Character</Label>
+                <Label htmlFor="characterDescription">Who is this story about and what do they look like?</Label>
                  <Input
                     id="characterDescription"
-                    placeholder="e.g., A girl with short brown hair and glasses"
+                    placeholder="e.g., A brave little mouse with a red cape"
                     value={characterDescription}
                     onChange={(e) => setCharacterDescription(e.target.value)}
                 />
-                <p className="text-xs text-muted-foreground">This helps the AI draw them the same way on every page!</p>
+                <p className="text-xs text-muted-foreground">This helps the AI draw your character the same way on every page!</p>
             </div>
         </CardContent>
         <CardFooter>
             <Button onClick={() => setIsSetupComplete(true)} disabled={!authorName.trim() || !characterDescription.trim()}>
-                Start Writing
+                Start Writing My Story
             </Button>
         </CardFooter>
      </Card>
@@ -175,7 +176,7 @@ export default function StorybookCreatorPage() {
                     <h2 className="text-4xl font-bold tracking-tight font-headline">My Storybook</h2>
                     <p className="text-lg text-muted-foreground">by {authorName}</p>
                 </div>
-                <Carousel className="w-full">
+                <Carousel className="w-full max-w-3xl mx-auto">
                     <CarouselContent>
                         {pages.map((page) => (
                              <CarouselItem key={page.pageNumber}>
@@ -206,11 +207,14 @@ export default function StorybookCreatorPage() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious className="hidden -left-4 sm:flex" />
-                    <CarouselNext className="hidden -right-4 sm:flex" />
+                    <CarouselPrevious className="hidden -left-12 sm:flex" />
+                    <CarouselNext className="hidden -right-12 sm:flex" />
                 </Carousel>
                 <div className="flex justify-center">
-                    <Button variant="outline" onClick={() => setPages([])}>Start a New Story</Button>
+                    <Button variant="outline" onClick={() => {
+                        setPages([]);
+                        setStoryText('');
+                    }}>Start a New Story</Button>
                 </div>
             </div>
         )}
