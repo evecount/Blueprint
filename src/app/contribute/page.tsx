@@ -7,7 +7,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useToast } from '@/hooks/use-toast';
 import { solveQuestion, SolveQuestionOutput } from '@/ai/flows/solve-question-flow';
 import { useAppContext } from '@/context/AppProvider';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 // A simplified display for the generated question.
@@ -21,6 +20,14 @@ function GeneratedQuestionPreview({ question }: { question: SolveQuestionOutput 
         <CardDescription>Review the generated question and its source before contributing it.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
+        <div className="flex flex-wrap gap-4 text-sm">
+            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary-foreground">
+                <span className='font-bold text-primary'>{question.level}</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-secondary text-secondary-foreground">
+                <span className='font-bold'>{question.subject}</span>
+            </div>
+        </div>
         <p className="font-semibold">{question.question}</p>
         <div className="space-y-2">
           {question.answers.map((answer, index) => (
@@ -57,12 +64,24 @@ function GeneratedQuestionPreview({ question }: { question: SolveQuestionOutput 
   );
 }
 
+// Helper function to create a deck ID
+const createDeckId = (level: string, subject: string): string => {
+    const levelMapping: { [key: string]: string } = {
+      'primary 1': 'p1', 'primary 2': 'p2', 'primary 3': 'p3',
+      'primary 4': 'p4', 'primary 5': 'p5', 'primary 6': 'p6',
+      'secondary 1': 's1', 'secondary 2': 's2', 'secondary 3': 's3', 'secondary 4': 's4',
+      'advanced': 'adv',
+    };
+    const levelPrefix = levelMapping[level.toLowerCase()] || 'adv';
+    const subjectSlug = subject.toLowerCase().replace(/\s+/g, '-');
+    return `${levelPrefix}-${subjectSlug}`;
+};
+
 
 export default function ContributePage() {
-  const { resources, addQuestionToResource } = useAppContext();
+  const { resources, addQuestionToResource, addResource } = useAppContext();
   const { toast } = useToast();
   
-  const [selectedDeckId, setSelectedDeckId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [generatedQuestion, setGeneratedQuestion] = useState<SolveQuestionOutput | null>(null);
 
@@ -138,11 +157,11 @@ export default function ContributePage() {
   };
   
   const handleGenerateQuestion = async () => {
-    if (!capturedImage || !selectedDeckId) {
+    if (!capturedImage) {
       toast({
         variant: 'destructive',
         title: 'Missing Information',
-        description: 'Please capture a photo and select a deck.',
+        description: 'Please capture a photo first.',
       });
       return;
     }
@@ -150,24 +169,24 @@ export default function ContributePage() {
     setIsLoading(true);
     setGeneratedQuestion(null);
 
-    const selectedDeck = resources.find(r => r.id === selectedDeckId);
-
     try {
-      const result = await solveQuestion({
-        imageDataUri: capturedImage,
-        context: selectedDeck?.name || 'General Knowledge',
-      });
+      const result = await solveQuestion({ imageDataUri: capturedImage });
+
+      if (result.question === "Invalid Input Detected" || result.answers.length === 0) {
+        throw new Error("The AI detected invalid or unsafe content. Please try another image.");
+      }
+
       setGeneratedQuestion(result);
       toast({
         title: 'Question Generated!',
-        description: 'Review the question below and click "Contribute" to add it to the deck.',
+        description: 'Review the question below and click "Contribute" to add it.',
       });
     } catch (error) {
       console.error(error);
       toast({
         variant: 'destructive',
         title: 'Generation Failed',
-        description: 'The AI could not generate a question from the image. Please try retaking the photo.',
+        description: error instanceof Error ? error.message : 'The AI could not generate a question from the image. Please try retaking the photo.',
       });
     } finally {
       setIsLoading(false);
@@ -175,18 +194,37 @@ export default function ContributePage() {
   };
 
   const handleContributeQuestion = () => {
-    if (!generatedQuestion || !selectedDeckId) return;
+    if (!generatedQuestion) return;
 
-    addQuestionToResource(selectedDeckId, generatedQuestion);
+    const { level, subject } = generatedQuestion;
+
+    if (!level || !subject) {
+        toast({
+            variant: 'destructive',
+            title: 'Classification Failed',
+            description: 'The AI could not determine the subject or level. Please try another image.',
+        });
+        return;
+    }
+
+    const deckId = createDeckId(level, subject);
+    const deckName = `${level} ${subject}`;
+    const existingDeck = resources.find(r => r.id === deckId);
+
+    if (existingDeck) {
+      addQuestionToResource(deckId, generatedQuestion);
+    } else {
+      addResource({ name: deckName, questions: [generatedQuestion] }, deckId);
+    }
+
     toast({
       title: 'Thank You!',
-      description: 'Your question has been added to the deck.',
+      description: `Your question has been added to the "${deckName}" deck.`,
     });
 
     // Reset state
     setCapturedImage(null);
     setGeneratedQuestion(null);
-    setSelectedDeckId(null);
   };
 
   const renderInitialState = () => (
@@ -243,33 +281,17 @@ export default function ContributePage() {
       <Card>
         <CardHeader>
           <CardTitle>Review Your Scan</CardTitle>
-          <CardDescription>Is the question clear? If so, select a deck and let our AI solve it.</CardDescription>
+          <CardDescription>Is the question clear? If so, let our AI solve and categorize it.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <img src={capturedImage!} alt="Captured homework question" className="w-full border rounded-md" />
-          <Select
-            onValueChange={setSelectedDeckId}
-            value={selectedDeckId ?? ''}
-            disabled={isLoading}
-          >
-            <SelectTrigger>
-              <SelectValue placeholder="Select a deck to contribute to..." />
-            </SelectTrigger>
-            <SelectContent>
-              {resources.map((deck) => (
-                <SelectItem key={deck.id} value={deck.id}>
-                  {deck.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
         </CardContent>
         <CardFooter className="justify-between">
             <Button variant="outline" onClick={handleRetake} disabled={isLoading}>
                 <RefreshCw className="mr-2"/>
                 Retake Photo
             </Button>
-            <Button onClick={handleGenerateQuestion} disabled={isLoading || !capturedImage || !selectedDeckId}>
+            <Button onClick={handleGenerateQuestion} disabled={isLoading || !capturedImage}>
                 {isLoading ? <Loader2 className="mr-2 animate-spin" /> : <Sparkles className="mr-2" />}
                 Generate Question
             </Button>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, ChangeEvent, useMemo } from 'react';
+import { useState, useRef, ChangeEvent } from 'react';
 import { FileText, Gift, Image as ImageIcon, Loader2, Sparkles, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -15,15 +15,13 @@ import { useToast } from '@/hooks/use-toast';
 import { solveQuestion, SolveQuestionOutput } from '@/ai/flows/solve-question-flow';
 import { generateSingleQuestion, GenerateSingleQuestionOutput } from '@/ai/flows/generate-single-question-flow';
 import { useAppContext } from '@/context/AppProvider';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
 import { Label } from '../ui/label';
 
-type GeneratedQuestion = SolveQuestionOutput | GenerateSingleQuestionOutput;
+type GeneratedQuestion = (SolveQuestionOutput | GenerateSingleQuestionOutput) & { level: string; subject: string; };
 
 function GeneratedQuestionPreview({ question }: { question: GeneratedQuestion }) {
   return (
@@ -32,9 +30,17 @@ function GeneratedQuestionPreview({ question }: { question: GeneratedQuestion })
         <CardTitle className="flex items-center gap-2 font-headline">
           <Sparkles className="text-accent" /> AI Generated Question
         </CardTitle>
-        <CardDescription>Review the generated question before contributing it to a deck.</CardDescription>
+        <CardDescription>Review the generated question before contributing it.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
+         <div className="flex flex-wrap gap-4 text-sm">
+            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary-foreground">
+                <span className='font-bold text-primary'>{question.level}</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-secondary text-secondary-foreground">
+                <span className='font-bold'>{question.subject}</span>
+            </div>
+        </div>
         <p className="font-semibold">{question.question}</p>
         <div className="space-y-2">
           {question.answers.map((answer, index) => (
@@ -71,6 +77,19 @@ function GeneratedQuestionPreview({ question }: { question: GeneratedQuestion })
   );
 }
 
+// Helper function to create a deck ID
+const createDeckId = (level: string, subject: string): string => {
+    const levelMapping: { [key: string]: string } = {
+      'primary 1': 'p1', 'primary 2': 'p2', 'primary 3': 'p3',
+      'primary 4': 'p4', 'primary 5': 'p5', 'primary 6': 'p6',
+      'secondary 1': 's1', 'secondary 2': 's2', 'secondary 3': 's3', 'secondary 4': 's4',
+      'advanced': 'adv',
+    };
+    const levelPrefix = levelMapping[level.toLowerCase()] || 'adv';
+    const subjectSlug = subject.toLowerCase().replace(/\s+/g, '-');
+    return `${levelPrefix}-${subjectSlug}`;
+};
+
 
 type UploadQuestionDialogProps = {
   open: boolean;
@@ -78,7 +97,7 @@ type UploadQuestionDialogProps = {
 };
 
 export default function UploadQuestionDialog({ open, onOpenChange }: UploadQuestionDialogProps) {
-  const { resources, addQuestionToResource } = useAppContext();
+  const { resources, addResource, addQuestionToResource } = useAppContext();
   const { toast } = useToast();
   
   const [activeTab, setActiveTab] = useState('text');
@@ -87,7 +106,6 @@ export default function UploadQuestionDialog({ open, onOpenChange }: UploadQuest
   const [imageFileName, setImageFileName] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const [selectedDeckId, setSelectedDeckId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [generatedQuestion, setGeneratedQuestion] = useState<GeneratedQuestion | null>(null);
 
@@ -95,7 +113,6 @@ export default function UploadQuestionDialog({ open, onOpenChange }: UploadQuest
     setQuestionText('');
     setImageDataUri(null);
     setImageFileName(null);
-    setSelectedDeckId(null);
     setGeneratedQuestion(null);
     setIsLoading(false);
     onOpenChange(false);
@@ -130,15 +147,8 @@ export default function UploadQuestionDialog({ open, onOpenChange }: UploadQuest
   };
 
   const handleGenerateQuestion = async () => {
-    if (!selectedDeckId) {
-      toast({ variant: 'destructive', title: 'Please select a deck.' });
-      return;
-    }
-    
     setIsLoading(true);
     setGeneratedQuestion(null);
-    const selectedDeck = resources.find(r => r.id === selectedDeckId);
-    const context = selectedDeck?.name || 'General Knowledge';
 
     try {
       let result: GeneratedQuestion;
@@ -148,14 +158,14 @@ export default function UploadQuestionDialog({ open, onOpenChange }: UploadQuest
           setIsLoading(false);
           return;
         }
-        result = await generateSingleQuestion({ questionText, context });
+        result = await generateSingleQuestion({ questionText }) as GeneratedQuestion;
       } else {
         if (!imageDataUri) {
           toast({ variant: 'destructive', title: 'Please upload an image.' });
           setIsLoading(false);
           return;
         }
-        result = await solveQuestion({ imageDataUri, context });
+        result = await solveQuestion({ imageDataUri }) as GeneratedQuestion;
       }
 
       if (result.question === "Invalid Input" || result.question === "Invalid Input Detected" || result.answers.length === 0) {
@@ -165,7 +175,7 @@ export default function UploadQuestionDialog({ open, onOpenChange }: UploadQuest
       setGeneratedQuestion(result);
       toast({
         title: 'Question Generated!',
-        description: 'Review the question below and click "Contribute" to add it to the deck.',
+        description: 'Review the question below and click "Contribute" to add it.',
       });
 
     } catch (error) {
@@ -181,17 +191,37 @@ export default function UploadQuestionDialog({ open, onOpenChange }: UploadQuest
   };
 
   const handleContributeQuestion = () => {
-    if (!generatedQuestion || !selectedDeckId) return;
+    if (!generatedQuestion) return;
 
-    addQuestionToResource(selectedDeckId, generatedQuestion);
+    const { level, subject } = generatedQuestion;
+
+     if (!level || !subject) {
+        toast({
+            variant: 'destructive',
+            title: 'Classification Failed',
+            description: 'The AI could not determine the subject or level. Please try again.',
+        });
+        return;
+    }
+
+    const deckId = createDeckId(level, subject);
+    const deckName = `${level} ${subject}`;
+    const existingDeck = resources.find(r => r.id === deckId);
+
+    if (existingDeck) {
+        addQuestionToResource(deckId, generatedQuestion);
+    } else {
+        addResource({ name: deckName, questions: [generatedQuestion] }, deckId);
+    }
+
     toast({
       title: 'Thank You!',
-      description: 'Your question has been added to the deck.',
+      description: `Your question has been added to the "${deckName}" deck.`,
     });
     handleClose();
   };
 
-  const isGenerateDisabled = isLoading || !selectedDeckId || (activeTab === 'text' && !questionText.trim()) || (activeTab === 'image' && !imageDataUri);
+  const isGenerateDisabled = isLoading || (activeTab === 'text' && !questionText.trim()) || (activeTab === 'image' && !imageDataUri);
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
@@ -199,41 +229,29 @@ export default function UploadQuestionDialog({ open, onOpenChange }: UploadQuest
         <DialogHeader>
           <DialogTitle className="font-headline">Contribute a Question</DialogTitle>
           <DialogDescription>
-            Help the community by adding a new question. The AI will convert it into a multiple-choice format.
+            Help the community by adding a new question. The AI will convert it into a multiple-choice format and categorize it automatically.
           </DialogDescription>
         </DialogHeader>
 
         {!generatedQuestion ? (
-            <div className="space-y-4">
-                 <Select onValueChange={setSelectedDeckId} value={selectedDeckId ?? ''} disabled={isLoading}>
-                    <SelectTrigger>
-                    <SelectValue placeholder="1. Select a deck to contribute to..." />
-                    </SelectTrigger>
-                    <SelectContent>
-                    {resources.map((deck) => (
-                        <SelectItem key={deck.id} value={deck.id}>
-                        {deck.name}
-                        </SelectItem>
-                    ))}
-                    </SelectContent>
-                </Select>
+            <div className="space-y-4 pt-4">
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                     <TabsList className="grid w-full grid-cols-2">
                         <TabsTrigger value="text"><FileText className="mr-2"/>Enter Text</TabsTrigger>
                         <TabsTrigger value="image"><ImageIcon className="mr-2"/>Upload Image</TabsTrigger>
                     </TabsList>
-                    <TabsContent value="text" className="p-1">
+                    <TabsContent value="text" className="pt-4">
                         <Label htmlFor="question-text" className="sr-only">Your Question</Label>
                         <Textarea
                         id="question-text"
-                        placeholder="2. Type or paste your question here..."
+                        placeholder="Type or paste your question here..."
                         rows={5}
                         value={questionText}
                         onChange={(e) => setQuestionText(e.target.value)}
                         disabled={isLoading}
                         />
                     </TabsContent>
-                    <TabsContent value="image" className="p-1">
+                    <TabsContent value="image" className="pt-4">
                         <Input
                             id="image-upload"
                             type="file"
@@ -250,7 +268,7 @@ export default function UploadQuestionDialog({ open, onOpenChange }: UploadQuest
                             disabled={isLoading}
                         >
                             <ImageIcon className="mr-2"/>
-                            {imageFileName ? `Selected: ${imageFileName}` : '2. Choose an Image'}
+                            {imageFileName ? `Selected: ${imageFileName}` : 'Choose an Image'}
                         </Button>
                          {imageDataUri && (
                             <div className="relative mt-2">

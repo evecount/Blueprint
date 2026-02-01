@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import { seedResources } from '@/lib/seed-data';
 
 const LOCAL_STORAGE_VERSION_KEY = 'quizup-storage-version';
-const CURRENT_STORAGE_VERSION = '1.7'; // Increment this to force-refresh seed data
+const CURRENT_STORAGE_VERSION = '1.8'; // Increment this to force-refresh seed data
 
 // A custom hook to synchronize state with localStorage
 function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val: T) => T)) => void] {
@@ -53,7 +53,7 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val
 interface AppContextType {
   resources: Resource[];
   performance: Performance;
-  addResource: (resource: Omit<Resource, 'id' | 'createdAt'>) => void;
+  addResource: (resource: Omit<Resource, 'id' | 'createdAt'>, customId?: string) => void;
   deleteResource: (resourceId: string) => void;
   updatePerformance: (topic: string, score: number, total: number) => void;
   getResourceById: (id: string) => Resource | undefined;
@@ -66,13 +66,19 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [resources, setResources] = useLocalStorage<Resource[]>('reviewmate-resources', seedResources);
   const [performance, setPerformance] = useLocalStorage<Performance>('reviewmate-performance', {});
   
-  const addResource = (resourceData: Omit<Resource, 'id' | 'createdAt'>) => {
+  const addResource = (resourceData: Omit<Resource, 'id' | 'createdAt'>, customId?: string) => {
     const newResource: Resource = {
       ...resourceData,
-      id: crypto.randomUUID(),
+      id: customId || crypto.randomUUID(),
       createdAt: new Date().toISOString(),
     };
-    setResources(prevResources => [...prevResources, newResource]);
+    setResources(prevResources => {
+      // Avoid adding duplicates
+      if (prevResources.some(r => r.id === newResource.id)) {
+        return prevResources;
+      }
+      return [...prevResources, newResource];
+    });
   };
 
   const deleteResource = (resourceId: string) => {

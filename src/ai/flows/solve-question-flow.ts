@@ -16,12 +16,13 @@ const SolveQuestionInputSchema = z.object({
   imageDataUri: z.string().describe(
     "A photo of the question, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
   ),
-  context: z.string().describe('The subject or context for the question (e.g., Secondary 4 Chemistry).'),
 });
 export type SolveQuestionInput = z.infer<typeof SolveQuestionInputSchema>;
 
 const SolveQuestionOutputSchema = z.object({
     question: z.string().describe("The transcribed text of the primary question found in the image."),
+    subject: z.string().describe("The academic subject of the question (e.g., 'Physics', 'Biology', 'History'). Standardize common subjects."),
+    level: z.string().describe("The academic grade level for the question (e.g., 'Primary 5', 'Secondary 3'). Standardize to this format."),
     answers: z.array(z.string()).describe("An array of 4-5 possible answers for the question."),
     correctAnswerIndex: z.number().describe("The index of the correct answer in the 'answers' array."),
     rationale: z.string().describe("A detailed explanation of why the correct answer is right and the others are wrong."),
@@ -46,31 +47,37 @@ const prompt = ai.definePrompt({
   output: {schema: SolveQuestionOutputSchema},
   prompt: `You are an expert study assistant and intelligence analyst specializing in extracting information from images. A user has submitted a photo or screenshot of a homework question.
 
-Your primary task is to convert the user's question into a high-quality, multiple-choice study card. Your secondary task is to extract all available metadata from the image to understand its origin.
+Your tasks are to:
+1.  **Classify the Question**: Determine the academic subject and grade level from the image content.
+2.  **Create a Study Card**: Convert the user's question into a high-quality, multiple-choice study card.
+3.  **Extract Source Details**: Extract all available metadata from the image to understand its origin.
 
-**Task 1: Create a Study Card**
-1.  Analyze the image to identify and transcribe the user's primary question.
-2.  Rephrase it into a clear, high-quality multiple-choice question format.
-3.  Provide the single best correct answer and generate three plausible but incorrect distractor answers.
-4.  Provide a detailed rationale explaining why the correct answer is right and the others are wrong, suitable for a student.
+**Task 1: Classify the Question**
+- Analyze the image to determine the specific academic subject (e.g., 'Physics', 'Biology', 'History').
+- Determine the most appropriate academic level (e.g., 'Primary 5', 'Secondary 3', 'Advanced').
+- Populate the 'subject' and 'level' fields. Use standardized terms and formats (e.g. 'Primary 1', 'Secondary 4', NOT 'P1' or 'Sec 4').
 
-**Task 2: Extract Source Details**
-1.  Carefully examine the entire image, including headers, footers, and margins.
-2.  Identify and extract any of the following details:
+**Task 2: Create a Study Card**
+- Analyze the image to identify and transcribe the user's primary question.
+- Rephrase it into a clear, high-quality multiple-choice question format.
+- Provide the single best correct answer and generate three plausible but incorrect distractor answers.
+- Provide a detailed rationale explaining why the correct answer is right and the others are wrong, suitable for a student.
+
+**Task 3: Extract Source Details**
+- Carefully examine the entire image, including headers, footers, and margins.
+- Identify and extract any of the following details:
     - **Publisher**: Look for logos or names like 'Pearson', 'Marshall Cavendish', 'Scholastic'.
     - **Website**: If it's a screenshot, identify the website URL from the address bar or content.
     - **School**: Look for a school crest, logo, or name.
     - **Document Title**: Transcribe the title of the paper, e.g., '2023 Secondary 2 Mid-Year Examination', 'Worksheet 5.3'.
     - **Timestamp**: Note any date or time visible, often from a computer's menu bar in a screenshot.
     - **Page Number**: Extract any page number shown.
-3.  Populate these findings in the \`sourceDetails\` object. If a detail is not present, omit the field.
+- Populate these findings in the \`sourceDetails\` object. If a detail is not present, omit the field.
 
 **Safety Instruction:** If the image contains any personal information (names, addresses, contact details), inappropriate (R-rated, violent, etc.) content, or is not clearly an academic question, you must refuse to process it. Instead, return a JSON object with the 'question' field set to "Invalid Input Detected" and an empty 'answers' array.
 
 The user's image is here:
 {{media url=imageDataUri}}
-
-Context for the question subject: {{{context}}}
 
 Ensure the entire output strictly conforms to the JSON output schema, including the nested \`sourceDetails\` object.`,
 });

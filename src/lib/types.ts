@@ -3,6 +3,8 @@ export interface QuizQuestion {
   answers: string[];
   correctAnswerIndex: number;
   rationale: string;
+  subject?: string;
+  level?: string;
   sourceDetails?: {
     publisher?: string;
     website?: string;
