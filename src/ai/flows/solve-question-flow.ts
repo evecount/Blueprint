@@ -61,7 +61,7 @@ Your tasks are to:
 - Analyze the image to identify and transcribe the user's primary question.
 - Rephrase it into a clear, high-quality multiple-choice question format.
 - Provide the single best correct answer and generate three plausible but incorrect distractor answers.
-- Provide a detailed rationale explaining why the correct answer is right and the others are wrong, suitable for a student.
+- Provide a detailed rationale explaining why the correct answer is right and the others are wrong. **The language and complexity of this rationale MUST be tailored to the determined academic level. For primary school levels (e.g., 'Primary 1'), use simple, direct language a child can understand and avoid technical jargon like 'past tense' or 'participle'.**
 
 **Task 3: Extract Source Details**
 - Carefully examine the entire image, including headers, footers, and margins.

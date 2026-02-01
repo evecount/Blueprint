@@ -51,7 +51,7 @@ Your tasks are to:
 **Study Card Instructions:**
 - Rephrase the question if necessary into a clear, high-quality multiple-choice question format.
 - Provide the single best correct answer and generate three plausible but incorrect distractor answers.
-- Provide a detailed rationale explaining why the correct answer is right and the others are wrong, suitable for a student.
+- Provide a detailed rationale explaining why the correct answer is right and the others are wrong. **The language and complexity of this rationale MUST be tailored to the determined academic level. For primary school levels (e.g., 'Primary 1'), use simple, direct language and avoid technical grammatical terms.**
 
 **Safety Instruction:** If the submitted text contains any personal information (names, addresses, contact details), R-rated content, or is not a discernible academic question, you must refuse to process it. Instead, return a JSON object with the 'question' field set to "Invalid Input" and an empty 'answers' array.
 
