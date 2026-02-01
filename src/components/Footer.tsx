@@ -76,7 +76,7 @@ export function Footer() {
                         Sponsored By
                     </p>
                     <a
-                        href="https://artstream.sg"
+                        href="https://evecount.com/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mt-4 block"
@@ -106,7 +106,7 @@ export function Footer() {
 
              <div className="mt-8 border-t border-border pt-6">
                 <p className="text-center text-xs/relaxed text-muted-foreground">
-                    © {new Date().getFullYear()} QuizUp, a property of Eve Count Pte Ltd SINGAPORE. All Rights Reserved.
+                    © {new Date().getFullYear()} QuizUp, a property of <a href="https://evecount.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">Eve Count Pte Ltd SINGAPORE</a>. All Rights Reserved.
                 </p>
             </div>
         </div>
