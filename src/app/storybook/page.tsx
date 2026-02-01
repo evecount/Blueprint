@@ -182,22 +182,29 @@ export default function StorybookCreatorPage() {
                         {pages.map((page) => (
                              <CarouselItem key={page.pageNumber}>
                                 <Card className="overflow-hidden">
-                                     <div>
-                                        <div className="flex items-center justify-center bg-muted aspect-[4/3]">
-                                        {page.isGenerating ? (
-                                            <div className="flex flex-col items-center gap-2 text-muted-foreground">
-                                                <Loader2 className="w-8 h-8 animate-spin" />
-                                                <p>Drawing page {page.pageNumber}...</p>
-                                            </div>
-                                        ) : page.imageUrl ? (
-                                            <Image
-                                                src={page.imageUrl}
-                                                alt={`Illustration for page ${page.pageNumber}`}
-                                                width={800}
-                                                height={600}
-                                                className="object-contain w-full h-full"
-                                            />
-                                        ) : null}
+                                    <div>
+                                        <div className="relative flex items-center justify-center bg-muted aspect-[4/3]">
+                                            {page.isGenerating ? (
+                                                <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                                                    <Loader2 className="w-8 h-8 animate-spin" />
+                                                    <p>Drawing page {page.pageNumber}...</p>
+                                                </div>
+                                            ) : page.imageUrl ? (
+                                                <>
+                                                    <Image
+                                                        src={page.imageUrl}
+                                                        alt={`Illustration for page ${page.pageNumber}`}
+                                                        width={800}
+                                                        height={600}
+                                                        className="object-contain w-full h-full"
+                                                    />
+                                                    {authorName && (
+                                                        <div className="absolute bottom-2 right-2 bg-black/50 text-white text-[10px] px-2 py-1 rounded">
+                                                            This story was written by {authorName} with QuizUp
+                                                        </div>
+                                                    )}
+                                                </>
+                                            ) : null}
                                         </div>
                                         <div className="p-6 text-center">
                                             <p className="flex-1 text-lg leading-relaxed text-muted-foreground">{page.text}</p>
@@ -235,16 +242,16 @@ export default function StorybookCreatorPage() {
   return (
     <div className="space-y-8">
       <header>
-        <h1 className="text-3xl font-bold tracking-tight font-headline">Storybook Creator</h1>
+        <h1 className="text-3xl font-bold tracking-tight font-headline">Create Your Own Colouring Book</h1>
         <p className="text-muted-foreground">
-          Write your story and watch our AI bring it to life with illustrations!
+          Turn your child's words into a beautiful, illustrated story they can colour in. A safe and magical tool for young authors.
         </p>
       </header>
        <Alert>
             <Sparkles className="h-4 w-4" />
             <AlertTitle>How It Works</AlertTitle>
             <AlertDescription>
-                Tell us about your character, write your story, and our AI will automagically create an illustrated book for you.
+                Write a story, and our AI will illustrate it in a whimsical, black-and-white colouring book style. It's safe, creative fun!
             </AlertDescription>
         </Alert>
 
