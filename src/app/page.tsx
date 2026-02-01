@@ -6,6 +6,7 @@ import {
   Trash2,
   Smartphone,
   Cpu,
+  Sparkles,
 } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useMemo } from 'react';
@@ -38,6 +39,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import UploadQuestionDialog from '@/components/home/UploadQuestionDialog';
 
 export default function DashboardPage() {
   const { resources, deleteResource } = useAppContext();
@@ -46,6 +48,7 @@ export default function DashboardPage() {
   // New state for filters
   const [selectedLevel, setSelectedLevel] = useState('all');
   const [selectedSubject, setSelectedSubject] = useState('all');
+  const [isUploadDialogOpen, setIsUploadDialogOpen] = useState(false);
 
   // Derive filter options from resources
   const { levels, subjects } = useMemo(() => {
@@ -141,11 +144,12 @@ export default function DashboardPage() {
               <span className="font-medium">AI Powered</span>
             </div>
           </div>
-          <Link href="/resources" passHref className="block pt-4">
-            <Button size="lg" className="w-full sm:w-auto">
-              Explore Quiz Decks
+          <div className="pt-4">
+            <Button size="lg" className="w-full sm:w-auto" onClick={() => setIsUploadDialogOpen(true)}>
+              <Sparkles className="mr-2" />
+              Generate a Question
             </Button>
-          </Link>
+          </div>
         </div>
         <div className="relative w-full overflow-hidden rounded-lg shadow-2xl aspect-square">
           {heroImage && (
@@ -161,6 +165,7 @@ export default function DashboardPage() {
 
       {/* Quiz Decks Section */}
       <main>
+        <UploadQuestionDialog open={isUploadDialogOpen} onOpenChange={setIsUploadDialogOpen} />
         <div className="space-y-2 text-center">
           <h2 className="text-3xl font-bold tracking-tight font-headline">
             Available Quiz Decks

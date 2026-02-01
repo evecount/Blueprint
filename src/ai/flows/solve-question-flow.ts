@@ -65,6 +65,8 @@ Your primary task is to convert the user's question into a high-quality, multipl
     - **Page Number**: Extract any page number shown.
 3.  Populate these findings in the \`sourceDetails\` object. If a detail is not present, omit the field.
 
+**Safety Instruction:** If the image contains any personal information (names, addresses, contact details), inappropriate (R-rated, violent, etc.) content, or is not clearly an academic question, you must refuse to process it. Instead, return a JSON object with the 'question' field set to "Invalid Input Detected" and an empty 'answers' array.
+
 The user's image is here:
 {{media url=imageDataUri}}
 
