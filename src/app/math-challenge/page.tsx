@@ -155,6 +155,57 @@ const mathQuestions = [
         { id: 'q13d3', text: '15' }
     ],
     target: { id: 'q13t1', correctItemId: 'q13d2' }
+  },
+  {
+    id: 'q14',
+    prompt: 'Which equation has the same answer as 3 + 3 + 3?',
+    visual: { type: 'grid', content: '❤️', count: 9 },
+    items: [
+        { id: 'q14d1', text: '2 + 2' },
+        { id: 'q14d2', text: '3 x 3' },
+        { id: 'q14d3', text: '6 x 2' }
+    ],
+    target: { id: 'q14t1', correctItemId: 'q14d2' }
+  },
+  {
+    id: 'q15',
+    prompt: 'Drag the matching description for the equation: 2 + 2 + 2',
+    items: [
+        { id: 'q15d1', text: '2 groups of 2' },
+        { id: 'q15d2', text: '6 + 6 + 6 + 6' },
+        { id: 'q15d3', text: '3 twos' }
+    ],
+    target: { id: 'q15t1', correctItemId: 'q15d3' }
+  },
+  {
+    id: 'q16',
+    prompt: 'Drag the matching description for the equation: 4 x 6',
+    items: [
+        { id: 'q16d1', text: '2 groups of 2' },
+        { id: 'q16d2', text: '6 + 6 + 6 + 6' },
+        { id: 'q16d3', text: '3 twos' }
+    ],
+    target: { id: 'q16t1', correctItemId: 'q16d2' }
+  },
+  {
+    id: 'q17',
+    prompt: 'Read the TV schedule below. Which show lasts for 1 hour?\n\n7:30am Wildlife\n8:15am The Flash\n9:45am Yum Yum\n10:30am Hop Over\n11:30am Ollie and Friends',
+    items: [
+        { id: 'q17d1', text: 'Wildlife' },
+        { id: 'q17d2', text: 'The Flash' },
+        { id: 'q17d3', text: 'Hop Over' }
+    ],
+    target: { id: 'q17t1', correctItemId: 'q17d3' }
+  },
+  {
+    id: 'q18',
+    prompt: 'Read the TV schedule below. If Siti turns on the TV at 8:00 am, what show is she watching?\n\n7:00am News\n7:30am Wildlife\n8:15am The Flash',
+    items: [
+        { id: 'q18d1', text: 'News' },
+        { id: 'q18d2', text: 'Wildlife' },
+        { id: 'q18d3', text: 'The Flash' }
+    ],
+    target: { id: 'q18t1', correctItemId: 'q18d2' }
   }
 ];
 
@@ -298,17 +349,19 @@ export default function MathChallengePage() {
       <div className="flex flex-col items-center justify-center flex-1 p-4">
         <DndContext onDragEnd={handleDragEnd}>
             <div className="w-full space-y-6 text-center">
-                <p className="text-xl">{currentQuestion.prompt}</p>
+                <p className="text-xl whitespace-pre-wrap">{currentQuestion.prompt}</p>
 
-                <div className="inline-block p-6 border rounded-lg bg-muted/50">
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-9">
-                    {Array.from({ length: currentQuestion.visual.count }).map((_, index) => (
-                        <div key={index} className="flex items-center justify-center p-2 text-3xl border rounded-lg shadow-sm bg-background aspect-square">
-                        {currentQuestion.visual.content}
-                        </div>
-                    ))}
-                    </div>
-                </div>
+                {currentQuestion.visual && (
+                  <div className="inline-block p-6 border rounded-lg bg-muted/50">
+                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-9">
+                      {Array.from({ length: currentQuestion.visual.count }).map((_, index) => (
+                          <div key={index} className="flex items-center justify-center p-2 text-3xl border rounded-lg shadow-sm bg-background aspect-square">
+                          {currentQuestion.visual.content}
+                          </div>
+                      ))}
+                      </div>
+                  </div>
+                )}
 
                 <div className="relative w-full max-w-xs mx-auto">
                     <DropTarget id={currentQuestion.target.id} isOccupied={!!droppedItem}>
