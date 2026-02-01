@@ -86,7 +86,7 @@ export default function SponsorshipPage() {
       <Card className="border-accent">
         <CardHeader>
             <div className="flex items-center gap-3">
-                <BrainCircuit className="w-8 h-8 text-accent" />
+                <ToyBrick className="w-8 h-8 text-accent" />
                 <CardTitle className="text-accent font-headline">A Vision for Growth: Custom Rewards & Engagement</CardTitle>
             </div>
         </CardHeader>
@@ -129,6 +129,31 @@ export default function SponsorshipPage() {
            <p className="pt-4 mt-4 font-medium border-t text-foreground border-border/50">
             The goal is to build a system where students are motivated to learn. While the core focus remains on the syllabus, this framework allows ambitious students to explore advanced topics on their own time. It's a chance to be at the forefront of education, supporting a platform that excels at curriculum-based learning while also providing a safe space for curiosity to flourish. We are open to new ideas and a true partnership in building this out.
           </p>
+        </CardContent>
+      </Card>
+
+      <Card className="border-accent">
+        <CardHeader>
+            <div className="flex items-center gap-3">
+                <BrainCircuit className="w-8 h-8 text-accent" />
+                <CardTitle className="text-accent font-headline">The Learning Moat: Creating AI Trainers</CardTitle>
+            </div>
+        </CardHeader>
+        <CardContent className="space-y-4 text-muted-foreground">
+            <p className="text-lg font-medium text-foreground">
+                Our most advanced model creates an unparalleled technological moat for our partners by transforming how students learn.
+            </p>
+            <p>
+                The platform goes beyond simple quizzing. It reframes the learning process: students are not just users; they become **AI trainers**. Every quiz they take, every answer they give, is an act of teaching their own personal AI avatar.
+            </p>
+            <ul className="space-y-3 list-disc list-inside">
+                <li><span className="font-semibold text-foreground">Deep Mastery Through Teaching:</span> The best way to learn a subject is to teach it. By "training" their AI companion on the school syllabus, students reinforce their own knowledge at a much deeper level.</li>
+                <li><span className="font-semibold text-foreground">Intuitive Understanding of AI:</span> In a safe and gamified environment, students gain an intuitive grasp of how supervised learning models work. They are learning the core concepts of the AI-driven future simply by playing.</li>
+                 <li><span className="font-semibold text-foreground">A Pipeline for AI-Native Talent:</span> For a partner organization, this isn't just an app—it's an investment in cultivating a generation of AI-native thinkers. You're aligning with a platform that is fundamentally changing how students interact with technology and knowledge.</li>
+            </ul>
+            <p className="pt-4 mt-4 font-medium border-t text-foreground border-border/50">
+                This pedagogical approach—teaching students to be teachers for an AI—is a unique and powerful differentiator that creates a true learning advantage.
+            </p>
         </CardContent>
       </Card>
 
