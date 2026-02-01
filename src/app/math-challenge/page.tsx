@@ -78,6 +78,50 @@ const mathQuestions = [
         { id: 'q6d4', text: '12:30 pm' }
     ],
     target: { id: 'q6t1', correctItemId: 'q6d1' }
+  },
+  {
+    id: 'q7',
+    prompt: 'Sue has 18 stamps. She puts them into 3 equal groups. How many stamps are in each group?',
+    visual: { type: 'grid', content: '🖼️', count: 18 },
+    items: [
+        { id: 'q7d1', text: '3' },
+        { id: 'q7d2', text: '6' },
+        { id: 'q7d3', text: '9' }
+    ],
+    target: { id: 'q7t1', correctItemId: 'q7d2' }
+  },
+  {
+    id: 'q8',
+    prompt: 'How many groups of crayons are there?',
+    visual: { type: 'grid', content: '🖍️🖍️🖍️🖍️', count: 8 },
+    items: [
+        { id: 'q8d1', text: '4' },
+        { id: 'q8d2', text: '8' },
+        { id: 'q8d3', text: '32' }
+    ],
+    target: { id: 'q8t1', correctItemId: 'q8d2' }
+  },
+  {
+    id: 'q9',
+    prompt: 'How many crayons are in each group?',
+    visual: { type: 'grid', content: '🖍️🖍️🖍️🖍️', count: 8 },
+    items: [
+        { id: 'q9d1', text: '4' },
+        { id: 'q9d2', text: '8' },
+        { id: 'q9d3', text: '32' }
+    ],
+    target: { id: 'q9t1', correctItemId: 'q9d1' }
+  },
+  {
+    id: 'q10',
+    prompt: 'There are 8 groups of 4 crayons. How many crayons are there altogether?',
+    visual: { type: 'grid', content: '🖍️🖍️🖍️🖍️', count: 8 },
+    items: [
+        { id: 'q10d1', text: '12' },
+        { id: 'q10d2', text: '24' },
+        { id: 'q10d3', text: '32' }
+    ],
+    target: { id: 'q10t1', correctItemId: 'q10d3' }
   }
 ];
 
@@ -224,7 +268,7 @@ export default function MathChallengePage() {
                 <p className="text-xl">{currentQuestion.prompt}</p>
 
                 <div className="inline-block p-6 border rounded-lg bg-muted/50">
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-9">
                     {Array.from({ length: currentQuestion.visual.count }).map((_, index) => (
                         <div key={index} className="flex items-center justify-center p-2 text-3xl border rounded-lg shadow-sm bg-background aspect-square">
                         {currentQuestion.visual.content}
