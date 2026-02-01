@@ -6,8 +6,8 @@ export function Footer() {
   return (
     <footer className="border-t bg-card/50">
         <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                <div className="text-center sm:text-left">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+                <div className="text-center sm:text-left sm:col-span-2">
                    <div className="flex items-center justify-center gap-2 sm:justify-start">
                         <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/80">
                             <Bot className="h-5 w-5 text-primary-foreground" />
@@ -35,6 +35,20 @@ export function Footer() {
                         </Link>
                     </nav>
                 </div>
+                
+                 <div className="text-center sm:text-left">
+                    <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                        For Schools
+                    </p>
+                    <nav className="mt-4 flex flex-col gap-2 text-sm">
+                        <Link href="/auth/login" className="text-muted-foreground transition-colors hover:text-foreground">
+                            School Login
+                        </Link>
+                         <Link href="/sponsorship" className="text-muted-foreground transition-colors hover:text-foreground">
+                            Partnerships
+                        </Link>
+                    </nav>
+                </div>
 
                  <div className="text-center sm:text-left">
                     <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
@@ -49,8 +63,10 @@ export function Footer() {
                         </Link>
                     </nav>
                 </div>
-
-                <div className="text-center sm:text-left">
+            </div>
+            
+            <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+               <div className="text-center sm:text-left">
                     <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                         Sponsored By
                     </p>

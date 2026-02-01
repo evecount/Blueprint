@@ -26,3 +26,10 @@ export interface Performance {
     total: number;
   };
 }
+
+export interface School {
+  id: string;
+  name: string;
+  contactEmail: string;
+  registrationDate: any; // Can be a Date or a Firestore ServerTimestamp
+}

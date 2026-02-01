@@ -9,6 +9,7 @@ import {
   MessageSquare,
   TrendingUp,
   Cpu,
+  LogIn,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -24,23 +25,29 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
 import { Footer } from './Footer';
+import { UserMenu } from './auth/UserMenu';
+import { useUser } from '@/firebase';
 
-const menuItems = [
+const studentMenuItems = [
   { href: '/', label: 'Dashboard', icon: BarChart2 },
   { href: '/resources', label: 'My Quiz Decks', icon: BookOpen },
   { href: '/performance', label: 'My Progress', icon: TrendingUp },
   { href: '/chat', label: 'Chat with Notes', icon: MessageSquare },
   { href: '/contribute', label: 'Contribute Question', icon: Gift },
-  { href: '/automation', label: 'Automation', icon: Cpu },
-  { href: '/about', label: 'About', icon: Info },
 ];
+
+const infoMenuItems = [
+    { href: '/automation', label: 'Automation', icon: Cpu },
+    { href: '/about', label: 'About', icon: Info },
+]
 
 export function AppLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const { user } = useUser();
+  const isSchoolUser = user && !user.isAnonymous;
 
   return (
     <SidebarProvider className="flex flex-col min-h-screen bg-muted/40">
@@ -69,7 +76,23 @@ export function AppLayout({ children }: { children: ReactNode }) {
                 </SidebarHeader>
                 <SidebarContent className="flex-1 p-4">
                   <SidebarMenu>
-                    {menuItems.map((item) => (
+                    {studentMenuItems.map((item) => (
+                      <SidebarMenuItem key={item.href}>
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsSheetOpen(false)}
+                          className="w-full"
+                        >
+                          <SidebarMenuButton isActive={pathname === item.href}>
+                            <item.icon />
+                            <span>{item.label}</span>
+                          </SidebarMenuButton>
+                        </Link>
+                      </SidebarMenuItem>
+                    ))}
+                  </SidebarMenu>
+                  <SidebarMenu className='mt-4 pt-4 border-t'>
+                     {infoMenuItems.map((item) => (
                       <SidebarMenuItem key={item.href}>
                         <Link
                           href={item.href}
@@ -86,17 +109,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
                   </SidebarMenu>
                 </SidebarContent>
                 <SidebarFooter className="p-4 mt-auto border-t">
-                  <SidebarMenu>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
-                        <Avatar className="w-8 h-8">
-                          <AvatarImage src="https://picsum.photos/seed/gwen/40/40" />
-                          <AvatarFallback>GL</AvatarFallback>
-                        </Avatar>
-                        <span>Gwendalynn</span>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  </SidebarMenu>
+                  <UserMenu />
                 </SidebarFooter>
               </div>
             </SheetContent>
@@ -112,10 +125,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
            <Link href="/about" passHref>
             <Button variant="ghost">About</Button>
           </Link>
-          <Avatar>
-            <AvatarImage src="https://picsum.photos/seed/gwen/40/40" />
-            <AvatarFallback>GL</AvatarFallback>
-          </Avatar>
+          <UserMenu />
         </div>
       </header>
 
