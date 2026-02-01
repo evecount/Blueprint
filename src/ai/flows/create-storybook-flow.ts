@@ -49,7 +49,7 @@ const prompt = ai.definePrompt({
 1.  **Read the Story**: Read the provided story carefully.
 2.  **Create a Title**: Give the story a short, magical, and fitting title.
 3.  **Set the Author**: Use *only* the provided first name for the author. Do not use any other name.
-4.  **Split into Pages**: Divide the story into 4-6 short pages. Each page should have just one or two sentences. This is for a young child's flip book.
+4.  **Split into Pages**: Divide the story into several short pages. Each page should have just one or two sentences, to make it easy for a young child to read. This will become an illustrated flip book.
 5.  **Generate Illustration Prompts**: For each page, create a detailed and whimsical prompt for an AI illustrator.
     *   **Style**: The prompt MUST specify a "whimsical, clean, black-and-white coloring book style, simple lines, full of wonder and charm."
     *   **Content**: The prompt should describe the main action or scene of that specific page's text. Be imaginative!
