@@ -43,10 +43,11 @@ const prompt = ai.definePrompt({
 **Your Instructions:**
 
 1.  **Read the Story**: Read the provided text carefully.
-2.  **Split into Pages**: Divide the story into logical pages. **CRITICAL: Each page MUST contain only one or two sentences.**
+2.  **Split into Pages**: Divide the story into logical pages. Each page should ideally contain only one or two sentences.
 3.  **Generate Illustration Prompts**: For each page you create, generate a detailed and whimsical prompt for an AI illustrator.
     *   **Style**: The prompt MUST specify a "whimsical, clean, black-and-white coloring book style, simple lines, full of wonder and charm."
     *   **Content**: The prompt should describe the main action, characters, and emotion of that specific page's text.
+    *   **CHILD SAFETY GUARDRAIL**: The illustrations must be friendly, safe, and appropriate for all young children. AVOID creating any images that could be scary, such as ghosts, monsters, dark shadows, or overly sad expressions. If the text describes loneliness or sadness, represent this with posture or empty space, NOT with frightening figures. For example, to show loneliness, you could prompt: "a girl sitting by herself on a bench in a big, empty playground."
     {{#if characterDescription}}
     *   **CHARACTER CONSISTENCY**: The main character of this story is described as: '{{{characterDescription}}}'. When you generate a prompt that includes the main character, you MUST incorporate this description to ensure they look the same in every illustration. For example, instead of just "a girl," your prompt should say "a girl with short brown hair and glasses."
     {{/if}}

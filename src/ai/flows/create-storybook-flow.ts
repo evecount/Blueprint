@@ -39,6 +39,7 @@ const prompt = ai.definePrompt({
 2.  **Generate Illustration Prompt**: Create a detailed and whimsical prompt for an AI illustrator.
     *   **Style**: The prompt MUST specify a "whimsical, clean, black-and-white coloring book style, simple lines, full of wonder and charm."
     *   **Content**: The prompt should describe the main action, characters, and emotion of that specific page's text. Be imaginative!
+    *   **CHILD SAFETY GUARDRAIL**: The illustrations must be friendly, safe, and appropriate for all young children. AVOID creating any images that could be scary, such as ghosts, monsters, or dark shadows. If the text describes loneliness or sadness, represent this with posture or empty space, NOT with frightening figures.
 
 **Safety Guardrail**: If the text contains any inappropriate content, personal information (last names, addresses, etc.), or anything unsafe for children, you MUST respond with an illustrationPrompt of "Invalid content detected."
 
