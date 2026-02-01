@@ -16,7 +16,7 @@ export default function FaqPage() {
       <header>
         <h1 className="text-3xl font-bold tracking-tight font-headline">Frequently Asked Questions</h1>
         <p className="text-muted-foreground">
-          Answers to common questions about QuizUp.
+          Answers to common questions about Blueprint.
         </p>
       </header>
       <Card>
@@ -26,22 +26,22 @@ export default function FaqPage() {
               <AccordionTrigger>
                 <div className="flex items-center gap-3">
                   <Info className="w-5 h-5 text-primary" />
-                  <span className="font-semibold text-left">What is QuizUp?</span>
+                  <span className="font-semibold text-left">What is Blueprint?</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                QuizUp is a free, open-source AI-powered study platform designed for students. It allows users to create interactive quizzes from their notes, master subjects through practice, and contribute to a collaborative learning community. For schools, it offers a platform to create custom reward systems and track student engagement.
+                Blueprint is a free, open-source AI-powered study platform designed for students. It allows users to create interactive quizzes from their notes, master subjects through practice, and contribute to a collaborative learning community. For schools, it offers a platform to create custom reward systems and track student engagement.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
               <AccordionTrigger>
                 <div className="flex items-center gap-3">
                   <DollarSign className="w-5 h-5 text-primary" />
-                  <span className="font-semibold text-left">How is QuizUp free?</span>
+                  <span className="font-semibold text-left">How is Blueprint free?</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                QuizUp is free because it's built on a social enterprise model. Our mission is to make education accessible. The platform is open-source, and we operate on a lean model, leveraging AI for development and relying on community contributions. Instead of charging for the core product, we partner with organizations for ESG initiatives (skills-based volunteering). This keeps the tool free for students and schools forever. You can read more on our <Link href="/sponsorship" className="underline">Sponsorship page</Link>.
+                Blueprint is free because it's built on a social enterprise model. Our mission is to make education accessible. The platform is open-source, and we operate on a lean model, leveraging AI for development and relying on community contributions. Instead of charging for the core product, we partner with organizations for ESG initiatives (skills-based volunteering). This keeps the tool free for students and schools forever. You can read more on our <Link href="/sponsorship" className="underline">Sponsorship page</Link>.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
@@ -59,7 +59,7 @@ export default function FaqPage() {
               <AccordionTrigger>
                 <div className="flex items-center gap-3">
                   <Handshake className="w-5 h-5 text-primary" />
-                  <span className="font-semibold text-left">How can our school partner with QuizUp?</span>
+                  <span className="font-semibold text-left">How can our school partner with Blueprint?</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
@@ -70,7 +70,7 @@ export default function FaqPage() {
               <AccordionTrigger>
                 <div className="flex items-center gap-3">
                   <BrainCircuit className="w-5 h-5 text-primary" />
-                  <span className="font-semibold text-left">What is the long-term vision for QuizUp?</span>
+                  <span className="font-semibold text-left">What is the long-term vision for Blueprint?</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">

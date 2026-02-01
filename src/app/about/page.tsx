@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <div className="space-y-8">
       <header>
-        <h1 className="text-3xl font-bold tracking-tight font-headline">About QuizUp</h1>
+        <h1 className="text-3xl font-bold tracking-tight font-headline">About Blueprint</h1>
         <p className="text-muted-foreground">
           Our mission: to make learning collaborative and accessible for everyone.
         </p>
@@ -19,7 +19,7 @@ export default function AboutPage() {
         </CardHeader>
         <CardContent className="space-y-6 text-muted-foreground">
           <p>
-            QuizUp was built on a simple but powerful idea: every student deserves access to high-quality study tools without barriers. We believe in the power of community and collaborative learning. This platform is an open-source resource for students, by students (and with a little help from AI!).
+            Blueprint was built on a simple but powerful idea: every student deserves access to high-quality study tools without barriers. We believe in the power of community and collaborative learning. This platform is an open-source resource for students, by students (and with a little help from AI!).
           </p>
           <div className="grid gap-6 pt-4 md:grid-cols-2">
             <div className="flex items-start gap-4">
@@ -52,7 +52,7 @@ export default function AboutPage() {
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
           <p>
-            We take your trust seriously, especially when it comes to young learners. QuizUp is designed from the ground up to be a safe and anonymous environment.
+            We take your trust seriously, especially when it comes to young learners. Blueprint is designed from the ground up to be a safe and anonymous environment.
           </p>
           <ul className="space-y-2 list-disc list-inside">
             <li><span className="font-semibold text-foreground">No Personal Accounts:</span> We do not require users to sign up or provide personal information like names, emails, or ages.</li>

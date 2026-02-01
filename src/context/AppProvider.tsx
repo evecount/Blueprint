@@ -4,7 +4,7 @@ import type { Resource, Performance, QuizQuestion } from '@/lib/types';
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { seedResources } from '@/lib/seed-data';
 
-const LOCAL_STORAGE_VERSION_KEY = 'quizup-storage-version';
+const LOCAL_STORAGE_VERSION_KEY = 'blueprint-storage-version';
 const CURRENT_STORAGE_VERSION = '1.8'; // Increment this to force-refresh seed data
 
 // A custom hook to synchronize state with localStorage
@@ -63,8 +63,8 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [resources, setResources] = useLocalStorage<Resource[]>('reviewmate-resources', seedResources);
-  const [performance, setPerformance] = useLocalStorage<Performance>('reviewmate-performance', {});
+  const [resources, setResources] = useLocalStorage<Resource[]>('blueprint-resources', seedResources);
+  const [performance, setPerformance] = useLocalStorage<Performance>('blueprint-performance', {});
   
   const addResource = (resourceData: Omit<Resource, 'id' | 'createdAt'>, customId?: string) => {
     const newResource: Resource = {

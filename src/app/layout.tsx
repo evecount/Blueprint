@@ -6,7 +6,7 @@ import { AppLayout } from '@/components/AppLayout';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 export const metadata: Metadata = {
-  title: 'QuizUp',
+  title: 'Blueprint',
   description: 'Create, share, and master subjects with collaborative quizzes.',
 };
 

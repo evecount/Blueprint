@@ -81,7 +81,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
                     onClick={() => setIsSheetOpen(false)}
                   >
                     <h2 className="text-xl font-bold tracking-tight font-headline">
-                      QuizUp
+                      Blueprint
                     </h2>
                   </Link>
                 </SidebarHeader>
@@ -127,7 +127,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
           </Sheet>
           <Link href="/" className="flex items-center">
             <h2 className="text-lg font-bold tracking-tight font-headline">
-              QuizUp
+              Blueprint
             </h2>
           </Link>
         </div>

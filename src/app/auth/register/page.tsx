@@ -9,7 +9,7 @@ export default function RegisterPage() {
             <Card className="w-full max-w-md">
                 <CardHeader className="text-center">
                     <CardTitle className="text-2xl font-headline">Create a School Account</CardTitle>
-                    <CardDescription>Join QuizUp to create custom reward systems for your students.</CardDescription>
+                    <CardDescription>Join Blueprint to create custom reward systems for your students.</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <RegistrationForm />

@@ -1,6 +1,6 @@
-# QuizUp
+# Blueprint
 
-Welcome to QuizUp, your AI-powered collaborative learning partner! This application is designed to help students create and share interactive quizzes to master any subject.
+Welcome to Blueprint, your AI-powered collaborative learning partner! This application is designed to help students create and share interactive quizzes to master any subject.
 
 ## Features
 

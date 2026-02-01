@@ -20,7 +20,7 @@ export function Footer() {
                         <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/80">
                             <Bot className="h-5 w-5 text-primary-foreground" />
                         </div>
-                        <h2 className="text-lg font-bold tracking-tight font-headline">QuizUp</h2>
+                        <h2 className="text-lg font-bold tracking-tight font-headline">Blueprint</h2>
                     </div>
                      <p className="mt-4 text-sm text-muted-foreground">
                         A free, open-source learning platform for students. We provide AI-powered tools in a safe, anonymous environment—no student sign-ups required.
@@ -115,7 +115,7 @@ export function Footer() {
 
              <div className="mt-8 border-t border-border pt-6">
                 <p className="text-center text-xs/relaxed text-muted-foreground">
-                    © {isClient && `${new Date().getFullYear()} `}QuizUp, a property of <a href="https://evecount.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">Eve Count Pte Ltd SINGAPORE</a>. All Rights Reserved.
+                    © {isClient && `${new Date().getFullYear()} `}Blueprint, a property of <a href="https://evecount.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">Eve Count Pte Ltd SINGAPORE</a>. All Rights Reserved.
                 </p>
             </div>
         </div>

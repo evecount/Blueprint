@@ -200,7 +200,7 @@ export default function StorybookCreatorPage() {
                                                     />
                                                     {authorName && (
                                                         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/50 text-white text-[10px] px-2 py-1 rounded">
-                                                            This story was written by {authorName} with QuizUp and Gemini AI
+                                                            This story was written by {authorName} with Blueprint and Gemini AI
                                                         </div>
                                                     )}
                                                 </>

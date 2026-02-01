@@ -13,7 +13,7 @@ export default function SponsorshipPage() {
   return (
     <div className="space-y-8">
       <header>
-        <h1 className="text-3xl font-bold tracking-tight font-headline">Partner with QuizUp</h1>
+        <h1 className="text-3xl font-bold tracking-tight font-headline">Partner with Blueprint</h1>
         <p className="text-muted-foreground">
           Join us in democratizing education through community and technology.
         </p>
@@ -27,7 +27,7 @@ export default function SponsorshipPage() {
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
           <p>
-            QuizUp is a free, open-source educational platform dedicated to helping students learn collaboratively. Our mission is to provide high-quality study tools without cost or privacy concerns.
+            Blueprint is a free, open-source educational platform dedicated to helping students learn collaboratively. Our mission is to provide high-quality study tools without cost or privacy concerns.
           </p>
           <p className="text-foreground font-medium">
             We are not seeking financial sponsorship for our core mission. Thanks to a lean operational model and AI-powered development, our costs are minimal. Instead, we are looking for strategic partners willing to contribute their expertise, network, and time as part of their corporate ESG (Environmental, Social, and Governance) mandate.
@@ -60,7 +60,7 @@ export default function SponsorshipPage() {
                     </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  Partnering with QuizUp is a direct and measurable way to advance the "Social" component of your ESG strategy. By supporting us, you are promoting educational equity, fostering digital inclusion for all students, and investing in community development. It's a tangible project that demonstrates a commitment to creating a positive social impact.
+                  Partnering with Blueprint is a direct and measurable way to advance the "Social" component of your ESG strategy. By supporting us, you are promoting educational equity, fostering digital inclusion for all students, and investing in community development. It's a tangible project that demonstrates a commitment to creating a positive social impact.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
@@ -74,7 +74,7 @@ export default function SponsorshipPage() {
                   We welcome skills-based volunteers from your organization. Your team can contribute in several ways:
                   <ul className="mt-2 space-y-2 list-disc list-inside">
                     <li><span className="font-semibold">Content Curators:</span> Help review and align quiz content with the latest Ministry of Education syllabus.</li>
-                    <li><span className="font-semibold">Community Ambassadors:</span> Champion QuizUp and help introduce the platform to schools, tuition centers, and community groups.</li>
+                    <li><span className="font-semibold">Community Ambassadors:</span> Champion Blueprint and help introduce the platform to schools, tuition centers, and community groups.</li>
                     <li><span className="font-semibold">Tech & Strategy Mentors:</span> Provide guidance on scaling our technology, product strategy, and outreach efforts.</li>
                   </ul>
                 </AccordionContent>
