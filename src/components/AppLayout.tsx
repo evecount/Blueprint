@@ -2,6 +2,7 @@
 
 import {
   BarChart2,
+  BookImage,
   BookOpen,
   Gift,
   Info,
@@ -39,6 +40,7 @@ const studentMenuItems = [
   { href: '/chat', label: 'Chat with Notes', icon: MessageSquare },
   { href: '/contribute', label: 'Contribute Question', icon: Gift },
   { href: '/math-challenge', label: 'Math Challenge', icon: ToyBrick },
+  { href: '/storybook', label: 'Storybook Creator', icon: BookImage },
 ];
 
 const infoMenuItems = [
