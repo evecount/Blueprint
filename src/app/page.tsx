@@ -3,7 +3,6 @@
 import {
   PlayCircle,
   MoreVertical,
-  Trash2,
   Smartphone,
   Cpu,
   Gift,
@@ -18,22 +17,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useAppContext } from '@/context/AppProvider';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
 import {
   Select,
   SelectContent,
@@ -43,7 +30,7 @@ import {
 } from '@/components/ui/select';
 
 export default function DashboardPage() {
-  const { resources, deleteResource } = useAppContext();
+  const { resources } = useAppContext();
   const heroImage = PlaceHolderImages.find((img) => img.id === 'dashboard-hero');
   const router = useRouter();
 
@@ -268,35 +255,6 @@ export default function DashboardPage() {
                                 <PlayCircle className="w-4 h-4 mr-2" />
                                 Start Quiz
                             </DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <AlertDialog>
-                              <AlertDialogTrigger asChild>
-                                <DropdownMenuItem
-                                  onSelect={(e) => e.preventDefault()}
-                                  className="text-red-500 focus:text-red-500"
-                                >
-                                  <Trash2 className="w-4 h-4 mr-2" />
-                                  Delete
-                                </DropdownMenuItem>
-                              </AlertDialogTrigger>
-                              <AlertDialogContent>
-                                <AlertDialogHeader>
-                                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                  <AlertDialogDescription>
-                                    This action cannot be undone. This will permanently delete the deck "{resource.name}".
-                                  </AlertDialogDescription>
-                                </AlertDialogHeader>
-                                <AlertDialogFooter>
-                                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                  <AlertDialogAction
-                                    onClick={() => deleteResource(resource.id)}
-                                    className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-                                  >
-                                    Delete
-                                  </AlertDialogAction>
-                                </AlertDialogFooter>
-                              </AlertDialogContent>
-                            </AlertDialog>
                           </DropdownMenuContent>
                         </DropdownMenu>
                       </div>
